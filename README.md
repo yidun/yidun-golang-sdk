@@ -89,4 +89,4 @@ SDK中各接口调用方式基本相同，接入方式统一，并提供了一�
   ```
 
 #### 5. 详细文档
-- [wiki链接](https://github.com/yidun/yidun-java-sdk/wiki)
+- [wiki链接](https://github.com/yidun/yidun-golang-sdk/wiki)
