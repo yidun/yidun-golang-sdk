@@ -168,13 +168,25 @@ var (
 		  "sg-singapore": [
 			"as-image-sg.dun.163yun.com",
 			"as-image-sg.dun.163.com"
-		  ]
+		  ],
+          "us-virginia": [
+            "as-image-virginia.dun.163.com",
+            "as-image-virginia.dun.163yun.com"
+          ]
 		},
 		"imageCommon": {
 		  "cn-hangzhou": [
 			"as.dun.163.com",
 			"as.dun.163yun.com"
-		  ]
+		  ],
+          "sg-singapore": [
+            "as-image-sg.dun.163.com",
+            "as-image-sg.dun.163yun.com"
+          ],
+          "us-virginia": [
+            "as-image-virginia.dun.163.com",
+            "as-image-virginia.dun.163yun.com"
+          ]
 		},
 		"text-check": {
 		  "cn-hangzhou": [

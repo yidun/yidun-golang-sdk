@@ -177,10 +177,18 @@ func (c *DefaultClient) DoExecute(request types.BaseRequest, data interface{}) e
 		return paramErr
 	}
 	if request.GetProtocol() == "" {
-		request.SetProtocol(http.DEFAULT_PROTOCOL)
+		if c.defaultProtocol != "" {
+			request.SetProtocol(c.defaultProtocol)
+		} else {
+			request.SetProtocol(http.DEFAULT_PROTOCOL)
+		}
 	}
 	if request.GetRegionCode() == "" {
-		request.SetRegionCode(http.DEFAULT_REGION_CODE)
+		if c.defaultRegionCode != "" {
+			request.SetRegionCode(c.defaultRegionCode)
+		} else {
+			request.SetRegionCode(http.DEFAULT_REGION_CODE)
+		}
 	}
 	// 获取需要签名的参数
 	request.SetCustomParams(request.GetBusinessCustomSignParams())

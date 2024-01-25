@@ -22,7 +22,7 @@ SDK 中各接口调用方式基本相同，接入方式统一，并提供了一�
 * 在您的项目中添加module依赖，只需在 go.mod 文件中添加以下依赖项即可。
 
   ```
-    require github.com/yidun/yidun-golang-sdk v1.0.0
+    require github.com/yidun/yidun-golang-sdk v1.0.1
   ```
 
   > 注意： 这里的版本号只是举例，您可以在 git 仓库 上找到最新的版本。
@@ -78,6 +78,16 @@ SDK 中各接口调用方式基本相同，接入方式统一，并提供了一�
   clientProfile.BreakerConfig.SetStatWindowMillis(10000)
   crawlerSubmitClient := crawler.NewCrawlerClient(clientProfile)
   ```
+* 海外节点配置
+
+  ```
+  credential := auth.NewCredentials("accessKeyId", "accessKeySecret")
+  clientProfile := client.NewClientProfile(credential)
+  // 以访问新加坡节点为例，支持的 region 列表请咨询您的商务经理
+  clientProfile.SetRegionCode("sg-singapore")
+  livevideosolution.NewLiveVideoSolutionClient(clientProfile)
+  ```
+
 * 重试配置
 
   ```
