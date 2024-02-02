@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"log"
 	"sort"
 	"strings"
 )
@@ -8,10 +9,11 @@ import (
 type Credentials struct {
 	SecretId  string
 	SecretKey string
+	Debug     bool
 }
 
 func NewCredentials(secretId string, secretKey string) *Credentials {
-	return &Credentials{secretId, secretKey}
+	return &Credentials{secretId, secretKey, false}
 }
 
 type SignResult struct {
@@ -21,9 +23,9 @@ type SignResult struct {
 }
 
 var (
-	TIMESTAMP                = "timestamp"
-	NONCE                    = "nonce"
-	DEFAULT_SIGNATURE_METHOD = MD5
+	TIMESTAMP                        = "timestamp"
+	NONCE                            = "nonce"
+	DEFAULT_SIGNATURE_METHOD         = MD5
 	DEFAULT_OPENAPI_SIGNATURE_METHOD = SHA1
 )
 
@@ -41,6 +43,9 @@ func GetOpenapiSignerInstance() *OpenApiSigner {
 }
 
 func (s SignerCommon) GenSignature(credentials Credentials, params map[string]string) SignResult {
+	if credentials.Debug {
+		log.Println("SignerCommon.GenSignature, credentials:", credentials, "params:", params)
+	}
 	signatureMethod := determineSignatureMethod(params)
 	secretId := credentials.SecretId
 
@@ -55,6 +60,9 @@ func (s SignerCommon) GenSignature(credentials Credentials, params map[string]st
 
 	signature := genSignature(signatureMethod, credentials.SecretKey, target)
 
+	if credentials.Debug {
+		log.Println("SignerCommon.GenSignature, signature:", signature)
+	}
 	return SignResult{signatureMethod, secretId, signature}
 }
 
@@ -98,6 +106,7 @@ func determineSignatureMethod(params map[string]string) SignatureMethod {
 type OpenApiSigner struct{}
 
 func (s OpenApiSigner) GenSignature(credentials Credentials, params map[string]string) SignResult {
+	log.Println("OpenApiSigner.GenSignature, credentials:", credentials, "params:", params)
 	// 1. 参数名按照ASCII码表升序排序
 	paramNames := make([]string, 0, len(params))
 	for paramName := range params {
@@ -120,7 +129,7 @@ func (s OpenApiSigner) GenSignature(credentials Credentials, params map[string]s
 			nonce = paramValue
 			continue
 		}
-		
+
 		paramBuffer.WriteString(paramName)
 		if paramValue != "" {
 			paramBuffer.WriteString(paramValue)
@@ -132,6 +141,6 @@ func (s OpenApiSigner) GenSignature(credentials Credentials, params map[string]s
 	paramBuffer.WriteString(nonce)
 	paramBuffer.WriteString(timestamp)
 	signature := DEFAULT_OPENAPI_SIGNATURE_METHOD.calcSign(paramBuffer.String())
-
+	log.Println("OpenApiSigner.GenSignature, signature:", signature)
 	return SignResult{DEFAULT_OPENAPI_SIGNATURE_METHOD, credentials.SecretId, signature}
 }
