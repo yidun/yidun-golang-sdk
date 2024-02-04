@@ -28,6 +28,13 @@ func (c *IRiskClient) GetDetailResult(request *IRiskDetailRequest) (response *IR
 	return
 }
 
+// GetDetailV6Result 数据查询v6，调用/v6/risk/detail
+func (c *IRiskClient) GetDetailV6Result(request *IRiskDetailV6Request) (response *IRiskDetailV6Response, err error) {
+	response = &IRiskDetailV6Response{}
+	err = c.Client.DoExecute(request, response)
+	return
+}
+
 // GetMediaCheckResult 数据查询，调用/risk/getCheckResult
 func (c *IRiskClient) GetMediaCheckResult(request *IRiskMediaCheckRequest) (response *IRiskMediaCheckResponse, err error) {
 	response = &IRiskMediaCheckResponse{}
@@ -333,6 +340,7 @@ type (
 
 type (
 	IpInfo struct {
+		SdkIp      string      `json:"sdkIp"`
 		BasicInfo  IpBasicInfo `json:"basicInfo"`
 		IpRiskInfo IpRiskInfo  `json:"ipRiskInfo"`
 	}
@@ -425,10 +433,14 @@ type IRiskDetailRequest struct {
 	EndTimestamp   *int64
 	StartFlag      *string
 	Account        *string
+	Accounts       *string
 	RoleId         *string
+	RoleIds        *string
 	RiskLevel      *int
 	Ip             *string
+	Ips            *string
 	SdkIp          *string
+	SdkIps         *string
 	PackageName    *string
 	AppVersion     *string
 }
@@ -457,9 +469,21 @@ func (r *IRiskDetailRequest) SetAccount(account string) *IRiskDetailRequest {
 	return r
 }
 
+// SetAccounts 设置账号集合(JSON字符串)
+func (r *IRiskDetailRequest) SetAccounts(accounts string) *IRiskDetailRequest {
+	r.Accounts = &accounts
+	return r
+}
+
 // SetRoleId 设置角色ID
 func (r *IRiskDetailRequest) SetRoleId(roleId string) *IRiskDetailRequest {
 	r.RoleId = &roleId
+	return r
+}
+
+// SetRoleId 设置角色ID集合(JSON字符串)
+func (r *IRiskDetailRequest) SetRoleIds(roleIds string) *IRiskDetailRequest {
+	r.RoleIds = &roleIds
 	return r
 }
 
@@ -475,9 +499,21 @@ func (r *IRiskDetailRequest) SetIp(ip string) *IRiskDetailRequest {
 	return r
 }
 
+// SetIp 设置IP地址集合(JSON字符串)
+func (r *IRiskDetailRequest) SetIps(ips string) *IRiskDetailRequest {
+	r.Ips = &ips
+	return r
+}
+
 // SetSdkIp 设置SDK IP地址
 func (r *IRiskDetailRequest) SetSdkIp(sdkIp string) *IRiskDetailRequest {
 	r.SdkIp = &sdkIp
+	return r
+}
+
+// SetSdkIp 设置SDK IP地址
+func (r *IRiskDetailRequest) SetSdkIps(sdkIps string) *IRiskDetailRequest {
+	r.SdkIps = &sdkIps
 	return r
 }
 
@@ -524,8 +560,14 @@ func (r *IRiskDetailRequest) GetBusinessCustomSignParams() map[string]string {
 	if r.Account != nil {
 		params["account"] = *r.Account
 	}
+	if r.Accounts != nil {
+		params["accounts"] = *r.Accounts
+	}
 	if r.RoleId != nil {
 		params["roleId"] = *r.RoleId
+	}
+	if r.RoleIds != nil {
+		params["roleIds"] = *r.RoleIds
 	}
 	if r.RiskLevel != nil {
 		params["riskLevel"] = strconv.Itoa(*r.RiskLevel)
@@ -533,8 +575,14 @@ func (r *IRiskDetailRequest) GetBusinessCustomSignParams() map[string]string {
 	if r.Ip != nil {
 		params["ip"] = *r.Ip
 	}
+	if r.Ips != nil {
+		params["ips"] = *r.Ips
+	}
 	if r.SdkIp != nil {
 		params["sdkIp"] = *r.SdkIp
+	}
+	if r.SdkIps != nil {
+		params["sdkIps"] = *r.SdkIps
 	}
 	if r.PackageName != nil {
 		params["packageName"] = *r.PackageName
@@ -569,6 +617,265 @@ type IRiskDetailResult struct {
 	Size      int         `json:"size"`
 	StartFlag string      `json:"startFlag"`
 	Detail    interface{} `json:"detail"`
+}
+
+type IRiskDetailV6Request struct {
+	*types.BizPostJsonRequest
+	BeginTimestamp *int64
+	EndTimestamp   *int64
+	StartFlag      *string
+	Account        *string
+	Accounts       *string
+	RoleId         *string
+	RoleIds        *string
+	RiskLevel      *int
+	Ip             *string
+	Ips            *string
+	SdkIp          *string
+	SdkIps         *string
+	PackageName    *string
+	AppVersion     *string
+}
+
+// SetBeginTimestamp 设置开始时间
+func (r *IRiskDetailV6Request) SetBeginTimestamp(beginTimestamp int64) *IRiskDetailV6Request {
+	r.BeginTimestamp = &beginTimestamp
+	return r
+}
+
+// SetEndTimestamp 设置结束时间
+func (r *IRiskDetailV6Request) SetEndTimestamp(endTimestamp int64) *IRiskDetailV6Request {
+	r.EndTimestamp = &endTimestamp
+	return r
+}
+
+// SetStartFlag 设置开始标识
+func (r *IRiskDetailV6Request) SetStartFlag(startFlag string) *IRiskDetailV6Request {
+	r.StartFlag = &startFlag
+	return r
+}
+
+// SetAccount 设置账号
+func (r *IRiskDetailV6Request) SetAccount(account string) *IRiskDetailV6Request {
+	r.Account = &account
+	return r
+}
+
+// SetAccounts 设置账号集合(JSON字符串)
+func (r *IRiskDetailV6Request) SetAccounts(accounts string) *IRiskDetailV6Request {
+	r.Accounts = &accounts
+	return r
+}
+
+// SetRoleId 设置角色ID
+func (r *IRiskDetailV6Request) SetRoleId(roleId string) *IRiskDetailV6Request {
+	r.RoleId = &roleId
+	return r
+}
+
+// SetRoleIds 设置角色ID集合(JSON字符串)
+func (r *IRiskDetailV6Request) SetRoleIds(roleIds string) *IRiskDetailV6Request {
+	r.RoleIds = &roleIds
+	return r
+}
+
+// SetRiskLevel 设置风险等级
+func (r *IRiskDetailV6Request) SetRiskLevel(riskLevel int) *IRiskDetailV6Request {
+	r.RiskLevel = &riskLevel
+	return r
+}
+
+// SetIp 设置IP地址
+func (r *IRiskDetailV6Request) SetIp(ip string) *IRiskDetailV6Request {
+	r.Ip = &ip
+	return r
+}
+
+// SetIps 设置IP地址集合(JSON字符串)
+func (r *IRiskDetailV6Request) SetIps(ips string) *IRiskDetailV6Request {
+	r.Ips = &ips
+	return r
+}
+
+// SetSdkIp 设置SDK IP地址
+func (r *IRiskDetailV6Request) SetSdkIp(sdkIp string) *IRiskDetailV6Request {
+	r.SdkIp = &sdkIp
+	return r
+}
+
+// SetSdkIp 设置SDK IP地址集合(JSON字符串)
+func (r *IRiskDetailV6Request) SetSdkIps(sdkIps string) *IRiskDetailV6Request {
+	r.SdkIps = &sdkIps
+	return r
+}
+
+// SetPackageName 设置包名
+func (r *IRiskDetailV6Request) SetPackageName(packageName string) *IRiskDetailV6Request {
+	r.PackageName = &packageName
+	return r
+}
+
+// SetAppVersion 设置APP版本
+func (r *IRiskDetailV6Request) SetAppVersion(appVersion string) *IRiskDetailV6Request {
+	r.AppVersion = &appVersion
+	return r
+}
+
+// NewIRiskDetailV6Request 初始化IRiskDetailV6Request对象
+func NewIRiskDetailV6Request(businessId string) *IRiskDetailV6Request {
+	request := &IRiskDetailV6Request{
+		BizPostJsonRequest: types.NewBizPostJsonRequest((businessId)),
+	}
+	request.SetProductCode("irisk")
+	request.SetUriPattern("/v6/risk/detail")
+	request.SetVersion("600")
+	return request
+}
+
+// GetNonSignParams 获取具体业务中特有的不参与签名计算的参数
+func (r *IRiskDetailV6Request) GetNonSignParams() map[string]string {
+	return make(map[string]string)
+}
+
+// GetCustomSignParams 获取具体业务中特有的需要参与签名计算的参数
+func (r *IRiskDetailV6Request) GetBusinessCustomSignParams() map[string]string {
+	params := r.BizPostJsonRequest.GetBusinessCustomSignParams()
+	if r.BeginTimestamp != nil {
+		params["beginTimestamp"] = strconv.FormatInt(*r.BeginTimestamp, 10)
+	}
+	if r.EndTimestamp != nil {
+		params["endTimestamp"] = strconv.FormatInt(*r.EndTimestamp, 10)
+	}
+	if r.StartFlag != nil {
+		params["startFlag"] = *r.StartFlag
+	}
+	if r.Account != nil {
+		params["account"] = *r.Account
+	}
+	if r.Accounts != nil {
+		params["accounts"] = *r.Accounts
+	}
+	if r.RoleId != nil {
+		params["roleId"] = *r.RoleId
+	}
+	if r.RoleIds != nil {
+		params["roleIds"] = *r.RoleIds
+	}
+	if r.RiskLevel != nil {
+		params["riskLevel"] = strconv.Itoa(*r.RiskLevel)
+	}
+	if r.Ip != nil {
+		params["ip"] = *r.Ip
+	}
+	if r.Ips != nil {
+		params["ips"] = *r.Ips
+	}
+	if r.SdkIp != nil {
+		params["sdkIp"] = *r.SdkIp
+	}
+	if r.SdkIps != nil {
+		params["sdkIps"] = *r.SdkIps
+	}
+	if r.PackageName != nil {
+		params["packageName"] = *r.PackageName
+	}
+	if r.AppVersion != nil {
+		params["appVersion"] = *r.AppVersion
+	}
+	return params
+}
+
+// detail接口 参数校验方法
+func (r *IRiskDetailV6Request) ValidateParam() error {
+	invalidParams := validation.ErrInvalidParams{Context: "IRiskDetailV6Request"}
+	if r.BeginTimestamp == nil {
+		invalidParams.Add(validation.NewErrParamRequired("BeginTimestamp"))
+	}
+	if r.EndTimestamp == nil {
+		invalidParams.Add(validation.NewErrParamRequired("EndTimestamp"))
+	}
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+type IRiskDetailV6Response struct {
+	*types.CommonResponse
+	Data IRiskDetailV6Result `json:"data"`
+}
+
+type IRiskDetailV6Result struct {
+	Size      int            `json:"size"`
+	StartFlag string         `json:"startFlag"`
+	Detail    []DetailDataV6 `json:"detail"`
+}
+
+type DetailDataV6 struct {
+	ReceiveTime      string `json:"receiveTime"`
+	Platform         string `json:"platform"`
+	BusinessId       string `json:"businessId"`
+	BusinessName     string `json:"businessName"`
+	Token            string `json:"token"`
+	TaskId           string `json:"taskId"`
+	CheckSource      string `json:"checkSource"`
+	SceneType        string `json:"sceneType"`
+	SessionId        string `json:"sessionId"`
+	TimeoutToken     string `json:"timeoutToken"`
+	ActivityId       string `json:"activityId"`
+	Target           string `json:"target"`
+	Account          string `json:"account"`
+	RoleId           string `json:"roleId"`
+	Nickname         string `json:"nickname"`
+	Phone            string `json:"phone"`
+	Identity         string `json:"identity"`
+	PayUser          string `json:"payUser"`
+	Verified         string `json:"verified"`
+	Level            string `json:"level"`
+	RegisterChannel  string `json:"registerChannel"`
+	RegisterDays     string `json:"registerDays"`
+	Gender           string `json:"gender"`
+	AppName          string `json:"appName"`
+	PackageName      string `json:"packageName"`
+	Author           string `json:"author"`
+	SignV1           string `json:"signV1"`
+	SignV2           string `json:"signV2"`
+	AppVersion       string `json:"appVersion"`
+	GameVersion      string `json:"gameVersion"`
+	AssetVersion     string `json:"assetVersion"`
+	SdkVersion       string `json:"sdkVersion"`
+	Server           string `json:"server"`
+	ServerId         string `json:"serverId"`
+	GameJson         string `json:"gameJson"`
+	DeviceId         string `json:"deviceId"`
+	DeviceType       string `json:"deviceType"`
+	DeviceBrand      string `json:"deviceBrand"`
+	DeviceModel      string `json:"deviceModel"`
+	OsVersion        string `json:"osVersion"`
+	CarrierName      string `json:"carrierName"`
+	EmulatorDid      string `json:"emulatorDid"`
+	LocalCacheId     string `json:"localCacheId"`
+	Mac              string `json:"mac"`
+	DeviceGuid       string `json:"deviceGuid"`
+	NetworkType      string `json:"networkType"`
+	Location         string `json:"location"`
+	SdkIp            string `json:"sdkIp"`
+	Ip               string `json:"ip"`
+	SceneData        string `json:"sceneData"`
+	RiskLevel        string `json:"riskLevel"`
+	MatchedRiskTags  string `json:"matchedRiskTags"`
+	ExecAction       string `json:"execAction"`
+	ProtectionResult string `json:"protectionResult"`
+	Evidence         string `json:"evidence"`
+	PhoneCarrierName string `json:"phoneCarrierName"`
+	PhoneLocation    string `json:"phoneLocation"`
+	PhoneRiskType    string `json:"phoneRiskType"`
+	PhoneRiskLevel   string `json:"phoneRiskLevel"`
+	PhoneRiskScore   string `json:"phoneRiskScore"`
+	IpRiskType       string `json:"ipRiskType"`
+	IpRiskLevel      string `json:"ipRiskLevel"`
+	IpRiskScore      string `json:"ipRiskScore"`
+	ExtData          string `json:"extData"`
 }
 
 type IRiskMediaCheckRequest struct {
