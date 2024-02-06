@@ -102,7 +102,7 @@ type Antispam struct {
 	FilteredContent  *string            `json:"filteredContent"`
 	MergeHints       []*string          `json:"mergeHints"`
 	RelateContents   *string            `json:"relatedContents"`
-	HitSources       []*int             `json:"hitSources"`
+	HitSources       *int               `json:"hitSources"`
 }
 
 type CensorLabel struct {
@@ -138,7 +138,7 @@ type AntispamSubLabelDetail struct {
 	LibInfos  []*AntispamSubLabelDetailLibInfo `json:"libInfos"`
 	Anticheat *AntispamSubLabelDetailAnticheat `json:"anticheat"`
 	HitInfos  []*AntispamSubLabelDetailHitInfo `json:"hitInfos"`
-	Rules     []*AntispamSubLabelDetailHitInfo `json:"rules"`
+	Rules     []*AntispamSubLabelDetailRule    `json:"rules"`
 }
 
 type AntispamSubLabelDetailKeyword struct {
