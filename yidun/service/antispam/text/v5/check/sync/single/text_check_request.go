@@ -11,6 +11,7 @@ import (
  type TextCheckRequest struct {
 	*TextCheckSceneRequest
 	CheckLabels *string `json:"checkLabels,omitempty"`//业务过检分类,如果没有勾选分类提交返回参数错误，多个垃圾类别以逗号分隔（"100,200"）
+	CheckStrategyGroupIds *string                     `json:"checkStrategyGroupIds,omitempty"` // 业务指定过检策略组id,多个策略组id以逗号分隔（"xxx,xxx"），最多支持传20个
 	Token *string `json:"token,omitempty"`//内容安全与反作弊融合版专属字段，来自易盾反作弊SDK返回的token，接入SDK必传,接入流程请参考防刷版说明文档
 }
 // 构建request
@@ -66,6 +67,10 @@ func (t *TextCheckRequest) SetTextCheckSceneRequest(sceneRequest *TextCheckScene
 //设置CheckLabels
 func (t *TextCheckRequest) SetCheckLabels(checkLabels string) {
     t.CheckLabels = &checkLabels
+}
+//设置CheckStrategyGroupIds
+func (t *TextCheckRequest) SetCheckStrategyGroupIds(checkStrategyGroupIds string) {
+	t.CheckStrategyGroupIds = &checkStrategyGroupIds
 }
 //设置Token
 func (t *TextCheckRequest) SetToken(token string) {

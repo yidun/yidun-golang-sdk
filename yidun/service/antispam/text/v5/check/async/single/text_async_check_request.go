@@ -10,6 +10,7 @@ import (
 type TextAsyncCheckRequest struct {
     *single.TextCheckSceneRequest
     CheckLabels *string `json:"checkLabels,omitempty" validate:"max=512"` // 业务过检分类,如果没有勾选分类提交返回参数错误，多个垃圾类别以逗号分隔（"100,200"）
+	CheckStrategyGroupIds *string                     `json:"checkStrategyGroupIds,omitempty" validate:"max=512"` // 业务指定过检策略组id,多个策略组id以逗号分隔（"xxx,xxx"），最多支持传20个
     Token       *string `json:"token,omitempty" validate:"max=256"`       // 内容安全与反作弊融合版专属字段，来自易盾反作弊SDK返回的token，接入SDK必传,接入流程请参考防刷版说明文档
 }
 // 构建request
@@ -62,6 +63,11 @@ func (r *TextAsyncCheckRequest) ValidateParam() error {
 func (t *TextAsyncCheckRequest) SetCheckLabels(checkLabels string) *TextAsyncCheckRequest {
     t.CheckLabels = &checkLabels
     return t
+}
+//设置CheckStrategyGroupIds参数
+func (t *TextAsyncCheckRequest) SetCheckStrategyGroupIds(checkStrategyGroupIds string) *TextAsyncCheckRequest {
+	t.CheckStrategyGroupIds = &checkStrategyGroupIds
+	return t
 }
 //设置Token参数
 func (t *TextAsyncCheckRequest) SetToken(token string) *TextAsyncCheckRequest {
