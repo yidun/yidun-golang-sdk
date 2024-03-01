@@ -2,8 +2,9 @@ package check
 
 import (
 	"encoding/json"
-	"github.com/yidun/yidun-golang-sdk/yidun/core/types"
 	"strconv"
+
+	"github.com/yidun/yidun-golang-sdk/yidun/core/types"
 )
 
 // AudioCommonCheckRequest 音频检测请求
@@ -87,6 +88,14 @@ type AudioCommonCheckRequest struct {
 	CommentId *string `json:"commentId,omitempty"`
 	// 商品id
 	CommodityId *string `json:"commodityId,omitempty"`
+	// 扩展字符串字段1
+	ExtStr1 *string `json:"extStr1,omitempty"`
+	// 扩展字符串字段2
+	ExtStr2 *string `json:"extStr2,omitempty"`
+	// 扩展数字字段1
+	ExtLon1 *int64 `json:"extLon1,omitempty"`
+	// 扩展数字字段2
+	ExtLon2 *int64 `json:"extLon2,omitempty"`
 }
 
 func NewAudioCommonCheckRequest(businessId string) *AudioCommonCheckRequest {
@@ -150,6 +159,18 @@ func (r *AudioCommonCheckRequest) GetBusinessCustomSignParams() map[string]strin
 	}
 	if r.Nickname != nil {
 		parentParams["nickname"] = *r.Nickname
+	}
+	if r.ExtStr1 != nil {
+		parentParams["extStr1"] = *r.ExtStr1
+	}
+	if r.ExtStr2 != nil {
+		parentParams["extStr2"] = *r.ExtStr2
+	}
+	if r.ExtLon1 != nil {
+		parentParams["extLon1"] = strconv.FormatInt(*r.ExtLon1, 10)
+	}
+	if r.ExtLon2 != nil {
+		parentParams["extLon2"] = strconv.FormatInt(*r.ExtLon2, 10)
 	}
 	if r.Gender != nil {
 		parentParams["gender"] = strconv.Itoa(*r.Gender)
@@ -276,6 +297,22 @@ func (r *AudioCommonCheckRequest) SetCheckLanguageCode(value string) *AudioCommo
 }
 func (r *AudioCommonCheckRequest) SetPublishTime(value int64) *AudioCommonCheckRequest {
 	r.PublishTime = &value
+	return r
+}
+func (r *AudioCommonCheckRequest) SetExtStr1(value string) *AudioCommonCheckRequest {
+	r.ExtStr1 = &value
+	return r
+}
+func (r *AudioCommonCheckRequest) SetExtStr2(value string) *AudioCommonCheckRequest {
+	r.ExtStr2 = &value
+	return r
+}
+func (r *AudioCommonCheckRequest) SetExtLon1(value int64) *AudioCommonCheckRequest {
+	r.ExtLon1 = &value
+	return r
+}
+func (r *AudioCommonCheckRequest) SetExtLon2(value int64) *AudioCommonCheckRequest {
+	r.ExtLon2 = &value
 	return r
 }
 func (r *AudioCommonCheckRequest) SetUniqueKey(value string) *AudioCommonCheckRequest {

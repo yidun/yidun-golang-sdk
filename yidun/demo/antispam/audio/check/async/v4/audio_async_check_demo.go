@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/audio"
-	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/audio/check/async/v4/request"
 	"log"
 	"os"
 	"time"
+
+	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/audio"
+	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/audio/check/async/v4/request"
 )
 
 // 音频异步检测demo
@@ -16,6 +17,10 @@ func main() {
 	YourSecretKey := os.Getenv("SECRET_KEY")
 	// 设置易盾内容安全分配的businessId
 	request := request2.NewAudioAsyncCheckRequest(YourBusinessId)
+	request.SetExtLon1(99)
+	request.SetExtLon2(88)
+	request.SetExtStr1("extStr1")
+	request.SetExtStr2("extStr2")
 
 	// 实例化一个 Client，入参需要传入易盾内容安全分配的secretId，secretKey
 	client := audio.NewAudioClientWithAccessKey(YourSecretId, YourSecretKey)
