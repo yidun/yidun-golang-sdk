@@ -878,6 +878,7 @@ type DetailDataV6 struct {
 	SceneData        string `json:"sceneData"`
 	RiskLevel        string `json:"riskLevel"`
 	MatchedRiskTags  string `json:"matchedRiskTags"`
+	MatchedTypes     string `json:"matchedTypes"`
 	ExecAction       string `json:"execAction"`
 	ProtectionResult string `json:"protectionResult"`
 	Evidence         string `json:"evidence"`
