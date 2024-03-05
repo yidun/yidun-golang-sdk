@@ -21,6 +21,11 @@ type IRISKAPI interface {
 	UploadDisposeInfo(request *irisk.IRiskDisposeUploadRequest) (response *irisk.IRiskDisposeUploadResponse, err error)
 	// AntiGoldCheck 反打金检测，调用/v5/risk/antigold
 	AntiGoldCheck(request *irisk.IRiskAntiGoldCheckRequest) (response *irisk.IRiskAntiGoldCheckResponse, err error)
+	// ListQuery 名单查询，调用/v5/list/query
+	ListQuery(request *irisk.IRiskListQueryRequest) (response *irisk.IRiskListQueryResponse, err error)
+	// ListAdd 名单添加，调用/v5/list/add
+	ListAdd(request *irisk.IRiskListAddRequest) (response *irisk.IRiskListAddResponse, err error)
+
 }
 
 var _ IRISKAPI = (*irisk.IRiskClient)(nil)

@@ -43,4 +43,16 @@ const (
 	// code:5512
 	// 说明：非法token，请检查token数据与产品编号是否一致，或token数据是否跨平台请求
 	INVALID_TOKEN = 5512
+	// code:5513
+	// 说明：图片检测量超出限制
+	MEDIA_LIMIT_EXCEEDED = 5513
+	// code:5514
+	// 说明：请求处理超时
+	TIMEOUT_EXCEPTION = 5514
+	// code:5515
+	// 说明：处理失败
+	OPERATION_FAILED = 5515
+	// code:5516
+	// 说明：名单量超出限制
+	LIST_LIMIT_EXCEEDED = 5516
 )

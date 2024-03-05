@@ -62,6 +62,20 @@ func (c *IRiskClient) AntiGoldCheck(request *IRiskAntiGoldCheckRequest) (respons
 	return
 }
 
+// ListAdd 上报处置数据，调用/list/add
+func (c *IRiskClient) ListAdd(request *IRiskListAddRequest) (response *IRiskListAddResponse, err error) {
+	response = &IRiskListAddResponse{}
+	err = c.Client.DoExecute(request, response)
+	return
+}
+
+// ListQuery上报处置数据，调用/list/add
+func (c *IRiskClient) ListQuery(request *IRiskListQueryRequest) (response *IRiskListQueryResponse, err error) {
+	response = &IRiskListQueryResponse{}
+	err = c.Client.DoExecute(request, response)
+	return
+}
+
 type IRiskCheckRequest struct {
 	*types.BizPostJsonRequest
 	Token        *string
@@ -1357,4 +1371,198 @@ func (r *IRiskAntiGoldCheckRequest) ValidateParam() error {
 
 type IRiskAntiGoldCheckResponse struct {
 	*types.CommonResponse
+}
+
+type IRiskListQueryRequest struct {
+	*types.BizPostJsonRequest
+	ListGroupCode   *string
+	PageNum         *int
+	BeginModifyTime *int64
+	EndModifyTime   *int64
+}
+
+type IRiskListQueryResponse struct {
+	*types.CommonResponse
+	Data IRiskListQueryPageResponse `json:"data"`
+}
+
+type IRiskListQueryPageResponse struct {
+	Count int                     `json:"count"`
+	Rows  []IRiskListItemResponse `json:"rows"`
+}
+
+type IRiskListItemResponse struct {
+	ListGroupCode string `json:"listGroupCode"`
+	Content       string `json:"content"`
+	ExpireTime    int64  `json:"expireTime"`
+	Description   string `json:"description"`
+	HitCount      int64  `json:"hitCount"`
+	Status        int    `json:"status"`
+	CreateTime    int64  `json:"createTime"`
+	ModifyTime    int64  `json:"modifyTime"`
+	CreateBy      string `json:"createBy"`
+}
+
+type IRiskListAddRequest struct {
+	*types.BizPostJsonRequest
+	ListGroupCode *string
+	Content       *string
+	Description   *string
+	ExpireTime    *int64
+}
+
+type IRiskListAddResponse struct {
+	*types.CommonResponse
+}
+
+// NewIRiskListAddRequest 初始化IRiskListAddRequest对象
+func NewIRiskListAddRequest(businessId string) *IRiskListAddRequest {
+	request := &IRiskListAddRequest{
+		BizPostJsonRequest: types.NewBizPostJsonRequest((businessId)),
+	}
+	request.SetProductCode("irisk")
+	request.SetUriPattern("/v5/list/add")
+	request.SetVersion("500")
+	return request
+}
+
+// SetListGroupCode 设置名单库code
+func (r *IRiskListAddRequest) SetListGroupCode(listGroupCode string) *IRiskListAddRequest {
+	r.ListGroupCode = &listGroupCode
+	return r
+}
+
+// SetContent 设置名单项
+func (r *IRiskListAddRequest) SetContent(content string) *IRiskListAddRequest {
+	r.Content = &content
+	return r
+}
+
+// SetDescription 设置添加原因
+func (r *IRiskListAddRequest) SetDescription(description string) *IRiskListAddRequest {
+	r.Description = &description
+	return r
+}
+
+// SetExpireTime 设置释放时间
+func (r *IRiskListAddRequest) SetExpireTime(expireTime int64) *IRiskListAddRequest {
+	r.ExpireTime = &expireTime
+	return r
+}
+
+// NewIRiskListQueryRequest 初始化IRiskListQueryRequest对象
+func NewIRiskListQueryRequest(businessId string) *IRiskListQueryRequest {
+	request := &IRiskListQueryRequest{
+		BizPostJsonRequest: types.NewBizPostJsonRequest((businessId)),
+	}
+	request.SetProductCode("irisk")
+	request.SetUriPattern("/v5/list/query")
+	request.SetVersion("500")
+	return request
+}
+
+// SetListGroupCode 设置名单库编号
+func (r *IRiskListQueryRequest) SetListGroupCode(listGroupCode string) *IRiskListQueryRequest {
+	r.ListGroupCode = &listGroupCode
+	return r
+}
+
+// SetPageNum 设置分页参数页码
+func (r *IRiskListQueryRequest) SetPageNum(pageNum int) *IRiskListQueryRequest {
+	r.PageNum = &pageNum
+	return r
+}
+
+// SetBeginModifyTime 设置（起）修改时间
+func (r *IRiskListQueryRequest) SetBeginModifyTime(beginModifyTime int64) *IRiskListQueryRequest {
+	r.BeginModifyTime = &beginModifyTime
+	return r
+}
+
+// SetEndModifyTime 设置（止）修改时间
+func (r *IRiskListQueryRequest) SetEndModifyTime(endModifyTime int64) *IRiskListQueryRequest {
+	r.EndModifyTime = &endModifyTime
+	return r
+}
+
+// 名单查询接口 参数校验方法
+func (r *IRiskListQueryRequest) ValidateParam() error {
+	invalidParams := validation.ErrInvalidParams{Context: "IRiskListQueryRequest"}
+	if r.ListGroupCode == nil {
+		invalidParams.Add(validation.NewErrParamRequired("ListGroupCode"))
+	}
+	if r.PageNum == nil {
+		invalidParams.Add(validation.NewErrParamRequired("PageNum"))
+	}
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// 名单添加接口 参数校验方法
+func (r *IRiskListAddRequest) ValidateParam() error {
+	invalidParams := validation.ErrInvalidParams{Context: "IRiskListAddRequest"}
+	if r.ListGroupCode == nil {
+		invalidParams.Add(validation.NewErrParamRequired("ListGroupCode"))
+	}
+	if r.Content == nil {
+		invalidParams.Add(validation.NewErrParamRequired("Content"))
+	}	
+	if r.ExpireTime == nil {
+		invalidParams.Add(validation.NewErrParamRequired("ExpireTime"))
+	}	
+	if r.Description == nil {
+		invalidParams.Add(validation.NewErrParamRequired("Description"))
+	}
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// GetNonSignParams 获取具体业务中特有的不参与签名计算的参数
+func (r *IRiskListQueryRequest) GetNonSignParams() map[string]interface{} {
+	return make(map[string]interface{})
+}
+
+// GetNonSignParams 获取具体业务中特有的不参与签名计算的参数
+func (r *IRiskListAddRequest) GetNonSignParams() map[string]interface{} {
+	return make(map[string]interface{})
+}
+
+// GetBusinessCustomSignParams 获取具体业务中特有的需要参与签名计算的参数
+func (r *IRiskListQueryRequest) GetBusinessCustomSignParams() map[string]string {
+	params := r.BizPostJsonRequest.GetBusinessCustomSignParams()
+	if r.PageNum != nil {
+		params["pageNum"] = strconv.Itoa(*r.PageNum)
+	}
+	if r.ListGroupCode != nil {
+		params["listGroupCode"] = *r.ListGroupCode
+	}
+	if r.BeginModifyTime != nil {
+		params["beginModifyTime"] = strconv.FormatInt(*r.BeginModifyTime, 10)
+	}
+	if r.EndModifyTime != nil {
+		params["endModifyTime"] = strconv.FormatInt(*r.EndModifyTime, 10)
+	}
+	return params
+}
+
+// GetBusinessCustomSignParams 获取具体业务中特有的需要参与签名计算的参数
+func (r *IRiskListAddRequest) GetBusinessCustomSignParams() map[string]string {
+	params := r.BizPostJsonRequest.GetBusinessCustomSignParams()
+	if r.ListGroupCode != nil {
+		params["listGroupCode"] = *r.ListGroupCode
+	}
+	if r.Content != nil {
+		params["content"] = *r.Content
+	}
+	if r.Description != nil {
+		params["description"] = *r.Description
+	}
+	if r.ExpireTime != nil {
+		params["expireTime"] = strconv.FormatInt(*r.ExpireTime, 10)
+	}
+	return params
 }
