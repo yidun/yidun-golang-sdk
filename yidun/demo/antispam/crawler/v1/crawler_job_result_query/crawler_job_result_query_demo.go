@@ -16,7 +16,7 @@ func main() {
 
 	request.SetPageNum(0)
 	request.SetPageSize(20)
-	request.SetJobId(1504477469116473)
+	request.SetJobId(1502158478754329)
 
 	// 实例化一个crawlerClient，入参需要传入易盾内容安全分配的secretId，secretKey
 	crawlerClient := crawler.NewCrawlerClientWithAccessKey("YOUR_SECRET_ID", "YOUR_SECRET_KEY")

@@ -114,7 +114,7 @@ type DetailMark struct {
 type Position struct {
 	// x轴坐标
 	X *float32 `json:"x,omitempty"`
-	y *float32 `json:"y,omitempty"`
+	Y *float32 `json:"y,omitempty"`
 }
 
 // 音视频原因信息

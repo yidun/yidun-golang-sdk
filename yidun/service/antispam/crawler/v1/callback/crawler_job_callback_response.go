@@ -22,7 +22,7 @@ type JobAntispamCallbackResponseV4 struct {
 	// 检测结果
 	Suggestion *int `json:"suggestion,omitempty"`
 	// 命中结果
-	Labels []*LabelInfo `json:"labels,omitempty"`
+	Labels *[]LabelInfo `json:"labels,omitempty"`
 	// 检测完成时间
 	CheckTime *int64 `json:"checkTime,omitempty"`
 	// 报告地址
@@ -46,7 +46,7 @@ type JobCensorCallbackResponse struct {
 	// 检测结果
 	Suggestion *int `json:"suggestion,omitempty"`
 	// 命中结果
-	Labels []*LabelInfo `json:"labels,omitempty"`
+	Labels *[]LabelInfo `json:"labels,omitempty"`
 	// 人工审核最后时间
 	CensorTime *int `json:"censorTime,omitempty"`
 	// 报告地址

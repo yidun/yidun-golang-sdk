@@ -125,7 +125,6 @@ func (c *CrawlerResourceSubmitV3Request) ValidateParam() error {
 	if c.CheckFlags == nil {
 		invalidParams.Add(validation.NewErrParamRequired("checkFlags不能为空"))
 	}
-
 	if invalidParams.Len() > 0 {
 		return invalidParams
 	}

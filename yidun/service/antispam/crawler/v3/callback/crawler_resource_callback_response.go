@@ -16,6 +16,8 @@ type CrawlerResourceResult struct {
 	Antispam *CrawlerAntispamResponse `json:"antispam,omitempty"`
 	// 审核信息
 	Censor *CrawlerCensorResponse `json:"censor,omitempty"`
+	// 增值服务结果
+	ValueAddService *CrawlerValueAddServiceResponse `json:"valueAddService,omitempty"`
 }
 
 type CrawlerAntispamResponse struct {
@@ -28,8 +30,13 @@ type CrawlerAntispamResponse struct {
 }
 
 type CrawlerCensorResponse struct {
+	*response.MediaCensorResponse
 	SiteName *string `json:"siteName,omitempty"`
 	SiteUrl  *string `json:"siteUrl,omitempty"`
 	// 快照URL
 	SnapshotUrl *string `json:"snapshotUrl,omitempty"`
+}
+
+type CrawlerValueAddServiceResponse struct {
+	*response.MediaValueAddServiceResponse
 }
