@@ -42,13 +42,17 @@ type TextEvidence struct {
 type TextEvidenceLabel struct {
 	Label     *int                    `json:"label,omitempty"`
 	Level     *int                    `json:"level,omitempty"`
+	Rate      *float64                `json:"rate,omitempty"`
 	SubLabels []*TextEvidenceSubLabel `json:"subLabels,omitempty"`
 }
 
 // 文本子标签信息
 type TextEvidenceSubLabel struct {
-	SubLabel *string             `json:"subLabel,omitempty"`
-	Details  *TextSubLabelDetail `json:"details,omitempty"`
+	SubLabel      *string             `json:"subLabel,omitempty"`
+	SubLabelDepth *int                `json:"subLabelDepth,omitempty"`
+	SecondLabel   *string             `json:"secondLabel,omitempty"`
+	ThirdLabel    *string             `json:"thirdLabel,omitempty"`
+	Details       *TextSubLabelDetail `json:"details,omitempty"`
 }
 
 // 图片证据信息
@@ -70,7 +74,10 @@ type ImageEvidenceLabel struct {
 
 // 图片子标签信息
 type ImageEvidenceLabelSubLabel struct {
-	SubLabel *string              `json:"subLabel,omitempty"`
-	Rate     *float64             `json:"rate,omitempty"`
-	Details  *ImageSubLabelDetail `json:"details,omitempty"`
+	SubLabel      *string              `json:"subLabel,omitempty"`
+	SubLabelDepth *int                 `json:"subLabelDepth,omitempty"`
+	SecondLabel   *string              `json:"secondLabel,omitempty"`
+	ThirdLabel    *string              `json:"thirdLabel,omitempty"`
+	Rate          *float64             `json:"rate,omitempty"`
+	Details       *ImageSubLabelDetail `json:"details,omitempty"`
 }

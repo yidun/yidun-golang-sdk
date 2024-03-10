@@ -103,13 +103,17 @@ type TextEvidence struct {
 type TextEvidenceLabel struct {
 	Label     *int            `json:"label,omitempty"`
 	Level     *int            `json:"level,omitempty"`
+	Rate      *float64        `json:"rate,omitempty"`
 	SubLabels []*TextSubLabel `json:"subLabels,omitempty"`
 }
 
 // 文本反垃圾机审结果二级分类
 type TextSubLabel struct {
-	SubLabel *string             `json:"subLabel,omitempty"`
-	Details  *TextSubLabelDetail `json:"details,omitempty"`
+	SubLabel      *string             `json:"subLabel,omitempty"`
+	SubLabelDepth *int                `json:"subLabelDepth,omitempty"`
+	SecondLabel   *string             `json:"secondLabel,omitempty"`
+	ThirdLabel    *string             `json:"thirdLabel,omitempty"`
+	Details       *TextSubLabelDetail `json:"details,omitempty"`
 }
 
 // TextSubLabelDetail 文本标签详细信息
@@ -117,6 +121,7 @@ type TextSubLabelDetail struct {
 	Keywords *[]Keyword  `json:"keywords,omitempty"`
 	LibInfos *[]LibInfo  `json:"libInfos,omitempty"`
 	HitInfos *[]HintInfo `json:"hitInfos,omitempty"`
+	Rules    *[]RuleInfo `json:"rules,omitempty"`
 }
 
 // Keyword
@@ -143,6 +148,10 @@ type HintInfoPosition struct {
 	EndPos    *int    `json:"endPos,omitempty"`
 }
 
+type RuleInfo struct {
+	Name *string `json:"name,omitempty"`
+}
+
 // ImageEvidence 图片证据
 type ImageEvidence struct {
 	TaskId     *string               `json:"taskId,omitempty"`
@@ -163,9 +172,12 @@ type ImageEvidenceLabel struct {
 
 // ImageSubLabel 图片证据子标签
 type ImageSubLabel struct {
-	SubLabel *string              `json:"subLabel,omitempty"`
-	Rate     *float64             `json:"rate,omitempty"`
-	Details  *ImageSubLabelDetail `json:"details,omitempty"`
+	SubLabel      *string              `json:"subLabel,omitempty"`
+	Rate          *float64             `json:"rate,omitempty"`
+	SubLabelDepth *int                 `json:"subLabelDepth,omitempty"`
+	SecondLabel   *string              `json:"secondLabel,omitempty"`
+	ThirdLabel    *string              `json:"thirdLabel,omitempty"`
+	Details       *ImageSubLabelDetail `json:"details,omitempty"`
 }
 
 // ImageSubLabelDetail 图片标签详细信息
@@ -173,6 +185,7 @@ type ImageSubLabelDetail struct {
 	Keywords *[]ImageSubLabelDetailInfo `json:"keywords,omitempty"` // 反垃圾自定义敏感词结果
 	LibInfos *[]ImageSubLabelDetailInfo `json:"libInfos,omitempty"` // 反垃圾自定义图片名单结果
 	HitInfos *[]ImageSubLabelDetailInfo `json:"hitInfos,omitempty"` // 反垃圾其他命中信息
+	Rules    *[]ImageSubLabelDetailInfo `json:"rules,omitempty"`
 }
 
 // ImageSubLabelDetailInfo
@@ -186,15 +199,22 @@ type ImageSubLabelDetailInfo struct {
 	Y1       *float64 `json:"y1,omitempty"` // 坐标左上
 	X2       *float64 `json:"x2,omitempty"` // 坐标右下
 	Y2       *float64 `json:"y2,omitempty"` // 坐标右下
+	Name     *string  `json:"name,omitempty"`
 }
 
 // AudioEvidence 音频证据
 type AudioEvidence struct {
-	TaskId   *string                 `json:"taskId,omitempty"`
-	Sequence *int                    `json:"sequence,omitempty"`
-	AudioUrl *string                 `json:"audioUrl,omitempty"`
-	Level    *int                    `json:"level,omitempty"`
-	Segments []*AudioEvidenceSegment `json:"segments,omitempty"`
+	TaskId                   *string                   `json:"taskId,omitempty"`
+	Sequence                 *int                      `json:"sequence,omitempty"`
+	AudioUrl                 *string                   `json:"audioUrl,omitempty"`
+	Suggestion               *int                      `json:"suggestion,omitempty"`
+	Status                   *int                      `json:"status,omitempty"`
+	VideoSolutionCheckResult *VideoSolutionCheckResult `json:"videoSolutionCheckResult,omitempty"`
+}
+
+type VideoSolutionCheckResult struct {
+	Segments *[]AudioEvidenceSegment  `json:"segments,omitempty"`
+	Pictures *[]VideoEvidencePictures `json:"pictures,omitempty"`
 }
 
 // AudioEvidenceSegment 音频证据分段
@@ -216,15 +236,19 @@ type AudioEvidenceLabel struct {
 
 // AudioEvidenceSubLabel 音频证据子标签
 type AudioEvidenceSubLabel struct {
-	SubLabel *string              `json:"subLabel,omitempty"`
-	Details  *AudioSubLabelDetail `json:"details,omitempty"`
+	SubLabel      *int64               `json:"subLabel,omitempty"`
+	SubLabelDepth *int                 `json:"subLabelDepth,omitempty"`
+	SecondLabel   *string              `json:"secondLabel,omitempty"`
+	ThirdLabel    *string              `json:"thirdLabel,omitempty"`
+	Details       *AudioSubLabelDetail `json:"details,omitempty"`
 }
 
 // AudioSubLabelDetail 音频标签详细信息
 type AudioSubLabelDetail struct {
-	Keywords *[]AudioSubLabelKeyword `json:"keywords,omitempty"` // 反垃圾自定义敏感词结果
-	LibInfos *[]AudioSubLabelLibInfo `json:"libInfos,omitempty"` // 反垃圾自定义图片名单结果
-	HitInfos *[]AudioSubLabelHitInfo `json:"hitInfos,omitempty"` // 反垃圾其他命中信息
+	Keywords *[]AudioSubLabelKeyword  `json:"keywords,omitempty"` // 反垃圾自定义敏感词结果
+	LibInfos *[]AudioSubLabelLibInfo  `json:"libInfos,omitempty"` // 反垃圾自定义图片名单结果
+	HitInfos *[]AudioSubLabelHitInfo  `json:"hitInfos,omitempty"` // 反垃圾其他命中信息
+	Rules    *[]AudioSubLabelRuleInfo `json:"rules,omitempty"`
 }
 
 // AudioSubLabelKeyword 自定义添加敏感词
@@ -244,13 +268,18 @@ type AudioSubLabelHitInfo struct {
 	SongName *string `json:"songName,omitempty"` // 命中的涉政歌曲名称
 }
 
+type AudioSubLabelRuleInfo struct {
+	Name *string `json:"name,omitempty"`
+}
+
 // VideoEvidence 视频证据
 type VideoEvidence struct {
-	TaskID   *string                `json:"taskId,omitempty"`
-	Sequence *int                   `json:"sequence,omitempty"`
-	VideoURL *string                `json:"videoUrl,omitempty"`
-	Level    *int                   `json:"level,omitempty"`
-	Pictures *VideoEvidencePictures `json:"pictures,omitempty"`
+	TaskID                   *string                   `json:"taskId,omitempty"`
+	Sequence                 *int                      `json:"sequence,omitempty"`
+	VideoURL                 *string                   `json:"videoUrl,omitempty"`
+	Suggestion               *int                      `json:"suggestion,omitempty"`
+	Status                   *int                      `json:"status,omitempty"`
+	VideoSolutionCheckResult *VideoSolutionCheckResult `json:"videoSolutionCheckResult,omitempty"`
 }
 
 // VideoEvidencePictures 视频证据图片
@@ -279,15 +308,19 @@ type VideoEvidenceLabel struct {
 
 // VideoEvidenceSubLabel 视频证据二级分类
 type VideoEvidenceSubLabel struct {
-	SubLabel *string              `json:"subLabel,omitempty"`
-	Details  *VideoSubLabelDetail `json:"details,omitempty"`
+	SubLabel      *int64               `json:"subLabel,omitempty"`
+	SubLabelDepth *int                 `json:"subLabelDepth,omitempty"`
+	SecondLabel   *string              `json:"secondLabel,omitempty"`
+	ThirdLabel    *string              `json:"thirdLabel,omitempty"`
+	Details       *VideoSubLabelDetail `json:"details,omitempty"`
 }
 
 // VideoSubLabelDetail 音频标签详细信息
 type VideoSubLabelDetail struct {
-	Keywords *[]VideoSubLabelKeyword `json:"keywords,omitempty"` // 反垃圾自定义敏感词结果
-	LibInfos *[]VideoSubLabelLibInfo `json:"libInfos,omitempty"` // 反垃圾自定义图片名单结果
-	HitInfos *[]VideoSubLabelHitInfo `json:"hitInfos,omitempty"` // 反垃圾其他命中信息
+	Keywords *[]VideoSubLabelKeyword  `json:"keywords,omitempty"` // 反垃圾自定义敏感词结果
+	LibInfos *[]VideoSubLabelLibInfo  `json:"libInfos,omitempty"` // 反垃圾自定义图片名单结果
+	HitInfos *[]VideoSubLabelHitInfo  `json:"hitInfos,omitempty"` // 反垃圾其他命中信息
+	Rules    *[]VideoSubLabelRuleInfo `json:"rules,omitempty"`    // 自定义规则
 }
 
 // VideoSubLabelKeyword 自定义添加敏感词
@@ -315,6 +348,10 @@ type VideoSubLabelHitInfo struct {
 	Y1    *float64 `json:"y1,omitempty"` // 坐标左上
 	X2    *float64 `json:"x2,omitempty"` // 坐标右下
 	Y2    *float64 `json:"y2,omitempty"` // 坐标右下
+}
+
+type VideoSubLabelRuleInfo struct {
+	Name *string `json:"name,omitempty"`
 }
 
 type ValueAddServiceResult struct {

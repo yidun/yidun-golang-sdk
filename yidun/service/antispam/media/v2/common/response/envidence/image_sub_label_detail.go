@@ -7,6 +7,7 @@ type ImageSubLabelDetail struct {
 	LibInfos []*ImageSubLabelDetailInfo `json:"libInfos,omitempty"`
 	// 反垃圾其他命中信息
 	HitInfos []*ImageSubLabelDetailInfo `json:"hitInfos,omitempty"`
+	Rules    []*ImageSubLabelDetailInfo `json:"rules,omitempty"`
 }
 
 func (d *ImageSubLabelDetail) GetKeywords() []*ImageSubLabelDetailInfo {
@@ -43,10 +44,11 @@ type ImageSubLabelDetailInfo struct {
 	Value    *string `json:"value,omitempty"`
 	Group    *string `json:"group,omitempty"`
 	// 坐标左上一个 右下一个
-	X1 *float64 `json:"x1,omitempty"`
-	Y1 *float64 `json:"y1,omitempty"`
-	X2 *float64 `json:"x2,omitempty"`
-	Y2 *float64 `json:"y2,omitempty"`
+	X1   *float64 `json:"x1,omitempty"`
+	Y1   *float64 `json:"y1,omitempty"`
+	X2   *float64 `json:"x2,omitempty"`
+	Y2   *float64 `json:"y2,omitempty"`
+	Name *string  `json:"name,omitempty"`
 }
 
 func (i *ImageSubLabelDetailInfo) GetWord() *string {

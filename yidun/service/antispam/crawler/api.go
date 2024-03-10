@@ -4,6 +4,7 @@ import (
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/crawler/v1/delete"
 	jobQuery "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/crawler/v1/query"
 	jobSubmit "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/crawler/v1/submit"
+	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/crawler/v1/update"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/crawler/v3/callback"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/crawler/v3/query"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/crawler/v3/submit"
@@ -117,6 +118,27 @@ func (c *CrawlerClient) OfficialAccountsDelete(req *delete.OfficialAccountsDelet
 // 网站解决方案-微博检测任务批量删除
 func (c *CrawlerClient) WeiboDelete(req *delete.WeiboDeleteV1Request) (res *delete.WeiboDeleteV1Response, err error) {
 	res = &delete.WeiboDeleteV1Response{}
+	err = c.Client.DoExecute(req, res)
+	return
+}
+
+// 网站解决方案-网站检测任务更新
+func (c *CrawlerClient) CrawlerJobUpdate(req *update.CrawlerJobUpdateV1Request) (res *update.CrawlerJobUpdateV1Response, err error) {
+	res = &update.CrawlerJobUpdateV1Response{}
+	err = c.Client.DoExecute(req, res)
+	return
+}
+
+// 网站解决方案-网站检测任务更新
+func (c *CrawlerClient) OfficialAccountsUpdate(req *update.OfficialAccountsUpdateV1Request) (res *update.OfficialAccountsUpdateV1Response, err error) {
+	res = &update.OfficialAccountsUpdateV1Response{}
+	err = c.Client.DoExecute(req, res)
+	return
+}
+
+// 网站解决方案-网站检测任务更新
+func (c *CrawlerClient) WeiboJobUpdate(req *update.WeiboUpdateV1Request) (res *update.WeiboUpdateV1Response, err error) {
+	res = &update.WeiboUpdateV1Response{}
 	err = c.Client.DoExecute(req, res)
 	return
 }

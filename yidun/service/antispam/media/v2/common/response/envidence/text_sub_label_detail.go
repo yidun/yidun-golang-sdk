@@ -5,6 +5,7 @@ type TextSubLabelDetail struct {
 	Keywords []*Keyword  `json:"keywords,omitempty"`
 	LibInfos []*LibInfo  `json:"libInfos,omitempty"`
 	HitInfos []*HintInfo `json:"hitInfos,omitempty"`
+	Rules    []*RuleInfo `json:"rules,omitempty"`
 }
 
 func (d *TextSubLabelDetail) GetKeywords() []*Keyword {
@@ -115,4 +116,16 @@ func (k *Keyword) GetWord() *string {
 
 func (k *Keyword) SetWord(word *string) {
 	k.Word = word
+}
+
+type RuleInfo struct {
+	Name *string `json:"name,omitempty"`
+}
+
+func (r *RuleInfo) GetName() *string {
+	return r.Name
+}
+
+func (r *RuleInfo) SetName(name *string) {
+	r.Name = name
 }

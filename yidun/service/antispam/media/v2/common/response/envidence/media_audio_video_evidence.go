@@ -51,9 +51,12 @@ type VideoLabelInfo struct {
 
 // 音频标签信息
 type AudioSubLabel struct {
-	SubLabel *string              `json:"subLabel,omitempty"`
-	Rate     *float64             `json:"rate,omitempty"`
-	Details  *ImageSubLabelDetail `json:"details,omitempty"`
+	SubLabel      *string              `json:"subLabel,omitempty"`
+	SubLabelDepth *int                 `json:"subLabelDepth,omitempty"`
+	SecondLabel   *string              `json:"secondLabel,omitempty"`
+	ThirdLabel    *string              `json:"thirdLabel,omitempty"`
+	Rate          *float64             `json:"rate,omitempty"`
+	Details       *ImageSubLabelDetail `json:"details,omitempty"`
 }
 
 // 相邻截图信息
