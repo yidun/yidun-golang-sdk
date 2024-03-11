@@ -65,6 +65,8 @@ type ImageV5AntispamResp struct {
 	Hidden *bool `json:"hidden,omitempty"`
 	// 隐藏文件的格式
 	HiddenFormat *string `json:"hiddenFormat,omitempty"`
+	// 图片md5
+	ImgMd5 *string `json:"imgMd5,omitempty"`
 }
 
 type ImageV5VersionDetail struct {

@@ -10,6 +10,16 @@ import (
 
 // 图片同步检测
 func (c *ImageClient) ImageSyncCheck(req *check.ImageV5CheckRequest) (res *sync.ImageCheckResponse, err error) {
+	// 图片类型只要有一张base64图片，则使用base64检测接口
+	if req.Images != nil && len(*req.Images) > 0 {
+		for _, image := range *req.Images {
+			if *image.Type == 2 {
+				req.UriPattern = "/v5/image/base64Check"
+				break
+			}
+		}
+	}
+
 	res = &sync.ImageCheckResponse{}
 	err = c.Client.DoExecute(req, res)
 	return
