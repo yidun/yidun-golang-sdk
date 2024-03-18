@@ -84,6 +84,9 @@ type EmotionAnalysisDetail struct {
 type Antispam struct {
 	TaskID           *string            `json:"taskId"`
 	DataID           *string            `json:"dataId"`
+	Label            *int               `json:"label"`
+	SecondLabel      *string            `json:"secondLabel"`
+	ThirdLabel       *string            `json:"thirdLabel"`
 	Suggestion       *int               `json:"suggestion"`
 	SuggestionLevel  *int               `json:"suggestionLevel"`
 	CustomAction     *int               `json:"customAction"`
