@@ -875,6 +875,7 @@ type DetailDataV6 struct {
 	Location         string `json:"location"`
 	SdkIp            string `json:"sdkIp"`
 	Ip               string `json:"ip"`
+	Isp              string `json:"isp"`
 	SceneData        string `json:"sceneData"`
 	RiskLevel        string `json:"riskLevel"`
 	MatchedRiskTags  string `json:"matchedRiskTags"`
