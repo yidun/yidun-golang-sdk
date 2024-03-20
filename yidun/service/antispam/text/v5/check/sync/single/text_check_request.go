@@ -2,9 +2,11 @@ package single
 
 import (
 	"strconv"
+	"unicode/utf8"
 
 	"github.com/yidun/yidun-golang-sdk/yidun/core/validation"
 )
+
 /**
  * 文本单次同步检测请求
  */
@@ -44,12 +46,13 @@ func (r *TextCheckRequest) ValidateParam() error {
 	invalidParams := validation.ErrInvalidParams{Context: "TextCheckRequest"}
 	if r == nil {
 		invalidParams.Add(validation.NewErrParamRequired("TextCheckRequest"))
+		return invalidParams;
 	}
-	if (r.CheckLabels != nil && len(*r.CheckLabels) > 512) {
-		invalidParams.Add(validation.NewErrParamMaxLen("CheckLabels", 512, strconv.Itoa(len(*r.CheckLabels))))
+	if (r.CheckLabels != nil && utf8.RuneCountInString(*r.CheckLabels) > 512) {
+		invalidParams.Add(validation.NewErrParamMaxLen("CheckLabels", 512, strconv.Itoa(utf8.RuneCountInString(*r.CheckLabels))))
 	}
-	if (r.Token != nil && len(*r.Token) > 256) {
-		invalidParams.Add(validation.NewErrParamMaxLen("Token", 512, strconv.Itoa(len(*r.Token))))
+	if (r.Token != nil && utf8.RuneCountInString(*r.Token) > 256) {
+		invalidParams.Add(validation.NewErrParamMaxLen("Token", 256, strconv.Itoa(utf8.RuneCountInString(*r.Token))))
 	}
 	if invalidParams.Len() > 0 {
 		return invalidParams
