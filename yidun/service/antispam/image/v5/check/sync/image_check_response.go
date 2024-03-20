@@ -37,10 +37,12 @@ type ImageV5AntispamResp struct {
 	FailureReason *int `json:"failureReason,omitempty"`
 	// 检测建议结果
 	Suggestion *int `json:"suggestion,omitempty"`
+	// 一级分类
 	Label       *int   `json:"label,omitempty"`
+	// 二级分类
     SecondLabel *string `json:"secondLabel,omitempty"`
+    // 三级分类
     ThirdLabel  *string `json:"thirdLabel,omitempty"`
-	Suggestion *int `json:"suggestion,omitempty"`
 	// 图片人审状态
 	CensorType *int `json:"censorType,omitempty"`
 	// 策略版本字段
