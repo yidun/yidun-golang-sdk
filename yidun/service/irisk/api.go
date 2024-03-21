@@ -330,9 +330,10 @@ type IRiskCheckResult struct {
 }
 
 type HitInfo struct {
-	Type      string `json:"type"`
-	Name      string `json:"name"`
-	RiskLevel int    `json:"riskLevel"`
+	Type      string   `json:"type"`
+	Name      string   `json:"name"`
+	RiskLevel int      `json:"riskLevel"`
+	Rules     []string `json:"rules"`
 }
 
 type (
@@ -1510,10 +1511,10 @@ func (r *IRiskListAddRequest) ValidateParam() error {
 	}
 	if r.Content == nil {
 		invalidParams.Add(validation.NewErrParamRequired("Content"))
-	}	
+	}
 	if r.ExpireTime == nil {
 		invalidParams.Add(validation.NewErrParamRequired("ExpireTime"))
-	}	
+	}
 	if r.Description == nil {
 		invalidParams.Add(validation.NewErrParamRequired("Description"))
 	}
