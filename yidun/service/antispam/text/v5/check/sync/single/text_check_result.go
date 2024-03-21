@@ -121,8 +121,6 @@ type StrategyVersion struct {
 
 type AntispamLabel struct {
 	Label       *int                `json:"label"`
-	SecondLabel *string             `json:"secondLabel"`
-	ThirdLabel  *string             `json:"thirdLabel"`
 	Level       *int                `json:"level"`
 	Rate        *float64            `json:"rate"`
 	SubLabels   []*AntispamSubLabel `json:"subLabels"`
