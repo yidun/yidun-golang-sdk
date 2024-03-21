@@ -76,6 +76,7 @@ func (r *TextCheckSceneRequest) ValidateParam() error {
 		validateField("CommentId", r.CommentId, 32)
 		validateField("CommodityId", r.CommodityId, 32)
 		validateField("Ip", r.Ip, 128)
+		validateField("ReceiveIp", r.ReceiveIp, 128)
 		validateField("ExtStr1", r.ExtStr1, 128)
 		validateField("ExtStr2", r.ExtStr2, 128)
 		validateField("CensorExt", r.CensorExt, 128)
