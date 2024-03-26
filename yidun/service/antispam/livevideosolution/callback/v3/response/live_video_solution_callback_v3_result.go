@@ -74,6 +74,9 @@ type CallbackImageLabel struct {
 
 type VideoEvidence struct {
 	Suggestion *int              `json:"suggestion,omitempty"`
+	Label     *int                `json:"label,omitempty"`
+    SecondLabel      *string      `json:"secondLabel,omitempty"`
+    ThirdLabel       *string      `json:"thirdLabel,omitempty"`
 	Type       *int              `json:"type,omitempty"`
 	URL        *string           `json:"url,omitempty"`
 	BeginTime  *int64            `json:"beginTime,omitempty"`
@@ -279,6 +282,9 @@ type LiveAudioQualityDetails struct {
 type LiveAudioCallbackUnitRespV4 struct {
 	Suggestion       *int                `json:"suggestion,omitempty"`
 	SuggestionLevel  *int                `json:"suggestionLevel,omitempty"`
+	Label            *int                `json:"label,omitempty"`
+    SecondLabel      *string             `json:"secondLabel,omitempty"`
+    ThirdLabel       *string             `json:"thirdLabel,omitempty"`
 	StartTime        *int64              `json:"startTime,omitempty"`
 	EndTime          *int64              `json:"endTime,omitempty"`
 	Content          *string             `json:"content,omitempty"`
