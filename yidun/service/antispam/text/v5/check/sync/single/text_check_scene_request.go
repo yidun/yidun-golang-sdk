@@ -117,6 +117,7 @@ func (req *TextCheckSceneRequest) GetBusinessCustomSignParams() map[string]strin
 	setStringIfNotNil(&result, "idfv", req.Idfv)
 	setStringIfNotNil(&result, "imei", req.Imei)
 	setStringIfNotNil(&result, "ip", req.Ip)
+	setStringIfNotNil(&result, "receiveIp", req.ReceiveIp)
 	setIntToStringIfNotNil(&result, "isPremiumUse", req.IsPremiumUse)
 	setIntToStringIfNotNil(&result, "level", req.Level)
 	setStringIfNotNil(&result, "mac", req.Mac)
