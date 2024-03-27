@@ -73,6 +73,8 @@ type ImageV5AntispamResp struct {
 	HiddenFormat *string `json:"hiddenFormat,omitempty"`
 	// 图片md5
 	ImgMd5 *string `json:"imgMd5,omitempty"`
+	//转存地址
+	Url *string `json:"url,omitempty"`
 }
 
 type ImageV5VersionDetail struct {
