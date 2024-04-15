@@ -9,7 +9,7 @@ import (
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/query"
 )
 
-// 文本结果反馈请求Demo
+// 文本taskId查询请求Demo
 func main() {
 	// 设置易盾内容安全分配的businessId
 	request := query.NewTextTaskIdsQueryRequest("YOUR_BUSINESS_ID")
