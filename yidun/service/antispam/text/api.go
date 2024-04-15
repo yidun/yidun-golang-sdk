@@ -1,6 +1,7 @@
 package v5
 
 import (
+	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/query"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v2/feedback"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/callback"
 	asyncBatch "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/check/async/batch"
@@ -47,6 +48,13 @@ func (c *TextClient) Callback(req *callback.TextCallBackRequest) (res *callback.
 // 文本结果反馈请求
 func (c *TextClient) Feedback(req *feedback.TextFeedbackRequest) (res *feedback.TextFeedbackResponse, err error) {
 	res = &feedback.TextFeedbackResponse{}
+	err = c.Client.DoExecute(req, res)
+	return
+}
+
+//根据taskIds查询检测结果
+func (c *TextClient) QueryTaskIds(req *query.TextTaskIdsQueryRequest) (res *query.TextTaskIdsQueryResponse, err error) {
+	res = &query.TextTaskIdsQueryResponse{}
 	err = c.Client.DoExecute(req, res)
 	return
 }

@@ -1,13 +1,14 @@
 package textiface
 
 import (
+	v5 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text"
+	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/query"
 	feedback "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v2/feedback"
 	callback "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/callback"
 	asyncBatch "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/check/async/batch"
 	async "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/check/async/single"
 	syncBatch "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/check/sync/batch"
 	sync "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/check/sync/single"
-	v5 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text"
 )
 
 
@@ -32,5 +33,8 @@ type TextCheckAPI interface {
 
 	//文本结果反馈请求
 	Feedback(req *feedback.TextFeedbackRequest) (res *feedback.TextFeedbackResponse, err error)
+
+	//根据taskIds查询检测结果
+	QueryTaskIds(req *query.TextTaskIdsQueryRequest) (res *query.TextTaskIdsQueryResponse, err error)
 }
 var _ TextCheckAPI = (*v5.TextClient)(nil)

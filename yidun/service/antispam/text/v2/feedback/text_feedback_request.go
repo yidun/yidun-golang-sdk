@@ -39,6 +39,7 @@ func (r *TextFeedbackRequest) ValidateParam() error {
 	invalidParams := validation.ErrInvalidParams{Context: "TextFeedbackRequest"}
 	if r == nil {
 		invalidParams.Add(validation.NewErrParamRequired("TextFeedbackRequest"))
+		return invalidParams
 	}
 	if (r.Feedbacks == nil || len(*r.Feedbacks) == 0) {
 		invalidParams.Add(validation.NewErrParamRequired("Feedbacks"))
