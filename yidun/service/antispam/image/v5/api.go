@@ -6,6 +6,7 @@ import (
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/image/v5/check/async"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/image/v5/check/sync"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/image/v5/feedback"
+	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/image/v5/query"
 )
 
 // 图片同步检测
@@ -35,6 +36,13 @@ func (c *ImageClient) ImageAsyncCheck(req *async.ImageV5AsyncCheckRequest) (res 
 // 图片结果反馈请求
 func (c *ImageClient) ImageFeedback(req *feedback.ImageV5FeedbackRequest) (res *feedback.ImageV5FeedbackResponse, err error) {
 	res = &feedback.ImageV5FeedbackResponse{}
+	err = c.Client.DoExecute(req, res)
+	return
+}
+
+// 图片检测结果查询
+func (c *ImageClient) ImageQuery(req *query.ImageQueryRequest) (res *query.ImageQueryResponse, err error) {
+	res = &query.ImageQueryResponse{}
 	err = c.Client.DoExecute(req, res)
 	return
 }
