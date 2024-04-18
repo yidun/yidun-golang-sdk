@@ -849,6 +849,7 @@ type DetailDataV6 struct {
 	Level            string `json:"level"`
 	RegisterChannel  string `json:"registerChannel"`
 	RegisterDays     string `json:"registerDays"`
+	OnlineTimes      string `json:"onlineTimes"`
 	Gender           string `json:"gender"`
 	AppName          string `json:"appName"`
 	PackageName      string `json:"packageName"`
