@@ -1,16 +1,18 @@
 package query
 
 import (
+	"encoding/json"
+
 	"github.com/yidun/yidun-golang-sdk/yidun/core/types"
 	"github.com/yidun/yidun-golang-sdk/yidun/core/validation"
 )
 
 type TextTaskIdsQueryRequest struct {
 	*types.BizPostFormRequest
-	TaskIds *string `json:"taskIds,omitempty"` // 任务ID json数组
+	TaskIds *[]string `json:"taskIds,omitempty"` // 任务ID json数组
 }
 
-func (r *TextTaskIdsQueryRequest) SetTaskIds(taskIds string) {
+func (r *TextTaskIdsQueryRequest) SetTaskIds(taskIds []string) {
 	r.TaskIds = &taskIds
 
 }
@@ -29,7 +31,10 @@ func NewTextTaskIdsQueryRequest(businessId string) *TextTaskIdsQueryRequest {
 func (r *TextTaskIdsQueryRequest) GetBusinessCustomSignParams() map[string]string {
 	params := r.BizPostFormRequest.GetBusinessCustomSignParams()
 	if r.TaskIds != nil {
-		params["taskIds"] = *r.TaskIds
+		taskIds, err := json.Marshal(*r.TaskIds)
+		if (err == nil) { 
+			params["taskIds"] = string(taskIds)
+		}
 	}
 
 	return params

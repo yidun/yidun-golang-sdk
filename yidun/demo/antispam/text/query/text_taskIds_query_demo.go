@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 
@@ -18,8 +17,7 @@ func main() {
 	textCheckClient := v1.NewTextClientWithAccessKey("YOUR_SECRET_ID", "YOUR_SECRET_KEY")
 
 	taskIdList := []string{"taskIdA", "taskIdB"}
-    taskIds, err := json.Marshal(taskIdList)
-	request.SetTaskIds(string(taskIds))
+	request.SetTaskIds(taskIdList)
 
 	response, err := textCheckClient.QueryTaskIds(request)
 	if err != nil {
