@@ -40,7 +40,7 @@ func NewMediaSubmitRequestV2() *MediaSubmitRequestV2 {
 		BizPostFormRequest: types.NewBizPostFormRequestWithoutBizId(),
 	}
 	request.SetProductCode("mediaSubmit")
-	request.SetUriPattern("/v2/mediasolution/check")
+	request.SetUriPattern("/v2/mediasolution/submit")
 	request.SetVersion("v2.1")
 	return request
 }
