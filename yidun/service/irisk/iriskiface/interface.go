@@ -8,7 +8,9 @@ type IRISKAPI interface {
 	// GetConfig 配置拉取，调用/v5/risk/getConfig
 	GetConfig(request *irisk.IRiskConfigRequest) (response *irisk.IRiskConfigResponse, err error)
 	// GetMediaCheckResult 图片外挂识别，调用/v5/risk/mediaCheck
-	GetMediaCheckResult(request *irisk.IRiskMediaCheckRequest) (response *irisk.IRiskMediaCheckResponse, err error)
+	GetMediaCheckResult(request *irisk.IRiskMediaCheckRequest) (response *irisk.IRiskMediaCheckResponse, err error)	
+	// GetMediaQueryResult 图片外挂识别结果查询，调用/v5/risk/mediaQuery
+	GetMediaQueryResult(request *irisk.IRiskMediaQueryRequest) (response *irisk.IRiskMediaQueryResponse, err error)
 	// GetDetailResult 数据查询，调用/v5/risk/detail
 	GetDetailResult(request *irisk.IRiskDetailRequest) (response *irisk.IRiskDetailResponse, err error)
 	// GetDetailV6Result 数据查询，调用/v6/risk/detail

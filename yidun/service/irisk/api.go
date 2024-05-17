@@ -42,6 +42,13 @@ func (c *IRiskClient) GetMediaCheckResult(request *IRiskMediaCheckRequest) (resp
 	return
 }
 
+// GetMediaQueryResult 数据查询，调用/risk/mediaQuery
+func (c *IRiskClient) GetMediaQueryResult(request *IRiskMediaQueryRequest) (response *IRiskMediaQueryResponse, err error) {
+	response = &IRiskMediaQueryResponse{}
+	err = c.Client.DoExecute(request, response)
+	return
+}
+
 // UploadReportData 举报数据上报，调用/risk/reportData
 func (c *IRiskClient) UploadReportData(request *IRiskReportDataRequest) (response *IRiskReportDataResponse, err error) {
 	response = &IRiskReportDataResponse{}
@@ -953,6 +960,28 @@ func NewIRiskMediaCheckRequest(businessId string) *IRiskMediaCheckRequest {
 	return request
 }
 
+type IRiskMediaQueryRequest struct {
+	*types.BizPostJsonRequest
+	TaskId *string
+}
+
+// SetTaskId 设置taskId
+func (r *IRiskMediaQueryRequest) SetTaskId(taskId string) *IRiskMediaQueryRequest {
+	r.TaskId = &taskId
+	return r
+}
+
+// NewIRiskMediaQueryRequest 初始化NewIRiskMediaQueryRequest对象
+func NewIRiskMediaQueryRequest(businessId string) *IRiskMediaQueryRequest {
+	request := &IRiskMediaQueryRequest{
+		BizPostJsonRequest: types.NewBizPostJsonRequest((businessId)),
+	}
+	request.SetProductCode("irisk")
+	request.SetUriPattern("/v5/risk/mediaQuery")
+	request.SetVersion("500")
+	return request
+}
+
 // GetNonSignParams 获取具体业务中特有的不参与签名计算的参数
 func (r *IRiskMediaCheckRequest) GetNonSignParams() map[string]interface{} {
 	return make(map[string]interface{})
@@ -1016,6 +1045,23 @@ type IRiskMediaCheckResponse struct {
 
 type IRiskMediaCheckResult struct {
 	TaskId string `json:"taskId"`
+}
+
+type IRiskMediaQueryResponse struct {
+	*types.CommonResponse
+	Data IRiskMediaQueryResult `json:"data"`
+}
+
+type IRiskMediaQueryResult struct {
+	*types.BizPostJsonRequest
+	ReceiveTime int64 `json:"receiveTime"`
+	Ip string `json:"ip"`
+	RoleId string `json:"roleId"`
+	Nickname string `json:"nickname"`
+	Server string `json:"server"`
+	Status int `json:"status"`
+	TagNameList []string `json:"tagNameList"`
+	Reason string `json:"reason"`
 }
 
 type IRiskReportDataRequest struct {
@@ -1567,6 +1613,27 @@ func (r *IRiskListAddRequest) GetBusinessCustomSignParams() map[string]string {
 	}
 	if r.ExpireTime != nil {
 		params["expireTime"] = strconv.FormatInt(*r.ExpireTime, 10)
+	}
+	return params
+}
+
+// 图片检测接口 参数校验方法
+func (r *IRiskMediaQueryRequest) ValidateParam() error {
+	invalidParams := validation.ErrInvalidParams{Context: "IRiskMediaQueryRequest"}
+	if r.TaskId == nil {
+		invalidParams.Add(validation.NewErrParamRequired("TaskId"))
+	}
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// GetBusinessCustomSignParams 获取具体业务中特有的需要参与签名计算的参数
+func (r *IRiskMediaQueryRequest) GetBusinessCustomSignParams() map[string]string {
+	params := r.BizPostJsonRequest.GetBusinessCustomSignParams()
+	if r.TaskId != nil {
+		params["taskId"] = *r.TaskId
 	}
 	return params
 }
