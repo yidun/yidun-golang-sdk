@@ -155,7 +155,7 @@ type AntispamSubLabelDetailRule struct {
 type AntispamSubLabelDetailLibInfo struct {
 	Type        *int    `json:"type"`
 	Entity      *string `json:"entity"`
-	ReleaseTime *string `json:"releaseTime"`
+	ReleaseTime *int64 `json:"releaseTime"`
 }
 
 type AntispamSubLabelDetailAnticheat struct {
