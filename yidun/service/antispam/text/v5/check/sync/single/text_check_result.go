@@ -120,21 +120,21 @@ type StrategyVersion struct {
 }
 
 type AntispamLabel struct {
-	Label       *int                `json:"label"`
-	Level       *int                `json:"level"`
-	Rate        *float64            `json:"rate"`
-	SubLabels   []*AntispamSubLabel `json:"subLabels"`
-	HitType     *int                `json:"hitType"`
+	Label     *int                `json:"label"`
+	Level     *int                `json:"level"`
+	Rate      *float64            `json:"rate"`
+	SubLabels []*AntispamSubLabel `json:"subLabels"`
+	HitType   *int                `json:"hitType"`
 }
 
 type AntispamSubLabel struct {
-	SubLabel      *string                 `json:"subLabel"`
-	SubLabelDepth *int                    `json:"subLabelDepth"`
-	SecondLabel   *string                 `json:"secondLabel"`
-	ThirdLabel    *string                 `json:"thirdLabel"`
-	Rate          *float64                `json:"rate"`
+	SubLabel           *string                 `json:"subLabel"`
+	SubLabelDepth      *int                    `json:"subLabelDepth"`
+	SecondLabel        *string                 `json:"secondLabel"`
+	ThirdLabel         *string                 `json:"thirdLabel"`
+	Rate               *float64                `json:"rate"`
 	PoliticalSentiment *int                    `json:"politicalSentiment"`
-	Details       *AntispamSubLabelDetail `json:"details"`
+	Details            *AntispamSubLabelDetail `json:"details"`
 }
 
 type AntispamSubLabelDetail struct {
