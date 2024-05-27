@@ -1054,14 +1054,14 @@ type IRiskMediaQueryResponse struct {
 
 type IRiskMediaQueryResult struct {
 	*types.BizPostJsonRequest
-	ReceiveTime int64 `json:"receiveTime"`
-	Ip string `json:"ip"`
-	RoleId string `json:"roleId"`
-	Nickname string `json:"nickname"`
-	Server string `json:"server"`
-	Status int `json:"status"`
+	ReceiveTime int64    `json:"receiveTime"`
+	Ip          string   `json:"ip"`
+	RoleId      string   `json:"roleId"`
+	Nickname    string   `json:"nickname"`
+	Server      string   `json:"server"`
+	Status      int      `json:"status"`
 	TagNameList []string `json:"tagNameList"`
-	Reason string `json:"reason"`
+	Reason      string   `json:"reason"`
 }
 
 type IRiskReportDataRequest struct {
