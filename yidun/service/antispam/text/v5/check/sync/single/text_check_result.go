@@ -24,6 +24,8 @@ type TextCheckResult struct {
 	UserRisk *UserRisk `json:"userRisk"`
 	// 文本语种检测结果
 	Language *Language `json:"language"`
+	// aigc提示分析结果
+	AigcPrompt *AigcPrompt `json:"aigcPrompt"`
 }
 
 type Language struct {
@@ -156,7 +158,7 @@ type AntispamSubLabelDetailRule struct {
 type AntispamSubLabelDetailLibInfo struct {
 	Type        *int    `json:"type"`
 	Entity      *string `json:"entity"`
-	ReleaseTime *int64 `json:"releaseTime"`
+	ReleaseTime *int64  `json:"releaseTime"`
 }
 
 type AntispamSubLabelDetailAnticheat struct {
@@ -172,4 +174,16 @@ type AntispamSubLabelDetailHitInfoPosition struct {
 type AntispamSubLabelDetailHitInfo struct {
 	Value     *string                                  `json:"value"`
 	Positions []*AntispamSubLabelDetailHitInfoPosition `json:"positions"`
+}
+
+type AigcPrompt struct {
+	TaskId  *string              `json:"taskId"`  // 任务id
+	DataId  *string              `json:"dataId"`  // 数据id
+	Details *[]*AigcPromptDetail `json:"details"` // 详情
+}
+
+type AigcPromptDetail struct {
+	Type   *int    `json:"type"`   // prompt分类的枚举值
+	Answer *string `json:"answer"` // 需要回答且能找到回答时返回
+	Source *int    `json:"source"` // 标记对外输出内容由知识库结果还是大模型生成的结果（0代表知识库,1代表大模型）
 }
