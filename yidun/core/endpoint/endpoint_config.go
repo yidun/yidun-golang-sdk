@@ -224,6 +224,18 @@ var (
 			"as.dun.163yun.com"
 		  ]
 		},
+		"aigc-stream-api": {
+		  "cn-hangzhou": [
+			"as.dun.163.com",
+			"as.dun.163yun.com"
+		  ]
+		},
+		"aigc-stream-check-api": {
+		  "cn-hangzhou": [
+			"as.dun.163.com",
+			"as.dun.163yun.com"
+		  ]
+		},
 		"openapi": {
 			"cn-hangzhou": [
 			  "openapi.dun.163.com"
