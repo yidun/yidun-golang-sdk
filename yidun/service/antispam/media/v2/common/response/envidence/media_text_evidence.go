@@ -10,6 +10,7 @@ type MediaTextEvidence struct {
 	StrategyVersions []*StrategyVersion `json:"strategyVersions,omitempty"`
 	Labels           []*TextLabelInfo   `json:"labels,omitempty"`
 	IsRelatedHit     *bool              `json:"isRelatedHit,omitempty"`
+	FilteredContent  *string            `json:"filteredContent,omitempty"`
 }
 
 // 文本标签信息
