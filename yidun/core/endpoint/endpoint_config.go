@@ -56,13 +56,33 @@ var (
 		  "sg-singapore": [
 			"as-audio-sg.dun.163yun.com",
 			"as-audio-sg.dun.163.com"
-		  ]
+		  ],
+			"de-frankfurt": [
+			  "as-audio-frankfurt.dun.163.com",
+			  "as-audio-frankfurt.dun.163yun.com"
+			],
+		  "us-virginia": [
+			  "as-audio-virginia.dun.163.com",
+			  "as-audio-virginia.dun.163yun.com"
+			]
 		},
 		"audioCommon": {
 		  "cn-hangzhou": [
 			"as.dun.163.com",
 			"as.dun.163yun.com"
-		  ]
+		  ],
+			"sg-singapore": [
+			  "as-audio-sg.dun.163.com",
+			  "as-audio-sg.dun.163yun.com"
+			],
+			"de-frankfurt": [
+			  "as-audio-frankfurt.dun.163.com",
+			  "as-audio-frankfurt.dun.163yun.com"
+			],
+			"us-virginia": [
+			  "as-audio-virginia.dun.163.com",
+			  "as-audio-virginia.dun.163yun.com"
+			]
 		},
 		"videoCheck": {
 		  "cn-hangzhou": [
@@ -88,19 +108,47 @@ var (
 		  "sg-singapore": [
 			"as-videosolution-sg.dun.163yun.com",
 			"as-videosolution-sg.dun.163.com"
-		  ]
+		  ],
+		"de-frankfurt": [
+		  "as-videosolution-frankfurt.dun.163.com",
+		  "as-videosolution-frankfurt.dun.163yun.com"
+		],
+		 "us-virginia": [
+			  "as-videosolution-virginia.dun.163.com",
+			  "as-videosolution-virginia.dun.163yun.com"
+			]
 		},
 		"videoSolutionCommon": {
 		  "cn-hangzhou": [
 			"as.dun.163.com",
 			"as.dun.163yun.com"
-		  ]
+		  ],
+			"sg-singapore": [
+			  "as-videosolution-sg.dun.163.com",
+			  "as-videosolution-sg.dun.163yun.com"
+			],
+			"de-frankfurt": [
+			  "as-videosolution-frankfurt.dun.163.com",
+			  "as-videosolution-frankfurt.dun.163yun.com"
+			],
+			"us-virginia": [
+			  "as-videosolution-virginia.dun.163.com",
+			  "as-videosolution-virginia.dun.163yun.com"
+			]
 		},
 		"liveAudio": {
 		  "cn-hangzhou": [
 			"as.dun.163.com",
 			"as.dun.163yun.com"
-		  ]
+		  ],
+		"sg-singapore": [
+			  "as-liveaudio-sg.dun.163.com",
+			  "as-liveaudio-sg.dun.163yun.com"
+			],
+		 "us-virginia": [
+			  "as-liveaudio-virginia.dun.163.com",
+			  "as-liveaudio-virginia.dun.163yun.com"
+			]
 		},
 		"liveVideo": {
 		  "cn-hangzhou": [
@@ -116,13 +164,25 @@ var (
 		  "sg-singapore": [
 			"as-livesolution-sg.dun.163yun.com",
 			"as-livesolution-sg.dun.163.com"
-		  ]
+		  ],
+			"us-virginia": [
+				  "as-livesolution-virginia.dun.163.com",
+				  "as-livesolution-virginia.dun.163yun.com"
+				]
 		},
 		"liveVideoSolutionCommon": {
 		  "cn-hangzhou": [
 			"as.dun.163.com",
 			"as.dun.163yun.com"
-		  ]
+		  ],
+			"sg-singapore": [
+			  "as-livesolution-sg.dun.163.com",
+			  "as-livesolution-sg.dun.163yun.com"
+			],
+			"us-virginia": [
+			  "as-livesolution-virginia.dun.163.com",
+			  "as-livesolution-virginia.dun.163yun.com"
+			]
 		},
 		"keyword": {
 		  "cn-hangzhou": [
