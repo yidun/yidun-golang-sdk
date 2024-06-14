@@ -19,6 +19,8 @@ type CaptchaVerifyRequest struct {
 	User      *string
 	Validate  *string
 	Type      *string
+	ClientIp  *string
+	ClientUa  *string
 }
 
 // 提供CaptchaId参数SET方法
@@ -42,6 +44,18 @@ func (r *CaptchaVerifyRequest) SetValidate(validate string) *CaptchaVerifyReques
 // 提供Type参数SET方法
 func (r *CaptchaVerifyRequest) SetType(captchaType string) *CaptchaVerifyRequest {
 	r.Type = &captchaType
+	return r
+}
+
+// 提供ClientIp参数SET方法
+func (r *CaptchaVerifyRequest) SetClientIp(clientIp string) *CaptchaVerifyRequest {
+	r.ClientIp = &clientIp
+	return r
+}
+
+// 提供ClientUa参数SET方法
+func (r *CaptchaVerifyRequest) SetClientUa(clientUa string) *CaptchaVerifyRequest {
+	r.ClientUa = &clientUa
 	return r
 }
 
@@ -91,6 +105,12 @@ func (r *CaptchaVerifyRequest) GetBusinessCustomSignParams() map[string]string {
 	if r.Type != nil {
 		params["type"] = *r.Type
 	}
+	if r.ClientIp != nil {
+		params["clientIp"] = *r.ClientIp
+	}
+	if r.ClientUa != nil {
+		params["clientUa"] = *r.ClientUa
+	}
 	return params
 }
 
@@ -104,4 +124,6 @@ type CaptchaVerifyResponse struct {
 	Token       *string `json:"token"`
 	CaptchaType *int    `json:"captchaType"`
 	SdkReduce   *string `json:"sdkReduce"`
+	ClientIp    *string `json:"clientIp"`
+	ClientUa    *string `json:"clientUa"`
 }
