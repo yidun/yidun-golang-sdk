@@ -892,6 +892,7 @@ type DetailDataV6 struct {
 	ExecAction       string `json:"execAction"`
 	ProtectionResult string `json:"protectionResult"`
 	Evidence         string `json:"evidence"`
+	MatchedRules     string `json:"matchedRules"`
 	PhoneCarrierName string `json:"phoneCarrierName"`
 	PhoneLocation    string `json:"phoneLocation"`
 	PhoneRiskType    string `json:"phoneRiskType"`
