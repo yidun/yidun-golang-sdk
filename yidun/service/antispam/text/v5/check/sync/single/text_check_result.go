@@ -185,5 +185,7 @@ type AigcPrompt struct {
 type AigcPromptDetail struct {
 	Type   *int    `json:"type"`   // prompt分类的枚举值
 	Answer *string `json:"answer"` // 需要回答且能找到回答时返回
-	Source *int    `json:"source"` // 标记对外输出内容由知识库结果还是大模型生成的结果（0代表知识库,1代表大模型）
+	Source *int    `json:"source"` // 标记对外输出内容由知识库结果还是大模型生成的结果（0代表知识库,1代表大模型,2代表自定义知识库）
+	LibId *string `json:"libId"` // 知识库ID
+	AnswerId *string `json:"answerId"` // 知识库-答案 ID
 }
