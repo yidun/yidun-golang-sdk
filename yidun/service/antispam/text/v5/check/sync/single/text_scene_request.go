@@ -4,51 +4,52 @@ package single
  * 文本检测请求基类
  */
 type TextSceneRequest struct {
-	DataId                *string   `json:"dataId,omitempty"`                        // 数据唯一标识，能够根据该值定位到该条数据
-	Content               *string   `json:"content,omitempty"`                       // 用户发表内容，建议对内容中json、表情符、HTML标签、UBB标签等做过滤，只传递纯文本，以减少误判概率
-	Title                 *string   `json:"title,omitempty"`                         // 内容标题，适用于贴子、博客的文章标题等场景，建议抄送，辅助机审策略精准调优
-	DataType              *int      `json:"dataType,omitempty"`                      // 大小限制 子数据类型，与易盾内容安全服务约定即可
-	Callback              *string   `json:"callback,omitempty"`                      // 数据回调参数，调用方根据业务情况自行设计，当调用文本结果获取接口-轮询模式或文本结果获取接口-推送模式时，该接口会原样返回该字段。
-	PublishTime           *int64    `json:"publishTime,omitempty"`                   // 发表时间，UNIX 时间戳(毫秒值)
-	CallbackUrl           *string   `json:"callbackUrl,omitempty"`                   // 人工审核结果回调通知到客户的URL
-	Category              *string   `json:"category,omitempty"`                      // 来源，用于展示渠道名称，应用名称等
-	Account               *string   `json:"account,omitempty"`                       // 用户唯一标识
-	Phone                 *string   `json:"phone,omitempty"`                         // 手机号
-	Nickname              *string   `json:"nickname,omitempty"`                      // 用户昵称
-	Gender                *int      `json:"gender,omitempty"`                        // 性别，0: 未知，1: 男性，2: 女性
-	Age                   *int      `json:"age,omitempty"`                           // 年龄，0: 未知
-	Level                 *int      `json:"level,omitempty"`                         // 用户等级，0: 未知，1: 低，2: 中，3: 高
-	RegisterTime          *int64    `json:"registerTime,omitempty"`                  // 注册时间，UNIX 时间戳(毫秒值)
-	FriendNum             *int64    `json:"friendNum,omitempty"`                     // 好友数
-	FansNum               *int64    `json:"fansNum,omitempty"`                       // 粉丝数
-	IsPremiumUse          *int      `json:"isPremiumUse,omitempty"`                  // 是否付费用户，0为默认值，1为付费
-	Role                  *string   `json:"role,omitempty" validate:"max=32"`        // 用户类型角色
-	DeviceType            *int      `json:"deviceType,omitempty"`                    // 用户设备id的类型
-	DeviceId              *string   `json:"deviceId,omitempty" validate:"max=128"`   // 用户设备 id
-	Mac                   *string   `json:"mac,omitempty" validate:"max=64"`         // 用户设备mac信息
-	Imei                  *string   `json:"imei,omitempty" validate:"max=64"`        // 国际移动设备识别码
-	Idfa                  *string   `json:"idfa,omitempty" validate:"max=64"`        // iOS设备标识码
-	Idfv                  *string   `json:"idfv,omitempty" validate:"max=64"`        // iOS设备标识码
-	AppVersion            *string   `json:"appVersion,omitempty" validate:"max=32"`  // APP版本号
-	ReceiveUid            *string   `json:"receiveUid,omitempty" validate:"max=64"`  // 接受消息的用户标识
-	Relationship          *int      `json:"relationship,omitempty"`                  // 收发消息者好友关系，1接收人关注发送人，2发送人关注接收人，3互相关注，4互未关注
-	GroupId               *string   `json:"groupId,omitempty" validate:"max=32"`     // 群聊id
-	RoomId                *string   `json:"roomId,omitempty" validate:"max=32"`      // 聊天室/直播/游戏房间
-	Topic                 *string   `json:"topic,omitempty" validate:"max=128"`      // 文章/帖子id
-	CommentId             *string   `json:"commentId,omitempty" validate:"max=32"`   // 主评论id
-	CommodityId           *string   `json:"commodityId,omitempty" validate:"max=32"` // 商品id
-	Ip                    *string   `json:"ip,omitempty" validate:"max=128"`         // 用户IP地址
-	ReceiveIp             *string   `json:"receiveIp,omitempty" validate:"max=128"`  // 接收者IP地址
-	RelatedKeys           *[]string `json:"relatedKeys,omitempty"`                   // 上下文关联key列表
-	ExtStr1               *string   `json:"extStr1,omitempty" validate:"max=128"`    // 自定义扩展参数1
-	ExtStr2               *string   `json:"extStr2,omitempty" validate:"max=128"`    // 自定义扩展参数2
-	ExtLon1               *int64    `json:"extLon1,omitempty"`                       // 预留扩展long字段1
-	ExtLon2               *int64    `json:"extLon2,omitempty"`                       // 预留扩展long字段2
-	RiskControlToken      *string   `json:"riskControlToken,omitempty"`              // 智能风控token
-	RiskControlBusinessId *string   `json:"riskControlBusinessId,omitempty"`         // 智能风控businessId
-	CensorExt             *string   `json:"censorExt,omitempty" validate:"max=1024"` // 人审扩展字段，用于人审调度中心的规则匹配
-	Extension             *string   `json:"extension,omitempty"`                     // 预留扩展字段
-	SubProduct            *string   `json:"subProduct,omitempty"`                    // 子产品
+	DataId                *string   `json:"dataId,omitempty"`                             // 数据唯一标识，能够根据该值定位到该条数据
+	Content               *string   `json:"content,omitempty"`                            // 用户发表内容，建议对内容中json、表情符、HTML标签、UBB标签等做过滤，只传递纯文本，以减少误判概率
+	Title                 *string   `json:"title,omitempty"`                              // 内容标题，适用于贴子、博客的文章标题等场景，建议抄送，辅助机审策略精准调优
+	DataType              *int      `json:"dataType,omitempty"`                           // 大小限制 子数据类型，与易盾内容安全服务约定即可
+	Callback              *string   `json:"callback,omitempty"`                           // 数据回调参数，调用方根据业务情况自行设计，当调用文本结果获取接口-轮询模式或文本结果获取接口-推送模式时，该接口会原样返回该字段。
+	PublishTime           *int64    `json:"publishTime,omitempty"`                        // 发表时间，UNIX 时间戳(毫秒值)
+	CallbackUrl           *string   `json:"callbackUrl,omitempty"`                        // 人工审核结果回调通知到客户的URL
+	Category              *string   `json:"category,omitempty"`                           // 来源，用于展示渠道名称，应用名称等
+	Account               *string   `json:"account,omitempty"`                            // 用户唯一标识
+	Phone                 *string   `json:"phone,omitempty"`                              // 手机号
+	Nickname              *string   `json:"nickname,omitempty"`                           // 用户昵称
+	Gender                *int      `json:"gender,omitempty"`                             // 性别，0: 未知，1: 男性，2: 女性
+	Age                   *int      `json:"age,omitempty"`                                // 年龄，0: 未知
+	Level                 *int      `json:"level,omitempty"`                              // 用户等级，0: 未知，1: 低，2: 中，3: 高
+	RegisterTime          *int64    `json:"registerTime,omitempty"`                       // 注册时间，UNIX 时间戳(毫秒值)
+	FriendNum             *int64    `json:"friendNum,omitempty"`                          // 好友数
+	FansNum               *int64    `json:"fansNum,omitempty"`                            // 粉丝数
+	IsPremiumUse          *int      `json:"isPremiumUse,omitempty"`                       // 是否付费用户，0为默认值，1为付费
+	Role                  *string   `json:"role,omitempty" validate:"max=32"`             // 用户类型角色
+	DeviceType            *int      `json:"deviceType,omitempty"`                         // 用户设备id的类型
+	DeviceId              *string   `json:"deviceId,omitempty" validate:"max=128"`        // 用户设备 id
+	Mac                   *string   `json:"mac,omitempty" validate:"max=64"`              // 用户设备mac信息
+	Imei                  *string   `json:"imei,omitempty" validate:"max=64"`             // 国际移动设备识别码
+	Idfa                  *string   `json:"idfa,omitempty" validate:"max=64"`             // iOS设备标识码
+	Idfv                  *string   `json:"idfv,omitempty" validate:"max=64"`             // iOS设备标识码
+	AppVersion            *string   `json:"appVersion,omitempty" validate:"max=32"`       // APP版本号
+	ReceiveUid            *string   `json:"receiveUid,omitempty" validate:"max=64"`       // 接受消息的用户标识
+	Relationship          *int      `json:"relationship,omitempty"`                       // 收发消息者好友关系，1接收人关注发送人，2发送人关注接收人，3互相关注，4互未关注
+	GroupId               *string   `json:"groupId,omitempty" validate:"max=32"`          // 群聊id
+	RoomId                *string   `json:"roomId,omitempty" validate:"max=32"`           // 聊天室/直播/游戏房间
+	Topic                 *string   `json:"topic,omitempty" validate:"max=128"`           // 文章/帖子id
+	CommentId             *string   `json:"commentId,omitempty" validate:"max=32"`        // 主评论id
+	CommodityId           *string   `json:"commodityId,omitempty" validate:"max=32"`      // 商品id
+	Ip                    *string   `json:"ip,omitempty" validate:"max=128"`              // 用户IP地址
+	ReceiveIp             *string   `json:"receiveIp,omitempty" validate:"max=128"`       // 接收者IP地址
+	RelatedKeys           *[]string `json:"relatedKeys,omitempty"`                        // 上下文关联key列表
+	ExtStr1               *string   `json:"extStr1,omitempty" validate:"max=128"`         // 自定义扩展参数1
+	ExtStr2               *string   `json:"extStr2,omitempty" validate:"max=128"`         // 自定义扩展参数2
+	ExtLon1               *int64    `json:"extLon1,omitempty"`                            // 预留扩展long字段1
+	ExtLon2               *int64    `json:"extLon2,omitempty"`                            // 预留扩展long字段2
+	RiskControlToken      *string   `json:"riskControlToken,omitempty"`                   // 智能风控token
+	RiskControlBusinessId *string   `json:"riskControlBusinessId,omitempty"`              // 智能风控businessId
+	CensorExt             *string   `json:"censorExt,omitempty" validate:"max=1024"`      // 人审扩展字段，用于人审调度中心的规则匹配
+	Extension             *string   `json:"extension,omitempty"`                          // 预留扩展字段
+	SubProduct            *string   `json:"subProduct,omitempty"`                         // 子产品
+	RelateContext         *string   `json:"relateContext,omitempty" validate:"max=10000"` // 关联内容
 }
 
 // 构建request
