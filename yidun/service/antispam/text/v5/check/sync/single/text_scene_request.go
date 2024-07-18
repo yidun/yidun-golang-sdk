@@ -282,3 +282,8 @@ func (t *TextSceneRequest) SetExtension(extension string) {
 func (t *TextSceneRequest) SetSubProduct(subProduct string) {
 	t.SubProduct = &subProduct
 }
+
+// 设置RelateContext
+func (t *TextSceneRequest) SetRelateContext(relateContext string) {
+	t.RelateContext = &relateContext
+}
