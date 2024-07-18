@@ -136,6 +136,7 @@ func (req *TextCheckSceneRequest) GetBusinessCustomSignParams() map[string]strin
 	setStringIfNotNil(&result, "topic", req.Topic)
 	setStringIfNotNil(&result, "extension", req.Extension)
 	setStringIfNotNil(&result, "subProduct", req.SubProduct)
+	setStringIfNotNil(&result, "relateContext", req.RelateContext)
 	return result
 }
 
