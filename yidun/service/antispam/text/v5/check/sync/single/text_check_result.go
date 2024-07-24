@@ -108,6 +108,7 @@ type Antispam struct {
 	MergeHints       []*string          `json:"mergeHints"`
 	RelateContents   *string            `json:"relatedContents"`
 	HitSources       *int               `json:"hitSources"`
+	Status           *int               `json:"status"`
 }
 
 type CensorLabel struct {
