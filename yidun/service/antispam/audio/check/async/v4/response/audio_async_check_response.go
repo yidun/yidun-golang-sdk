@@ -10,6 +10,6 @@ type AudioAsyncCheckV4Response struct {
 
 type AudioAsyncCheckV4Result struct {
 	TaskId       *string `json:"taskId"`       // 任务id，64位字符串
-	Code         *int    `json:"code"`         // 200:成功，400:失败
+	Status       *int    `json:"status"`       // 请求结果，0:成功，1:失败
 	DealingCount *int    `json:"dealingCount"` // 处理中的音频数
 }
