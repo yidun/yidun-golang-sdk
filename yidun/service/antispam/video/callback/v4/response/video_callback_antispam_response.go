@@ -8,6 +8,9 @@ type VideoCallbackAntispamV4Response struct {
 	DataID          *string                  `json:"dataId,omitempty"`
 	Callback        *string                  `json:"callback,omitempty"`
 	Status          *int                     `json:"status,omitempty"`
+	Label           *int                     `json:"label,omitempty"`       // 一级垃圾类型
+	SecondLabel     *string                  `json:"secondLabel,omitempty"` // 二级垃圾类型
+	ThirdLabel      *string                  `json:"thirdLabel,omitempty"`  // 三级垃圾类型
 	FailureReason   *int                     `json:"failureReason,omitempty"`
 	Suggestion      *int                     `json:"suggestion,omitempty"`
 	SuggestionLevel *int                     `json:"suggestionLevel,omitempty"`

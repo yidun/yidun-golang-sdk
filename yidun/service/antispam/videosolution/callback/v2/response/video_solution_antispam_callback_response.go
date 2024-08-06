@@ -20,6 +20,8 @@ type VideoSolutionAntispamCallbackV2Response struct {
 	Duration        *int64                                         `json:"duration,omitempty"`        // 音视频时长字段，单位毫秒
 	DurationMs      *int64                                         `json:"durationMs,omitempty"`      // 音频时长字段，单位毫秒
 	Label           *int                                           `json:"label,omitempty"`           // 一级垃圾类型
+	SecondLabel     *string                                        `json:"secondLabel,omitempty"`     // 二级垃圾类型
+	ThirdLabel      *string                                        `json:"thirdLabel,omitempty"`      // 三级垃圾类型
 	PicCount        *int64                                         `json:"picCount,omitempty"`        // 截图数量
 	Evidences       *VideoSolutionCallbackEvidenceV2Response       `json:"evidences,omitempty"`       // 机器检测证据信息，接入机器检测时参考证据信息
 	SolutionExtra   *VideoSolutionCallbackExtraV2Response          `json:"solutionExtra,omitempty"`   // 音视频解决方案额外信息

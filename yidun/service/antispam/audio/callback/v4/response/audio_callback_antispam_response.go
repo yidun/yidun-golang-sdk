@@ -5,6 +5,8 @@ type AudioAntispamCallbackV4Response struct {
 	TaskId          *string            `json:"taskId,omitempty"`          // 检测任务 id
 	Status          *int               `json:"status,omitempty"`          // 检测状态，2-检测成功，3-检测失败
 	Label           *int               `json:"label,omitempty"`           // 音频整体细分类信息
+	SecondLabel     *string            `json:"secondLabel,omitempty"`     // 二级垃圾类型
+	ThirdLabel      *string            `json:"thirdLabel,omitempty"`      // 三级垃圾类型
 	Remark          *string            `json:"remark,omitempty"`          // 人审标签
 	FailureReason   *int               `json:"failureReason,omitempty"`   // 检测失败原因，当检测失败时返回
 	Suggestion      *int               `json:"suggestion,omitempty"`      // 建议结果 0-通过 1-嫌疑 2-删除
