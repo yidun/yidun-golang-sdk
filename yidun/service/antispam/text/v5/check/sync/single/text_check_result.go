@@ -137,6 +137,7 @@ type AntispamSubLabel struct {
 	ThirdLabel         *string                 `json:"thirdLabel"`
 	Rate               *float64                `json:"rate"`
 	PoliticalSentiment *int                    `json:"politicalSentiment"`
+	IsRelatedLabel     *bool                   `json:"isRelatedLabel"`
 	Details            *AntispamSubLabelDetail `json:"details"`
 }
 
