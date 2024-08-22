@@ -104,6 +104,7 @@ type IRiskCheckRequest struct {
 	DeviceId     *string
 	SceneData    *string
 	ExtData      *string
+	ClientCode   *int32
 }
 
 // SetToken 设置token
@@ -220,6 +221,12 @@ func (r *IRiskCheckRequest) SetExtData(extData string) *IRiskCheckRequest {
 	return r
 }
 
+// SetClientCode 设置客户端接口状态码
+func (r *IRiskCheckRequest) SetClientCode(clientCode int32) *IRiskCheckRequest {
+	r.ClientCode = &clientCode
+	return r
+}
+
 // NewIRiskCheckRequest 初始化IRiskCheckRequest对象
 func NewIRiskCheckRequest(businessId string) *IRiskCheckRequest {
 	request := &IRiskCheckRequest{
@@ -294,6 +301,9 @@ func (r *IRiskCheckRequest) GetBusinessCustomSignParams() map[string]string {
 	if r.ExtData != nil {
 		params["extData"] = *r.ExtData
 	}
+	if r.ClientCode != nil {
+		params["clientCode"] = strconv.Itoa(int(*r.ClientCode))
+	}
 	return params
 }
 
@@ -302,9 +312,6 @@ func (r *IRiskCheckRequest) ValidateParam() error {
 	invalidParams := validation.ErrInvalidParams{Context: "IRiskCheckRequest"}
 	if r.Ip == nil {
 		invalidParams.Add(validation.NewErrParamRequired("Ip"))
-	}
-	if r.RoleId == nil {
-		invalidParams.Add(validation.NewErrParamRequired("RoleId"))
 	}
 	if r.Account == nil {
 		invalidParams.Add(validation.NewErrParamRequired("Account"))
