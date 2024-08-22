@@ -14,6 +14,7 @@ type VideoSolutionAntispamCallbackV2Response struct {
 	Status          *int                                           `json:"status,omitempty"`
 	ResultType      *int                                           `json:"resultType,omitempty"`
 	CensorRound     *int                                           `json:"censorRound,omitempty"`     // 人审轮次
+	Censor          *string                                        `json:"censor,omitempty"`          // 人审操作人
 	CensorSource    *int                                           `json:"censorSource,omitempty"`    // 审核来源，0：易盾人审，1：客户人审，2：易盾机审
 	CheckTime       *int64                                         `json:"checkTime,omitempty"`       // 机器检测结束时间，毫秒单位的时间戳形式（2021.1.1 01:00转换时间戳1609434000000）
 	CensorTime      *int64                                         `json:"censorTime,omitempty"`      // 人工审核完成时间，毫秒单位时间戳(13位)

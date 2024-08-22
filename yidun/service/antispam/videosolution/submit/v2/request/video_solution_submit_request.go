@@ -42,7 +42,7 @@ type VideoSolutionSubmitV2Request struct {
 	// 指定过检测类型
 	DetectType *int `json:"detectType,omitempty"`
 	// 固定截图数
-    CheckFrameCount *int `json:"checkFrameCount,omitempty"`
+	CheckFrameCount *int `json:"checkFrameCount,omitempty"`
 	// 用于聚合的id
 	RelationID *string `json:"relationId,omitempty"`
 	// 关联查询id
@@ -55,6 +55,7 @@ type VideoSolutionSubmitV2Request struct {
 	CheckLanguageCode *string `json:"checkLanguageCode,omitempty"`
 	Nickname          *string `json:"nickname,omitempty"`
 	SubProduct        *string `json:"subProduct,omitempty"`
+	Extension         *string `json:"extension,omitempty"`
 }
 
 type ImageBeanRequest struct {
@@ -144,8 +145,8 @@ func (r *VideoSolutionSubmitV2Request) GetBusinessCustomSignParams() map[string]
 	}
 
 	if r.CheckFrameCount != nil {
-        parentParams["checkFrameCount"] = strconv.Itoa(*r.CheckFrameCount)
-    }
+		parentParams["checkFrameCount"] = strconv.Itoa(*r.CheckFrameCount)
+	}
 
 	if r.RelationID != nil {
 		parentParams["relationId"] = *r.RelationID
@@ -174,6 +175,9 @@ func (r *VideoSolutionSubmitV2Request) GetBusinessCustomSignParams() map[string]
 
 	if r.SubProduct != nil {
 		parentParams["subProduct"] = *r.SubProduct
+	}
+	if r.Extension != nil {
+		parentParams["extension"] = *r.Extension
 	}
 	return parentParams
 }
@@ -297,4 +301,7 @@ func (r *VideoSolutionSubmitV2Request) SetNickname(nickname string) {
 
 func (r *VideoSolutionSubmitV2Request) SetSubProduct(subProduct string) {
 	r.SubProduct = &subProduct
+}
+func (r *VideoSolutionSubmitV2Request) SetExtension(extension string) {
+	r.Extension = &extension
 }
