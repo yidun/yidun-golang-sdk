@@ -175,6 +175,7 @@ type AntispamSubLabelDetailHitInfoPosition struct {
 
 type AntispamSubLabelDetailHitInfo struct {
 	Value     *string                                  `json:"value"`
+	Type      *int                                     `json:"type"` // type:1，“通用反垃圾线索信息”，type:2，“增强版线索信息”
 	Positions []*AntispamSubLabelDetailHitInfoPosition `json:"positions"`
 }
 
