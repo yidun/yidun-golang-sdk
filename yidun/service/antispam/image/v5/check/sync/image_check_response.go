@@ -128,6 +128,8 @@ type AnticheatInfo struct {
 }
 
 type AntispamInfo struct {
+    // 命中类型
+	Type *int `json:"type,omitempty"`
 	// 自定义敏感词
 	Word *string `json:"word,omitempty"`
 	// 自定义图片名单url
