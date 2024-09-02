@@ -91,9 +91,12 @@ type AntispamInfo struct {
 	// 自定义图片名单url
 	Entity *string `json:"entity,omitempty"`
 	// 自定义图片名单命中次数
-	HitCount *int    `json:"hitCount,omitempty"`
-	Value    *string `json:"value,omitempty"`
-	Group    *string `json:"group,omitempty"`
+	HitCount          *int    `json:"hitCount,omitempty"`
+	Value             *string `json:"value,omitempty"`
+	Group             *string `json:"group,omitempty"`
+	Type              *int    `json:"type,omitempty"`
+	ReleaseTime       *int64  `json:"releaseTime,omitempty"`
+	StrategyGroupName *string `json:"strategyGroupName,omitempty"`
 	// 坐标左上一个 右下一个
 	X1 *float32 `json:"x1,omitempty"`
 	Y1 *float32 `json:"y1,omitempty"`
