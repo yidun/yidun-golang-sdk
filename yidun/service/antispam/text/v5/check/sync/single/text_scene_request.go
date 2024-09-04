@@ -15,6 +15,7 @@ type TextSceneRequest struct {
 	Account               *string   `json:"account,omitempty"`                            // 用户唯一标识
 	Phone                 *string   `json:"phone,omitempty"`                              // 手机号
 	Nickname              *string   `json:"nickname,omitempty"`                           // 用户昵称
+    CustomLangCodes       *string   `json:"customLangCodes,omitempty"`                    // 客户指定的语种类型 如果客户有传入则直接作为语种类型，不再进行检测; ","连接的字符串 语种类型列表参考{<a href="https://support.dun.163.com/documents/588434200783982592?docId=891095487301275648"/a>}
 	Gender                *int      `json:"gender,omitempty"`                             // 性别，0: 未知，1: 男性，2: 女性
 	Age                   *int      `json:"age,omitempty"`                                // 年龄，0: 未知
 	Level                 *int      `json:"level,omitempty"`                              // 用户等级，0: 未知，1: 低，2: 中，3: 高
@@ -211,6 +212,11 @@ func (t *TextSceneRequest) SetMac(mac string) {
 // 设置Nickname
 func (t *TextSceneRequest) SetNickname(nickname string) {
 	t.Nickname = &nickname
+}
+
+// 设置CustomLangCodes
+func (t *TextSceneRequest) SetCustomLangCodes(customLangCodes string) {
+    t.CustomLangCodes = &customLangCodes
 }
 
 // 设置Phone
