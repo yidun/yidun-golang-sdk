@@ -137,6 +137,7 @@ type LibInfo struct {
 
 // HintInfo
 type HintInfo struct {
+	Type      *int                `json:"type,omitempty"` // type
 	Value     *string             `json:"value,omitempty"`
 	Positions *[]HintInfoPosition `json:"positions,omitempty"`
 }
@@ -200,6 +201,7 @@ type ImageSubLabelDetailInfo struct {
 	X2       *float64 `json:"x2,omitempty"` // 坐标右下
 	Y2       *float64 `json:"y2,omitempty"` // 坐标右下
 	Name     *string  `json:"name,omitempty"`
+	Type     *int     `json:"type,omitempty"` // type
 }
 
 // AudioEvidence 音频证据
@@ -264,6 +266,7 @@ type AudioSubLabelLibInfo struct {
 
 // AudioSubLabelHitInfo
 type AudioSubLabelHitInfo struct {
+	Type     *int    `json:"type,omitempty"`     // type
 	Value    *string `json:"value,omitempty"`    // 命中的敏感词或者声纹检测的分值
 	SongName *string `json:"songName,omitempty"` // 命中的涉政歌曲名称
 }
@@ -344,10 +347,11 @@ type VideoSubLabelLibInfo struct {
 type VideoSubLabelHitInfo struct {
 	Value *string  `json:"value,omitempty"`
 	Group *string  `json:"group,omitempty"`
-	X1    *float64 `json:"x1,omitempty"` // 坐标左上
-	Y1    *float64 `json:"y1,omitempty"` // 坐标左上
-	X2    *float64 `json:"x2,omitempty"` // 坐标右下
-	Y2    *float64 `json:"y2,omitempty"` // 坐标右下
+	X1    *float64 `json:"x1,omitempty"`   // 坐标左上
+	Y1    *float64 `json:"y1,omitempty"`   // 坐标左上
+	X2    *float64 `json:"x2,omitempty"`   // 坐标右下
+	Y2    *float64 `json:"y2,omitempty"`   // 坐标右下
+	Type  *int     `json:"type,omitempty"` // type
 }
 
 type VideoSubLabelRuleInfo struct {
