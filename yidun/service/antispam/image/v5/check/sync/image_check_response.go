@@ -338,6 +338,8 @@ type ImageV5DiscernDetail struct {
 	DiscernName *string  `json:"discernName,omitempty"` // 识别名称
 	DiscernKey  *string  `json:"discernKey,omitempty"`  // 识别标识
 	Rate        *float32 `json:"rate,omitempty"`        // 分数
+    Label       *string  `json:"label,omitempty"`       // 大模型识别标签
+    Explain     *string  `json:"explain,omitempty"`     // 大模型识别解释
 }
 
 type ImageV5UserRiskResp struct {
