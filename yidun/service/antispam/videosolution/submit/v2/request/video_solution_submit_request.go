@@ -56,6 +56,11 @@ type VideoSolutionSubmitV2Request struct {
 	Nickname          *string `json:"nickname,omitempty"`
 	SubProduct        *string `json:"subProduct,omitempty"`
 	Extension         *string `json:"extension,omitempty"`
+	// 扩展字段
+	ExtLon1 *int64  `json:"extLon1,omitempty"`
+	ExtLon2 *int64  `json:"extLon2,omitempty"`
+	ExtStr1 *string `json:"extStr1,omitempty"`
+	ExtStr2 *string `json:"extStr2,omitempty"`
 }
 
 type ImageBeanRequest struct {
@@ -178,6 +183,18 @@ func (r *VideoSolutionSubmitV2Request) GetBusinessCustomSignParams() map[string]
 	}
 	if r.Extension != nil {
 		parentParams["extension"] = *r.Extension
+	}
+	if r.ExtLon1 != nil {
+		parentParams["extLon1"] = strconv.FormatInt(*r.ExtLon1, 10)
+	}
+	if r.ExtLon2 != nil {
+		parentParams["extLon2"] = strconv.FormatInt(*r.ExtLon2, 10)
+	}
+	if r.ExtStr1 != nil {
+		parentParams["extStr1"] = *r.ExtStr1
+	}
+	if r.ExtStr2 != nil {
+		parentParams["extStr2"] = *r.ExtStr2
 	}
 	return parentParams
 }
@@ -304,4 +321,20 @@ func (r *VideoSolutionSubmitV2Request) SetSubProduct(subProduct string) {
 }
 func (r *VideoSolutionSubmitV2Request) SetExtension(extension string) {
 	r.Extension = &extension
+}
+
+func (r *VideoSolutionSubmitV2Request) SetExtLon1(extLon1 int64) {
+	r.ExtLon1 = &extLon1
+}
+
+func (r *VideoSolutionSubmitV2Request) SetExtLon2(extLon2 int64) {
+	r.ExtLon2 = &extLon2
+}
+
+func (r *VideoSolutionSubmitV2Request) SetExtStr1(extStr1 string) {
+	r.ExtStr1 = &extStr1
+}
+
+func (r *VideoSolutionSubmitV2Request) SetExtStr2(extStr2 string) {
+	r.ExtStr2 = &extStr2
 }
