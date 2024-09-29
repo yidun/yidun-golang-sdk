@@ -102,6 +102,7 @@ type Antispam struct {
 	CensorRound      *int               `json:"censorRound"`
 	CensorTime       *int64             `json:"censorTime"`
 	IsRelatedHit     *bool              `json:"isRelatedHit"`
+	relatedHitType   *int               `json:"relatedHitType"`            
 	Labels           []*AntispamLabel   `json:"labels"`
 	Remark           *string            `json:"remark"`
 	Censor           *string            `json:"censor"`
