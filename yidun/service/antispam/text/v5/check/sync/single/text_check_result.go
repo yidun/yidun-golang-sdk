@@ -46,6 +46,7 @@ type UserRisk struct {
 
 type UserRiskDetail struct {
 	Account   *string             `json:"account,omitempty"`   // account
+    AccountLevel   *int                `json:"accountLevel"` // 账号风险等级
 	AcDetails []*UserRiskAcDetail `json:"acDetails,omitempty"` // user risk account detail list
 }
 
@@ -164,7 +165,7 @@ type AntispamSubLabelDetailLibInfo struct {
 }
 
 type AntispamSubLabelDetailAnticheat struct {
-	HitType *int
+	Type *int `json:"type"`
 }
 
 type AntispamSubLabelDetailHitInfoPosition struct {
