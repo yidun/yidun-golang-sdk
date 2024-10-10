@@ -341,6 +341,7 @@ type IRiskCheckResult struct {
 	Evidences          []string    `json:"evidences"`
 	PhoneInfo          PhoneInfo   `json:"phoneInfo"`
 	IpInfo             IpInfo      `json:"ipInfo"`
+	Action             int         `json:"action"`
 }
 
 type HitInfo struct {
