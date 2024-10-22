@@ -8,29 +8,29 @@ import (
 )
 
 // 图片查询请求
-type ImageQueryRequest struct {
+type ImageQueryV2Request struct {
 	*types.BizPostFormRequest
 	// 图片taskid列表 json字符串
 	Taskids *[]string `json:"taskIds,omitempty"`
 }
 
-func (r *ImageQueryRequest) SetTaskIds(taskids []string) {
+func (r *ImageQueryV2Request) SetTaskIds(taskids []string) {
 	r.Taskids = &taskids
 }
 
 // 构建request
-func NewImageQueryRequest(businessId string) *ImageQueryRequest {
-	var request = &ImageQueryRequest{
+func NewImageQueryV2Request(businessId string) *ImageQueryV2Request {
+	var request = &ImageQueryV2Request{
 		BizPostFormRequest: types.NewBizPostFormRequest(businessId),
 	}
 	request.SetProductCode("imageCommon")
-	request.SetUriPattern("/v1/image/query/task")
+	request.SetUriPattern("/v2/image/query/task")
 	request.SetVersion("v1")
 	return request
 }
 
 // 获取业务自定义参数
-func (r *ImageQueryRequest) GetBusinessCustomSignParams() map[string]string {
+func (r *ImageQueryV2Request) GetBusinessCustomSignParams() map[string]string {
 	params := r.BizPostFormRequest.GetBusinessCustomSignParams()
 	if r.Taskids != nil {
 		taskIdsJson, _ := json.Marshal(r.Taskids)
@@ -41,10 +41,10 @@ func (r *ImageQueryRequest) GetBusinessCustomSignParams() map[string]string {
 }
 
 // 参数校验
-func (r *ImageQueryRequest) ValidateParam() error {
-	invalidParams := validation.ErrInvalidParams{Context: "ImageQueryRequest"}
+func (r *ImageQueryV2Request) ValidateParam() error {
+	invalidParams := validation.ErrInvalidParams{Context: "ImageQueryV2Request"}
 	if r == nil {
-		invalidParams.Add(validation.NewErrParamRequired("ImageQueryRequest"))
+		invalidParams.Add(validation.NewErrParamRequired("ImageQueryV2Request"))
 		return invalidParams
 	}
 	if r.Taskids == nil || len(*r.Taskids) == 0 {

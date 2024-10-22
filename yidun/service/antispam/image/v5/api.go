@@ -47,6 +47,13 @@ func (c *ImageClient) ImageQuery(req *query.ImageQueryRequest) (res *query.Image
 	return
 }
 
+// 图片检测结果查询
+func (c *ImageClient) ImageQueryV2(req *query.ImageQueryV2Request) (res *query.ImageQueryV2Response, err error) {
+	res = &query.ImageQueryV2Response{}
+	err = c.Client.DoExecute(req, res)
+	return
+}
+
 // 图片检测结果获取（轮询模式）
 func (c *ImageClient) ImageCallback(req *callback.ImageV5CallbackRequest) (res *sync.ImageCheckResponse, err error) {
 	res = &sync.ImageCheckResponse{}

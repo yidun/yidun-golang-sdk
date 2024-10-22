@@ -28,6 +28,8 @@ type CrawlerJobWebSite struct {
 	FocusList *[]string `json:"focusList,omitempty"`
 	// URL过滤条件集
 	UrlFilters *[]CrawlerUrlFilter `json:"urlFilters,omitempty"`
+	// 用户账号
+	Account *string `json:"account,omitempty"`
 }
 
 // For ImageV5CheckRequest
@@ -64,6 +66,11 @@ func (c *CrawlerJobWebSite) SetFocusList(focusList []string) {
 
 func (c *CrawlerJobWebSite) SetUrlFilters(urlFilters []CrawlerUrlFilter) {
 	c.UrlFilters = &urlFilters
+}
+
+// 设置用户账号
+func (c *CrawlerJobWebSite) SetAccount(account string) {
+	c.Account = &account
 }
 
 func (c *CrawlerJobBatchSubmitV1Request) GetBusinessCustomSignParams() map[string]string {
