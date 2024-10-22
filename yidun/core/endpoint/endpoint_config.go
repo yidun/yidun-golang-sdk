@@ -340,7 +340,17 @@ var (
 		  "cn-hangzhou": [
 			"rp.dun.163.com"
 		  ]
-		}
+		},
+        "aigcStream": {
+          "cn-hangzhou": [
+            "as.dun.163.com"
+          ]
+        },
+        "aigcStreamPush": {
+          "cn-hangzhou": [
+            "as.dun.163.com"
+          ]
+        }
 	  }
 	  `
 )
