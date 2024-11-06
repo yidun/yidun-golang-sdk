@@ -49,6 +49,13 @@ func (c *IRiskClient) GetMediaQueryResult(request *IRiskMediaQueryRequest) (resp
 	return
 }
 
+// GetMediaBatchQueryResult 数据查询，调用/risk/mediaBatchQuery
+func (c *IRiskClient) GetMediaBatchQueryResult(request *IRiskMediaBatchQueryRequest) (response *IRiskMediaBatchQueryResponse, err error) {
+	response = &IRiskMediaBatchQueryResponse{}
+	err = c.Client.DoExecute(request, response)
+	return
+}
+
 // UploadReportData 举报数据上报，调用/risk/reportData
 func (c *IRiskClient) UploadReportData(request *IRiskReportDataRequest) (response *IRiskReportDataResponse, err error) {
 	response = &IRiskReportDataResponse{}
@@ -991,6 +998,29 @@ func NewIRiskMediaQueryRequest(businessId string) *IRiskMediaQueryRequest {
 	return request
 }
 
+type IRiskMediaBatchQueryRequest struct {
+	*types.BizPostJsonRequest
+	TaskIds *string
+}
+
+// SetTaskIds 设置taskIds
+func (r *IRiskMediaBatchQueryRequest) SetTaskIds(taskIds string) *IRiskMediaBatchQueryRequest {
+	r.TaskIds = &taskIds
+	return r
+}
+
+// NewIRiskMediaBatchQueryRequest 初始化NewIRiskMediaBatchQueryRequest对象
+func NewIRiskMediaBatchQueryRequest(businessId string) *IRiskMediaBatchQueryRequest {
+	request := &IRiskMediaBatchQueryRequest{
+		BizPostJsonRequest: types.NewBizPostJsonRequest((businessId)),
+	}
+	request.SetProductCode("irisk")
+	request.SetUriPattern("/v5/risk/mediaBatchQuery")
+	request.SetVersion("500")
+	return request
+}
+
+
 // GetNonSignParams 获取具体业务中特有的不参与签名计算的参数
 func (r *IRiskMediaCheckRequest) GetNonSignParams() map[string]interface{} {
 	return make(map[string]interface{})
@@ -1059,6 +1089,11 @@ type IRiskMediaCheckResult struct {
 type IRiskMediaQueryResponse struct {
 	*types.CommonResponse
 	Data IRiskMediaQueryResult `json:"data"`
+}
+
+type IRiskMediaBatchQueryResponse struct {
+	*types.CommonResponse
+	Data []IRiskMediaQueryResult `json:"data"`
 }
 
 type IRiskMediaQueryResult struct {
@@ -1643,6 +1678,28 @@ func (r *IRiskMediaQueryRequest) GetBusinessCustomSignParams() map[string]string
 	params := r.BizPostJsonRequest.GetBusinessCustomSignParams()
 	if r.TaskId != nil {
 		params["taskId"] = *r.TaskId
+	}
+	return params
+}
+
+
+// 图片检测批量查询接口 参数校验方法
+func (r *IRiskMediaBatchQueryRequest) ValidateParam() error {
+	invalidParams := validation.ErrInvalidParams{Context: "IRiskMediaBatchQueryRequest"}
+	if r.TaskIds == nil {
+		invalidParams.Add(validation.NewErrParamRequired("TaskIds"))
+	}
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// GetBusinessCustomSignParams 获取具体业务中特有的需要参与签名计算的参数
+func (r *IRiskMediaBatchQueryRequest) GetBusinessCustomSignParams() map[string]string {
+	params := r.BizPostJsonRequest.GetBusinessCustomSignParams()
+	if r.TaskIds != nil {
+		params["taskIds"] = *r.TaskIds
 	}
 	return params
 }

@@ -11,6 +11,8 @@ type IRISKAPI interface {
 	GetMediaCheckResult(request *irisk.IRiskMediaCheckRequest) (response *irisk.IRiskMediaCheckResponse, err error)	
 	// GetMediaQueryResult 图片外挂识别结果查询，调用/v5/risk/mediaQuery
 	GetMediaQueryResult(request *irisk.IRiskMediaQueryRequest) (response *irisk.IRiskMediaQueryResponse, err error)
+	// GetMediaBatchQueryResult 图片外挂识别批量结果查询，调用/v5/risk/mediaBatchQuery
+	GetMediaBatchQueryResult(request *irisk.IRiskMediaBatchQueryRequest) (response *irisk.IRiskMediaBatchQueryResponse, err error)
 	// GetDetailResult 数据查询，调用/v5/risk/detail
 	GetDetailResult(request *irisk.IRiskDetailRequest) (response *irisk.IRiskDetailResponse, err error)
 	// GetDetailV6Result 数据查询，调用/v6/risk/detail
