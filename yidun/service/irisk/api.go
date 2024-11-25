@@ -349,6 +349,7 @@ type IRiskCheckResult struct {
 	PhoneInfo          PhoneInfo   `json:"phoneInfo"`
 	IpInfo             IpInfo      `json:"ipInfo"`
 	Action             int         `json:"action"`
+	CustomAction       int         `json:"customAction"`
 }
 
 type HitInfo struct {
@@ -905,6 +906,7 @@ type DetailDataV6 struct {
 	MatchedRiskTags  string `json:"matchedRiskTags"`
 	MatchedTypes     string `json:"matchedTypes"`
 	ExecAction       string `json:"execAction"`
+	CustomAction     string `json:"customAction"`
 	ProtectionResult string `json:"protectionResult"`
 	Evidence         string `json:"evidence"`
 	MatchedRules     string `json:"matchedRules"`
