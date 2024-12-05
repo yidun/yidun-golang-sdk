@@ -3,10 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/livevideosolution"
-	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/livevideosolution/submit/v3/request"
 	"log"
 	"os"
+
+	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/livevideosolution"
+	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/livevideosolution/submit/v3/request"
 )
 
 func main() {

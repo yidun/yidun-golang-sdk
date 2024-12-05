@@ -1,9 +1,10 @@
 package request
 
 import (
-	"github.com/yidun/yidun-golang-sdk/yidun/core/types"
 	"strconv"
 	"strings"
+
+	"github.com/yidun/yidun-golang-sdk/yidun/core/types"
 )
 
 type LiveAudioSubmitV4Req struct {
@@ -83,9 +84,9 @@ type LiveAudioSubmitV4Req struct {
 	// 聊天室编号
 	RoomId *string `json:"roomId,omitempty"`
 	// 指定监听必审列表范围内的数据 speakerId
-	CheckSpeakerIds *[]int64 `json:"checkSpeakerIds,omitempty"`
+	CheckSpeakerIds *[]string `json:"checkSpeakerIds,omitempty"`
 	// 指定不监听信任用户列表范围内的数据 speakerId
-	NoCheckSpeakerIds *[]int64 `json:"noCheckSpeakerIds,omitempty"`
+	NoCheckSpeakerIds *[]string `json:"noCheckSpeakerIds,omitempty"`
 	// 扩展字段
 	ExtLon1 *int64  `json:"extLon1,omitempty"`
 	ExtLon2 *int64  `json:"extLon2,omitempty"`
@@ -224,20 +225,12 @@ func (l *LiveAudioSubmitV4Req) GetBusinessCustomSignParams() map[string]string {
 	}
 	checkSpeakerIds := l.CheckSpeakerIds
 	if checkSpeakerIds != nil && len(*checkSpeakerIds) > 0 {
-		var checkSpeakerIdsStrs []string
-		for _, id := range *checkSpeakerIds {
-			checkSpeakerIdsStrs = append(checkSpeakerIdsStrs, strconv.FormatInt(id, 10))
-		}
-		result["checkSpeakerIds"] = strings.Join(checkSpeakerIdsStrs, ",")
+		result["checkSpeakerIds"] = strings.Join(*l.CheckSpeakerIds, ",")
 	}
 	// Convert NoCheckSpeakerIds to comma-separated string
 	noCheckSpeakerIds := l.NoCheckSpeakerIds
 	if noCheckSpeakerIds != nil && len(*noCheckSpeakerIds) > 0 {
-		var noCheckSpeakerIdsStrs []string
-		for _, id := range *noCheckSpeakerIds {
-			noCheckSpeakerIdsStrs = append(noCheckSpeakerIdsStrs, strconv.FormatInt(id, 10))
-		}
-		result["noCheckSpeakerIds"] = strings.Join(noCheckSpeakerIdsStrs, ",")
+		result["noCheckSpeakerIds"] = strings.Join(*l.NoCheckSpeakerIds, ",")
 	}
 	if l.ExtLon1 != nil {
 		result["extLon1"] = strconv.FormatInt(*l.ExtLon1, 10)
@@ -447,12 +440,12 @@ func (l *LiveAudioSubmitV4Req) SetRoomId(roomId string) {
 }
 
 // SetCheckSpeakerIds sets the CheckSpeakerIds field.
-func (l *LiveAudioSubmitV4Req) SetCheckSpeakerIds(checkSpeakerIds []int64) {
+func (l *LiveAudioSubmitV4Req) SetCheckSpeakerIds(checkSpeakerIds []string) {
 	l.CheckSpeakerIds = &checkSpeakerIds
 }
 
 // SetNoCheckSpeakerIds sets the NoCheckSpeakerIds field.
-func (l *LiveAudioSubmitV4Req) SetNoCheckSpeakerIds(noCheckSpeakerIds []int64) {
+func (l *LiveAudioSubmitV4Req) SetNoCheckSpeakerIds(noCheckSpeakerIds []string) {
 	l.NoCheckSpeakerIds = &noCheckSpeakerIds
 }
 
