@@ -2,10 +2,11 @@ package request
 
 import (
 	"encoding/json"
-	"github.com/yidun/yidun-golang-sdk/yidun/core/types"
-	videoCheck "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/video/check/v4/request"
 	"strconv"
 	"strings"
+
+	"github.com/yidun/yidun-golang-sdk/yidun/core/types"
+	videoCheck "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/video/check/v4/request"
 )
 
 // LiveWallSolutionSubmitV3Req represents live wall solution submit version 3 request.
@@ -38,8 +39,8 @@ type LiveWallSolutionSubmitV3Req struct {
 	ScreenMode         *int                                 `json:"screenMode,omitempty"`
 	CheckLanguageCode  *string                              `json:"checkLanguageCode,omitempty"`
 	Gender             *int                                 `json:"gender,omitempty"`
-	CheckSpeakerIds    *[]int64                             `json:"checkSpeakerIds,omitempty"`
-	NoCheckSpeakerIds  *[]int64                             `json:"noCheckSpeakerIds,omitempty"`
+	CheckSpeakerIds    *[]string                            `json:"checkSpeakerIds,omitempty"`
+	NoCheckSpeakerIds  *[]string                            `json:"noCheckSpeakerIds,omitempty"`
 	ExtLon1            *int64                               `json:"extLon1,omitempty"`
 	ExtLon2            *int64                               `json:"extLon2,omitempty"`
 	ExtStr1            *string                              `json:"extStr1,omitempty"`
@@ -149,20 +150,12 @@ func (l *LiveWallSolutionSubmitV3Req) GetBusinessCustomSignParams() map[string]s
 	}
 	checkSpeakerIds := l.CheckSpeakerIds
 	if checkSpeakerIds != nil && len(*checkSpeakerIds) > 0 {
-		var checkSpeakerIdsStrs []string
-		for _, id := range *checkSpeakerIds {
-			checkSpeakerIdsStrs = append(checkSpeakerIdsStrs, strconv.FormatInt(id, 10))
-		}
-		m["checkSpeakerIds"] = strings.Join(checkSpeakerIdsStrs, ",")
+		m["checkSpeakerIds"] = strings.Join(*l.CheckSpeakerIds, ",")
 	}
 	// Convert NoCheckSpeakerIds to comma-separated string
 	noCheckSpeakerIds := l.NoCheckSpeakerIds
 	if noCheckSpeakerIds != nil && len(*noCheckSpeakerIds) > 0 {
-		var noCheckSpeakerIdsStrs []string
-		for _, id := range *noCheckSpeakerIds {
-			noCheckSpeakerIdsStrs = append(noCheckSpeakerIdsStrs, strconv.FormatInt(id, 10))
-		}
-		m["noCheckSpeakerIds"] = strings.Join(noCheckSpeakerIdsStrs, ",")
+		m["noCheckSpeakerIds"] = strings.Join(*l.NoCheckSpeakerIds, ",")
 	}
 	if l.ExtLon1 != nil {
 		m["extLon1"] = strconv.FormatInt(*l.ExtLon1, 10)
@@ -325,12 +318,12 @@ func (l *LiveWallSolutionSubmitV3Req) SetGender(gender int) {
 }
 
 // SetCheckSpeakerIds sets the CheckSpeakerIds.
-func (l *LiveWallSolutionSubmitV3Req) SetCheckSpeakerIds(checkSpeakerIds []int64) {
+func (l *LiveWallSolutionSubmitV3Req) SetCheckSpeakerIds(checkSpeakerIds []string) {
 	l.CheckSpeakerIds = &checkSpeakerIds
 }
 
 // SetNoCheckSpeakerIds sets the NoCheckSpeakerIds.
-func (l *LiveWallSolutionSubmitV3Req) SetNoCheckSpeakerIds(noCheckSpeakerIds []int64) {
+func (l *LiveWallSolutionSubmitV3Req) SetNoCheckSpeakerIds(noCheckSpeakerIds []string) {
 	l.NoCheckSpeakerIds = &noCheckSpeakerIds
 }
 
