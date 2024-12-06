@@ -1705,3 +1705,438 @@ func (r *IRiskMediaBatchQueryRequest) GetBusinessCustomSignParams() map[string]s
 	}
 	return params
 }
+
+// 安卓设备信息
+type IRiskAndroidDeviceInfoResponse struct {
+
+	/**
+	 * 屏幕信息
+	 */
+	ScreenInfo string `json:"screenInfo"`
+
+	/**
+	 * app版本号
+	 */
+	AppVersion string `json:"appVersion"`
+
+	/**
+	 * 设备启动次数
+	 */
+	BootCount int `json:"bootCount"`
+
+	/**
+	 * 充电状态
+	 */
+	ChargeState int `json:"chargeState"`
+
+	/**
+	 * 是否开启mac随机化
+	 */
+	MacRandom int `json:"macRandom"`
+
+	/**
+	 * 屏幕亮度
+	 */
+	ScreenBright int `json:"screenBright"`
+
+	/**
+	 * adb是否开启
+	 */
+	CheckAdb int `json:"checkAdb"`
+
+	/**
+	 * 手机已启动时间
+	 */
+	UpTime string `json:"upTime"`
+
+	/**
+	 * Android版本
+	 */
+	OsVersion string `json:"osVersion"`
+
+	/**
+	 * 运营商
+	 */
+	CarrierName string `json:"carrierName"`
+
+	/**
+	 * 手机总锁屏时间
+	 */
+	LockTime string `json:"lockTime"`
+
+	/**
+	 * 是否是虚拟摄像头
+	 */
+	IsFakeCam int `json:"isFakeCam"`
+
+	/**
+	 * 手机品牌
+	 */
+	PhoneBrand string `json:"phoneBrand"`
+
+	/**
+	 * 第一次安装时间
+	 */
+	FirstSetupTime string `json:"firstSetupTime"`
+
+	/**
+	 * 是否存在sim卡
+	 */
+	HasSim int `json:"hasSim"`
+
+	/**
+	 * 型号
+	 */
+	Model string `json:"model"`
+
+	/**
+	 * 投屏状态判断
+	 */
+	IsShareScreen int `json:"isShareScreen"`
+
+	/**
+	 * 网络连接类型
+	 */
+	NetworkType int `json:"networkType"`
+
+	/**
+	 * 当前电量信息
+	 */
+	BatteryLevel int `json:"batteryLevel"`
+
+	/**
+	 * 设备广告ID
+	 */
+	Oaid string `json:"oaid"`
+
+	/**
+	 * 设备类型
+	 */
+	DeviceType int `json:"deviceType"`
+
+	/**
+	 * 设备cpu信息
+	 */
+	CpuInfo string `json:"cpuInfo"`
+
+	/**
+	 * 设备sd卡总内存大小
+	 */
+	SdTotal string `json:"sdTotal"`
+
+	/**
+	 * 设备总内存大小
+	 */
+	MemTotal string `json:"memTotal"`
+
+	/**
+	 * 设备语言设置
+	 */
+	Language string `json:"language"`
+
+	/**
+	 * 设备当前地区设置
+	 */
+	UserRegion string `json:"userRegion"`
+
+	/**
+	 * 设备厂商信息
+	 */
+	ProductManufacturer string `json:"productManufacturer"`
+
+	/**
+	 * 设备系统名称
+	 */
+	ProductOs string `json:"productOs"`
+
+	/**
+	 * 应用广告ID
+	 */
+	Aaid string `json:"aaid"`
+
+	/**
+	 * 设备ROM信息
+	 */
+	Rom string `json:"rom"`
+
+	/**
+	 * 运营商设备标识
+	 */
+	Uaid string `json:"uaid"`
+}
+
+// IOS设备信息
+type IRiskIosDeviceInfoResponse struct {
+	/**
+	 * 开机时间
+	 */
+	BootTime string `json:"bootTime"`
+
+	/**
+	 * 硬盘大小，单位字节
+	 */
+	TotalDiskSpace string `json:"totalDiskSpace"`
+
+	/**
+	 * 非完美越狱失效状态
+	 */
+	Auxo int `json:"auxo"`
+
+	/**
+	 * mac序列号
+	 */
+	MacSerialnumber string `json:"macSerialnumber"`
+
+	/**
+	 * 0:未开启电池权限
+	 */
+	ChargeStatus string `json:"chargeStatus"`
+
+	/**
+	 * 客户端本地随机生成的设备ID
+	 */
+	DeviceId string `json:"deviceId"`
+
+	/**
+	 * 是否安装CydiaSubstrate
+	 */
+	IsCydiaSubstrate int `json:"isCydiaSubstrate"`
+
+	/**
+	 * 是否有反越狱插件
+	 */
+	IsAntiJailbreak int `json:"isAntiJailbreak"`
+
+	/**
+	 * 总内存，单位字节
+	 */
+	TotalMemory string `json:"totalMemory"`
+
+	/**
+	 * 手机操作系统版本
+	 */
+	OsVersion string `json:"osVersion"`
+
+	/**
+	 * 运营商名称
+	 */
+	CarrierName string `json:"carrierName"`
+
+	/**
+	 * 手机型号
+	 */
+	Model string `json:"model"`
+
+	/**
+	 * 当前电量信息
+	 */
+	BatteryLevel string `json:"batteryLevel"`
+
+	/**
+	 * 设备名称
+	 */
+	DeviceName string `json:"deviceName"`
+
+	/**
+	 * iOS设备标识符
+	 */
+	Idfv string `json:"idfv"`
+
+	/**
+	 * 运营商设备标识
+	 */
+	Uaid string `json:"uaid"`
+
+	/**
+	 * cpu 使用率
+	 */
+	CpuUseRate string `json:"cpuUseRate"`
+
+	/**
+	 * 网络连接类型
+	 */
+	NetworkType int `json:"networkType"`
+
+	/**
+	 * 动态加载库
+	 */
+	LoadedDyLibsInfo []string `json:"loadedDyLibsInfo"`
+
+	/**
+	 * 设备的屏幕宽度
+	 */
+	ScreenWidth string `json:"screenWidth"`
+
+	/**
+	 * 设备的屏幕高度
+	 */
+	ScreenHeight string `json:"screenHeight"`
+}
+
+// PC设备信息
+type IRiskPcDeviceInfoResponse struct {
+	/**
+	 * 设备物理地址
+	 */
+	Mac string `json:"mac"`
+
+	/**
+	 * 设备标识符
+	 */
+	Guid string `json:"guid"`
+
+	/**
+	 * 设备系统版本
+	 */
+	OsVersion string `json:"osVersion"`
+
+	/**
+	 * 屏幕分辨率
+	 */
+	ScreenResolution string `json:"screenResolution"`
+
+	/**
+	 * 操作系统型号信息
+	 */
+	OsType string `json:"osType"`
+
+	/**
+	 * 计算机名
+	 */
+	ComputerName string `json:"computerName"`
+
+	/**
+	 * 设备制造商
+	 */
+	Manufacturer string `json:"manufacturer"`
+
+	/**
+	 * 操作系统名称
+	 */
+	OsName string `json:"osName"`
+}
+
+// web设备信息
+type IRiskWebDeviceInfoResponse struct {
+
+	/**
+	 * web类型
+	 */
+	RunEnvType int `json:"runEnvType"`
+
+	/**
+	 * 浏览器标识信息
+	 */
+	UserAgent string `json:"userAgent"`
+
+	/**
+	 * 浏览器的语言设置
+	 */
+	Language string `json:"language"`
+
+	/**
+	 * 浏览器所在设备的系统类型
+	 */
+	Platform string `json:"platform"`
+
+	/**
+	 * 地址栏当前url
+	 */
+	Url string `json:"url"`
+
+	/**
+	 * 屏幕尺寸
+	 */
+	ScreenResolution string `json:"screenResolution"`
+
+	/**
+	 * 运营商设备标识
+	 */
+	Uaid string `json:"uaid"`
+}
+
+// 小程序设备信息
+type IRiskAppletDeviceInfoResponse struct {
+	/**
+	 * 当前小程序所在设备的联网类型
+	 */
+	NetworkType string `json:"networkType"`
+
+	/**
+	 * 运行小程序的设备的品牌
+	 */
+	Brand string `json:"brand"`
+
+	/**
+	 * 运行小程序的系统的平台类型
+	 */
+	Platform string `json:"platform"`
+
+	/**
+	 * 小程序版本号
+	 */
+	Version string `json:"version"`
+
+	/**
+	 * 小程序类型
+	 */
+	Type int `json:"type"`
+
+	/**
+	 * 运营商设备标识
+	 */
+	Uaid string `json:"uaid"`
+}
+
+// Harmony设备信息
+type IRiskHarmonyDeviceInfoResponse struct {
+	/**
+	 * 设备广告ID
+	 */
+	Oaid string `json:"oaid"`
+
+	/**
+	 * 应用广告ID
+	 */
+	Aaid string `json:"aaid"`
+
+	/**
+	 * 屏幕信息
+	 */
+	SceneInfo string `json:"sceneInfo"`
+
+	/**
+	 * 设备cpu信息
+	 */
+	CpuInfo string `json:"cpuInfo"`
+
+	/**
+	 * 内部存储空间大小
+	 */
+	MemTotal string `json:"memTotal"`
+
+	/**
+	 * 内部可用存储空间大小
+	 */
+	MemFree string `json:"memFree"`
+
+	/**
+	 * 设备语言设置
+	 */
+	Language string `json:"language"`
+
+	/**
+	 * 硬件设备类型，是平板、电视还是手机
+	 */
+	DeviceType string `json:"deviceType"`
+
+	/**
+	 * 设备系统版本
+	 */
+	OsVersion string `json:"osVersion"`
+
+	/**
+	 * 运营商设备标识
+	 */
+	Uaid string `json:"uaid"`
+}

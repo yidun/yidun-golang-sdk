@@ -5,6 +5,8 @@ import (
 	"log"
 	"time"
 
+	"encoding/json"
+
 	"github.com/yidun/yidun-golang-sdk/yidun/service/irisk"
 )
 
@@ -53,6 +55,20 @@ func main() {
 		fmt.Println("PhoneInfo:", data.PhoneInfo)
 		fmt.Println("IpInfo:", data.IpInfo)
 		fmt.Println("Evidences:", data.Evidences)
+
+		// deviceInfoAndroid: if Android then
+		deviceInfoAndroid := &irisk.IRiskAndroidDeviceInfoResponse{}
+		// deviceInfoIos: if Ios then
+		// deviceInfoIos := &irisk.IRiskIosDeviceInfoResponse{}
+		// other deviceInfo ...
+		jsonDeviceInfoData, hasErr := json.Marshal(data.DeviceInfo)
+		if hasErr == nil {
+			parseErr := json.Unmarshal(jsonDeviceInfoData, deviceInfoAndroid)
+			if parseErr == nil {
+				fmt.Println("deviceInfo -- CarrierName:", deviceInfoAndroid.CarrierName)
+			}
+		}
+
 	} else {
 		fmt.Println("error code: ", response.GetCode())
 		fmt.Println("error msg: ", response.GetMsg())
