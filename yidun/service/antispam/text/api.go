@@ -4,6 +4,7 @@ import (
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/query"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v2/feedback"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/callback"
+    "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v1/similar"
 	asyncBatch "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/check/async/batch"
 	async "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/check/async/single"
 	syncBatch "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/check/sync/batch"
@@ -57,4 +58,10 @@ func (c *TextClient) QueryTaskIds(req *query.TextTaskIdsQueryRequest) (res *quer
 	res = &query.TextTaskIdsQueryResponse{}
 	err = c.Client.DoExecute(req, res)
 	return
+}
+
+// SimilarTextSubmit 相似文本添加
+func (c *TextClient) SimilarTextSubmit(req *similar.SimilarTextSubmitRequest) (res *similar.SimilarTextSubmitResponse, err error) {
+    res = &similar.SimilarTextSubmitResponse{}
+    err = c.Client.DoExecute(req, res)return
 }
