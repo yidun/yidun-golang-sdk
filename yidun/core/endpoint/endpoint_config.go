@@ -225,6 +225,10 @@ var (
 			"as.dun.163.com",
 			"as.dun.163yun.com"
 		  ],
+		  "cn-beijing": [
+            "as-image-bj.dun.163.com",
+            "as-image-bj.dun.163yun.com"
+          ],
 		  "sg-singapore": [
 			"as-image-sg.dun.163yun.com",
 			"as-image-sg.dun.163.com"
@@ -239,6 +243,10 @@ var (
 			"as.dun.163.com",
 			"as.dun.163yun.com"
 		  ],
+		  "cn-beijing": [
+             "as-image-bj.dun.163.com",
+             "as-image-bj.dun.163yun.com"
+          ],
           "sg-singapore": [
             "as-image-sg.dun.163.com",
             "as-image-sg.dun.163yun.com"
