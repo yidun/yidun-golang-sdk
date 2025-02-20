@@ -1,6 +1,7 @@
 package response
 
 import (
+	"encoding/json"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/audio/callback/v4/response"
 	response2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/video/callback/v4/response"
 )
@@ -107,7 +108,7 @@ type CallbackImageLabel struct {
 	SubLabels *[]ImageSubLabelResp `json:"subLabels,omitempty"`
 }
 type ImageSubLabelResp struct {
-	SubLabel      *string          `json:"subLabel,omitempty"`      // 对外的图片label
+	SubLabel      *json.Number     `json:"subLabel,omitempty"`      // 对外的图片label
 	SubLabelDepth *int             `json:"subLabelDepth,omitempty"` // 命中的最终细分类的层级
 	SecondLabel   *string          `json:"secondLabel,omitempty"`   // 二级分类，必返回
 	ThirdLabel    *string          `json:"thirdLabel,omitempty"`    // 三级分类，可能返回
