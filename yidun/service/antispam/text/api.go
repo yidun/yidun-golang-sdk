@@ -63,5 +63,6 @@ func (c *TextClient) QueryTaskIds(req *query.TextTaskIdsQueryRequest) (res *quer
 // SimilarTextSubmit 相似文本添加
 func (c *TextClient) SimilarTextSubmit(req *similar.SimilarTextSubmitRequest) (res *similar.SimilarTextSubmitResponse, err error) {
     res = &similar.SimilarTextSubmitResponse{}
-    err = c.Client.DoExecute(req, res)return
+    err = c.Client.DoExecute(req, res)
+    return
 }
