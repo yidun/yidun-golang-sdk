@@ -96,6 +96,7 @@ type Antispam struct {
 	ResultType       *int               `json:"resultType"`
 	CensorType       *int               `json:"censorType"`
 	Callback         *string            `json:"callback"`
+	PublicOpinionInfo  *string          `json:"publicOpinionInfo"`
 	CensorLabels     []*CensorLabel     `json:"censorLabels"`
 	StrategyVersions []*StrategyVersion `json:"strategyVersions"`
 	CensorSource     *int               `json:"censorSource"`
