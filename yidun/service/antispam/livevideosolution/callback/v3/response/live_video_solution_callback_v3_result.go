@@ -86,6 +86,7 @@ type VideoEvidence struct {
 	FrontPics  *[]RelatedPicInfo `json:"frontPics,omitempty"`
 	PictureID  *string           `json:"pictureId,omitempty"`
 	SpeakerRiskScore *int        `json:"speakerRiskScore,omitempty"`
+	PublicOpinionInfo  *string   `json:"publicOpinionInfo,omitempty"`
 }
 
 type RelatedPicInfo struct {
