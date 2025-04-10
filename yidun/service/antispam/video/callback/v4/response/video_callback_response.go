@@ -16,5 +16,5 @@ type VideoCallbackV4Result struct {
 	Logo     *VideoCallbackLogoV4Response     `json:"logo,omitempty"`     // 视频logo识别结果
 	Quality  *VideoCallbackQualityV4Response  `json:"quality,omitempty"`  // 视频质量检测结果
 	Face     *VideoCallbackFaceV4Response     `json:"face,omitempty"`     // 视频人脸识别结果
-
+	Ad       *VideoCallbackAdV4Response       `json:"ad,omitempty"`       // 视频广告检测结果
 }

@@ -16,4 +16,5 @@ type AudioCallbackV4Result struct {
 	Language *AudioLanguageCallbackV4Response `json:"language,omitempty"` // 音频语种检测结果
 	Quality  *AudioQualityCallbackV4Response  `json:"quality,omitempty"`  // 音频质量检测结果
 	Voice    *AudioVoiceCallbackV4Response    `json:"voice,omitempty"`    // 音频语音检测结果
+	Ad       *AudioAdCallbackV4Response       `json:"ad,omitempty"`       // 音频广告检测结果
 }

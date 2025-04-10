@@ -22,9 +22,14 @@ type VideoSolutionCallbackV2Result struct {
 	Logo     *response2.VideoCallbackLogoV4Response    `json:"logo,omitempty"`
 	Face     *response2.VideoCallbackFaceV4Response    `json:"face,omitempty"`
 	Quality  *VideoSolutionQualityCallbackV2Response   `json:"quality,omitempty"`
+	Ad       *VideoSolutionAdCallbackV4Response        `json:"ad,omitempty"`
 }
 
 type VideoSolutionQualityCallbackV2Response struct {
 	Audio *response.AudioQualityCallbackV4Response  `json:"audio,omitempty"`
 	Video *response2.VideoCallbackQualityV4Response `json:"video,omitempty"`
+}
+type VideoSolutionAdCallbackV4Response struct {
+	Audio *response.AudioAdCallbackV4Response       `json:"audio,omitempty"`
+	Video *response2.VideoCallbackAdV4Response      `json:"video,omitempty"`
 }

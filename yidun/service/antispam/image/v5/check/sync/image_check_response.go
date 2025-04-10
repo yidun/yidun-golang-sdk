@@ -20,6 +20,8 @@ type ImageV5Result struct {
 	Logo *ImageV5LogoResp `json:"logo,omitempty"`
 	// 图片识别结果
 	Discern *ImageV5DiscernResp `json:"discern,omitempty"`
+	// 图片广告识别结果
+	Ad *ImageV5AdResp `json:"ad,omitempty"`
 	// 用户画像结果
 	UserRisk *ImageV5UserRiskResp `json:"userRisk,omitempty"`
 	// 反作弊结果
@@ -333,6 +335,13 @@ type ImageV5DiscernResp struct {
 	Details []*ImageV5DiscernDetail `json:"details,omitempty"` // 质量检测结果
 }
 
+type ImageV5AdResp struct {
+	TaskId  *string                 `json:"taskId,omitempty"`  // 即易盾生成的uuid，唯一标识一张图片
+	Name    *string                 `json:"name,omitempty"`    // 产品方传的图片标识，原样返回
+	DataId  *string                 `json:"dataId,omitempty"`  // 客户图片唯一标识
+	Details []*ImageV5AdDetail      `json:"details,omitempty"` // 广告检测结果
+}
+
 type ImageV5DiscernDetail struct {
 	Type        *int     `json:"type,omitempty"`        // 识别物体类型 1 场景
 	DiscernName *string  `json:"discernName,omitempty"` // 识别名称
@@ -340,6 +349,12 @@ type ImageV5DiscernDetail struct {
 	Rate        *float32 `json:"rate,omitempty"`        // 分数
     Label       *string  `json:"label,omitempty"`       // 大模型识别标签
     Explain     *string  `json:"explain,omitempty"`     // 大模型识别解释
+}
+
+type ImageV5AdDetail struct {
+	Type        *int     `json:"type,omitempty"`        // 广告识别类型:1 聊天截屏,2 手机商品图,3 诱导按键,4:广告表情包,5:图片弹窗,6:重复图片
+	Note        *string  `json:"note,omitempty"`        // 广告识别标识，当type为6表示重复图片时，note为图片md5码
+	Rate        *float32 `json:"rate,omitempty"`        // 广告识别分数
 }
 
 type ImageV5UserRiskResp struct {
