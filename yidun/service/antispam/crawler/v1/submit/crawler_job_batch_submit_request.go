@@ -30,6 +30,8 @@ type CrawlerJobWebSite struct {
 	UrlFilters *[]CrawlerUrlFilter `json:"urlFilters,omitempty"`
 	// 用户账号
 	Account *string `json:"account,omitempty"`
+	// 自定义扩展参数，JSON字符串格式。如："{"keyName1":"value1","keyName2":"value2"}"
+	Extension *string `json:"extension,omitempty"`
 }
 
 // For ImageV5CheckRequest
@@ -68,9 +70,12 @@ func (c *CrawlerJobWebSite) SetUrlFilters(urlFilters []CrawlerUrlFilter) {
 	c.UrlFilters = &urlFilters
 }
 
-// 设置用户账号
 func (c *CrawlerJobWebSite) SetAccount(account string) {
 	c.Account = &account
+}
+
+func (c *CrawlerJobWebSite) SetExtension(extension string) {
+	c.Extension = &extension
 }
 
 func (c *CrawlerJobBatchSubmitV1Request) GetBusinessCustomSignParams() map[string]string {

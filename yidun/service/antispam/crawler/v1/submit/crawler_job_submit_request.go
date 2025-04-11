@@ -23,8 +23,12 @@ type CrawlerJobSubmitV1Request struct {
 	FocusList *[]string `json:"focusList,omitempty"`
 	// URL过滤条件集
 	UrlFilters *[]CrawlerUrlFilter `json:"urlFilters,omitempty"`
+	// 业务指定过检策略组id
+	CheckStrategyGroupIds *[]int64 `json:"checkStrategyGroupIds,omitempty"`
 	// 用户账号
 	Account *string `json:"account,omitempty"`
+	// 自定义扩展参数，JSON字符串格式。如："{"keyName1":"value1","keyName2":"value2"}"
+	Extension *string `json:"extension,omitempty"`
 }
 
 // For ImageV5CheckRequest
@@ -59,9 +63,16 @@ func (c *CrawlerJobSubmitV1Request) SetUrlFilters(urlFilters []CrawlerUrlFilter)
 	c.UrlFilters = &urlFilters
 }
 
-// 设置用户账号
+func (c *CrawlerJobSubmitV1Request) SetCheckStrategyGroupIds(checkStrategyGroupIds []int64) {
+	c.CheckStrategyGroupIds = &checkStrategyGroupIds
+}
+
 func (c *CrawlerJobSubmitV1Request) SetAccount(account string) {
 	c.Account = &account
+}
+
+func (c *CrawlerJobSubmitV1Request) SetExtension(extension string) {
+	c.Extension = &extension
 }
 
 func (c *CrawlerJobSubmitV1Request) GetBusinessCustomSignParams() map[string]string {
@@ -120,8 +131,16 @@ func (c *CrawlerJobSubmitV1Request) GetBusinessCustomSignParams() map[string]str
 		checkFlagsJson, _ := json.Marshal(c.CheckFlags)
 		data["checkFlags"] = strings.Trim(string(checkFlagsJson), "[]")
 	}
+	if c.CheckStrategyGroupIds != nil {
+		checkStrategyGroupIdsJson, _ := json.Marshal(c.CheckStrategyGroupIds)
+		data["checkStrategyGroupIds"] = strings.Trim(string(checkStrategyGroupIdsJson), "[]")
+	}
 	if c.Account != nil {
 		data["account"] = *c.Account
 	}
+	if c.Extension != nil {
+		data["extension"] = *c.Extension
+	}
+
 	return data
 }

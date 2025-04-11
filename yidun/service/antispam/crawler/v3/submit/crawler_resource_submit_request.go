@@ -28,6 +28,10 @@ type CrawlerResourceSubmitV3Request struct {
 	Content *string `json:"content,omitempty"`
 	// 类型检测数据配置
 	Config *string `json:"config,omitempty"`
+	// 业务指定过检策略组id
+	CheckStrategyGroupIds *[]int64 `json:"checkStrategyGroupIds,omitempty"`
+	// 自定义扩展参数，JSON字符串格式。如："{"keyName1":"value1","keyName2":"value2"}"
+	Extension *string `json:"extension,omitempty"`
 }
 
 // For ImageV5CheckRequest
@@ -74,6 +78,14 @@ func (c *CrawlerResourceSubmitV3Request) SetConfig(config string) {
 	c.Config = &config
 }
 
+func (c *CrawlerResourceSubmitV3Request) SetCheckStrategyGroupIds(checkStrategyGroupIds []int64) {
+	c.CheckStrategyGroupIds = &checkStrategyGroupIds
+}
+
+func (c *CrawlerResourceSubmitV3Request) SetExtension(extension string) {
+	c.Extension = &extension
+}
+
 func (c *CrawlerResourceSubmitV3Request) GetBusinessCustomSignParams() map[string]string {
 	result := c.PostFormRequest.GetBusinessCustomSignParams()
 
@@ -101,6 +113,13 @@ func (c *CrawlerResourceSubmitV3Request) GetBusinessCustomSignParams() map[strin
 	}
 	if c.Config != nil {
 		result["config"] = *c.Config
+	}
+	if c.CheckStrategyGroupIds != nil {
+		checkStrategyGroupIdsJson, _ := json.Marshal(c.CheckStrategyGroupIds)
+		result["checkStrategyGroupIds"] = strings.Trim(string(checkStrategyGroupIdsJson), "[]")
+	}
+	if c.Extension != nil {
+		result["extension"] = *c.Extension
 	}
 	return result
 }

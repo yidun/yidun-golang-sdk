@@ -21,10 +21,11 @@ func main() {
 	request.SetLevel(-1)
 	request.SetMaxResourceAmount(10)
 	request.SetType(0)
-	request.SetSliceStartTime(1709604245000)
-	request.SetSliceEndTime(1709604335000)
+	request.SetSliceStartTime(1744343910000)
+	request.SetSliceEndTime(1744430310000)
 	request.SetCheckStrategy(2)
 	request.SetCheckFlags([]int{1, 2})
+	request.SetExtension("{\"mission\":123}")
 
 	// 实例化一个crawlerClient，入参需要传入易盾内容安全分配的secretId，secretKey
 	crawlerSubmitClient := crawler.NewCrawlerClientWithAccessKey("YOUR_SECRET_ID", "YOUR_SECRET_KEY")

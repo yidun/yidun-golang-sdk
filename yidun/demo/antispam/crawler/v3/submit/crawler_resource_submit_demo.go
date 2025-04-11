@@ -15,12 +15,13 @@ func main() {
 	// 构造crawler resource submit请求对象
 	request := submit.NewCrawlerResourceV3SubmitRequest()
 
-	url := "http://xxxxxxxx"
+	url := "https://news.163.com"
 	request.SetUrl(url)
 	request.SetCheckFlags([]int{1, 2})
 	request.SetDataId("dataId_" + url)
 	request.SetCallback("callback_" + url)
 	request.SetCallbackUrl("http://xxxxxx.com/callback/receive")
+	request.SetExtension("{\"mission\":123}")
 
 	// 实例化一个crawlerClient，入参需要传入易盾内容安全分配的secretId，secretKey
 	crawlerSubmitClient := crawler.NewCrawlerClientWithAccessKey("YOUR_SECRET_ID", "YOUR_SECRET_KEY")
