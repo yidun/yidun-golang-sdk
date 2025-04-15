@@ -77,6 +77,10 @@ type ImageV5AntispamResp struct {
 	ImgMd5 *string `json:"imgMd5,omitempty"`
 	//转存地址
 	Url *string `json:"url,omitempty"`
+    // 建议风险等级
+    suggestionRiskLevel *int `json:"suggestionRiskLevel,omitempty"`
+    //专项信息
+    publicOpinionInfo *string `json:"publicOpinionInfo,omitempty"`
 }
 
 type ImageV5VersionDetail struct {
