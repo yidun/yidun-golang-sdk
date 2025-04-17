@@ -10,6 +10,8 @@ type AudioAntispamCallbackV4Response struct {
 	Remark          *string            `json:"remark,omitempty"`          // 人审标签
 	FailureReason   *int               `json:"failureReason,omitempty"`   // 检测失败原因，当检测失败时返回
 	Suggestion      *int               `json:"suggestion,omitempty"`      // 建议结果 0-通过 1-嫌疑 2-删除
+	PublicOpinionInfo *string          `json:"publicOpinionInfo,omitempty"` //专项信息标签名
+	SuggestionRiskLevel *int           `json:"suggestionRiskLevel,omitempty"` //建议风险等级
 	SuggestionLevel *int               `json:"suggestionLevel,omitempty"` // 嫌疑级别，只有 suggestion 为嫌疑时才返回 1-低嫌疑，2-高嫌疑
 	ResultType      *int               `json:"resultType,omitempty"`      // 结果类型 1-机器结果 2-人审结果
 	Callback        *string            `json:"callback,omitempty"`        // 提交时传递的回调参数
@@ -46,6 +48,7 @@ type AudioSubLabel struct {
 	SubLabelDepth *int      `json:"subLabelDepth,omitempty"`
 	SecondLabel   *string   `json:"secondLabel,omitempty"`
 	ThirdLabel    *string   `json:"thirdLabel,omitempty"`
+	SuggestionRiskLevel *int `json:"suggestionRiskLevel,omitempty"`
 	Details       *HintInfo `json:"details,omitempty"` // 其他信息
 }
 
