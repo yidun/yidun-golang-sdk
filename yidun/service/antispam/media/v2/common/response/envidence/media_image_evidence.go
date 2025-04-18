@@ -4,6 +4,7 @@ type MediaImageEvidence struct {
 	// 融媒体机审-图片证据信息
 	Status        *int              `json:"status,omitempty"` // 检测结果，0 未开始、1检测中、2检测成功、3检测失败
 	Suggestion    *int              `json:"suggestion,omitempty"`
+	PublicOpinionInfo *string       `json:"publicOpinionInfo,omitempty"`
 	ResultType    *int              `json:"resultType,omitempty"`
 	FrameSize     *int              `json:"frameSize,omitempty"`
 	CensorType    *int              `json:"censorType,omitempty"`
@@ -30,6 +31,7 @@ type ImageSubLabel struct {
 	SubLabelDepth *int                 `json:"subLabelDepth,omitempty"`
 	SecondLabel   *string              `json:"secondLabel,omitempty"`
 	ThirdLabel    *string              `json:"thirdLabel,omitempty"`
+	SuggestionRiskLevel *int           `json:"suggestionRiskLevel,omitempty"`
 }
 
 // Getter and Setter for MediaImageEvidence

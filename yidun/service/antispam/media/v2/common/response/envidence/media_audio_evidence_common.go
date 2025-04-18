@@ -3,6 +3,7 @@ package envidence
 type MediaAudioEvidenceCommon struct {
 	// 融媒体机审-音频证据公共信息
 	Suggestion    *int            `json:"suggestion,omitempty"`
+	PublicOpinionInfo *string      `json:"publicOpinionInfo,omitempty"`
 	Status        *int            `json:"status,omitempty"`
 	FailureReason *int            `json:"failureReason,omitempty"` // 失败原因
 	ResultType    *int            `json:"resultType,omitempty"`

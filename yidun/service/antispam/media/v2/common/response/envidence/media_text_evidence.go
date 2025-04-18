@@ -5,6 +5,7 @@ type MediaTextEvidence struct {
 	DataId           *string            `json:"dataId,omitempty"`
 	Field            *string            `json:"field,omitempty"`
 	Suggestion       *int               `json:"suggestion,omitempty"` // 检测结果，0：通过，1：嫌疑，2：不通过
+	PublicOpinionInfo *string           `json:"publicOpinionInfo,omitempty"`
 	ResultType       *int               `json:"resultType,omitempty"`
 	CensorType       *int               `json:"censorType,omitempty"`
 	StrategyVersions []*StrategyVersion `json:"strategyVersions,omitempty"`
@@ -27,6 +28,7 @@ type TextSubLabel struct {
 	SubLabelDepth *int                `json:"subLabelDepth,omitempty"`
 	SecondLabel   *string             `json:"secondLabel,omitempty"`
 	ThirdLabel    *string             `json:"thirdLabel,omitempty"`
+	SuggestionRiskLevel *int          `json:"suggestionRiskLevel,omitempty"`
 }
 
 type StrategyVersion struct {

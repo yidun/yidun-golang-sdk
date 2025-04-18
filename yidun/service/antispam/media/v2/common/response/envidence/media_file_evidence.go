@@ -8,6 +8,7 @@ type MediaFileEvidence struct {
 	Status        *int                `json:"status,omitempty"`
 	Details       []*Detail           `json:"details,omitempty"` // 压缩包中的内容
 	Suggestion    *int                `json:"suggestion,omitempty"`
+	PublicOpinionInfo *string         `json:"publicOpinionInfo,omitempty"`
 	FailureReason *int                `json:"failureReason,omitempty"` // 失败原因
 	Evidences     *FileEvidenceResult `json:"evidences,omitempty"`
 }
@@ -52,6 +53,7 @@ type TextEvidenceSubLabel struct {
 	SubLabelDepth *int                `json:"subLabelDepth,omitempty"`
 	SecondLabel   *string             `json:"secondLabel,omitempty"`
 	ThirdLabel    *string             `json:"thirdLabel,omitempty"`
+	SuggestionRiskLevel *int          `json:"suggestionRiskLevel,omitempty"`
 	Details       *TextSubLabelDetail `json:"details,omitempty"`
 }
 
@@ -78,6 +80,7 @@ type ImageEvidenceLabelSubLabel struct {
 	SubLabelDepth *int                 `json:"subLabelDepth,omitempty"`
 	SecondLabel   *string              `json:"secondLabel,omitempty"`
 	ThirdLabel    *string              `json:"thirdLabel,omitempty"`
+	SuggestionRiskLevel *int           `json:"suggestionRiskLevel,omitempty"`
 	Rate          *float64             `json:"rate,omitempty"`
 	Details       *ImageSubLabelDetail `json:"details,omitempty"`
 }

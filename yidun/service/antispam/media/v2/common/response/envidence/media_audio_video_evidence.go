@@ -5,6 +5,7 @@ type MediaAudioVideoEvidence struct {
 	DataId        *string                        `json:"dataId,omitempty"`
 	Field         *string                        `json:"field,omitempty"`
 	Suggestion    *int                           `json:"suggestion,omitempty"`
+	PublicOpinionInfo *string                    `json:"publicOpinionInfo,omitempty"`
 	Status        *int                           `json:"status,omitempty"`
 	ResultType    *int                           `json:"resultType,omitempty"`
 	FailureReason *int                           `json:"failureReason,omitempty"` // 失败原因
@@ -55,6 +56,7 @@ type AudioSubLabel struct {
 	SubLabelDepth *int                 `json:"subLabelDepth,omitempty"`
 	SecondLabel   *string              `json:"secondLabel,omitempty"`
 	ThirdLabel    *string              `json:"thirdLabel,omitempty"`
+	SuggestionRiskLevel *int           `json:"suggestionRiskLevel,omitempty"`
 	Rate          *float64             `json:"rate,omitempty"`
 	Details       *ImageSubLabelDetail `json:"details,omitempty"`
 }
