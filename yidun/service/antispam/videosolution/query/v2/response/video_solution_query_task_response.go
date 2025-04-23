@@ -25,6 +25,7 @@ type VideoSolutionQueryTaskV2Result struct {
 	Discern  response3.VideoCallbackDiscernV4Response         `json:"discern,omitempty"`
 	Logo     response3.VideoCallbackLogoV4Response            `json:"logo,omitempty"`
 	Face     response3.VideoCallbackFaceV4Response            `json:"face,omitempty"`
+	Aigc     response3.VideoCallbackAigcV4Response            `json:"aigc,omitempty"`
 	Quality  response4.VideoSolutionQualityCallbackV2Response `json:"quality,omitempty"`
 	Ad       response4.VideoSolutionAdCallbackV4Response      `json:"ad,omitempty"`
 }

@@ -21,6 +21,7 @@ type VideoSolutionCallbackV2Result struct {
 	Discern  *response2.VideoCallbackDiscernV4Response `json:"discern,omitempty"`
 	Logo     *response2.VideoCallbackLogoV4Response    `json:"logo,omitempty"`
 	Face     *response2.VideoCallbackFaceV4Response    `json:"face,omitempty"`
+	Aigc     *response2.VideoCallbackAigcV4Response    `json:"aigc,omitempty"`
 	Quality  *VideoSolutionQualityCallbackV2Response   `json:"quality,omitempty"`
 	Ad       *VideoSolutionAdCallbackV4Response        `json:"ad,omitempty"`
 }
