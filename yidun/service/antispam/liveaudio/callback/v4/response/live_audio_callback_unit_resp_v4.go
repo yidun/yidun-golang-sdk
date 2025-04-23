@@ -2,9 +2,11 @@ package response
 
 type LiveAudioCallbackUnitRespV4 struct {
 	Suggestion       *int                `json:"suggestion,omitempty"`
+	PublicOpinionInfo *string            `json:"publicOpinionInfo,omitempty"`
 	Label            *int                `json:"label,omitempty"`
 	SecondLabel      *string             `json:"secondLabel,omitempty"`
 	ThirdLabel       *string             `json:"thirdLabel,omitempty"`
+	SuggestionRiskLevel *int             `json:"suggestionRiskLevel,omitempty"`
 	SuggestionLevel  *int                `json:"suggestionLevel,omitempty"`
 	StartTime        *int64              `json:"startTime,omitempty"`
 	EndTime          *int64              `json:"endTime,omitempty"`
@@ -36,6 +38,7 @@ type AudioThirdLabel struct {
 	SubLabel      *string     `json:"subLabel,omitempty"`
 	SecondLabel   *string     `json:"secondLabel,omitempty"`
 	ThirdLabel    *string     `json:"thirdLabel,omitempty"`
+	SuggestionRiskLevel *int  `json:"suggestionRiskLevel,omitempty"`
 	SubLabelDepth *int        `json:"subLabelDepth,omitempty"`
 	Rate          *float64    `json:"rate,omitempty"`
 }
