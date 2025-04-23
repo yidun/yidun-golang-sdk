@@ -239,6 +239,8 @@ type FaceLineContent struct {
 	GrowthStage *string `json:"growthStage,omitempty"`
 	// 人脸角度list
 	PoseInfoList *[]FacePoseInfo `json:"poseInfoList,omitempty"`
+	// 未成年人
+    Minor *int `json:"minor,omitempty"`
 }
 
 type FacePoseInfo struct {
