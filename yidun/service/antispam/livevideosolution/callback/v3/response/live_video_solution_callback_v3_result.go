@@ -29,6 +29,7 @@ type LiveVideoSolutionCallbackAntispamV3Result struct {
 	Status          *int                              `json:"status,omitempty"`
 	Time            *int64                            `json:"time,omitempty"`
 	CensorSource    *int                              `json:"censorSource,omitempty"`
+	OperationSource    *int                              `json:"operationSource,omitempty"`
 	FailureReason   *int                              `json:"failureReason,omitempty"` // 检测失败原因，当检测失败时返回，1：下载失败，2：直播流不存在，3：解析失败，4：格式错误
 	Evidences       *LiveSolutionDataCallbackResult   `json:"evidences,omitempty"`
 	ReviewEvidences *LiveSolutionCensorCallbackResult `json:"reviewEvidences,omitempty"`
