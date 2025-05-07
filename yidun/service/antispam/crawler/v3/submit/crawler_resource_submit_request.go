@@ -32,6 +32,8 @@ type CrawlerResourceSubmitV3Request struct {
 	CheckStrategyGroupIds *[]int64 `json:"checkStrategyGroupIds,omitempty"`
 	// 自定义扩展参数，JSON字符串格式。如："{"keyName1":"value1","keyName2":"value2"}"
 	Extension *string `json:"extension,omitempty"`
+	// 账号
+	Account *string `json:"account,omitempty"`
 }
 
 // For ImageV5CheckRequest
@@ -86,6 +88,10 @@ func (c *CrawlerResourceSubmitV3Request) SetExtension(extension string) {
 	c.Extension = &extension
 }
 
+func (c *CrawlerResourceSubmitV3Request) SetAccount(account string) {
+	c.Account = &account
+}
+
 func (c *CrawlerResourceSubmitV3Request) GetBusinessCustomSignParams() map[string]string {
 	result := c.PostFormRequest.GetBusinessCustomSignParams()
 
@@ -120,6 +126,9 @@ func (c *CrawlerResourceSubmitV3Request) GetBusinessCustomSignParams() map[strin
 	}
 	if c.Extension != nil {
 		result["extension"] = *c.Extension
+	}
+	if c.Account != nil {
+		result["account"] = *c.Account
 	}
 	return result
 }
