@@ -96,13 +96,15 @@ type EvidenceResult struct {
 
 // 文本反垃圾机审结果证据
 type TextEvidence struct {
-	TaskId     *string              `json:"taskId,omitempty"`
-	Sequence   *int                 `json:"sequence,omitempty"`
-	StartText  *string              `json:"startText,omitempty"`
-	EndText    *string              `json:"endText,omitempty"`
-	Suggestion *int                 `json:"suggestion,omitempty"`
-	Labels     []*TextEvidenceLabel `json:"labels,omitempty"`
-	Page       *int                 `json:"page,omitempty"`
+	TaskId              *string              `json:"taskId,omitempty"`
+	Sequence            *int                 `json:"sequence,omitempty"`
+	StartText           *string              `json:"startText,omitempty"`
+	EndText             *string              `json:"endText,omitempty"`
+	Suggestion          *int                 `json:"suggestion,omitempty"`
+	SuggestionRiskLevel *int                 `json:"suggestionRiskLevel,omitempty"`
+	PublicOpinionInfo   *string              `json:"publicOpinionInfo,omitempty"`
+	Labels              []*TextEvidenceLabel `json:"labels,omitempty"`
+	Page                *int                 `json:"page,omitempty"`
 }
 
 // 文本反垃圾机审结果证据标签
@@ -161,12 +163,14 @@ type RuleInfo struct {
 
 // ImageEvidence 图片证据
 type ImageEvidence struct {
-	TaskId     *string               `json:"taskId,omitempty"`
-	Sequence   *int                  `json:"sequence,omitempty"`
-	ImageUrl   *string               `json:"imageUrl,omitempty"`
-	Suggestion *int                  `json:"suggestion,omitempty"`
-	Labels     []*ImageEvidenceLabel `json:"labels,omitempty"`
-	Page       *int                  `json:"page,omitempty"`
+	TaskId              *string               `json:"taskId,omitempty"`
+	Sequence            *int                  `json:"sequence,omitempty"`
+	ImageUrl            *string               `json:"imageUrl,omitempty"`
+	Suggestion          *int                  `json:"suggestion,omitempty"`
+	SuggestionRiskLevel *int                  `json:"suggestionRiskLevel,omitempty"`
+	PublicOpinionInfo   *string               `json:"publicOpinionInfo,omitempty"`
+	Labels              []*ImageEvidenceLabel `json:"labels,omitempty"`
+	Page                *int                  `json:"page,omitempty"`
 }
 
 // ImageEvidenceLabel 图片证据标签
@@ -293,13 +297,15 @@ type VideoEvidence struct {
 
 // VideoEvidencePictures 视频证据图片
 type VideoEvidencePictures struct {
-	Type      *int                  `json:"type,omitempty"`
-	URL       *string               `json:"url,omitempty"`
-	StartTime *int64                `json:"startTime,omitempty"`
-	EndTime   *int64                `json:"endTime,omitempty"`
-	FrontPics *[]VideoEvidencePics  `json:"frontPics,omitempty"`
-	BackPics  *[]VideoEvidencePics  `json:"backPics,omitempty"`
-	Labels    *[]VideoEvidenceLabel `json:"labels,omitempty"`
+	Type                *int                  `json:"type,omitempty"`
+	URL                 *string               `json:"url,omitempty"`
+	StartTime           *int64                `json:"startTime,omitempty"`
+	EndTime             *int64                `json:"endTime,omitempty"`
+	SuggestionRiskLevel *int                  `json:"suggestionRiskLevel,omitempty"`
+	PublicOpinionInfo   *string               `json:"publicOpinionInfo,omitempty"`
+	FrontPics           *[]VideoEvidencePics  `json:"frontPics,omitempty"`
+	BackPics            *[]VideoEvidencePics  `json:"backPics,omitempty"`
+	Labels              *[]VideoEvidenceLabel `json:"labels,omitempty"`
 }
 
 // VideoEvidenceLabel 视频证据图片nos地址
