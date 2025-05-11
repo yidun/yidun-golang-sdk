@@ -226,6 +226,7 @@ type FaceLineContent struct {
 	Category    *string  `json:"category,omitempty"`    // The category of the face
 	Gender      *string  `json:"gender,omitempty"`      // The gender of the character
 	Age         *int     `json:"age,omitempty"`         // The age of the character
+	Underage    *string  `json:"underage,omitempty"`    // The underage of the character
 	SizeRatio   *string  `json:"sizeRatio,omitempty"`   // The size ratio of the face
 	BeautyScore *float32 `json:"beautyScore,omitempty"` // The beauty score of the face
 	Expression  *string  `json:"expression,omitempty"`  // The expression of the character

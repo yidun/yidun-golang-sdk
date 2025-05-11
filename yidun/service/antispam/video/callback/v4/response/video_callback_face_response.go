@@ -41,6 +41,8 @@ type FaceLineContent struct {
 	Gender *string `json:"gender,omitempty"`
 	// 年龄
 	Age *int `json:"age,omitempty"`
+    // 是否命中未成年
+    Underage *string `json:"underage,omitempty"`
 	// 人脸大小占比
 	SizeRatio *string `json:"sizeRatio,omitempty"`
 	// 人脸颜值分类
