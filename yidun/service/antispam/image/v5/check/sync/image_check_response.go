@@ -244,7 +244,7 @@ type FaceLineContent struct {
 	// 人脸角度list
 	PoseInfoList *[]FacePoseInfo `json:"poseInfoList,omitempty"`
 	// 未成年人
-    Minor *int `json:"minor,omitempty"`
+    Underage *int `json:"underage,omitempty"`
 }
 
 type FacePoseInfo struct {
