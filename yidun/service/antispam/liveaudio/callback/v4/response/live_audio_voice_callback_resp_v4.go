@@ -11,7 +11,7 @@ type LiveAudioVoiceCallbackRespV4 struct {
 	MainAgeGroupRate *float64 `json:"mainAgeGroupRate,omitempty"`
 	// 音频性别建议值，male/female
 	MainGender *string `json:"mainGender,omitempty"`
-	UnderageType *int  `json:"underageType,omitempty"`
+	Underage   *int  `json:"underage,omitempty"`
 	Callback   *string `json:"callback,omitempty"`
 	SegmentID  *string `json:"segmentId,omitempty"`
 	SpeakerID  *string `json:"speakerId,omitempty"`
