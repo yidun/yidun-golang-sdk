@@ -190,6 +190,7 @@ type LiveAudioVoiceCallbackRespV4 struct {
 	MainAgeGroup     *string  `json:"mainAgeGroup,omitempty"` // 年龄段类型
 	MainAgeGroupRate *float64 `json:"mainAgeGroupRate,omitempty"`
 	MainGender       *string  `json:"mainGender,omitempty"` // 音频性别建议值，male/female
+	Underage         *int     `json:"underage,omitempty"`
 	Callback         *string  `json:"callback,omitempty"`
 	SegmentId        *string  `json:"segmentId,omitempty"`
 	SpeakerId        *string  `json:"speakerId,omitempty"`
