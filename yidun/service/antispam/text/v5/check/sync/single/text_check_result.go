@@ -90,6 +90,7 @@ type Antispam struct {
 	Label            *int               `json:"label"`
 	SecondLabel      *string            `json:"secondLabel"`
 	ThirdLabel       *string            `json:"thirdLabel"`
+	RiskDescription  *string            `json:"riskDescription"`
 	Suggestion       *int               `json:"suggestion"`
 	SuggestionLevel  *int               `json:"suggestionLevel"`
 	SuggestionRiskLevel  *int           `json:"suggestionRiskLevel"`
@@ -139,6 +140,7 @@ type AntispamSubLabel struct {
 	SubLabelDepth      *int                    `json:"subLabelDepth"`
 	SecondLabel        *string                 `json:"secondLabel"`
 	ThirdLabel         *string                 `json:"thirdLabel"`
+	RiskDescription    *string                 `json:"riskDescription"`
 	SuggestionRiskLevel *int                   `json:"suggestionRiskLevel"`
 	Rate               *float64                `json:"rate"`
 	PoliticalSentiment *int                    `json:"politicalSentiment"`
