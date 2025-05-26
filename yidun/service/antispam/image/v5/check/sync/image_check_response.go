@@ -60,11 +60,13 @@ type ImageV5AntispamResp struct {
 	// 检测建议结果
 	Suggestion *int `json:"suggestion,omitempty"`
 	// 一级分类
-	Label       *int   `json:"label,omitempty"`
+	Label *int `json:"label,omitempty"`
 	// 二级分类
-    SecondLabel *string `json:"secondLabel,omitempty"`
-    // 三级分类
-    ThirdLabel  *string `json:"thirdLabel,omitempty"`
+	SecondLabel *string `json:"secondLabel,omitempty"`
+	// 三级分类
+	ThirdLabel *string `json:"thirdLabel,omitempty"`
+	// 风险描述
+	RiskDescription *string `json:"riskDescription,omitempty"`
 	// 图片人审状态
 	CensorType *int `json:"censorType,omitempty"`
 	// 策略版本字段
@@ -97,10 +99,10 @@ type ImageV5AntispamResp struct {
 	ImgMd5 *string `json:"imgMd5,omitempty"`
 	//转存地址
 	Url *string `json:"url,omitempty"`
-    // 建议风险等级
-    suggestionRiskLevel *int `json:"suggestionRiskLevel,omitempty"`
-    //专项信息
-    publicOpinionInfo *string `json:"publicOpinionInfo,omitempty"`
+	// 建议风险等级
+	suggestionRiskLevel *int `json:"suggestionRiskLevel,omitempty"`
+	//专项信息
+	publicOpinionInfo *string `json:"publicOpinionInfo,omitempty"`
 }
 
 type ImageV5VersionDetail struct {
@@ -130,6 +132,8 @@ type ImageV5SubLabelDetail struct {
 	SecondLabel *string `json:"secondLabel,omitempty"`
 	// 三级分类，可能返回
 	ThirdLabel *string `json:"thirdLabel,omitempty"`
+	// 风险描述
+	RiskDescription *string `json:"riskDescription,omitempty"`
 	// 命中标识
 	HitStrategy *int `json:"hitStrategy,omitempty"`
 	// 判断结果，0-正常，1-不确定，2-确定
@@ -154,7 +158,7 @@ type AnticheatInfo struct {
 }
 
 type AntispamInfo struct {
-    // 命中类型
+	// 命中类型
 	Type *int `json:"type,omitempty"`
 	// 自定义敏感词
 	Word *string `json:"word,omitempty"`
@@ -264,7 +268,7 @@ type FaceLineContent struct {
 	// 人脸角度list
 	PoseInfoList *[]FacePoseInfo `json:"poseInfoList,omitempty"`
 	// 未成年人
-    Underage *int `json:"underage,omitempty"`
+	Underage *int `json:"underage,omitempty"`
 }
 
 type FacePoseInfo struct {
@@ -362,10 +366,10 @@ type ImageV5DiscernResp struct {
 }
 
 type ImageV5AdResp struct {
-	TaskId  *string                 `json:"taskId,omitempty"`  // 即易盾生成的uuid，唯一标识一张图片
-	Name    *string                 `json:"name,omitempty"`    // 产品方传的图片标识，原样返回
-	DataId  *string                 `json:"dataId,omitempty"`  // 客户图片唯一标识
-	Details []*ImageV5AdDetail      `json:"details,omitempty"` // 广告检测结果
+	TaskId  *string            `json:"taskId,omitempty"`  // 即易盾生成的uuid，唯一标识一张图片
+	Name    *string            `json:"name,omitempty"`    // 产品方传的图片标识，原样返回
+	DataId  *string            `json:"dataId,omitempty"`  // 客户图片唯一标识
+	Details []*ImageV5AdDetail `json:"details,omitempty"` // 广告检测结果
 }
 
 type ImageV5DiscernDetail struct {
@@ -373,14 +377,14 @@ type ImageV5DiscernDetail struct {
 	DiscernName *string  `json:"discernName,omitempty"` // 识别名称
 	DiscernKey  *string  `json:"discernKey,omitempty"`  // 识别标识
 	Rate        *float32 `json:"rate,omitempty"`        // 分数
-    Label       *string  `json:"label,omitempty"`       // 大模型识别标签
-    Explain     *string  `json:"explain,omitempty"`     // 大模型识别解释
+	Label       *string  `json:"label,omitempty"`       // 大模型识别标签
+	Explain     *string  `json:"explain,omitempty"`     // 大模型识别解释
 }
 
 type ImageV5AdDetail struct {
-	Type        *int     `json:"type,omitempty"`        // 广告识别类型:1 聊天截屏,2 手机商品图,3 诱导按键,4:广告表情包,5:图片弹窗,6:重复图片
-	Note        *string  `json:"note,omitempty"`        // 广告识别标识，当type为6表示重复图片时，note为图片md5码
-	Rate        *float32 `json:"rate,omitempty"`        // 广告识别分数
+	Type *int     `json:"type,omitempty"` // 广告识别类型:1 聊天截屏,2 手机商品图,3 诱导按键,4:广告表情包,5:图片弹窗,6:重复图片
+	Note *string  `json:"note,omitempty"` // 广告识别标识，当type为6表示重复图片时，note为图片md5码
+	Rate *float32 `json:"rate,omitempty"` // 广告识别分数
 }
 
 type ImageV5UserRiskResp struct {
