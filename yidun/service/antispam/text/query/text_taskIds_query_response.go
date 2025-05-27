@@ -24,6 +24,7 @@ type LabelInfo struct {
     Label    *int      `json:"label,omitempty"`
     Level    *int      `json:"level,omitempty"`
     SubLabel *string   `json:"subLabel,omitempty"`
+    RiskDescription *string   `json:"riskDescription,omitempty"`
     Details  *HintInfo `json:"details,omitempty"`
 }
 
