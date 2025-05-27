@@ -28,6 +28,26 @@ type ImageV5Result struct {
 	Anticheat *ImageAnticheatV5Resp `json:"anticheat,omitempty"`
 	// 智能风控结果
 	RiskControl *ImageRiskControlV5Resp `json:"riskControl,omitempty"`
+	// aigc结果
+    Aigc *ImageV5AigcResp `json:"aigc,omitempty"`
+}
+
+type ImageV5AigcResp struct {
+	// 即易盾生成的uuid，唯一标识一张图片
+	TaskId *string `json:"taskId,omitempty"`
+	//图片名称
+	Name *string `json:"name,omitempty"`
+	//上传数据唯一标识
+	DataId *string `json:"dataId,omitempty"`
+	// 命中的详细信息
+    Details *[]ImageV5AigcDetail `json:"details,omitempty"`
+}
+
+type ImageV5AigcDetail struct {
+    //是否为aigc
+	IsAigc    *bool `json:"isAigc,omitempty"`
+	//识别分数
+    AigcRate  *float64 `json:"aigcRate,omitempty"`
 }
 
 type ImageV5AntispamResp struct {
