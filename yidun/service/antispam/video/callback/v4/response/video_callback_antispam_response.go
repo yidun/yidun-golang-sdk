@@ -59,7 +59,8 @@ type ImageV5SubLabelResp struct {
 	// 二级分类，必返回
 	SecondLabel *string `json:"secondLabel,omitempty"`
 	// 三级分类，可能返回
-	ThirdLabel *string `json:"thirdLabel,omitempty"`
+	ThirdLabel      *string `json:"thirdLabel,omitempty"`
+	RiskDescription *string `json:"riskDescription"`
 	// 命中标识
 	HitStrategy *int `json:"hitStrategy,omitempty"`
 	// 判断结果，0-正常，1-不确定，2-确定
