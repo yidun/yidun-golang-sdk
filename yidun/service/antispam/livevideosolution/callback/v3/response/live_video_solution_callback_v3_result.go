@@ -389,6 +389,7 @@ type LiveVideoDiscernItemBo struct {
 type LiveDataQualityResp struct {
 	AestheticsRate *float32        `json:"aestheticsRate,omitempty"` // The aesthetics score
 	SharpnessRate  *float32        `json:"sharpnessRate,omitempty"`  // The sharpness score
+	GrayValue      *int            `json:"grayValue,omitempty"`      // the grayValue of the image
 	MetaInfo       *MetaInfo       `json:"metaInfo,omitempty"`       // The basic information of the image
 	BoarderInfo    *BoarderInfo    `json:"boarderInfo,omitempty"`    // The border information of the image
 	BackgroundInfo *BackgroundInfo `json:"backgroundInfo,omitempty"` // The background information of the image

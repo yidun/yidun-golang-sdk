@@ -19,6 +19,8 @@ type VideoDataQualityResp struct {
 	AestheticsRate *float32 `json:"aestheticsRate,omitempty"`
 	// 清晰度分数
 	SharpnessRate *float32 `json:"sharpnessRate,omitempty"`
+	// 截图灰度值
+	GrayValue *int `json:"grayValue,omitempty"`
 	// 图片基本信息
 	MetaInfo *MetaInfo `json:"metaInfo,omitempty"`
 	// 图片边框信息
