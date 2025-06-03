@@ -1883,6 +1883,11 @@ type IRiskAndroidDeviceInfoResponse struct {
 	 * 运营商设备标识
 	 */
 	Uaid string `json:"uaid"`
+
+	/**
+	 * 模拟器宿主设备指纹
+	 */
+	EmulatorDid string `json:"emulatorDid"`
 }
 
 // IOS设备信息

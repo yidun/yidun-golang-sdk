@@ -66,6 +66,7 @@ func main() {
 			parseErr := json.Unmarshal(jsonDeviceInfoData, deviceInfoAndroid)
 			if parseErr == nil {
 				fmt.Println("deviceInfo -- CarrierName:", deviceInfoAndroid.CarrierName)
+				fmt.Println("deviceInfo -- EmulatorDid:", deviceInfoAndroid.EmulatorDid)
 			}
 		}
 
