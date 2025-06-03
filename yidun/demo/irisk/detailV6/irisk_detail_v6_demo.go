@@ -18,6 +18,8 @@ func main() {
 	request.SetEndTimestamp(time.Now().UnixNano() / 1e6)
 
 	request.SetIp("192.168.1.1")
+	request.SetMatchedRiskTags("392053d76cb34928ba77732908fe2ff8")
+	request.SetMatchedTypes("524035")
 
 	accountList := []string{"account1", "account2"}
 	accounts, _ := json.Marshal(accountList)

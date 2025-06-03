@@ -659,20 +659,22 @@ type IRiskDetailResult struct {
 
 type IRiskDetailV6Request struct {
 	*types.BizPostJsonRequest
-	BeginTimestamp *int64
-	EndTimestamp   *int64
-	StartFlag      *string
-	Account        *string
-	Accounts       *string
-	RoleId         *string
-	RoleIds        *string
-	RiskLevel      *int
-	Ip             *string
-	Ips            *string
-	SdkIp          *string
-	SdkIps         *string
-	PackageName    *string
-	AppVersion     *string
+	BeginTimestamp  *int64
+	EndTimestamp    *int64
+	StartFlag       *string
+	Account         *string
+	Accounts        *string
+	RoleId          *string
+	RoleIds         *string
+	RiskLevel       *int
+	Ip              *string
+	Ips             *string
+	SdkIp           *string
+	SdkIps          *string
+	PackageName     *string
+	AppVersion      *string
+	MatchedRiskTags *string
+	MatchedTypes    *string
 }
 
 // SetBeginTimestamp 设置开始时间
@@ -756,6 +758,18 @@ func (r *IRiskDetailV6Request) SetPackageName(packageName string) *IRiskDetailV6
 // SetAppVersion 设置APP版本
 func (r *IRiskDetailV6Request) SetAppVersion(appVersion string) *IRiskDetailV6Request {
 	r.AppVersion = &appVersion
+	return r
+}
+
+// SetMatchedRiskTags 设置命中的风险标签
+func (r *IRiskDetailV6Request) SetMatchedRiskTags(matchedRiskTags string) *IRiskDetailV6Request {
+	r.MatchedRiskTags = &matchedRiskTags
+	return r
+}
+
+// SetMatchedTypes 设置命中的风险标签Type
+func (r *IRiskDetailV6Request) SetMatchedTypes(matchedTypes string) *IRiskDetailV6Request {
+	r.MatchedTypes = &matchedTypes
 	return r
 }
 
