@@ -21,6 +21,8 @@ type LiveAudioFeedback struct {
 	LiveTag *LiveAudioTag `json:"liveTag,omitempty"`
 	// 分数监控类型
 	ScoreMonitorType *int `json:"scoreMonitorType,omitempty"`
+	// 直播间收入
+	LiveIncome *float64 `json:"liveIncome,omitempty"`
 }
 
 type LiveAudioTag struct {
