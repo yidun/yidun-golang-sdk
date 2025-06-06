@@ -834,6 +834,12 @@ func (r *IRiskDetailV6Request) GetBusinessCustomSignParams() map[string]string {
 	if r.AppVersion != nil {
 		params["appVersion"] = *r.AppVersion
 	}
+    if r.MatchedRiskTags != nil {
+        params["matchedRiskTags"] = *r.MatchedRiskTags
+    }
+    if r.MatchedTypes != nil {
+        params["matchedTypes"] = *r.MatchedTypes
+    }
 	return params
 }
 
