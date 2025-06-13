@@ -50,6 +50,7 @@ type AudioSubLabel struct {
 	SecondLabel         *string   `json:"secondLabel,omitempty"`
 	ThirdLabel          *string   `json:"thirdLabel,omitempty"`
 	SuggestionRiskLevel *int      `json:"suggestionRiskLevel,omitempty"`
+	Rate                *float64  `json:"rate,omitempty"`
 	RiskDescription     *string   `json:"riskDescription,omitempty"`
 	Details             *HintInfo `json:"details,omitempty"` // 其他信息
 }
