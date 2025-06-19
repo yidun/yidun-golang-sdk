@@ -5,6 +5,7 @@ import (
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v2/feedback"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/callback"
     "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v1/similar"
+	textfeature "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v1/textfeature"
 	asyncBatch "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/check/async/batch"
 	async "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/check/async/single"
 	syncBatch "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/check/sync/batch"
@@ -63,6 +64,34 @@ func (c *TextClient) QueryTaskIds(req *query.TextTaskIdsQueryRequest) (res *quer
 // SimilarTextSubmit 相似文本添加
 func (c *TextClient) SimilarTextSubmit(req *similar.SimilarTextSubmitRequest) (res *similar.SimilarTextSubmitResponse, err error) {
     res = &similar.SimilarTextSubmitResponse{}
+    err = c.Client.DoExecute(req, res)
+    return
+}
+
+// TextFeatureEditStatus 文本特征状态编辑
+func (c *TextClient) TextFeatureEditStatus(req *textfeature.TextFeatureEditStatusRequest) (res *textfeature.TextFeatureEditStatusResponse, err error) {
+    res = &textfeature.TextFeatureEditStatusResponse{}
+    err = c.Client.DoExecute(req, res)
+    return
+}
+
+// TextFeatureAdd 文本特征添加
+func (c *TextClient) TextFeatureAdd(req *textfeature.TextFeatureAddRequest) (res *textfeature.TextFeatureAddResponse, err error) {
+    res = &textfeature.TextFeatureAddResponse{}
+    err = c.Client.DoExecute(req, res)
+    return
+}
+
+// TextFeatureDelete 文本特征删除
+func (c *TextClient) TextFeatureDelete(req *textfeature.TextFeatureDeleteRequest) (res *textfeature.TextFeatureDeleteResponse, err error) {
+    res = &textfeature.TextFeatureDeleteResponse{}
+    err = c.Client.DoExecute(req, res)
+    return
+}
+
+// TextFeatureQuery 文本特征查询
+func (c *TextClient) TextFeatureQuery(req *textfeature.TextFeatureQueryRequest) (res *textfeature.TextFeatureQueryResponse, err error) {
+    res = &textfeature.TextFeatureQueryResponse{}
     err = c.Client.DoExecute(req, res)
     return
 }
