@@ -55,7 +55,7 @@ func (r *TextCheckSceneRequest) ValidateParam() error {
 			validateField("Content", r.Content, 10000)
 		}
 
-		validateField("Title", r.Title, 512)
+		validateField("Title", r.Title, 1024)
 		validateField("Callback", r.Callback, 65535)
 		validateField("CallbackUrl", r.CallbackUrl, 256)
 		validateField("Category", r.Category, 128)
