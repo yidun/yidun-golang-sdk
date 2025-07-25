@@ -236,6 +236,10 @@ var (
           "us-virginia": [
             "as-image-virginia.dun.163.com",
             "as-image-virginia.dun.163yun.com"
+          ],
+          "us-silicon-valley": [
+             "as-image-sv.dun.163.com",
+             "as-image-sv.dun.163yun.com"
           ]
 		},
 		"imageCommon": {
@@ -254,6 +258,10 @@ var (
           "us-virginia": [
             "as-image-virginia.dun.163.com",
             "as-image-virginia.dun.163yun.com"
+          ],
+          "us-silicon-valley": [
+             "as-image-sv.dun.163.com",
+             "as-image-sv.dun.163yun.com"
           ]
 		},
 		"text-check": {
