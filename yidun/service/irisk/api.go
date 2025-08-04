@@ -675,6 +675,13 @@ type IRiskDetailV6Request struct {
 	AppVersion      *string
 	MatchedRiskTags *string
 	MatchedTypes    *string
+	GameVersion     *string
+	AssetVersion    *string
+	ServerId        *string
+	Nickname        *string
+	DeviceId        *string
+	SignV1          *string
+	SignV2          *string
 }
 
 // SetBeginTimestamp 设置开始时间
@@ -772,6 +779,41 @@ func (r *IRiskDetailV6Request) SetMatchedTypes(matchedTypes string) *IRiskDetail
 	r.MatchedTypes = &matchedTypes
 	return r
 }
+// SetGameVersion 设置游戏版本
+func (r *IRiskDetailV6Request) SetGameVersion(gameVersion string) *IRiskDetailV6Request {
+	r.GameVersion = &gameVersion
+	return r
+}
+// SetAssetVersion 设置Asset版本
+func (r *IRiskDetailV6Request) SetAssetVersion(assetVersion string) *IRiskDetailV6Request {
+	r.AssetVersion = &assetVersion
+	return r
+}
+// SetNickname 设置昵称
+func (r *IRiskDetailV6Request) SetNickname(nickname string) *IRiskDetailV6Request {
+	r.Nickname = &nickname
+	return r
+}
+// SetServerId 设置服务器ID
+func (r *IRiskDetailV6Request) SetServerId(serverId string) *IRiskDetailV6Request {
+	r.ServerId = &serverId
+	return r
+}
+// SetDeviceId 设置设备ID
+func (r *IRiskDetailV6Request) SetDeviceId(deviceId string) *IRiskDetailV6Request {
+	r.DeviceId = &deviceId
+	return r
+}
+// SetSignV1 设置签名V1
+func (r *IRiskDetailV6Request) SetSignV1(signV1 string) *IRiskDetailV6Request {
+	r.SignV1 = &signV1
+	return r
+}
+// SetSignV2 设置签名V2
+func (r *IRiskDetailV6Request) SetSignV2(signV2 string) *IRiskDetailV6Request {
+	r.SignV2 = &signV2
+	return r
+}
 
 // NewIRiskDetailV6Request 初始化IRiskDetailV6Request对象
 func NewIRiskDetailV6Request(businessId string) *IRiskDetailV6Request {
@@ -839,6 +881,27 @@ func (r *IRiskDetailV6Request) GetBusinessCustomSignParams() map[string]string {
     }
     if r.MatchedTypes != nil {
         params["matchedTypes"] = *r.MatchedTypes
+    }
+    if r.GameVersion != nil {
+        params["gameVersion"] = *r.GameVersion
+    }
+    if r.AssetVersion != nil {
+        params["assetVersion"] = *r.AssetVersion
+    }
+    if r.Nickname != nil {
+        params["nickname"] = *r.Nickname
+    }
+    if r.ServerId != nil {
+        params["serverId"] = *r.ServerId
+    }
+    if r.DeviceId != nil {
+        params["deviceId"] = *r.DeviceId
+    }
+    if r.SignV1 != nil {
+        params["signV1"] = *r.SignV1
+    }
+    if r.SignV2 != nil {
+        params["signV2"] = *r.SignV2
     }
 	return params
 }
