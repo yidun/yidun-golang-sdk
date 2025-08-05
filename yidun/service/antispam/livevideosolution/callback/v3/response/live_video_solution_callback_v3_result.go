@@ -37,6 +37,7 @@ type LiveVideoSolutionCallbackAntispamV3Result struct {
 	RiskScore       *int                              `json:"riskScore,omitempty"`
 	Duration        *int64                            `json:"duration,omitempty"`
 	BillDuration    *int64                            `json:"billDuration,omitempty"`
+	CensorExtension *CensorExtensionResult            `json:"censorExtension,omitempty"`
 }
 
 // LiveSolutionDataCallbackResult includes Audio and Video information.
@@ -425,4 +426,8 @@ type BoarderColor struct {
 	Right  *int `json:"right,omitempty"`  // The right color of the border
 	Bottom *int `json:"bottom,omitempty"` // The bottom color of the border
 	Left   *int `json:"left,omitempty"`   // The left color of the border
+}
+
+type CensorExtensionResult struct {
+	QualityInspectionTaskId *string `json:"qualityInspectionTaskId,omitempty"`
 }
