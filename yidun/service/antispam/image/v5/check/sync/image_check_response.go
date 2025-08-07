@@ -48,7 +48,35 @@ type ImageV5AigcDetail struct {
 	IsAigc    *bool `json:"isAigc,omitempty"`
 	//识别分数
     AigcRate  *float64 `json:"aigcRate,omitempty"`
+    //置信等级
+    AigcLevel  *int `json:"aigcLevel,omitempty"`
+    //标识信息
+    Signage  *ImageAigcV5SignageResp `json:"signage,omitempty"`
+
 }
+type ImageAigcV5SignageResp struct {
+	// 显式标识
+	OvertSignage *int `json:"overtSignage,omitempty"`
+	// 隐式标识
+	CovertSignage *int `json:"covertSignage,omitempty"`
+	// 隐式标识详细信息
+	CovertSignageDetails *CovertSignageDetailsResp `json:"covertSignageDetails,omitempty"`
+}
+
+type CovertSignageDetailsResp struct {
+	// 角色
+	Role *int `json:"role,omitempty"`
+	// 平台信息
+	Platform *CovertSignageDetailsPlatformResp `json:"platform,omitempty"`
+}
+
+type CovertSignageDetailsPlatformResp struct {
+	// 1: 公司 2: 个人
+	Type *int `json:"type,omitempty"`
+	// 隐式生成的平台/个人信息
+	info *string `json:"info,omitempty"`
+}
+
 
 type ImageV5AntispamResp struct {
 	// 即易盾生成的uuid，唯一标识一张图片
