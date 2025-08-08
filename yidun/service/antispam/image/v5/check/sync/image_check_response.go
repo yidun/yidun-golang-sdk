@@ -74,7 +74,7 @@ type CovertSignageDetailsPlatformResp struct {
 	// 1: 公司 2: 个人
 	Type *int `json:"type,omitempty"`
 	// 隐式生成的平台/个人信息
-	info *string `json:"info,omitempty"`
+	Info *string `json:"info,omitempty"`
 }
 
 
