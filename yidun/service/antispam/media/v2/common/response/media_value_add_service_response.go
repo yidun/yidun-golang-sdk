@@ -13,6 +13,7 @@ type MediaValueAddServiceResponse struct {
 	EmotionAnalysis *EmotionAnalysis `json:"emotionAnalysis,omitempty"`
 	Language        *Language        `json:"language,omitempty"`
 	GrammarFix      *GrammarFix      `json:"grammarFix,omitempty"`
+	Aigc            *MediaAigc       `json:"aigc,omitempty"`
 }
 
 type Ocr struct {
@@ -250,4 +251,59 @@ type GrammarfixSubmitResponseFragment struct {
 	HeadStartPos      *int    `json:"headStartPos,omitempty"`
 	HeadEndPos        *int    `json:"headEndPos,omitempty"`
 	CorrectSuggestion *string `json:"correctSuggestion,omitempty"`
+}
+
+// 顶层结构体
+type MediaAigc struct {
+	Images []*MediaAigcImageValueServiceUnit `json:"images,omitempty"`
+	Videos []*MediaAigcVideoValueServiceUnit `json:"videos,omitempty"`
+}
+
+// 图片检测单元 ================================
+type MediaAigcImageValueServiceUnit struct {
+	ValueServiceBaseResponse                    // 继承父类字段
+	Details                  []*AigcImageDetail `json:"details,omitempty"`
+}
+
+type AigcImageDetail struct {
+	IsAigc    bool                    `json:"isAigc,omitempty"`    // 是否AIGC生成
+	AigcLevel int                     `json:"aigcLevel,omitempty"` // 0:正常 1:嫌疑 2:确定
+	AigcRate  float32                 `json:"aigcRate,omitempty"`  // AIGC概率分数
+	Signage   *ImageAigcV5SignageResp `json:"signage,omitempty"`   // 生成标识信息
+}
+
+type ImageAigcV5SignageResp struct {
+	OvertSignage         int                       `json:"overtSignage,omitempty"`         // 显式标识 0/1
+	CovertSignage        int                       `json:"covertSignage,omitempty"`        // 隐式标识 0/1
+	CovertSignageDetails *CovertSignageDetailsResp `json:"covertSignageDetails,omitempty"` // 隐式详情
+}
+
+type CovertSignageDetailsResp struct {
+	Role     int                               `json:"role,omitempty"`     // 1:生成者 2:传播者
+	Platform *CovertSignageDetailsPlatformResp `json:"platform,omitempty"` // 平台/个人信息
+}
+
+type CovertSignageDetailsPlatformResp struct {
+	Type int    `json:"type,omitempty"` // 1:公司 2:个人
+	Info string `json:"info,omitempty"` // 公司名或空
+}
+
+// 视频检测单元 ================================
+type MediaAigcVideoValueServiceUnit struct {
+	TaskID   string                `json:"taskId,omitempty"`
+	DataID   string                `json:"dataId,omitempty"`
+	Field    string                `json:"field,omitempty"`
+	Pictures []*MediaAigcVideoUnit `json:"pictures,omitempty"`
+}
+
+type MediaAigcVideoUnit struct {
+	StartTime int64                   `json:"startTime,omitempty"` // 起始时间(ms)
+	EndTime   int64                   `json:"endTime,omitempty"`   // 结束时间(ms)
+	PictureID string                  `json:"pictureId,omitempty"` // 截图ID
+	Details   []*MediaAigcVideoItemBo `json:"details,omitempty"`   // 检测详情
+}
+
+type MediaAigcVideoItemBo struct {
+	IsAigc   bool    `json:"isAigc,omitempty"`   // 是否AIGC生成
+	AigcRate float32 `json:"aigcRate,omitempty"` // AIGC概率分数
 }
