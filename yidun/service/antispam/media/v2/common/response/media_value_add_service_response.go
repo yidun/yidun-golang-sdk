@@ -255,8 +255,8 @@ type GrammarfixSubmitResponseFragment struct {
 
 // 顶层结构体
 type MediaAigc struct {
-	Images []*MediaAigcImageValueServiceUnit `json:"images,omitempty"`
-	Videos []*MediaAigcVideoValueServiceUnit `json:"videos,omitempty"`
+	Images      []*MediaAigcImageValueServiceUnit `json:"images,omitempty"`
+	AudioVideos []*MediaAigcVideoValueServiceUnit `json:"audiovideos,omitempty"`
 }
 
 // 图片检测单元 ================================
