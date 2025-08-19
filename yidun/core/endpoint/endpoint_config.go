@@ -298,7 +298,27 @@ var (
 		  "cn-hangzhou": [
 			"as.dun.163.com",
 			"as.dun.163yun.com"
-		  ]
+		  ],
+		  "cn-beijing": [
+            "as-text-bj.dun.163.com",
+            "as-text-bj.dun.163yun.com"
+          ],
+          "sg-singapore": [
+            "as-text-sg.dun.163.com",
+            "as-text-sg.dun.163yun.com"
+          ],
+          "de-frankfurt": [
+            "as-text-frankfurt.dun.163.com",
+            "as-text-frankfurt.dun.163yun.com"
+          ],
+          "us-virginia": [
+            "as-text-virginia.dun.163.com",
+            "as-text-virginia.dun.163yun.com"
+          ],
+          "jp-tokyo": [
+            "as-text-tokyo.dun.163.com",
+            "as-text-tokyo.dun.163yun.com"
+          ]
 		},
 		"aigc-stream-api": {
 		  "cn-hangzhou": [
