@@ -18,6 +18,9 @@ type ReportSubmitRequestV1 struct {
 	DataID                *string                `json:"dataId,omitempty"`                // 数据唯一标识，能够根据该值定位到该条数据，如对数据结果有异议，可以发送该值给客户经理查询
 	Content               []*DataItem            `json:"content,omitempty"`               // 投诉举报内容,支持多种类型内容同时过检，包括文本，图片，点播语音,点播音视频，文档
 	Evidence              []*DataItem            `json:"evidence,omitempty"`              // 证据信息,支持多种类型内容同时过检，包括文本，图片，点播语音,点播音视频，文档
+	DunEvidence           *DunEvidence           `json:"dunEvidence,omitempty"`           // 易盾信息证据对象
+	ChatRecords           []*ChatRecord          `json:"chatRecords,omitempty"`           // 聊天记录或举报记录数组
+	TipRecords            []*ChatRecord          `json:"tipRecords,omitempty"`            // 提示记录数组
 	CustomParseFieldMap   map[string][]*DataItem `json:"customParseFieldMap,omitempty"`   // 用户自定义解析字段
 	CustomUnParseFieldMap map[string]string      `json:"customUnParseFieldMap,omitempty"` // 用户自定义不解析解析字段
 	Callback              *string                `json:"callback,omitempty"`              // 回调数据
@@ -37,6 +40,23 @@ type DataItem struct {
 	DataID *string `json:"dataId,omitempty"`
 }
 
+// DunEvidence 易盾信息证据对象 (直播音视频/音频)
+type DunEvidence struct {
+	Type      *string `json:"type,omitempty"`      // liveaudiovideo, liveaudio
+	TaskId    *string `json:"taskId,omitempty"`    // 易盾返回的 taskId
+	TimeRange *int64  `json:"timeRange,omitempty"` // 回溯时间，默认90s
+	DataId    *string `json:"dataId,omitempty"`    // 数据唯一标识
+}
+
+// ChatRecord 聊天记录或举报记录对象
+type ChatRecord struct {
+	Type     *string `json:"type,omitempty"`     // text, image, audio, audiovideo
+	Data     *string `json:"data,omitempty"`     // 文本内容或 URL
+	Time     *string `json:"time,omitempty"`     // 时间
+	UserId   *string `json:"userId,omitempty"`   // 发送人账号
+	Nickname *string `json:"nickname,omitempty"` // 说话人昵称
+}
+
 func NewReportSubmitRequestV1() *ReportSubmitRequestV1 {
 	var request = &ReportSubmitRequestV1{
 		BizPostFormRequest: types.NewBizPostFormRequestWithoutBizId(),
@@ -45,6 +65,16 @@ func NewReportSubmitRequestV1() *ReportSubmitRequestV1 {
 	request.SetUriPattern("/v1/report/submit")
 	request.SetVersion("v1")
 	return request
+}
+
+func NewDunEvidence() *DunEvidence {
+	var dunEvidence = &DunEvidence{}
+	return dunEvidence
+}
+
+func NewChatRecord() *ChatRecord {
+	var chatRecord = &ChatRecord{}
+	return chatRecord
 }
 
 func NewDataItem() *DataItem {
@@ -118,6 +148,21 @@ func (r *ReportSubmitRequestV1) GetBusinessCustomSignParams() map[string]string 
 	if r.Evidence != nil && len(r.Evidence) > 0 {
 		evidenceJson, _ := json.Marshal(r.Evidence)
 		params["evidence"] = string(evidenceJson)
+	}
+
+	if r.DunEvidence != nil {
+		dunEvidenceJson, _ := json.Marshal(r.DunEvidence)
+		params["dunEvidence"] = string(dunEvidenceJson)
+	}
+
+	if r.ChatRecords != nil && len(r.ChatRecords) > 0 {
+		chatRecordsJson, _ := json.Marshal(r.ChatRecords)
+		params["chatRecords"] = string(chatRecordsJson)
+	}
+
+	if r.TipRecords != nil && len(r.TipRecords) > 0 {
+		tipRecordsJson, _ := json.Marshal(r.TipRecords)
+		params["tipRecords"] = string(tipRecordsJson)
 	}
 
 	if r.CustomParseFieldMap != nil && len(r.CustomParseFieldMap) > 0 {
@@ -243,4 +288,19 @@ func (d *DataItem) SetData(data string) {
 // SetDataID sets the DataID field of DataItem.
 func (d *DataItem) SetDataID(dataID string) {
 	d.DataID = &dataID
+}
+
+// SetDunEvidence sets the DunEvidence field of ReportSubmitRequestV1.
+func (r *ReportSubmitRequestV1) SetDunEvidence(dunEvidence DunEvidence) {
+	r.DunEvidence = &dunEvidence
+}
+
+// SetChatRecords sets the ChatRecords field of ReportSubmitRequestV1.
+func (r *ReportSubmitRequestV1) SetChatRecords(chatRecords []*ChatRecord) {
+	r.ChatRecords = chatRecords
+}
+
+// SetTipRecords sets the TipRecords field of ReportSubmitRequestV1.
+func (r *ReportSubmitRequestV1) SetTipRecords(tipRecords []*ChatRecord) {
+	r.TipRecords = tipRecords
 }
