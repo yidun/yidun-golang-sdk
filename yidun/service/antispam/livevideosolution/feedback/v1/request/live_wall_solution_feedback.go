@@ -9,6 +9,8 @@ type LiveWallSolutionFeedback struct {
 	ViewCount *int `json:"viewCount,omitempty"`
 	// 礼物数，-1或者null代表不更新
 	GiftCount *int `json:"giftCount,omitempty"`
+	// 礼物数，-1或者null代表不更新
+    LiveIncome *float64 `json:"liveIncome,omitempty"`
 	// 弹幕数,-1或者null代表不更新
 	BarrageCount *int `json:"barrageCount,omitempty"`
 	// 直播状态 100：直播结束 @see LiveVideoFeedBackStatusEnum
