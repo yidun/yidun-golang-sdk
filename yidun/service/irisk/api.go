@@ -659,29 +659,29 @@ type IRiskDetailResult struct {
 
 type IRiskDetailV6Request struct {
 	*types.BizPostJsonRequest
-	BeginTimestamp  *int64
-	EndTimestamp    *int64
-	StartFlag       *string
-	Account         *string
-	Accounts        *string
-	RoleId          *string
-	RoleIds         *string
-	RiskLevel       *int
-	Ip              *string
-	Ips             *string
-	SdkIp           *string
-	SdkIps          *string
-	PackageName     *string
-	AppVersion      *string
-	MatchedRiskTags *string
-	MatchedTypes    *string
-	GameVersion     *string
-	AssetVersion    *string
-	ServerId        *string
-	Nickname        *string
-	DeviceId        *string
-	SignV1          *string
-	SignV2          *string
+	BeginTimestamp         *int64
+	EndTimestamp           *int64
+	StartFlag              *string
+	Account                *string
+	Accounts               *string
+	RoleId                 *string
+	RoleIds                *string
+	RiskLevel              *int
+	Ip                     *string
+	Ips                    *string
+	SdkIp                  *string
+	SdkIps                 *string
+	PackageName            *string
+	AppVersion             *string
+	MatchedTypes           *string
+	MatchedTypesQueryLogic *int
+	GameVersion            *string
+	AssetVersion           *string
+	ServerId               *string
+	Nickname               *string
+	DeviceId               *string
+	SignV1                 *string
+	SignV2                 *string
 }
 
 // SetBeginTimestamp 设置开始时间
@@ -768,47 +768,54 @@ func (r *IRiskDetailV6Request) SetAppVersion(appVersion string) *IRiskDetailV6Re
 	return r
 }
 
-// SetMatchedRiskTags 设置命中的风险标签
-func (r *IRiskDetailV6Request) SetMatchedRiskTags(matchedRiskTags string) *IRiskDetailV6Request {
-	r.MatchedRiskTags = &matchedRiskTags
-	return r
-}
-
 // SetMatchedTypes 设置命中的风险标签Type
 func (r *IRiskDetailV6Request) SetMatchedTypes(matchedTypes string) *IRiskDetailV6Request {
 	r.MatchedTypes = &matchedTypes
 	return r
 }
+
+// SetMatchedTypesQueryLogic 设置命中的风险标签Type查询逻辑
+func (r *IRiskDetailV6Request) SetMatchedTypesQueryLogic(matchedTypesQueryLogic int) *IRiskDetailV6Request {
+	r.MatchedTypesQueryLogic = &matchedTypesQueryLogic
+	return r
+}
+
 // SetGameVersion 设置游戏版本
 func (r *IRiskDetailV6Request) SetGameVersion(gameVersion string) *IRiskDetailV6Request {
 	r.GameVersion = &gameVersion
 	return r
 }
+
 // SetAssetVersion 设置Asset版本
 func (r *IRiskDetailV6Request) SetAssetVersion(assetVersion string) *IRiskDetailV6Request {
 	r.AssetVersion = &assetVersion
 	return r
 }
+
 // SetNickname 设置昵称
 func (r *IRiskDetailV6Request) SetNickname(nickname string) *IRiskDetailV6Request {
 	r.Nickname = &nickname
 	return r
 }
+
 // SetServerId 设置服务器ID
 func (r *IRiskDetailV6Request) SetServerId(serverId string) *IRiskDetailV6Request {
 	r.ServerId = &serverId
 	return r
 }
+
 // SetDeviceId 设置设备ID
 func (r *IRiskDetailV6Request) SetDeviceId(deviceId string) *IRiskDetailV6Request {
 	r.DeviceId = &deviceId
 	return r
 }
+
 // SetSignV1 设置签名V1
 func (r *IRiskDetailV6Request) SetSignV1(signV1 string) *IRiskDetailV6Request {
 	r.SignV1 = &signV1
 	return r
 }
+
 // SetSignV2 设置签名V2
 func (r *IRiskDetailV6Request) SetSignV2(signV2 string) *IRiskDetailV6Request {
 	r.SignV2 = &signV2
@@ -876,33 +883,33 @@ func (r *IRiskDetailV6Request) GetBusinessCustomSignParams() map[string]string {
 	if r.AppVersion != nil {
 		params["appVersion"] = *r.AppVersion
 	}
-    if r.MatchedRiskTags != nil {
-        params["matchedRiskTags"] = *r.MatchedRiskTags
-    }
-    if r.MatchedTypes != nil {
-        params["matchedTypes"] = *r.MatchedTypes
-    }
-    if r.GameVersion != nil {
-        params["gameVersion"] = *r.GameVersion
-    }
-    if r.AssetVersion != nil {
-        params["assetVersion"] = *r.AssetVersion
-    }
-    if r.Nickname != nil {
-        params["nickname"] = *r.Nickname
-    }
-    if r.ServerId != nil {
-        params["serverId"] = *r.ServerId
-    }
-    if r.DeviceId != nil {
-        params["deviceId"] = *r.DeviceId
-    }
-    if r.SignV1 != nil {
-        params["signV1"] = *r.SignV1
-    }
-    if r.SignV2 != nil {
-        params["signV2"] = *r.SignV2
-    }
+	if r.MatchedTypes != nil {
+		params["matchedTypes"] = *r.MatchedTypes
+	}
+	if r.MatchedTypesQueryLogic != nil {
+		params["matchedTypesQueryLogic"] = strconv.Itoa(*r.MatchedTypesQueryLogic)
+	}
+	if r.GameVersion != nil {
+		params["gameVersion"] = *r.GameVersion
+	}
+	if r.AssetVersion != nil {
+		params["assetVersion"] = *r.AssetVersion
+	}
+	if r.Nickname != nil {
+		params["nickname"] = *r.Nickname
+	}
+	if r.ServerId != nil {
+		params["serverId"] = *r.ServerId
+	}
+	if r.DeviceId != nil {
+		params["deviceId"] = *r.DeviceId
+	}
+	if r.SignV1 != nil {
+		params["signV1"] = *r.SignV1
+	}
+	if r.SignV2 != nil {
+		params["signV2"] = *r.SignV2
+	}
 	return params
 }
 
@@ -1104,7 +1111,6 @@ func NewIRiskMediaBatchQueryRequest(businessId string) *IRiskMediaBatchQueryRequ
 	request.SetVersion("500")
 	return request
 }
-
 
 // GetNonSignParams 获取具体业务中特有的不参与签名计算的参数
 func (r *IRiskMediaCheckRequest) GetNonSignParams() map[string]interface{} {
@@ -1766,7 +1772,6 @@ func (r *IRiskMediaQueryRequest) GetBusinessCustomSignParams() map[string]string
 	}
 	return params
 }
-
 
 // 图片检测批量查询接口 参数校验方法
 func (r *IRiskMediaBatchQueryRequest) ValidateParam() error {

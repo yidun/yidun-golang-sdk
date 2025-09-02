@@ -23,12 +23,9 @@ func main() {
 	accounts, _ := json.Marshal(accountList)
 	request.SetAccounts(string(accounts))
 
-    RiskTags := []string{"riskTag1", "riskTag2"}
-    MatchedRiskTags, _ := json.Marshal(RiskTags)
-    request.SetMatchedRiskTags(string(MatchedRiskTags))
-    RiskTypes := []string{"riskType1", "riskType2"}
-    MatchedRiskTypes, _ := json.Marshal(RiskTypes)
- 	request.SetMatchedTypes(string(MatchedRiskTypes))
+	RiskTypes := []string{"riskType1", "riskType2"}
+	MatchedRiskTypes, _ := json.Marshal(RiskTypes)
+	request.SetMatchedTypes(string(MatchedRiskTypes))
 
 	iriskClient := irisk.NewIRiskClientWithAccessKey("SECRET_ID", "SECRET_KEY")
 	response, err := iriskClient.GetDetailV6Result(request)
