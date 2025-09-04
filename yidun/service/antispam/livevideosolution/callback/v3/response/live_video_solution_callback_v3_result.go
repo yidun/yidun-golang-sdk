@@ -125,12 +125,16 @@ type Evidence struct {
 
 type ReviewPicture struct {
 	URL *string `json:"url,omitempty"`
+    BeginTime *int64 `json:"beginTime,omitempty"`
+    PictureID *string `json:"pictureId,omitempty"`
 }
 
 type ReviewSegment struct {
 	StartTime *int64  `json:"startTime,omitempty"`
 	EndTime   *int64  `json:"endTime,omitempty"`
 	Content   *string `json:"content,omitempty"`
+	URL       *string `json:"url,omitempty"`
+	SegmentID *string `json:"segmentId,omitempty"`
 }
 
 type FrontAudioSegment struct {
