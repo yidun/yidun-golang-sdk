@@ -56,6 +56,8 @@ type VideoSolutionSubmitV2Request struct {
 	Nickname          *string `json:"nickname,omitempty"`
 	SubProduct        *string `json:"subProduct,omitempty"`
 	Extension         *string `json:"extension,omitempty"`
+	AdSector          *string `json:"adSector,omitempty"`
+	AdAccountName     *string `json:"adAccountName,omitempty"`
 	// 扩展字段
 	ExtLon1 *int64  `json:"extLon1,omitempty"`
 	ExtLon2 *int64  `json:"extLon2,omitempty"`
@@ -183,6 +185,12 @@ func (r *VideoSolutionSubmitV2Request) GetBusinessCustomSignParams() map[string]
 	}
 	if r.Extension != nil {
 		parentParams["extension"] = *r.Extension
+	}
+    if r.AdSector != nil {
+		parentParams["adSector"] = *r.AdSector
+	}
+    if r.AdAccountName != nil {
+		parentParams["adAccountName"] = *r.AdAccountName
 	}
 	if r.ExtLon1 != nil {
 		parentParams["extLon1"] = strconv.FormatInt(*r.ExtLon1, 10)
