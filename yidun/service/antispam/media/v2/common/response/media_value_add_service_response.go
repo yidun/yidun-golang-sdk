@@ -294,6 +294,11 @@ type MediaAigcVideoValueServiceUnit struct {
 	DataID   string                `json:"dataId,omitempty"`
 	Field    string                `json:"field,omitempty"`
 	Pictures []*MediaAigcVideoUnit `json:"pictures,omitempty"`
+
+	IsAigc    bool              `json:"isAigc,omitempty"`    // IsAigc 是否aigc命中
+	AigcRate  float32           `json:"aigcRate,omitempty"`  // AigcRate AIGC概率
+	AigcLevel int32             `json:"aigcLevel,omitempty"` // AigcLevel AIGC等级
+	Signage   *MediaSignageInfo `json:"signage,omitempty"`   // aigc命中信息
 }
 
 type MediaAigcVideoUnit struct {
@@ -304,6 +309,24 @@ type MediaAigcVideoUnit struct {
 }
 
 type MediaAigcVideoItemBo struct {
-	IsAigc   bool    `json:"isAigc,omitempty"`   // 是否AIGC生成
-	AigcRate float32 `json:"aigcRate,omitempty"` // AIGC概率分数
+	IsAigc        bool              `json:"isAigc,omitempty"`        // 是否AIGC生成
+	AigcRate      float32           `json:"aigcRate,omitempty"`      // AIGC概率分数
+	AigcLevel     int               `json:"aigcLevel,omitempty"`     // 0:正常 1:嫌疑 2:确定
+	SignageInfoDo *MediaSignageInfo `json:"signageInfoDo,omitempty"` // aigc命中信息
+}
+
+type MediaSignageInfo struct {
+	OvertSignage         int32                      `json:"overtSignage,omitempty"`         // OvertSignage 显式标识
+	CovertSignage        int32                      `json:"covertSignage,omitempty"`        // CovertSignage 隐式标识
+	CovertSignageDetails *MediaCovertSignageDetails `json:"covertSignageDetails,omitempty"` // CovertSignageDetails 隐式标识详细信息
+}
+
+type MediaCovertSignageDetails struct {
+	Role     int32                       `json:"role,omitempty"`     // Role 角色
+	Platform *MediaCovertSignagePlatform `json:"platform,omitempty"` // Platform 平台信息
+}
+
+type MediaCovertSignagePlatform struct {
+	Type int32  `json:"type,omitempty"` // Type 类型说明
+	Info string `json:"info,omitempty"` // Info 平台信息
 }
