@@ -5,6 +5,12 @@ type VideoCallbackAigcV4Response struct {
 	TaskID   *string                    `json:"taskId,omitempty"`
 	DataID   *string                    `json:"dataId,omitempty"`
 	IsAigc    *bool                     `json:"isAigc,omitempty"`
+    //识别分数
+    AigcRate  *float64                  `json:"aigcRate,omitempty"`
+    //置信等级
+    AigcLevel  *int                     `json:"aigcLevel,omitempty"`
+    //标识信息
+    Signage  *AigcV5SignageResp         `json:"signage,omitempty"`
 	Pictures []*VideoDataAigcV4Response `json:"pictures,omitempty"`
 	Images  []*VideoImageAigcV4Response `json:"images,omitempty"`
 }
