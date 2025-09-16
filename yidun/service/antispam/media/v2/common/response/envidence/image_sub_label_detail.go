@@ -1,13 +1,11 @@
 package envidence
 
 type ImageSubLabelDetail struct {
-	// 反垃圾自定义敏感词结果
-	Keywords []*ImageSubLabelDetailInfo `json:"keywords,omitempty"`
-	// 反垃圾自定义图片名单结果
-	LibInfos []*ImageSubLabelDetailInfo `json:"libInfos,omitempty"`
-	// 反垃圾其他命中信息
-	HitInfos []*ImageSubLabelDetailInfo `json:"hitInfos,omitempty"`
-	Rules    []*ImageSubLabelDetailInfo `json:"rules,omitempty"`
+	Keywords  []*ImageSubLabelDetailInfo `json:"keywords,omitempty"` // 反垃圾自定义敏感词结果
+	LibInfos  []*ImageSubLabelDetailInfo `json:"libInfos,omitempty"` // 反垃圾自定义图片名单结果
+	HitInfos  []*ImageSubLabelDetailInfo `json:"hitInfos,omitempty"` // 反垃圾其他命中信息
+	Rules     []*ImageSubLabelDetailInfo `json:"rules,omitempty"`
+	Anticheat *AnticheatInfo             `json:"anticheat,omitempty"` // Anticheat 反作弊结果
 }
 
 func (d *ImageSubLabelDetail) GetKeywords() []*ImageSubLabelDetailInfo {
@@ -32,6 +30,11 @@ func (d *ImageSubLabelDetail) GetHitInfos() []*ImageSubLabelDetailInfo {
 
 func (d *ImageSubLabelDetail) SetHitInfos(hitInfos []*ImageSubLabelDetailInfo) {
 	d.HitInfos = hitInfos
+}
+
+// AnticheatInfo 反作弊信息
+type AnticheatInfo struct {
+	HitType *int32 `json:"hitType,omitempty"` // HitType 命中类型
 }
 
 type ImageSubLabelDetailInfo struct {
