@@ -32,6 +32,8 @@ type FileSubmitV2Request struct {
 	Callback *string `json:"callback,omitempty" validate:"max=512"`
 	// 异步检测结果回调通知的URL
 	CallbackURL *string `json:"callbackUrl,omitempty" validate:"max=1024"`
+	// 扩展字段
+	Extension *string `json:"extension,omitempty" validate:"max=30000"`
 }
 
 // NewFileSubmitV2Request 初始化FileSubmitV2Request对象
@@ -92,6 +94,10 @@ func (f *FileSubmitV2Request) SetCallbackURL(callbackURL string) {
 	f.CallbackURL = &callbackURL
 }
 
+func (f *FileSubmitV2Request) SetExtension(extension string) {
+	f.Extension = &extension
+}
+
 // GetCustomSignParams 获取具体业务中特有的需要参与签名计算的参数
 func (f *FileSubmitV2Request) GetBusinessCustomSignParams() map[string]string {
 	result := f.PostFormRequest.GetBusinessCustomSignParams()
@@ -128,6 +134,9 @@ func (f *FileSubmitV2Request) GetBusinessCustomSignParams() map[string]string {
 	}
 	if f.CallbackURL != nil {
 		result["callbackUrl"] = *f.CallbackURL
+	}
+	if f.Extension != nil {
+		result["extension"] = *f.Extension
 	}
 	return result
 }
