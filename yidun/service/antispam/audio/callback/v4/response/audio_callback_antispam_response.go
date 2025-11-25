@@ -60,6 +60,8 @@ type CensorLabelInfo struct {
 	Desc       *string `json:"desc,omitempty"`
 	CustomCode *string `json:"customCode,omitempty"`
 	Name       *string `json:"name,omitempty"`
+	ParentLabelId       *string `json:"parentLabelId,omitempty"`       // The name of the label
+    Depth      *int    `json:"depth,omitempty"`       // The name of the label
 }
 type HintInfo struct {
 	HitInfos *[]HintDetail `json:"hitInfos,omitempty"` // 命中内容

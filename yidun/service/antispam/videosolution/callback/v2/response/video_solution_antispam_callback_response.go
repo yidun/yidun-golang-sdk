@@ -89,8 +89,11 @@ type VideoSolutionCallbackReviewEvidenceVideoV2Response struct {
 	Description *string `json:"description,omitempty"`
 }
 type CensorLabelInfoV2Response struct {
-	Code *string `json:"code,omitempty"`
-	Desc *string `json:"desc,omitempty"`
+	Code        *string `json:"code,omitempty"`
+	Desc        *string `json:"desc,omitempty"`
+	Name        *string `json:"name,omitempty"`
+	ParentLabelId       *string `json:"parentLabelId,omitempty"`       // The name of the label
+    Depth       *int    `json:"depth,omitempty"`       // The name of the label
 }
 
 type ImageCallbackUnitV2 struct {

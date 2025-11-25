@@ -117,6 +117,8 @@ type CensorLabelInfo struct {
 	Desc       *string `json:"desc,omitempty"`       // The description of the label
 	CustomCode *string `json:"customCode,omitempty"` // The custom code of the label
 	Name       *string `json:"name,omitempty"`       // The name of the label
+	ParentLabelId       *string `json:"parentLabelId,omitempty"`       // The name of the label
+	Depth      *int    `json:"depth,omitempty"`       // The name of the label
 }
 
 type Evidence struct {
