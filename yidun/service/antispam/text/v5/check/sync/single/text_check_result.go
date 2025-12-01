@@ -117,9 +117,12 @@ type Antispam struct {
 }
 
 type CensorLabel struct {
-	Code *string `json:"code"`
-	Desc *string `json:"desc"`
-	Name *string `json:"name"`
+	Code                *string `json:"code"`
+	Desc                *string `json:"desc"`
+    Name                *string `json:"name"`
+	CustomCode          *string `json:"customCode"`
+    ParentLabelId       *string `json:"parentLabelId,omitempty"`
+    Depth               *int `json:"depth"`
 }
 
 type StrategyVersion struct {
