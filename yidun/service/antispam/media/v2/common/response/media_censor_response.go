@@ -128,8 +128,10 @@ type AudioVideoReason struct {
 
 // 审核标签信息
 type CensorLabel struct {
-	Code       *string `json:"code,omitempty"`
-	Name       *string `json:"name,omitempty"`
-	CustomCode *string `json:"customCode,omitempty"`
-	Desc       *string `json:"desc,omitempty"`
+	Code       			*string `json:"code,omitempty"`
+	Name       			*string `json:"name,omitempty"`
+	CustomCode 			*string `json:"customCode,omitempty"`
+	Desc       			*string `json:"desc,omitempty"`
+	ParentLabelId       *string `json:"parentLabelId,omitempty"`
+    Depth       		*int    `json:"depth,omitempty"`
 }

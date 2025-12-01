@@ -56,9 +56,12 @@ type Detail struct {
 
 // 文档反垃圾结果标签
 type CensorLabel struct {
-	Code       *string `json:"code,omitempty"`
-	Desc       *string `json:"desc,omitempty"`
-	CustomCode *string `json:"customCode,omitempty"`
+	Code       			*string `json:"code,omitempty"`
+	Name       			*string `json:"name,omitempty"`
+	Desc       			*string `json:"desc,omitempty"`
+	CustomCode 			*string `json:"customCode,omitempty"`
+	ParentLabelId       *string `json:"parentLabelId,omitempty"`
+    Depth       		*int    `json:"depth,omitempty"`
 }
 
 // 文档反垃圾人审结果

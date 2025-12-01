@@ -205,10 +205,12 @@ type AntispamInfo struct {
 }
 
 type CensorLabelInfo struct {
-	Code       *string `json:"code,omitempty"`
-	Name       *string `json:"name,omitempty"`
-	Desc       *string `json:"desc,omitempty"`
-	CustomCode *string `json:"customCode,omitempty"`
+	Code       			*string `json:"code,omitempty"`
+	Name       			*string `json:"name,omitempty"`
+	Desc       			*string `json:"desc,omitempty"`
+	CustomCode 			*string `json:"customCode,omitempty"`
+	ParentLabelId       *string `json:"parentLabelId,omitempty"`
+    Depth       		*int    `json:"depth,omitempty"`
 }
 
 type ImageV5OcrResp struct {
