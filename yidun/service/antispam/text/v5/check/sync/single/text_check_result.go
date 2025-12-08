@@ -114,6 +114,7 @@ type Antispam struct {
 	RelateContents   *string            `json:"relatedContents"`
 	HitSources       *int               `json:"hitSources"`
 	Status           *int               `json:"status"`
+	CustomLabels     []*CustomLabel     `json:"customLabels"`
 }
 
 type CensorLabel struct {
@@ -136,6 +137,12 @@ type AntispamLabel struct {
 	Rate      *float64            `json:"rate"`
 	SubLabels []*AntispamSubLabel `json:"subLabels"`
 	HitType   *int                `json:"hitType"`
+}
+
+type CustomLabel struct {
+	Name     *string             `json:"name"`
+	Code     *string             `json:"code"`
+	Depth    *int                `json:"depth"`
 }
 
 type AntispamSubLabel struct {
