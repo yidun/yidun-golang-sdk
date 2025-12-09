@@ -131,6 +131,13 @@ type ImageV5AntispamResp struct {
 	suggestionRiskLevel *int `json:"suggestionRiskLevel,omitempty"`
 	//专项信息
 	publicOpinionInfo *string `json:"publicOpinionInfo,omitempty"`
+	CustomLabels     []*CustomLabel     `json:"customLabels"`
+}
+
+type CustomLabel struct {
+	Name     *string             `json:"name"`
+	Code     *string             `json:"code"`
+	Depth    *int                `json:"depth"`
 }
 
 type ImageV5VersionDetail struct {
