@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/irisk"
 
 	"fmt"
@@ -12,6 +13,7 @@ import (
 
 func main() {
 	request := irisk.NewIRiskDetailRequest("BUSINESS_ID")
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	request.SetBeginTimestamp(time.Now().UnixNano()/1e6 - (24 * 3600 * 1000))
 	request.SetEndTimestamp(time.Now().UnixNano() / 1e6)
 

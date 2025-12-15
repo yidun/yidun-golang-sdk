@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/irisk"
 
 	"fmt"
@@ -10,6 +11,7 @@ import (
 
 func main() {
 	request := irisk.NewIRiskListQueryRequest("BUSINESS_ID")
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	request.SetListGroupCode("ayp76c2dmh2k0ktd8jyia2cg22009v02")
 	// 可设置分页参数进行分页查询
 	request.SetPageNum(1)

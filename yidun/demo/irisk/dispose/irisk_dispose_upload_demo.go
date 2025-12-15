@@ -1,14 +1,17 @@
 package main
 
 import (
-	"github.com/yidun/yidun-golang-sdk/yidun/service/irisk"
 	"log"
+
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
+	"github.com/yidun/yidun-golang-sdk/yidun/service/irisk"
 
 	"fmt"
 )
 
 func main() {
 	request := irisk.NewIRiskDisposeUploadRequest("BUSINESS_ID")
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	request.SetHandleObjectType(1)
 	request.SetAction(1)
 	request.SetObjectId("objectId")

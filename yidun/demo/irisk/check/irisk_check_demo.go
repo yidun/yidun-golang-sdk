@@ -7,11 +7,13 @@ import (
 
 	"encoding/json"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/irisk"
 )
 
 func main() {
 	request := irisk.NewIRiskCheckRequest("BUSINESS_ID")
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	request.SetIp("192.168.0.1")
 	request.SetToken("")
 	request.SetRoleId("roleid01")

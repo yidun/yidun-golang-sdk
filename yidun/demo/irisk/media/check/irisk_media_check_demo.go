@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/irisk"
 
 	"fmt"
@@ -10,6 +11,7 @@ import (
 
 func main() {
 	request := irisk.NewIRiskMediaCheckRequest("BUSINESS_ID")
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	request.SetMediaData("xxxxxxxxxxxx")
 	request.SetMediaName("media01.bmp")
 	request.SetIp("192.168.0.1")

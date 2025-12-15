@@ -4,6 +4,7 @@ import (
 	"log"
 	"time"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/irisk"
 
 	"fmt"
@@ -11,6 +12,7 @@ import (
 
 func main() {
 	request := irisk.NewIRiskReportDataRequest("BUSINESS_ID")
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	request.SetReportChannel("reportChannel")
 	request.SetReportTime(time.Now().UnixNano() / 1e6)
 	request.SetWhistleblower("{\"account\":\"账号ID\",\"roleId\":\"角色ID\",\"roleName\":\"角色名称\",\"serverId\":\"服务器ID/名称\",\"level\":\"等级\",\"recharge\":10000000}")

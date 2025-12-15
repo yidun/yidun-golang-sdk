@@ -3,14 +3,15 @@ package main
 import (
 	"log"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/irisk"
 
 	"fmt"
-
 )
 
 func main() {
 	request := irisk.NewIRiskMediaQueryRequest("BUSINESS_ID")
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	request.SetTaskId("xxewxylcm62kh1a7yra3hxdgdd00a7p4")
 
 	iriskClient := irisk.NewIRiskClientWithAccessKey("SECRET_ID", "SECRET_KEY")

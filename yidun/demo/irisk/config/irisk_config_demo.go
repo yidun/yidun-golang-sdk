@@ -5,11 +5,13 @@ import (
 
 	"fmt"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/irisk"
 )
 
 func main() {
 	re := irisk.NewIRiskConfigRequest("BUSINESS_ID")
+	re.SetProtocol(http.ProtocolEnumHTTP)
 	re.SetIp("192.168.0.1")
 	re.SetSdkData("xxxxxxxxxxxx")
 	iriskClient := irisk.NewIRiskClientWithAccessKey("SECRET_ID", "SECRET_KEY")

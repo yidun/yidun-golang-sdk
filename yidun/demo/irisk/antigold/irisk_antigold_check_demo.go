@@ -1,14 +1,17 @@
 package main
 
 import (
-	"github.com/yidun/yidun-golang-sdk/yidun/service/irisk"
 	"log"
+
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
+	"github.com/yidun/yidun-golang-sdk/yidun/service/irisk"
 
 	"fmt"
 )
 
 func main() {
 	request := irisk.NewIRiskAntiGoldCheckRequest("BUSINESS_ID")
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	request.SetLogTime("2023-09-08T16:00:43+08:00")
 	request.SetLogType("logType")
 	request.SetAccount("objectId")
