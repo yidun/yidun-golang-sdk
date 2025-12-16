@@ -47,9 +47,9 @@ type UserRisk struct {
 }
 
 type UserRiskDetail struct {
-	Account   *string             `json:"account,omitempty"`   // account
-    AccountLevel   *int                `json:"accountLevel"` // 账号风险等级
-	AcDetails []*UserRiskAcDetail `json:"acDetails,omitempty"` // user risk account detail list
+	Account      *string             `json:"account,omitempty"`   // account
+	AccountLevel *int                `json:"accountLevel"`        // 账号风险等级
+	AcDetails    []*UserRiskAcDetail `json:"acDetails,omitempty"` // user risk account detail list
 }
 
 type UserRiskAcDetail struct {
@@ -87,45 +87,45 @@ type EmotionAnalysisDetail struct {
 }
 
 type Antispam struct {
-	TaskID           *string            `json:"taskId"`
-	DataID           *string            `json:"dataId"`
-	Label            *int               `json:"label"`
-	SecondLabel      *string            `json:"secondLabel"`
-	ThirdLabel       *string            `json:"thirdLabel"`
-	RiskDescription  *string            `json:"riskDescription"`
-	Suggestion       *int               `json:"suggestion"`
-	SuggestionLevel  *int               `json:"suggestionLevel"`
-	SuggestionRiskLevel  *int           `json:"suggestionRiskLevel"`
-	CustomAction     *int               `json:"customAction"`
-	ResultType       *int               `json:"resultType"`
-	CensorType       *int               `json:"censorType"`
-	Callback         *string            `json:"callback"`
-	PublicOpinionInfo  *string          `json:"publicOpinionInfo"`
-	CensorLabels     []*CensorLabel     `json:"censorLabels"`
-	StrategyVersions []*StrategyVersion `json:"strategyVersions"`
-	CensorSource     *int               `json:"censorSource"`
-	CensorRound      *int               `json:"censorRound"`
-	CensorTime       *int64             `json:"censorTime"`
-	IsRelatedHit     *bool              `json:"isRelatedHit"`
-	relatedHitType   *int               `json:"relatedHitType"`            
-	Labels           []*AntispamLabel   `json:"labels"`
-	Remark           *string            `json:"remark"`
-	Censor           *string            `json:"censor"`
-	FilteredContent  *string            `json:"filteredContent"`
-	MergeHints       []*string          `json:"mergeHints"`
-	RelateContents   *string            `json:"relatedContents"`
-	HitSources       *int               `json:"hitSources"`
-	Status           *int               `json:"status"`
-	CustomLabels     []*CustomLabel     `json:"customLabels"`
+	TaskID              *string            `json:"taskId"`
+	DataID              *string            `json:"dataId"`
+	Label               *int               `json:"label"`
+	SecondLabel         *string            `json:"secondLabel"`
+	ThirdLabel          *string            `json:"thirdLabel"`
+	RiskDescription     *string            `json:"riskDescription"`
+	Suggestion          *int               `json:"suggestion"`
+	SuggestionLevel     *int               `json:"suggestionLevel"`
+	SuggestionRiskLevel *int               `json:"suggestionRiskLevel"`
+	CustomAction        *int               `json:"customAction"`
+	ResultType          *int               `json:"resultType"`
+	CensorType          *int               `json:"censorType"`
+	Callback            *string            `json:"callback"`
+	PublicOpinionInfo   *string            `json:"publicOpinionInfo"`
+	CensorLabels        []*CensorLabel     `json:"censorLabels"`
+	StrategyVersions    []*StrategyVersion `json:"strategyVersions"`
+	CensorSource        *int               `json:"censorSource"`
+	CensorRound         *int               `json:"censorRound"`
+	CensorTime          *int64             `json:"censorTime"`
+	IsRelatedHit        *bool              `json:"isRelatedHit"`
+	relatedHitType      *int               `json:"relatedHitType"`
+	Labels              []*AntispamLabel   `json:"labels"`
+	Remark              *string            `json:"remark"`
+	Censor              *string            `json:"censor"`
+	FilteredContent     *string            `json:"filteredContent"`
+	MergeHints          []*string          `json:"mergeHints"`
+	RelateContents      *string            `json:"relatedContents"`
+	HitSources          *int               `json:"hitSources"`
+	Status              *int               `json:"status"`
+	CustomLabels        []*CustomLabel     `json:"customLabels"`
 }
 
 type CensorLabel struct {
-	Code                *string `json:"code"`
-	Desc                *string `json:"desc"`
-    Name                *string `json:"name"`
-	CustomCode          *string `json:"customCode"`
-    ParentLabelId       *string `json:"parentLabelId,omitempty"`
-    Depth               *int `json:"depth"`
+	Code          *string `json:"code"`
+	Desc          *string `json:"desc"`
+	Name          *string `json:"name"`
+	CustomCode    *string `json:"customCode"`
+	ParentLabelId *string `json:"parentLabelId,omitempty"`
+	Depth         *int    `json:"depth"`
 }
 
 type StrategyVersion struct {
@@ -142,22 +142,22 @@ type AntispamLabel struct {
 }
 
 type CustomLabel struct {
-	Name     *string             `json:"name"`
-	Code     *string             `json:"code"`
-	Depth    *int                `json:"depth"`
+	Name  *string `json:"name"`
+	Code  *string `json:"code"`
+	Depth *int    `json:"depth"`
 }
 
 type AntispamSubLabel struct {
-	SubLabel           *string                 `json:"subLabel"`
-	SubLabelDepth      *int                    `json:"subLabelDepth"`
-	SecondLabel        *string                 `json:"secondLabel"`
-	ThirdLabel         *string                 `json:"thirdLabel"`
-	RiskDescription    *string                 `json:"riskDescription"`
-	SuggestionRiskLevel *int                   `json:"suggestionRiskLevel"`
-	Rate               *float64                `json:"rate"`
-	PoliticalSentiment *int                    `json:"politicalSentiment"`
-	IsRelatedLabel     *bool                   `json:"isRelatedLabel"`
-	Details            *AntispamSubLabelDetail `json:"details"`
+	SubLabel            *string                 `json:"subLabel"`
+	SubLabelDepth       *int                    `json:"subLabelDepth"`
+	SecondLabel         *string                 `json:"secondLabel"`
+	ThirdLabel          *string                 `json:"thirdLabel"`
+	RiskDescription     *string                 `json:"riskDescription"`
+	SuggestionRiskLevel *int                    `json:"suggestionRiskLevel"`
+	Rate                *float64                `json:"rate"`
+	PoliticalSentiment  *int                    `json:"politicalSentiment"`
+	IsRelatedLabel      *bool                   `json:"isRelatedLabel"`
+	Details             *AntispamSubLabelDetail `json:"details"`
 }
 
 type AntispamSubLabelDetail struct {
@@ -169,7 +169,9 @@ type AntispamSubLabelDetail struct {
 }
 
 type AntispamSubLabelDetailKeyword struct {
-	Word *string `json:"word"`
+	Word              *string `json:"word"`
+	StrategyGroupName *string `json:"strategyGroupName"`
+	StrategyGroupId   *int64  `json:"strategyGroupId"`
 }
 
 type AntispamSubLabelDetailRule struct {
@@ -205,10 +207,10 @@ type AigcPrompt struct {
 }
 
 type AigcPromptDetail struct {
-	Type   *int    `json:"type"`   // prompt分类的枚举值
-	Answer *string `json:"answer"` // 需要回答且能找到回答时返回
-	Source *int    `json:"source"` // 标记对外输出内容由知识库结果还是大模型生成的结果（0代表知识库,1代表大模型,2代表自定义知识库）
-	LibId *string `json:"libId"` // 知识库ID
+	Type     *int    `json:"type"`     // prompt分类的枚举值
+	Answer   *string `json:"answer"`   // 需要回答且能找到回答时返回
+	Source   *int    `json:"source"`   // 标记对外输出内容由知识库结果还是大模型生成的结果（0代表知识库,1代表大模型,2代表自定义知识库）
+	LibId    *string `json:"libId"`    // 知识库ID
 	AnswerId *string `json:"answerId"` // 知识库-答案 ID
 }
 
