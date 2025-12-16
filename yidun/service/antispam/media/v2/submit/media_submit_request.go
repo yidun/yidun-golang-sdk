@@ -3,6 +3,7 @@ package submit
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/yidun/yidun-golang-sdk/yidun/core/types"
 )
 
@@ -13,6 +14,7 @@ type MediaSubmitRequestV2 struct {
 	*types.BizPostFormRequest
 	Ip                    *string                `json:"ip,omitempty"`                    // 用户IP地址
 	Account               *string                `json:"account,omitempty"`               // 用户账号
+	ProfileUrl            *string                `json:"profileUrl,omitempty"`            // 用户主页链接
 	DeviceID              *string                `json:"deviceId,omitempty"`              // 用户设备id
 	DeviceType            *string                `json:"deviceType,omitempty"`            // 用户设备类型
 	DataID                *string                `json:"dataId,omitempty"`                // 数据唯一标识，能够根据该值定位到该条数据，如对数据结果有异议，可以发送该值给客户经理查询
@@ -72,6 +74,10 @@ func (m *MediaSubmitRequestV2) SetIp(ip string) {
 
 func (m *MediaSubmitRequestV2) SetAccount(account string) {
 	m.Account = &account
+}
+
+func (m *MediaSubmitRequestV2) SetProfileUrl(profileUrl string) {
+	m.ProfileUrl = &profileUrl
 }
 
 func (m *MediaSubmitRequestV2) SetDeviceID(deviceId string) {
@@ -136,6 +142,9 @@ func (m *MediaSubmitRequestV2) GetBusinessCustomSignParams() map[string]string {
 	}
 	if m.Account != nil {
 		params["account"] = *m.Account
+	}
+	if m.ProfileUrl != nil {
+		params["profileUrl"] = *m.ProfileUrl
 	}
 	if m.DeviceID != nil {
 		params["deviceId"] = *m.DeviceID
