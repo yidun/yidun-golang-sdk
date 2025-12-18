@@ -142,6 +142,8 @@ type AntispamInfo struct {
 	Y1       *float32 `json:"y1,omitempty"`
 	X2       *float32 `json:"x2,omitempty"`
 	Y2       *float32 `json:"y2,omitempty"`
+	StrategyGroupName *string `json:"strategyGroupName,omitempty"`
+    StrategyGroupId *string `json:"strategyGroupId,omitempty"`
 }
 type TextCallbackUnitV2 struct {
 	TaskID       *string      `json:"taskId,omitempty"`

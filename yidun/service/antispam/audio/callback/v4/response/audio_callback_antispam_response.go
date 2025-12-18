@@ -74,6 +74,8 @@ type HintDetail struct {
 
 type Keywords struct {
 	Word *string `json:"word,omitempty"` // 自定义添加敏感词
+	StrategyGroupName *string `json:"strategyGroupName,omitempty"`
+    StrategyGroupId *string `json:"strategyGroupId,omitempty"`
 }
 
 type LibResult struct {
