@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	auth "github.com/yidun/yidun-golang-sdk/yidun/service/auth"
 )
 
@@ -13,7 +14,8 @@ func main() {
 	request.SetName("张三")
 	request.SetPhone("12345678910")
 	request.SetCardNo("12345678910")
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	authClient := auth.NewAuthClientWithAccessKey("SECRET_ID", "SECRET_KEY")
 	response, err := authClient.MobileNumberOwnerIdNameCheck(request)
 

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	auth "github.com/yidun/yidun-golang-sdk/yidun/service/auth"
 )
 
@@ -14,6 +15,8 @@ func main() {
 	request.SetBackPicture("http://xx/yidun/2-0-0-0-2.jpg")
 	request.SetDataId("123456")
 	request.SetPicType("1")
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	authClient := auth.NewAuthClientWithAccessKey("SECRET_ID", "SECRET_KEY")
 	response, err := authClient.IdCardOcrCheck(request)
 

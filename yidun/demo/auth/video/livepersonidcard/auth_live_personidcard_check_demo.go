@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	auth "github.com/yidun/yidun-golang-sdk/yidun/service/auth"
 )
 
@@ -13,6 +14,8 @@ func main() {
 	request.SetNeedAvatar("1")
 	request.SetVideoType("1")
 	request.SetDataId("123456")
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	var actions = make([]string, 2, 5)
 	actions[0] = "1"
 	actions[1] = "2"
