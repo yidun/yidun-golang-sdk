@@ -47,11 +47,14 @@ type ImageSubLabelDetailInfo struct {
 	Value    *string `json:"value,omitempty"`
 	Group    *string `json:"group,omitempty"`
 	// 坐标左上一个 右下一个
-	X1   *float64 `json:"x1,omitempty"`
-	Y1   *float64 `json:"y1,omitempty"`
-	X2   *float64 `json:"x2,omitempty"`
-	Y2   *float64 `json:"y2,omitempty"`
-	Name *string  `json:"name,omitempty"`
+	X1                *float64 `json:"x1,omitempty"`
+	Y1                *float64 `json:"y1,omitempty"`
+	X2                *float64 `json:"x2,omitempty"`
+	Y2                *float64 `json:"y2,omitempty"`
+	Name              *string  `json:"name,omitempty"`
+	ReleaseTime       *int64   `json:"releaseTime,omitempty"`
+	StrategyGroupName *string  `json:"strategyGroupName,omitempty"`
+	StrategyGroupId   *int64   `json:"strategyGroupId,omitempty"`
 }
 
 func (i *ImageSubLabelDetailInfo) GetWord() *string {

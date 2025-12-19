@@ -29,7 +29,7 @@ type ImageV5Result struct {
 	// 智能风控结果
 	RiskControl *ImageRiskControlV5Resp `json:"riskControl,omitempty"`
 	// aigc结果
-    Aigc *ImageV5AigcResp `json:"aigc,omitempty"`
+	Aigc *ImageV5AigcResp `json:"aigc,omitempty"`
 }
 
 type ImageV5AigcResp struct {
@@ -40,19 +40,18 @@ type ImageV5AigcResp struct {
 	//上传数据唯一标识
 	DataId *string `json:"dataId,omitempty"`
 	// 命中的详细信息
-    Details *[]ImageV5AigcDetail `json:"details,omitempty"`
+	Details *[]ImageV5AigcDetail `json:"details,omitempty"`
 }
 
 type ImageV5AigcDetail struct {
-    //是否为aigc
-	IsAigc    *bool `json:"isAigc,omitempty"`
+	//是否为aigc
+	IsAigc *bool `json:"isAigc,omitempty"`
 	//识别分数
-    AigcRate  *float64 `json:"aigcRate,omitempty"`
-    //置信等级
-    AigcLevel  *int `json:"aigcLevel,omitempty"`
-    //标识信息
-    Signage  *ImageAigcV5SignageResp `json:"signage,omitempty"`
-
+	AigcRate *float64 `json:"aigcRate,omitempty"`
+	//置信等级
+	AigcLevel *int `json:"aigcLevel,omitempty"`
+	//标识信息
+	Signage *ImageAigcV5SignageResp `json:"signage,omitempty"`
 }
 type ImageAigcV5SignageResp struct {
 	// 显式标识
@@ -76,7 +75,6 @@ type CovertSignageDetailsPlatformResp struct {
 	// 隐式生成的平台/个人信息
 	Info *string `json:"info,omitempty"`
 }
-
 
 type ImageV5AntispamResp struct {
 	// 即易盾生成的uuid，唯一标识一张图片
@@ -130,14 +128,14 @@ type ImageV5AntispamResp struct {
 	// 建议风险等级
 	suggestionRiskLevel *int `json:"suggestionRiskLevel,omitempty"`
 	//专项信息
-	publicOpinionInfo *string `json:"publicOpinionInfo,omitempty"`
-	CustomLabels     []*CustomLabel     `json:"customLabels"`
+	publicOpinionInfo *string        `json:"publicOpinionInfo,omitempty"`
+	CustomLabels      []*CustomLabel `json:"customLabels"`
 }
 
 type CustomLabel struct {
-	Name     *string             `json:"name"`
-	Code     *string             `json:"code"`
-	Depth    *int                `json:"depth"`
+	Name  *string `json:"name"`
+	Code  *string `json:"code"`
+	Depth *int    `json:"depth"`
 }
 
 type ImageV5VersionDetail struct {
@@ -204,20 +202,22 @@ type AntispamInfo struct {
 	Value    *string `json:"value,omitempty"`
 	Group    *string `json:"group,omitempty"`
 	// 坐标左上一个 右下一个
-	X1          *float32 `json:"x1,omitempty"`
-	Y1          *float32 `json:"y1,omitempty"`
-	X2          *float32 `json:"x2,omitempty"`
-	Y2          *float32 `json:"y2,omitempty"`
-	ReleaseTime *int64   `json:"releaseTime,omitempty"`
+	X1                *float32 `json:"x1,omitempty"`
+	Y1                *float32 `json:"y1,omitempty"`
+	X2                *float32 `json:"x2,omitempty"`
+	Y2                *float32 `json:"y2,omitempty"`
+	ReleaseTime       *int64   `json:"releaseTime,omitempty"`
+	StrategyGroupName *string  `json:"strategyGroupName,omitempty"`
+	StrategyGroupId   *int64   `json:"strategyGroupId,omitempty"`
 }
 
 type CensorLabelInfo struct {
-	Code       			*string `json:"code,omitempty"`
-	Name       			*string `json:"name,omitempty"`
-	Desc       			*string `json:"desc,omitempty"`
-	CustomCode 			*string `json:"customCode,omitempty"`
-	ParentLabelId       *string `json:"parentLabelId,omitempty"`
-    Depth       		*int    `json:"depth,omitempty"`
+	Code          *string `json:"code,omitempty"`
+	Name          *string `json:"name,omitempty"`
+	Desc          *string `json:"desc,omitempty"`
+	CustomCode    *string `json:"customCode,omitempty"`
+	ParentLabelId *string `json:"parentLabelId,omitempty"`
+	Depth         *int    `json:"depth,omitempty"`
 }
 
 type ImageV5OcrResp struct {
