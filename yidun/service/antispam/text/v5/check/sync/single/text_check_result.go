@@ -26,6 +26,8 @@ type TextCheckResult struct {
 	Language *Language `json:"language"`
 	// aigc提示分析结果
 	AigcPrompt *AigcPrompt `json:"aigcPrompt"`
+	// 文本大模型检测结果
+	LlmCheckInfo *LlmCheckInfo `json:"llmCheckInfo"`
 }
 
 type Language struct {
@@ -208,4 +210,16 @@ type AigcPromptDetail struct {
 	Source *int    `json:"source"` // 标记对外输出内容由知识库结果还是大模型生成的结果（0代表知识库,1代表大模型,2代表自定义知识库）
 	LibId *string `json:"libId"` // 知识库ID
 	AnswerId *string `json:"answerId"` // 知识库-答案 ID
+}
+
+type LlmCheckInfo struct {
+	TaskId  *string               `json:"taskId"`  // 任务id
+	DataId  *string               `json:"dataId"`  // 数据id
+	Details []*LlmCheckInfoDetail `json:"details"` // 详情
+}
+
+type LlmCheckInfoDetail struct {
+	ModelIdentifier *string `json:"modelIdentifier"` // 模型标识
+	Label           *string `json:"label"` // 大模型识别标签
+	Explain         *string `json:"explain"` // llm 对于标签的解释
 }
