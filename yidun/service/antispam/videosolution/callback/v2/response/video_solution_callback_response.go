@@ -23,7 +23,8 @@ type VideoSolutionCallbackV2Result struct {
 	Face     *response2.VideoCallbackFaceV4Response    `json:"face,omitempty"`
 	Aigc     *response2.VideoCallbackAigcV4Response    `json:"aigc,omitempty"`
 	Quality  *VideoSolutionQualityCallbackV2Response   `json:"quality,omitempty"`
-	Ad       *VideoSolutionAdCallbackV4Response        `json:"ad,omitempty"`
+	Ad          *VideoSolutionAdCallbackV4Response          `json:"ad,omitempty"`
+	LlmCheckInfo *VideoSolutionLlmCheckCallbackV4Response  `json:"llmCheckInfo,omitempty"`
 }
 
 type VideoSolutionQualityCallbackV2Response struct {
@@ -33,4 +34,8 @@ type VideoSolutionQualityCallbackV2Response struct {
 type VideoSolutionAdCallbackV4Response struct {
 	Audio *response.AudioAdCallbackV4Response       `json:"audio,omitempty"`
 	Video *response2.VideoCallbackAdV4Response      `json:"video,omitempty"`
+}
+
+type VideoSolutionLlmCheckCallbackV4Response struct {
+	Video *response2.VideoCallbackLlmCheckV4Response `json:"video,omitempty"`
 }
