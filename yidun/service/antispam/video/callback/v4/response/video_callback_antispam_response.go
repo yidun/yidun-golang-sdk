@@ -99,6 +99,7 @@ type AntispamInfo struct {
 	Type              *int    `json:"type,omitempty"`
 	ReleaseTime       *int64  `json:"releaseTime,omitempty"`
 	StrategyGroupName *string `json:"strategyGroupName,omitempty"`
+	StrategyGroupId *int64 `json:"strategyGroupId,omitempty"`
 	// 坐标左上一个 右下一个
 	X1 *float32 `json:"x1,omitempty"`
 	Y1 *float32 `json:"y1,omitempty"`
