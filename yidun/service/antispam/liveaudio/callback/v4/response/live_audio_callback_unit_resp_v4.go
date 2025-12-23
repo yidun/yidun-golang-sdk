@@ -68,5 +68,5 @@ type LeaderV4 struct {
 type Keyword struct {
 	Word *string `json:"word,omitempty"`
 	StrategyGroupName *string `json:"strategyGroupName,omitempty"`
-	StrategyGroupId *string `json:"strategyGroupId,omitempty"`
+	StrategyGroupId *int64 `json:"strategyGroupId,omitempty"`
 }

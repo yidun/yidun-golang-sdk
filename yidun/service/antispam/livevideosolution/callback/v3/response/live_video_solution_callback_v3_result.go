@@ -363,7 +363,7 @@ type LeaderV4 struct {
 type Keywords struct {
 	Word *string `json:"word,omitempty"`
 	StrategyGroupName *string `json:"strategyGroupName,omitempty"`
-	StrategyGroupId *string `json:"strategyGroupId,omitempty"`
+	StrategyGroupId *int64 `json:"strategyGroupId,omitempty"`
 }
 type ImageV5SubLabelResp struct {
 	SubLabel      *string                   `json:"subLabel,omitempty"`      // 对外的图片label
