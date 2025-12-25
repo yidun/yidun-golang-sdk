@@ -177,6 +177,8 @@ type TextCheckResultAntispamSubLabelDetail struct {
 }
 type AntispamSubLabelDetailKeyword struct {
 	Word *string `json:"word,omitempty"`
+	StrategyGroupId *int64 `json:"strategyGroupId,omitempty"`
+	StrategyGroupName *string `json:"strategyGroupName,omitempty"`
 }
 
 type AntispamSubLabelDetailLibInfo struct {
