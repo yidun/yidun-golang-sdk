@@ -6,6 +6,7 @@ import (
 	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/video/check/v4/request"
 	"log"
 	"os"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 点播视频检测提交 demo
@@ -21,7 +22,8 @@ func main() {
 	request.SetURL("http://xxxx.mp4")
 	request.SetDataID("dataId")
 	request.SetUniqueKey("uniqueKey")
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Check(request)
 	if err != nil {
 		// 处理错误并打印日志

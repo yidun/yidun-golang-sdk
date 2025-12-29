@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	v2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v2/feedback"
 )
@@ -17,6 +18,8 @@ func main() {
 	textCheckClient := v2.NewTextClientWithAccessKey("YOUR_SECRET_ID", "YOUR_SECRET_KEY")
 
 	request.SetFeedbacks(createFeedbacks())
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 
 	response, err := textCheckClient.Feedback(request)
 	if err != nil {

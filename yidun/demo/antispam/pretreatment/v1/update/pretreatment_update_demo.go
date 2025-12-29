@@ -7,6 +7,7 @@ import (
 
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/pretreatment"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/pretreatment/v1/update"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 提交名单
@@ -23,7 +24,8 @@ func main() {
 	req.SetId(3770013)
 	req.SetEntity("123")
 	req.SetBusinessId("YOUR_BUSSINESS_ID")
-
+	// 设置协议为HTTP
+	req.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Update(req)
 
 	if err != nil {

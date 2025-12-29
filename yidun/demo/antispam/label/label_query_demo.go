@@ -6,6 +6,7 @@ import (
 
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/label"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/label/request"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 /**
@@ -26,8 +27,8 @@ import (
 	//制定业务
 	// request.SetBusinessID("YOUR_BUSINESS_ID")
 	// request.SetClientID("YOUR_CLIENT_ID")
-
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := labelClient.QueryLabel(request)
 	if err != nil {
 		// 处理错误并打印日志

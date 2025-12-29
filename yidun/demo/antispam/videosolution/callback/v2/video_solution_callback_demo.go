@@ -7,6 +7,7 @@ import (
 	request3 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/videosolution/callback/v2/request"
 	"log"
 	"os"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 点播音视频解决方案回调接口
@@ -20,7 +21,8 @@ func main() {
 	client := videosolution.NewVideoSolutionClientWithAccessKey(YourSecretId, YourSecretKey)
 
 	request.SetYidunRequestId("xxx")
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Callback(request)
 	if err != nil {
 		// 处理错误并打印日志

@@ -7,6 +7,7 @@ import (
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/keyword/delete/v1/request"
 	"log"
 	"os"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 删除关键词
@@ -19,6 +20,8 @@ func main() {
 	client := keyword.NewKeywordClientWithAccessKey(YourSecretId, YourSecretKey)
 	req := request.NewKeywordDeleteRequest(YourBusinessId)
 	req.SetKeywords([]string{"测试", "测试2"})
+	// 设置协议为HTTP
+	req.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Delete(req)
 
 	if err != nil {

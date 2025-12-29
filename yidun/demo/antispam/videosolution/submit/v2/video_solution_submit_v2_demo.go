@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"time"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 点播音视频解决方案提交接口demo
@@ -19,6 +20,8 @@ func main() {
 	// 实例化一个 Client，入参需要传入易盾内容安全分配的secretId，secretKey
 	client := videosolution.NewVideoSolutionClientWithAccessKey(YourSecretId, YourSecretKey)
 	request.SetURL("http://xxx.mp4")
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	request.SetUniqueKey(time.Now().String())
 	response, err := client.Submit(request)
 	if err != nil {

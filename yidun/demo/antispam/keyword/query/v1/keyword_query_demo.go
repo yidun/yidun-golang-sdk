@@ -7,6 +7,7 @@ import (
 	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/keyword/query/v1/request"
 	"log"
 	"os"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 查询关键词
@@ -21,6 +22,8 @@ func main() {
 	req.SetKeyword("测试")
 	req.SetPageNum(1)
 	req.SetPageSize(10)
+	// 设置协议为HTTP
+	req.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Query(req)
 
 	if err != nil {

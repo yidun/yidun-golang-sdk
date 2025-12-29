@@ -7,6 +7,7 @@ import (
 	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/liveaudio/submit/v4/request"
 	"log"
 	"os"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 func main() {
@@ -19,7 +20,8 @@ func main() {
 	request := request2.NewLiveAudioSubmitV4Req(YourBusinessId)
 	// 设置查询开始时间和结束时间
 	request.SetUrl("YourURL")
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	// 实例化一个 Client，入参需要传入易盾内容安全分配的secretId，secretKey
 	client := liveaudio.NewLiveAudioClientWithAccessKey(YourSecretId, YourSecretKey)
 

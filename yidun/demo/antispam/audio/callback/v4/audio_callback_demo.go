@@ -6,6 +6,7 @@ import (
 	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/audio/callback/v4/request"
 	"log"
 	"os"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 /**
@@ -22,7 +23,8 @@ func main() {
 	client := audio.NewAudioClientWithAccessKey(YourSecretId, YourSecretKey)
 
 	request.SetYidunRequestId("唯一ID，标识一次请求，建议使用UUID。可选")
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Callback(request)
 	if err != nil {
 		// 处理错误并打印日志

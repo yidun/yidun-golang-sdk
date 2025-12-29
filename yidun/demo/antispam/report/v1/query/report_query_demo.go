@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	report "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/report/v1"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/report/v1/query"
 )
@@ -24,6 +25,8 @@ func main() {
 	// Set TaskIds
 	taskIds := []string{"task1", "task2", "task3"}
 	reportReq.SetTaskIds(&taskIds)
+	// 设置协议为HTTP
+	reportReq.SetProtocol(http.ProtocolEnumHTTP)
 
 	// 实例化一个Client，入参需要传入易盾内容安全分配的secretId，secretKey
 	qeueryClient := report.NewReportClientWithAccessKey(SECRET_ID, SECRET_KEY)

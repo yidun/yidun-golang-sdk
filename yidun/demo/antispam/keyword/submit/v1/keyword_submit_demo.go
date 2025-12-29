@@ -7,6 +7,7 @@ import (
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/keyword/submit/v1/request"
 	"log"
 	"os"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 提交关键词
@@ -21,6 +22,8 @@ func main() {
 	req.SetKeywords([]string{"测试", "测试2"})
 	req.SetLevel(1)
 	req.SetCategory(100)
+	// 设置协议为HTTP
+	req.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Submit(req)
 
 	if err != nil {

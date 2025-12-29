@@ -8,6 +8,7 @@ import (
 
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/list"
 	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/list/update/v2/request"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 更新名单
@@ -23,6 +24,8 @@ func main() {
 	req.SetEntityType(1)
 	req.SetListType(1)
 	req.SetStatus(0)
+	// 设置协议为HTTP
+	req.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Update(req)
 
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	request3 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/videosolution/feedback/v1/request"
 	"log"
 	"os"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 点播音视频解决方案反馈demo
@@ -26,6 +27,8 @@ func main() {
 	feedback.SetTags([]string{"test"})
 	feedbacks[0] = *feedback
 	request.SetFeedbacks(feedbacks)
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Feedback(request)
 	if err != nil {
 		// 处理错误并打印日志

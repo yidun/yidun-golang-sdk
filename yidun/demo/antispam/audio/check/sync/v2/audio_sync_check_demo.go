@@ -8,6 +8,7 @@ import (
 
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/audio"
 	request3 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/audio/check/sync/v2/request"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 音频同步检测demo
@@ -27,6 +28,8 @@ func main() {
 
 	// 设置 url
 	request.SetURL("http://xxx.mp4?time=1700213386514")
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	request.SetUniqueKey(time.Now().String())
 
 	syncCheckResponse, err := client.SyncCheckAudio(request)

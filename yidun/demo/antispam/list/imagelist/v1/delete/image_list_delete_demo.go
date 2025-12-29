@@ -7,6 +7,7 @@ import (
 
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/list"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/list/imagelist/v1/delete"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 提交名单
@@ -22,7 +23,8 @@ func main() {
 	req.SetType(0)
 	req.SetUuid("7e75d0238c914b16b121fa944639ca89")
 	req.SetBusinessId("YOUR_BUSSINESS_ID")
-
+	// 设置协议为HTTP
+	req.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.ImagelistDelete(req)
 
 	if err != nil {

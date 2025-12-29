@@ -7,6 +7,7 @@ import (
 
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/list"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/list/imagelist/v1/submit"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 提交名单
@@ -22,7 +23,8 @@ func main() {
 	req.SetType(1)
 	req.SetImageLabel(100)
 	req.SetBusinessId("YOUR_BUSSINESS_ID")
-
+	// 设置协议为HTTP
+	req.SetProtocol(http.ProtocolEnumHTTP)
 	// 构造字符串数组
 	imageArray := []string{"http://n1.itc.cn/img8/wb/sohulife/2020/09/04/159920645893400468.JPEG"}
 	images, _ := json.Marshal(imageArray)

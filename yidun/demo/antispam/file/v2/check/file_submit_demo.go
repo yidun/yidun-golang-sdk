@@ -6,6 +6,7 @@ import (
 
 	file "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/file/v2"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/file/v2/submit"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 /**
@@ -21,7 +22,8 @@ func main() {
 	request.SetFileName("fileName_mock")
 	request.SetDataId("dataId_" + url)
 	request.SetCallback("callback_" + url)
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	// 实例化一个fileClient，入参需要传入易盾内容安全分配的secretId，secretKey
 	fileCheckClient := file.NewFileClientWithAccessKey("YOUR_SECRET_ID", "YOUR_SECRET_KEY")
 

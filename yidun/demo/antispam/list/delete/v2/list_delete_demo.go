@@ -8,6 +8,7 @@ import (
 
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/list"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/list/delete/v2/request"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 删除名单
@@ -26,6 +27,8 @@ func main() {
 	req.SetEntities(string(entities))
 	req.SetEntityType(1)
 	req.SetListType(1)
+	// 设置协议为HTTP
+	req.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Delete(req)
 
 	if err != nil {

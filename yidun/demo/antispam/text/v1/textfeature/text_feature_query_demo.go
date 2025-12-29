@@ -6,6 +6,7 @@ import (
 
 	v1 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v1"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v1/textfeature"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 文本特征查询 Demo
@@ -17,7 +18,8 @@ func main() {
 	request.SetPageNum(1)
 	request.SetPageSize(10)
 	request.SetScope(1)
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	// 实例化一个 Client，入参需要传入易盾内容安全分配的secretId，secretKey
 	textClient := v1.NewTextClientWithAccessKey("YOUR_SECRET_ID", "YOUR_SECRET_KEY")
 

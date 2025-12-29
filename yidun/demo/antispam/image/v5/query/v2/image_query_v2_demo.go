@@ -6,6 +6,7 @@ import (
 
 	image "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/image/v5"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/image/v5/query"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 /**
@@ -19,6 +20,8 @@ func main() {
 	imageClient := image.NewImageClientWithAccessKey("YOUR_SECRET_ID", "YOUR_SECRET_KEY")
 
 	request.SetTaskIds([]string{"fu3t9fzh7zh5a9500xwicr0h0030aape", "t16d84y0fqcbjc4rbpztc60h0030aaph"})
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := imageClient.ImageQueryV2(request)
 	if err != nil {
 		// 处理错误并打印日志

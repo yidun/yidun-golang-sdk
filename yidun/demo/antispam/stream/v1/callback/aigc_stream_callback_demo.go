@@ -6,6 +6,7 @@ import (
 
 	v1 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/stream/v1"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/stream/v1/callback"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 func main() {
@@ -14,7 +15,8 @@ func main() {
 
 	// Instantiate the request object
 	request := callback.NewAigcStreamCallBackRequest()
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	// Send the callback request
 	response, err := aigcStreamClient.Callback(request)
 	if err != nil {

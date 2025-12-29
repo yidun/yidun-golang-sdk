@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	v1 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/query"
 )
@@ -18,6 +19,8 @@ func main() {
 
 	taskIdList := []string{"taskIdA", "taskIdB"}
 	request.SetTaskIds(taskIdList)
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 
 	response, err := textCheckClient.QueryTaskIds(request)
 	if err != nil {

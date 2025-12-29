@@ -6,6 +6,7 @@ import (
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/report/v1/submit"
 	"log"
 	"time"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 const (
@@ -43,7 +44,8 @@ func main() {
 	request.SetRoomId("i am roomId")
 	request.SetReportType("i am reportType")
 	request.SetAccount("i am account")
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	reportCheckClient := report.NewReportClientWithAccessKey(SECRET_ID, SECRET_KEY)
 	response, err := reportCheckClient.Submit(request)
 

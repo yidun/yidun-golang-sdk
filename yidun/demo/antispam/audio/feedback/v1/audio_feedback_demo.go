@@ -6,6 +6,7 @@ import (
 	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/audio/feedback/v1/request"
 	"log"
 	"os"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 音频反馈demo
@@ -26,6 +27,8 @@ func main() {
 	feedback.SetLabel(100)
 	feedbacks[0] = *feedback
 	request.SetFeedbacks(feedbacks)
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Feedback(request)
 	if err != nil {
 		// 处理错误并打印日志

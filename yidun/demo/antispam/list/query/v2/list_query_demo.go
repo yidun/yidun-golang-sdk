@@ -8,6 +8,7 @@ import (
 
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/list"
 	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/list/query/v2/request"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 查询名单
@@ -24,6 +25,8 @@ func main() {
 	req.SetPageSize(10)
 	req.SetStartTime(1701619200000)
 	req.SetEndTime(1701705600000)
+	// 设置协议为HTTP
+	req.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Query(req)
 
 	if err != nil {

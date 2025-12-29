@@ -7,6 +7,7 @@ import (
 	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/keyword/update/v2/request"
 	"log"
 	"os"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 更新关键词
@@ -21,6 +22,8 @@ func main() {
 	req.SetKeywords([]string{"测试", "测试2"})
 	req.SetLevel(2)
 	req.SetCategory(300)
+	// 设置协议为HTTP
+	req.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Update(req)
 
 	if err != nil {

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	v5 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/check/async/single"
 )
@@ -21,6 +22,8 @@ func main() {
 	request.SetDataID("DATA_ID")
 	request.SetContent("/ / %【 玉 米 】 ， ， ， 。 。 。")
 	request.SetCheckLabels("100,200")
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 
 	response, err := textCheckClient.AsyncCheckText(request)
 	if err != nil {

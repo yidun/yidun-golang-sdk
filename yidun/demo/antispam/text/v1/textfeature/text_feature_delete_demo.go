@@ -7,13 +7,15 @@ import (
 
 	v1 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v1"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v1/textfeature"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 文本特征删除 Demo
 func main() {
 	// 设置易盾内容安全分配的businessId
 	request := textfeature.NewTextFeatureDeleteRequest("YOUR_BUSINESS_ID")
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	uuidList := []string{"uuid1", "uuid2"} // 需替换为实际uuid
 	uuidJson, _ := json.Marshal(uuidList)
 	request.SetUuids(string(uuidJson))

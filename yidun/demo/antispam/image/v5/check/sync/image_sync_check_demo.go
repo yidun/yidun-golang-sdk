@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	image "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/image/v5"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/image/v5/check"
 )
@@ -29,6 +30,8 @@ func main() {
 
 	imageBeans := []check.ImageBeanRequest{*image}
 	request.SetImages(imageBeans)
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 
 	response, err := imageCheckClient.ImageSyncCheck(request)
 	if err != nil {

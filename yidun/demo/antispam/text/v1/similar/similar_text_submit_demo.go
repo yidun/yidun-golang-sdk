@@ -7,13 +7,15 @@ import (
 
     v1 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v1"
     "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v1/similar"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 相似文本提交请求Demo
 func main() {
     // 设置易盾内容安全分配的businessId
     request := similar.NewSimilarTextSubmitRequest("YOUR_BUSINESS_ID")
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
     // 实例化一个 Client，入参需要传入易盾内容安全分配的secretId，secretKey
     textClient := v1.NewTextClientWithAccessKey("YOUR_SECRET_ID", "YOUR_SECRET_KEY")
 1

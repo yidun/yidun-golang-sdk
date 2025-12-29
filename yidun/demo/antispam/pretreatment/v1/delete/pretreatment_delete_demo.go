@@ -7,6 +7,7 @@ import (
 
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/pretreatment"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/pretreatment/v1/delete"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 提交名单
@@ -20,7 +21,8 @@ func main() {
 	// 设置请求参数
 	req.SetIds("3764454")
 	req.SetBusinessId("YOUR_BUSSINESS_ID")
-
+	// 设置协议为HTTP
+	req.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Delete(req)
 
 	if err != nil {

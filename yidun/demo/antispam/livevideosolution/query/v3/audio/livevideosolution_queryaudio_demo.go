@@ -7,6 +7,7 @@ import (
 	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/livevideosolution/query/v1/request"
 	"log"
 	"os"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 func main() {
@@ -20,7 +21,8 @@ func main() {
 	request.SetStartTime(1701422701000)
 	request.SetEndTime(1701422941987)
 	request.SetTaskId("YourTaskId")
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	// 实例化一个 Client，入参需要传入易盾内容安全分配的secretId，secretKey
 	client := livevideosolution.NewLiveVideoSolutionClientWithAccessKey(YourSecretId, YourSecretKey)
 

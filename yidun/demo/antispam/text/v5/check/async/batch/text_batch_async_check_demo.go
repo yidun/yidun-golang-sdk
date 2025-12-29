@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	v5 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/check/async/batch"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/text/v5/check/sync/single"
@@ -28,6 +29,8 @@ func main() {
 	singleRequests := []*single.TextSceneRequest{singleRequest, singleRequest2}
 
 	request.SetTexts(singleRequests)
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 
 	// 实例化一个textClient，入参需要传入易盾内容安全分配的secretId，secretKey
 	textCheckClient := v5.NewTextClientWithAccessKey("YOUR_SECRET_ID", "YOUR_SECRET_KEY")

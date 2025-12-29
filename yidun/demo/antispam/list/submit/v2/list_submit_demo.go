@@ -8,6 +8,7 @@ import (
 
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/list"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/list/submit/v2/request"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 提交名单
@@ -27,6 +28,8 @@ func main() {
 	req.SetEntityType(1)
 	req.SetListType(1)
 	req.SetSpamType(500)
+	// 设置协议为HTTP
+	req.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Submit(req)
 
 	if err != nil {

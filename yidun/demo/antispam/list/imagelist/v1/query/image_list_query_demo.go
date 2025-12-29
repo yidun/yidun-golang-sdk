@@ -7,6 +7,7 @@ import (
 
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/list"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/list/imagelist/v1/query"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 提交名单
@@ -24,7 +25,8 @@ func main() {
 	req.SetEndTime(1702612797000)
 	req.SetType(0)
 	req.SetBusinessId("YOUR_BUSSINESS_ID")
-
+	// 设置协议为HTTP
+	req.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.ImagelistQuery(req)
 
 	if err != nil {

@@ -9,6 +9,7 @@ import (
 
 	report "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/report/v1"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/report/v1/callback"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 const (
@@ -22,6 +23,8 @@ const (
 func main() {
 	// 构造medai callback 请求对象
 	request := callback.NewReportCallBackRequest()
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	// 请求唯一id
 	request.SetYidunRequestId(strconv.FormatInt(time.Now().UnixMilli(), 10))
 

@@ -7,6 +7,7 @@ import (
 	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/videosolution/query/v1/request"
 	"log"
 	"os"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 点播音视频解决方案查询截图结果demo
@@ -20,6 +21,8 @@ func main() {
 	request.SetTaskId("xw9aez6luaaq7ochsvb1720h0200a4jj")
 	request.SetPageSize(100)
 	request.SetPageNum(1)
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.QueryImageV1(request)
 	if err != nil {
 		// 处理错误并打印日志

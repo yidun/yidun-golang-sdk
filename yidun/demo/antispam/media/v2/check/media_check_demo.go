@@ -7,6 +7,7 @@ import (
 
 	media "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/media/v2"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/media/v2/submit"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 const (
@@ -53,7 +54,8 @@ func main() {
 		dataItemImage,
 		dataItemVideo,
 	})
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	// 实例化一个fileClient，入参需要传入易盾内容安全分配的secretId，secretKey
 	mediaCheckClient := media.NewMediaClientWithAccessKey(SECRET_ID, SECRET_KEY)
 	response, err := mediaCheckClient.Submit(request)

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 	digital "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/digitalbook/v2"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/digitalbook/v2/query"
 )
@@ -27,6 +28,8 @@ func main() {
 	// Set TaskIds
 	taskIds := []string{"task1", "task2", "task3"}
 	digitalQueryReq.SetTaskIds(&taskIds)
+	// 设置协议为HTTP
+	digitalQueryReq.SetProtocol(http.ProtocolEnumHTTP)
 
 	response, err := qeueryClient.Query(digitalQueryReq)
 	if err != nil {

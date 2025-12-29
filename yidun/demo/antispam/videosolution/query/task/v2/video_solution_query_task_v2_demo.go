@@ -7,6 +7,7 @@ import (
 	request3 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/videosolution/query/v2/request"
 	"log"
 	"os"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 func main() {
@@ -17,6 +18,8 @@ func main() {
 	// 实例化一个 Client，入参需要传入易盾内容安全分配的secretId，secretKey
 	client := videosolution.NewVideoSolutionClientWithAccessKey(YourSecretId, YourSecretKey)
 	request.SetTaskIds([]string{"xw9aez6luaaq7ochsvb1720h0200a4jj"})
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.QueryTaskV2(request)
 	if err != nil {
 		// 处理错误并打印日志

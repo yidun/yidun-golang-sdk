@@ -6,6 +6,7 @@ import (
 
 	crawler "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/crawler"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/crawler/v3/submit"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 /**
@@ -22,7 +23,8 @@ func main() {
 	request.SetCallback("callback_" + url)
 	request.SetCallbackUrl("http://xxxxxx.com/callback/receive")
 	request.SetExtension("{\"mission\":123}")
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	// 实例化一个crawlerClient，入参需要传入易盾内容安全分配的secretId，secretKey
 	crawlerSubmitClient := crawler.NewCrawlerClientWithAccessKey("YOUR_SECRET_ID", "YOUR_SECRET_KEY")
 

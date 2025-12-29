@@ -6,6 +6,7 @@ import (
 
 	image "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/image/v5"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/image/v5/feedback"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 /**
@@ -24,7 +25,8 @@ func main() {
 	feedback_1.SetLabel(100)
 
 	request.SetFeedbacks([]feedback.ImageFeedbackBeanRequest{feedback_1})
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := imageCheckClient.ImageFeedback(request)
 	if err != nil {
 		// 处理错误并打印日志

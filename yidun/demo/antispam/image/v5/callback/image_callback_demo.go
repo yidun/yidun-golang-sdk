@@ -6,6 +6,7 @@ import (
 
 	image "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/image/v5"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/image/v5/callback"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 /**
@@ -14,7 +15,8 @@ import (
 func main() {
 	// 设置易盾内容安全分配的businessId
 	request := callback.NewImageCallbackRequest("YOUR_BUSINESS_ID")
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	// 实例化一个imageClient，入参需要传入易盾内容安全分配的secretId，secretKey
 	imageCheckClient := image.NewImageClientWithAccessKey("YOUR_SECRET_ID", "YOUR_SECRET_KEY")
 

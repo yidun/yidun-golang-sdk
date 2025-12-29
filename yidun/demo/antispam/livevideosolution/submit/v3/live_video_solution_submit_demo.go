@@ -8,6 +8,7 @@ import (
 
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/livevideosolution"
 	request2 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/livevideosolution/submit/v3/request"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 func main() {
@@ -19,7 +20,8 @@ func main() {
 	// 设置查询开始时间和结束时间
 	request.SetUrl("YourURL")
 	request.SetDataId("YourDataId")
-
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	// 实例化一个 Client，入参需要传入易盾内容安全分配的secretId，secretKey
 	client := livevideosolution.NewLiveVideoSolutionClientWithAccessKey(YourSecretId, YourSecretKey)
 

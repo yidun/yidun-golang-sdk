@@ -7,6 +7,7 @@ import (
 
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/pretreatment"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/pretreatment/v1/query"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 // 提交名单
@@ -25,7 +26,8 @@ func main() {
 	req.SetStartTime(1702439997000)
 	req.SetEndTime(1702699197000)
 	req.SetBusinessId("YOUR_BUSSINESS_ID")
-
+	// 设置协议为HTTP
+	req.SetProtocol(http.ProtocolEnumHTTP)
 	response, err := client.Query(req)
 
 	if err != nil {

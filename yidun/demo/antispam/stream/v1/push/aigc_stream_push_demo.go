@@ -8,6 +8,7 @@ import (
 	v1 "github.com/yidun/yidun-golang-sdk/yidun/service/antispam/stream/v1"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/stream/v1/common"
 	"github.com/yidun/yidun-golang-sdk/yidun/service/antispam/stream/v1/push"
+	"github.com/yidun/yidun-golang-sdk/yidun/core/http"
 )
 
 func main() {
@@ -84,6 +85,8 @@ func pushDemoForOutputStreamCheck(aigcStreamClient *v1.AigcStreamClient, session
 func pushDemoForOutputStreamClose(aigcStreamClient *v1.AigcStreamClient, sessionId string) {
 	// type = 3: session end, content does not need to be passed, if passed, it will be merged and detected together
 	request := push.NewAigcStreamPushRequestV1()
+	// 设置协议为HTTP
+	request.SetProtocol(http.ProtocolEnumHTTP)
 	request.SessionId = sessionId
 	request.Type = common.SessionEnd
 
