@@ -288,6 +288,8 @@ type FaceLineContent struct {
 	Category *string `json:"category,omitempty"`
 	// 性别
 	Gender *string `json:"gender,omitempty"`
+	// 性别分数
+	GenderRate *float32 `json:"genderRate,omitempty"`
 	// 年龄
 	Age *int `json:"age,omitempty"`
 	// 人脸大小占比
