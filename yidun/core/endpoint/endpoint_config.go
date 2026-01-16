@@ -240,6 +240,10 @@ var (
           "us-silicon-valley": [
              "as-image-sv.dun.163.com",
              "as-image-sv.dun.163yun.com"
+          ],
+          "eu-frankfurt": [
+            "as-image-frankfurt.dun.163.com",
+            "as-image-frankfurt.dun.163yun.com"
           ]
 		},
 		"imageCommon": {
@@ -262,6 +266,10 @@ var (
           "us-silicon-valley": [
              "as-image-sv.dun.163.com",
              "as-image-sv.dun.163yun.com"
+          ],
+          "eu-frankfurt": [
+             "as-image-frankfurt.dun.163.com",
+             "as-image-frankfurt.dun.163yun.com"
           ]
 		},
 		"text-check": {
