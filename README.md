@@ -22,7 +22,7 @@ SDK 中各接口调用方式基本相同，接入方式统一，并提供了一�
 * 在您的项目中添加module依赖，只需在 go.mod 文件中添加以下依赖项即可。
 
   ```
-    require github.com/yidun/yidun-golang-sdk v1.0.32
+    require github.com/yidun/yidun-golang-sdk v1.0.33
   ```
 
   > 注意： 这里的版本号只是举例，您可以在 git 仓库 上找到最新的版本。
