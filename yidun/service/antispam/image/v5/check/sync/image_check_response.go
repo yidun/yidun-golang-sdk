@@ -125,8 +125,6 @@ type ImageV5AntispamResp struct {
 	DetailMarks *[]DetailMark `json:"detailMarks,omitempty"`
 	// 审核备注
 	Remark *string `json:"remark,omitempty"`
-	// 人审拓展字段，回调返回
-	CensorExtension *CensorExtension `json:"censorExtension,omitempty"`
 	// 云信融合业务转换结果
 	CustomAction *int `json:"customAction,omitempty"`
 	// 分帧数
@@ -153,6 +151,8 @@ type ImageV5AntispamResp struct {
 	HitResult *string `json:"hitResult,omitempty"`
 	// 客户自定义标签
 	CustomLabels []*CustomLabel `json:"customLabels,omitempty"`
+	// 人审拓展字段，回调返回
+	CensorExtension   *CensorExtensionResult `json:"censorExtension,omitempty"`
 }
 
 type CustomLabel struct {
@@ -502,6 +502,10 @@ type ImageRiskControlHitInfo struct {
 	Desc *string `json:"desc,omitempty"` // 风险标签描述信息
 }
 
+type CensorExtensionResult struct {
+	QualityInspectionTaskId *string `json:"qualityInspectionTaskId,omitempty"`
+	InspTaskCreateTime      *float64 `json:"inspTaskCreateTime,omitempty"`
+}
 // DetailMark 细节标注
 type DetailMark struct {
 	// 标注位置
@@ -516,12 +520,6 @@ type DetailMark struct {
 type MarkPoint struct {
 	X *float32 `json:"x,omitempty"`
 	Y *float32 `json:"y,omitempty"`
-}
-
-// CensorExtension 人审扩展字段
-type CensorExtension struct {
-	// 质检任务ID，用于质检任务的关联，父子任务逗号分隔
-	QualityInspectionTaskId *string `json:"qualityInspectionTaskId,omitempty"`
 }
 
 // LlmCheckInfo 大模型检测结果

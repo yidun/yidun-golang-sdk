@@ -19,3 +19,4 @@ type MediaAntispamResponse struct {
 	Evidences              *envidence.MediaAntispamEvidence  `json:"evidences,omitempty"`              // 底层业务返回结果
 	SolutionEnrichEvidence *envidence.SolutionEnrichEvidence `json:"solutionEnrichEvidence,omitempty"` // 解决方案维度-失败集合
 }
+

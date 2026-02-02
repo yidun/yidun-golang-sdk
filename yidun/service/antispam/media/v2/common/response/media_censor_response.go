@@ -14,6 +14,13 @@ type MediaCensorResponse struct {
 	SkipCensor          *int            `json:"skipCensor,omitempty"`
 	CensorLabels        []*CensorLabel  `json:"censorLabels,omitempty"` // 标签
 	ReviewEvidences     *ReviewEvidence `json:"reviewEvidences,omitempty"`
+    CensorExtension     *CensorExtensionResult `json:"censorExtension,omitempty"`        // 扩展字段
+
+}
+
+type CensorExtensionResult struct {
+	QualityInspectionTaskId *string `json:"qualityInspectionTaskId,omitempty"`
+	InspTaskCreateTime *float64 `json:"inspTaskCreateTime,omitempty"`
 }
 
 // 人审证据信息
