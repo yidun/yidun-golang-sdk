@@ -383,13 +383,14 @@ type (
 		IpRiskInfo IpRiskInfo  `json:"ipRiskInfo"`
 	}
 	IpBasicInfo struct {
-		Isp       string `json:"isp"`
-		Continent string `json:"continent"`
-		Country   string `json:"country"`
-		Province  string `json:"province"`
-		City      string `json:"city"`
-		Longitude string `json:"longitude"`
-		Latitude  string `json:"latitude"`
+		Isp         string `json:"isp"`
+		Continent   string `json:"continent"`
+		Country     string `json:"country"`
+		CountryCode string `json:"countryCode"`
+		Province    string `json:"province"`
+		City        string `json:"city"`
+		Longitude   string `json:"longitude"`
+		Latitude    string `json:"latitude"`
 	}
 	IpRiskInfo struct {
 		RiskType  string  `json:"riskType"`

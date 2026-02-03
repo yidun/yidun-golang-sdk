@@ -56,6 +56,7 @@ func main() {
 		fmt.Println("DeviceInfo:", data.DeviceInfo)
 		fmt.Println("PhoneInfo:", data.PhoneInfo)
 		fmt.Println("IpInfo:", data.IpInfo)
+		fmt.Println("CountryCode:", data.IpInfo.BasicInfo.CountryCode)
 		fmt.Println("Evidences:", data.Evidences)
 
 		// deviceInfoAndroid: if Android then
