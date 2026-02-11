@@ -117,6 +117,7 @@ type Antispam struct {
 	HitSources          *int               `json:"hitSources"`
 	Status              *int               `json:"status"`
 	CustomLabels        []*CustomLabel     `json:"customLabels"`
+	CensorExtension     *CensorExtension   `json:"censorExtension"`
 }
 
 type CensorLabel struct {
@@ -224,4 +225,9 @@ type LlmCheckInfoDetail struct {
 	ModelIdentifier *string `json:"modelIdentifier"` // 模型标识
 	Label           *string `json:"label"` // 大模型识别标签
 	Explain         *string `json:"explain"` // llm 对于标签的解释
+}
+
+type CensorExtension struct {
+	QualityInspectionTaskId *string `json:"qualityInspectionTaskId,omitempty"` // 质量检测任务ID
+	InspTaskCreateTime      *int64  `json:"inspTaskCreateTime,omitempty"`      // 质检任务创建时间（Unix时间戳，毫秒）
 }
