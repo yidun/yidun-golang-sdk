@@ -56,12 +56,12 @@ type Detail struct {
 
 // 文档反垃圾结果标签
 type CensorLabel struct {
-	Code       			*string `json:"code,omitempty"`
-	Name       			*string `json:"name,omitempty"`
-	Desc       			*string `json:"desc,omitempty"`
-	CustomCode 			*string `json:"customCode,omitempty"`
-	ParentLabelId       *string `json:"parentLabelId,omitempty"`
-    Depth       		*int    `json:"depth,omitempty"`
+	Code          *string `json:"code,omitempty"`
+	Name          *string `json:"name,omitempty"`
+	Desc          *string `json:"desc,omitempty"`
+	CustomCode    *string `json:"customCode,omitempty"`
+	ParentLabelId *string `json:"parentLabelId,omitempty"`
+	Depth         *int    `json:"depth,omitempty"`
 }
 
 // 文档反垃圾人审结果
@@ -106,8 +106,10 @@ type TextEvidence struct {
 	Suggestion          *int                 `json:"suggestion,omitempty"`
 	SuggestionRiskLevel *int                 `json:"suggestionRiskLevel,omitempty"`
 	PublicOpinionInfo   *string              `json:"publicOpinionInfo,omitempty"`
+	RiskDescription     *string              `json:"riskDescription,omitempty"`
 	Labels              []*TextEvidenceLabel `json:"labels,omitempty"`
 	Page                *int                 `json:"page,omitempty"`
+	LlmCheckInfo        []*LlmCheckDetail    `json:"llmCheckInfo,omitempty"`
 }
 
 // 文本反垃圾机审结果证据标签
@@ -172,8 +174,10 @@ type ImageEvidence struct {
 	Suggestion          *int                  `json:"suggestion,omitempty"`
 	SuggestionRiskLevel *int                  `json:"suggestionRiskLevel,omitempty"`
 	PublicOpinionInfo   *string               `json:"publicOpinionInfo,omitempty"`
+	RiskDescription     *string               `json:"riskDescription,omitempty"`
 	Labels              []*ImageEvidenceLabel `json:"labels,omitempty"`
 	Page                *int                  `json:"page,omitempty"`
+	LlmCheckInfo        []*LlmCheckDetail     `json:"llmCheckInfo,omitempty"`
 }
 
 // ImageEvidenceLabel 图片证据标签
@@ -228,8 +232,9 @@ type AudioEvidence struct {
 }
 
 type VideoSolutionCheckResult struct {
-	Segments *[]AudioEvidenceSegment  `json:"segments,omitempty"`
-	Pictures *[]VideoEvidencePictures `json:"pictures,omitempty"`
+	Segments     *[]AudioEvidenceSegment  `json:"segments,omitempty"`
+	Pictures     *[]VideoEvidencePictures `json:"pictures,omitempty"`
+	LlmCheckInfo []*LlmCheckPicture       `json:"llmCheckInfo,omitempty"`
 }
 
 // AudioEvidenceSegment 音频证据分段
@@ -379,4 +384,19 @@ type ValueAddServiceResult struct {
 
 type Ocr struct {
 	Images *[]sync.ImageV5OcrResp `json:"images,omitempty"`
+}
+
+// LlmCheckDetail LLM 检测详情（文本和图片通用）
+type LlmCheckDetail struct {
+	Explain         *string  `json:"explain,omitempty"`
+	Label           *string  `json:"label,omitempty"`
+	Rate            *float64 `json:"rate,omitempty"`
+	ModelIdentifier *string  `json:"modelIdentifier,omitempty"`
+}
+
+// LlmCheckPicture 视频 LLM 检测图片列表
+type LlmCheckPicture struct {
+	PictureID *string           `json:"pictureId,omitempty"`
+	StartTime *int64            `json:"startTime,omitempty"`
+	Details   []*LlmCheckDetail `json:"details,omitempty"`
 }

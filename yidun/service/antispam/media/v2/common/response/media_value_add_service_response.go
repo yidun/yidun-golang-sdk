@@ -14,6 +14,7 @@ type MediaValueAddServiceResponse struct {
 	Language        *Language        `json:"language,omitempty"`
 	GrammarFix      *GrammarFix      `json:"grammarFix,omitempty"`
 	Aigc            *MediaAigc       `json:"aigc,omitempty"`
+	LlmCheckInfo    *LlmCheckInfo    `json:"llmCheckInfo,omitempty"`
 }
 
 type Ocr struct {
@@ -329,4 +330,44 @@ type MediaCovertSignageDetails struct {
 type MediaCovertSignagePlatform struct {
 	Type int32  `json:"type,omitempty"` // Type 类型说明
 	Info string `json:"info,omitempty"` // Info 平台信息
+}
+
+// LlmCheckInfo 大模型检测结果
+type LlmCheckInfo struct {
+	Images []*LlmCheckImageDetail `json:"images,omitempty"`
+	Texts  []*LlmCheckTextDetail  `json:"texts,omitempty"`
+	Videos []*LlmCheckVideoDetail `json:"videos,omitempty"`
+}
+
+// LlmCheckImageDetail 图片大模型检测详情
+type LlmCheckImageDetail struct {
+	ValueServiceBaseResponse
+	Details []*LlmCheckDetail `json:"details,omitempty"`
+}
+
+// LlmCheckTextDetail 文本大模型检测详情
+type LlmCheckTextDetail struct {
+	ValueServiceBaseResponse
+	Details []*LlmCheckDetail `json:"details,omitempty"`
+}
+
+// LlmCheckVideoDetail 视频大模型检测详情
+type LlmCheckVideoDetail struct {
+	ValueServiceBaseResponse
+	Pictures []*LlmCheckVideoPicture `json:"pictures,omitempty"`
+}
+
+// LlmCheckVideoPicture 视频大模型检测图片信息
+type LlmCheckVideoPicture struct {
+	StartTime *int64            `json:"startTime,omitempty"`
+	PictureID *string           `json:"pictureId,omitempty"`
+	Details   []*LlmCheckDetail `json:"details,omitempty"`
+}
+
+// LlmCheckDetail 大模型检测详情
+type LlmCheckDetail struct {
+	Explain         *string  `json:"explain,omitempty"`
+	Label           *string  `json:"label,omitempty"`
+	Rate            *float64 `json:"rate,omitempty"`
+	ModelIdentifier *string  `json:"modelIdentifier,omitempty"`
 }
