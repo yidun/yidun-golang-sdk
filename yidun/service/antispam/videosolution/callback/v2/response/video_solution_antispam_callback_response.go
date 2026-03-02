@@ -30,6 +30,7 @@ type VideoSolutionAntispamCallbackV2Response struct {
 	SolutionExtra   *VideoSolutionCallbackExtraV2Response          `json:"solutionExtra,omitempty"`   // 音视频解决方案额外信息
 	ReviewEvidences *VideoSolutionCallbackReviewEvidenceV2Response `json:"reviewEvidences,omitempty"` // 人审证据信息，接入人工审核后，参考人审证据信息，人审证据信息与机器检测证据信息不共存
 	CensorLabels    *[]CensorLabelInfoV2Response                   `json:"censorLabels,omitempty"`
+	CensorExtension *CensorExtensionResult                         `json:"censorExtension,omitempty"` // 质检扩展结果
 }
 
 type VideoSolutionCallbackExtraV2Response struct {
@@ -200,5 +201,10 @@ type AntispamSubLabelDetailHitInfoPosition struct {
 	FieldName *string `json:"fieldName,omitempty"`
 	StartPos  *int    `json:"startPos,omitempty"`
 	EndPos    *int    `json:"endPos,omitempty"`
+}
+
+type CensorExtensionResult struct {
+	QualityInspectionTaskId *string `json:"qualityInspectionTaskId,omitempty"` // 质检任务ID
+	InspTaskCreateTime       *int64  `json:"inspTaskCreateTime,omitempty"`      // 质检任务创建时间，毫秒时间戳
 }
 
