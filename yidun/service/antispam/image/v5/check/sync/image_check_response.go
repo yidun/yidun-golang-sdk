@@ -30,6 +30,8 @@ type ImageV5Result struct {
 	RiskControl *ImageRiskControlV5Resp `json:"riskControl,omitempty"`
 	// aigc结果
 	Aigc *ImageV5AigcResp `json:"aigc,omitempty"`
+	// 大模型检测结果
+	LlmCheckInfo *[]LlmCheckInfo `json:"llmCheckInfo,omitempty"`
 }
 
 type ImageV5AigcResp struct {
@@ -85,6 +87,8 @@ type ImageV5AntispamResp struct {
 	FailureReason *int `json:"failureReason,omitempty"`
 	// 检测建议结果
 	Suggestion *int `json:"suggestion,omitempty"`
+	// 建议级别
+	SuggestionLevel *int `json:"suggestionLevel,omitempty"`
 	// 一级分类
 	Label *int `json:"label,omitempty"`
 	// 二级分类
@@ -95,6 +99,8 @@ type ImageV5AntispamResp struct {
 	RiskDescription *string `json:"riskDescription,omitempty"`
 	// 图片人审状态
 	CensorType *int `json:"censorType,omitempty"`
+	// 审核人
+	Censor *string `json:"censor,omitempty"`
 	// 策略版本字段
 	StrategyVersions *[]ImageV5VersionDetail `json:"strategyVersions,omitempty"`
 	// 产品方传的图片标识，原样返回
@@ -113,6 +119,14 @@ type ImageV5AntispamResp struct {
 	CensorRound *int `json:"censorRound,omitempty"`
 	// 审核标签，回调返回
 	CensorLabels *[]CensorLabelInfo `json:"censorLabels,omitempty"`
+	// 整体审核备注，回调返回
+	OverAllMarkDesc *string `json:"overAllMarkDesc,omitempty"`
+	// 细节标注，回调返回
+	DetailMarks *[]DetailMark `json:"detailMarks,omitempty"`
+	// 审核备注
+	Remark *string `json:"remark,omitempty"`
+	// 人审拓展字段，回调返回
+	CensorExtension *CensorExtension `json:"censorExtension,omitempty"`
 	// 云信融合业务转换结果
 	CustomAction *int `json:"customAction,omitempty"`
 	// 分帧数
@@ -126,10 +140,19 @@ type ImageV5AntispamResp struct {
 	//转存地址
 	Url *string `json:"url,omitempty"`
 	// 建议风险等级
-	suggestionRiskLevel *int `json:"suggestionRiskLevel,omitempty"`
+	SuggestionRiskLevel *int `json:"suggestionRiskLevel,omitempty"`
 	//专项信息
-	publicOpinionInfo *string        `json:"publicOpinionInfo,omitempty"`
-	CustomLabels      []*CustomLabel `json:"customLabels"`
+	PublicOpinionInfo *string `json:"publicOpinionInfo,omitempty"`
+	// 命中策略类型
+	HitType *int `json:"hitType,omitempty"`
+	// 特征添加来源，用于区分用户添加和审核添加
+	HitSource *int `json:"hitSource,omitempty"`
+	// 策略类型 1 公有策略 2 私有策略
+	StrategyType *int `json:"strategyType,omitempty"`
+	// 命中结果
+	HitResult *string `json:"hitResult,omitempty"`
+	// 客户自定义标签
+	CustomLabels []*CustomLabel `json:"customLabels,omitempty"`
 }
 
 type CustomLabel struct {
@@ -231,6 +254,8 @@ type ImageV5OcrResp struct {
 	Height *int `json:"height,omitempty"`
 	// 宽
 	Width *int `json:"width,omitempty"`
+	// OCR 分帧数
+	FrameSize *int `json:"frameSize,omitempty"`
 	// ocr检测结果
 	Details *[]ImageV5OcrDetail `json:"details,omitempty"`
 }
@@ -475,4 +500,38 @@ type ImageRiskControlHitInfo struct {
 	Type *string `json:"type,omitempty"` // 风险标签type
 	Name *string `json:"name,omitempty"` // 风险标签名称
 	Desc *string `json:"desc,omitempty"` // 风险标签描述信息
+}
+
+// DetailMark 细节标注
+type DetailMark struct {
+	// 标注位置
+	Position *[]MarkPoint `json:"position,omitempty"`
+	// 标注标签列表
+	CensorLabels *[]CensorLabelInfo `json:"censorLabels,omitempty"`
+	// 标注备注
+	Desc *string `json:"desc,omitempty"`
+}
+
+// MarkPoint 标注点坐标
+type MarkPoint struct {
+	X *float32 `json:"x,omitempty"`
+	Y *float32 `json:"y,omitempty"`
+}
+
+// CensorExtension 人审扩展字段
+type CensorExtension struct {
+	// 质检任务ID，用于质检任务的关联，父子任务逗号分隔
+	QualityInspectionTaskId *string `json:"qualityInspectionTaskId,omitempty"`
+}
+
+// LlmCheckInfo 大模型检测结果
+type LlmCheckInfo struct {
+	// 模型标签
+	Label *string `json:"label,omitempty"`
+	// 模型解释
+	Explain *string `json:"explain,omitempty"`
+	// 模型分数
+	Rate *float64 `json:"rate,omitempty"`
+	// 大模型标识
+	ModelIdentifier *string `json:"modelIdentifier,omitempty"`
 }
