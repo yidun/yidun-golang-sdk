@@ -21,6 +21,7 @@ type MediaCensorResponse struct {
 type CensorExtensionResult struct {
 	QualityInspectionTaskId *string `json:"qualityInspectionTaskId,omitempty"`
 	InspTaskCreateTime *float64 `json:"inspTaskCreateTime,omitempty"`
+	QualityInspectionType   *float64 `json:"qualityInspectionType,omitempty"`
 }
 
 // 人审证据信息

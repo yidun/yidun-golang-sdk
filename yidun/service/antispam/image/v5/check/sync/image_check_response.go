@@ -503,8 +503,9 @@ type ImageRiskControlHitInfo struct {
 }
 
 type CensorExtensionResult struct {
-	QualityInspectionTaskId *string `json:"qualityInspectionTaskId,omitempty"`
+	QualityInspectionTaskId *string  `json:"qualityInspectionTaskId,omitempty"`
 	InspTaskCreateTime      *float64 `json:"inspTaskCreateTime,omitempty"`
+	QualityInspectionType   *float64 `json:"qualityInspectionType,omitempty"`
 }
 // DetailMark 细节标注
 type DetailMark struct {
