@@ -26,9 +26,12 @@ type AntispamCheckResult struct {
 	Suggestion      *int                  `json:"suggestion,omitempty"`
 	Message         *string               `json:"message,omitempty"`
 	ResultType      *int                  `json:"resultType,omitempty"`
+	CensorRound     *int                  `json:"censorRound,omitempty"`    //审核轮数
+	Censor          *string               `json:"censor,omitempty"`         //审核人
 	Evidences       *EvidenceResult       `json:"evidences,omitempty"`
 	ReviewEvidences *ReviewEvidenceResult `json:"reviewEvidences,omitempty"`
 	FailureReason   *int                  `json:"failureReason,omitempty"`
+	RiskDescription *string               `json:"riskDescription,omitempty"` //风险描述
 	Details         []*Detail             `json:"details,omitempty"`
 	CensorLabels    []*CensorLabel        `json:"censorLabels,omitempty"`
 	CensorTime      *int64                `json:"censorTime,omitempty"` //审核完成时间，结果类型是机器结果，代表机器审核完成时间；审核结果是人审结果，代表人审完成时间
@@ -49,8 +52,9 @@ type Detail struct {
 	Label           *int                  `json:"label,omitempty"`
 	SecondLabel     *string               `json:"secondLabel,omitempty"`
 	ThirdLabel      *string               `json:"thirdLabel,omitempty"`
-	CensorTime      *int64                `json:"censorTime,omitempty"` //压缩文件子文件审核完成时间，结果类型是机器结果，代表机器审核完成时间；审核结果是人审结果，代表人审完成时间
-	Status          *int                  `json:"status,omitempty"`     //检测状态 3：失败 2：成功
+	RiskDescription *string               `json:"riskDescription,omitempty"` //风险描述
+	CensorTime      *int64                `json:"censorTime,omitempty"`      //压缩文件子文件审核完成时间，结果类型是机器结果，代表机器审核完成时间；审核结果是人审结果，代表人审完成时间
+	Status          *int                  `json:"status,omitempty"`          //检测状态 3：失败 2：成功
 	Md5             *string               `json:"md5,omitempty"`
 }
 
