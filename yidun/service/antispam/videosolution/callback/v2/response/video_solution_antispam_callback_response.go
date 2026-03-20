@@ -205,6 +205,7 @@ type AntispamSubLabelDetailHitInfoPosition struct {
 
 type CensorExtensionResult struct {
 	QualityInspectionTaskId *string `json:"qualityInspectionTaskId,omitempty"` // 质检任务ID
+	QualityInspectionType   *int `json:"qualityInspectionType,omitempty"` // 质检任务ID
 	InspTaskCreateTime       *int64  `json:"inspTaskCreateTime,omitempty"`      // 质检任务创建时间，毫秒时间戳
 }
 
