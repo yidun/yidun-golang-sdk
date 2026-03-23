@@ -439,4 +439,5 @@ type BoarderColor struct {
 type CensorExtensionResult struct {
 	QualityInspectionTaskId *string `json:"qualityInspectionTaskId,omitempty"`
 	InspTaskCreateTime       *int64  `json:"inspTaskCreateTime,omitempty"`
+	QualityInspectionType    *int32  `json:"qualityInspectionType,omitempty"` // 质检类型：1-人工已审，2-人工未审（机审）
 }
