@@ -142,5 +142,16 @@ func (c *ClientContext) convertToBusinessResponse(data interface{}) error {
 	if parseErr != nil {
 		return yidunerr.NewUnmarshalError(parseErr, "解析响应结果失败！", c.response.Body())
 	}
+
+	// 在JSON反序列化后进行兼容性字段处理
+	c.processCompatibilityFields(data)
+
 	return nil
+}
+
+// processCompatibilityFields 处理兼容性字段，确保RelatedContents和HitSources字段的兼容性
+func (c *ClientContext) processCompatibilityFields(data interface{}) {
+	// 使用全局兼容性处理器进行反序列化后的字段同步
+	// 忽略错误，因为这是一个向后兼容的功能
+	_ = GetGlobalCompatibilityProcessor().ProcessForDeserialization(data)
 }

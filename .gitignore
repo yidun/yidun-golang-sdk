@@ -3,4 +3,4 @@ efficiency.json
 /.idea/
 /.vscode/
 /go.work.sum
-/go.work
+.claude-context.json
