@@ -256,6 +256,7 @@ type LlmCheckInfoDetail struct {
 type CensorExtension struct {
 	QualityInspectionTaskId *string `json:"qualityInspectionTaskId,omitempty"` // 质量检测任务ID
 	InspTaskCreateTime      *int64  `json:"inspTaskCreateTime,omitempty"`      // 质检任务创建时间（Unix时间戳，毫秒）
+	QualityInspectionType   *int64  `json:"qualityInspectionType,omitempty"`   // 质检任务类型
 }
 
 // RiskControl 风险控制检测结果
