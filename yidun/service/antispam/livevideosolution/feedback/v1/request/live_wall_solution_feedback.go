@@ -19,6 +19,9 @@ type LiveWallSolutionFeedback struct {
 	AddScore *int `json:"addScore,omitempty"`
 	// 直播标签, 优化乱序
 	LiveTag *LiveTag `json:"liveTag,omitempty"`
+	// IP所在国家编码（ISO 3166-1 alpha-2格式，如：CN, US, JP）
+	// 传入该字段时，将覆盖原有的IpCountry和IpAreaCode，并清空IpCity和IpProvince
+	AreaCode *string `json:"areaCode,omitempty"`
 }
 
 // LiveTag represents live tag.
@@ -62,6 +65,11 @@ func (l *LiveWallSolutionFeedback) SetAddScore(addScore int) {
 // SetLiveTag sets the LiveTag.
 func (l *LiveWallSolutionFeedback) SetLiveTag(liveTag LiveTag) {
 	l.LiveTag = &liveTag
+}
+
+// SetAreaCode sets the AreaCode.
+func (l *LiveWallSolutionFeedback) SetAreaCode(areaCode string) {
+	l.AreaCode = &areaCode
 }
 
 // SetLabels sets the Labels.

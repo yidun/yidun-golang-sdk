@@ -23,6 +23,9 @@ type LiveAudioFeedback struct {
 	ScoreMonitorType *int `json:"scoreMonitorType,omitempty"`
 	// 直播间收入
 	LiveIncome *float64 `json:"liveIncome,omitempty"`
+	// IP所在国家编码（ISO 3166-1 alpha-2格式，如：CN, US, JP）
+	// 传入该字段时，将覆盖原有的IpCountry和IpAreaCode，并清空IpCity和IpProvince
+	AreaCode *string `json:"areaCode,omitempty"`
 }
 
 type LiveAudioTag struct {
@@ -80,6 +83,11 @@ func (f *LiveAudioFeedback) SetLiveTag(liveTag *LiveAudioTag) {
 // SetScoreMonitorType sets the ScoreMonitorType field of the LiveAudioFeedback struct
 func (f *LiveAudioFeedback) SetScoreMonitorType(scoreMonitorType int) {
 	f.ScoreMonitorType = &scoreMonitorType
+}
+
+// SetAreaCode sets the AreaCode field of the LiveAudioFeedback struct
+func (f *LiveAudioFeedback) SetAreaCode(areaCode string) {
+	f.AreaCode = &areaCode
 }
 
 // For LiveAudioTag struct
