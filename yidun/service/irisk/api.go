@@ -350,6 +350,7 @@ type IRiskCheckResult struct {
 	IpInfo             IpInfo      `json:"ipInfo"`
 	Action             int         `json:"action"`
 	CustomAction       int         `json:"customAction"`
+	RecentTopRisk      string      `json:"recentTopRisk"`
 }
 
 type HitInfo struct {
