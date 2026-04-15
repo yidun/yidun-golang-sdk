@@ -28,6 +28,16 @@ func (c *ImageClient) ImageSyncCheck(req *check.ImageV5CheckRequest) (res *sync.
 
 // 图片异步检测
 func (c *ImageClient) ImageAsyncCheck(req *async.ImageV5AsyncCheckRequest) (res *async.ImageV5AsyncCheckResp, err error) {
+	// 图片类型只要有一张base64图片，则使用base64检测接口
+	if req.Images != nil && len(*req.Images) > 0 {
+		for _, image := range *req.Images {
+			if *image.Type == 2 {
+				req.UriPattern = "/v5/image/asyncBase64Check"
+				break
+			}
+		}
+	}
+
 	res = &async.ImageV5AsyncCheckResp{}
 	err = c.Client.DoExecute(req, res)
 	return
