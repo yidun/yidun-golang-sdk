@@ -1,0 +1,29 @@
+yidun/service/antispam/livevideosolution/callback/v3/response/live_video_solution_callback_v3_result.go
+  785356c487e71dd8 337-338,379-380
+yidun/service/antispam/videosolution/callback/v2/response/video_solution_antispam_callback_response.go
+  785356c487e71dd8 123-124
+yidun/service/antispam/liveaudio/callback/v4/response/live_audio_callback_unit_resp_v4.go
+  785356c487e71dd8 46-47
+yidun/service/antispam/video/callback/v4/response/video_callback_antispam_response.go
+  785356c487e71dd8 69-71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.0",
+  "base_commit_sha": "1cdd5ba5c89c39dfdb40c4cb189f6f423c9e1bd7",
+  "prompts": {
+    "785356c487e71dd8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b8b65781-aac2-4b19-a10f-56c7e5398a69",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "piaohongren",
+      "messages": [],
+      "total_additions": 11,
+      "total_deletions": 1,
+      "accepted_lines": 11,
+      "overriden_lines": 0
+    }
+  }
+}
