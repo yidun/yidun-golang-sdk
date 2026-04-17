@@ -182,6 +182,7 @@ type AntispamSubLabel struct {
 	PoliticalSentiment  *int                    `json:"politicalSentiment"`
 	IsRelatedLabel      *bool                   `json:"isRelatedLabel"`
 	Details             *AntispamSubLabelDetail `json:"details"`
+	Level               *int                    `json:"level"` // 末级标签命中级别：0-正常，1-嫌疑，2-确定
 }
 
 type AntispamSubLabelDetail struct {
