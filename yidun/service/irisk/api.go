@@ -336,21 +336,22 @@ type IRiskCheckResponse struct {
 }
 
 type IRiskCheckResult struct {
-	RiskLevel          int         `json:"riskLevel"`
-	HitInfos           []HitInfo   `json:"hitInfos"`
-	TaskId             string      `json:"taskId"`
-	SdkRespData        string      `json:"sdkRespData"`
-	DeviceId           string      `json:"deviceId"`
-	PcId               string      `json:"pcId"`
-	MatchedRules       []string    `json:"matchedRules"`
-	MatchedCustomRules []string    `json:"matchedCustomRules"`
-	DeviceInfo         interface{} `json:"deviceInfo"`
-	Evidences          []string    `json:"evidences"`
-	PhoneInfo          PhoneInfo   `json:"phoneInfo"`
-	IpInfo             IpInfo      `json:"ipInfo"`
-	Action             int         `json:"action"`
-	CustomAction       int         `json:"customAction"`
-	RecentTopRisk      string      `json:"recentTopRisk"`
+	RiskLevel          int             `json:"riskLevel"`
+	HitInfos           []HitInfo       `json:"hitInfos"`
+	TaskId             string          `json:"taskId"`
+	SdkRespData        string          `json:"sdkRespData"`
+	DeviceId           string          `json:"deviceId"`
+	PcId               string          `json:"pcId"`
+	MatchedRules       []string        `json:"matchedRules"`
+	MatchedCustomRules []string        `json:"matchedCustomRules"`
+	DeviceInfo         interface{}     `json:"deviceInfo"`
+	Evidences          []string        `json:"evidences"`
+	PhoneInfo          PhoneInfo       `json:"phoneInfo"`
+	IpInfo             IpInfo          `json:"ipInfo"`
+	Action             int             `json:"action"`
+	CustomAction       int             `json:"customAction"`
+	DeviceRiskInfo     DeviceRiskInfo  `json:"deviceRiskInfo"`
+	AccountRiskInfo    AccountRiskInfo `json:"accountRiskInfo"`
 }
 
 type HitInfo struct {
@@ -371,9 +372,10 @@ type (
 		City     string `json:"city"`
 	}
 	PhoneRiskInfo struct {
-		RiskType  string  `json:"riskType"`
-		RiskLevel int     `json:"riskLevel"`
-		RiskScore float64 `json:"riskScore"`
+		RiskType      string  `json:"riskType"`
+		RiskLevel     int     `json:"riskLevel"`
+		RiskScore     float64 `json:"riskScore"`
+		RecentTopRisk string  `json:"recentTopRisk"`
 	}
 )
 
@@ -394,11 +396,26 @@ type (
 		Latitude    string `json:"latitude"`
 	}
 	IpRiskInfo struct {
-		RiskType  string  `json:"riskType"`
-		RiskLevel int     `json:"riskLevel"`
-		RiskScore float64 `json:"riskScore"`
+		RiskType      string  `json:"riskType"`
+		RiskLevel     int     `json:"riskLevel"`
+		RiskScore     float64 `json:"riskScore"`
+		RecentTopRisk string  `json:"recentTopRisk"`
 	}
 )
+
+type DeviceRiskInfo struct {
+	RiskType      string  `json:"riskType"`
+	RiskLevel     int     `json:"riskLevel"`
+	RiskScore     float64 `json:"riskScore"`
+	RecentTopRisk string  `json:"recentTopRisk"`
+}
+
+type AccountRiskInfo struct {
+	RiskType      string  `json:"riskType"`
+	RiskLevel     int     `json:"riskLevel"`
+	RiskScore     float64 `json:"riskScore"`
+	RecentTopRisk string  `json:"recentTopRisk"`
+}
 
 type IRiskConfigRequest struct {
 	*types.BizPostJsonRequest
