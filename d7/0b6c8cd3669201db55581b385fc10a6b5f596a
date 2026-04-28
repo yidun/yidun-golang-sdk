@@ -1,0 +1,27 @@
+yidun/service/antispam/video/check/v4/request/video_check_request.go
+  d77e33d6d24b4004 94-95,106-107
+docs/feature/sf-606-feng-kuang-you-xi-gosdk-que-shi/review-status.md
+  d77e33d6d24b4004 1-39
+docs/feature/sf-606-feng-kuang-you-xi-gosdk-que-shi/plan.md
+  d77e33d6d24b4004 1-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.13-yd",
+  "base_commit_sha": "d70b6c8cd3669201db55581b385fc10a6b5f596a",
+  "prompts": {
+    "d77e33d6d24b4004": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "457e053a-9e17-4bbf-81e6-df0caae1e116",
+        "model": "kimi-k2.5"
+      },
+      "human_author": "luosanjun01 <luosanjun01@corp.netease.com>",
+      "messages": [],
+      "total_additions": 87,
+      "total_deletions": 0,
+      "accepted_lines": 86,
+      "overriden_lines": 0
+    }
+  }
+}
