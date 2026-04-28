@@ -91,6 +91,8 @@ type VideoCheckRequest struct {
 type AdvancedFrequencyRequest struct {
 	DurationPoints *[]int64   `json:"durationPoints,omitempty"`
 	Frequencies    *[]float64 `json:"frequencies,omitempty"`
+	// 类型，0-按视频内部时长区间分割；1-按视频时长整体判断
+	Type *int `json:"type,omitempty"`
 }
 
 func (r *AdvancedFrequencyRequest) NewAdvancedFrequencyRequest(durationPoints []int64, frequencies []float64) *AdvancedFrequencyRequest {
@@ -99,6 +101,10 @@ func (r *AdvancedFrequencyRequest) NewAdvancedFrequencyRequest(durationPoints []
 		Frequencies:    &frequencies,
 	}
 	return req
+}
+
+func (r *AdvancedFrequencyRequest) SetType(reqType int) {
+	r.Type = &reqType
 }
 
 func NewVideoCheckRequest(businessId string) *VideoCheckRequest {
