@@ -1,0 +1,23 @@
+yidun/service/antispam/image/v5/check/sync/image_check_response.go
+  51c48c51dfdb90b0 185-186
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.0",
+  "base_commit_sha": "780129182188db4b4d0af84f3bb13616060daa62",
+  "prompts": {
+    "51c48c51dfdb90b0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "19ddeb03-77fc-4c84-9c36-1f44b08cc97c",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "谢铁藜",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 0,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    }
+  }
+}
