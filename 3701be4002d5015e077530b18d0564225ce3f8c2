@@ -1,0 +1,21 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.3",
+  "base_commit_sha": "3701be4002d5015e077530b18d0564225ce3f8c2",
+  "prompts": {
+    "dd3e59b40a55669e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d66fbe5-5481-48b8-911b-a7601cf6d30d",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "piaohongren",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  }
+}
