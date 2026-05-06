@@ -193,6 +193,7 @@ type AntispamSubLabelDetail struct {
 	Anticheat *AntispamSubLabelDetailAnticheat `json:"anticheat"`
 	HitInfos  []*AntispamSubLabelDetailHitInfo `json:"hitInfos"`
 	Rules     []*AntispamSubLabelDetailRule    `json:"rules"`
+	Llm       *AntispamSubLabelDetailLlm       `json:"llm"`
 }
 
 type AntispamSubLabelDetailKeyword struct {
@@ -227,6 +228,10 @@ type AntispamSubLabelDetailHitInfo struct {
 	Value     *string                                  `json:"value"`
 	Type      *int                                     `json:"type"` // type:1，“通用反垃圾线索信息”，type:2，“增强版线索信息”
 	Positions []*AntispamSubLabelDetailHitInfoPosition `json:"positions"`
+}
+
+type AntispamSubLabelDetailLlm struct {
+	Keyword *string `json:"keyword"`
 }
 
 type AigcPrompt struct {
