@@ -49,12 +49,12 @@ type LanguageDetail struct {
 }
 
 type UserRisk struct {
-	TaskID        *string              `json:"taskId,omitempty"`        // task ID
-	DataID        *string              `json:"dataId,omitempty"`        // data ID
-	Details       []*UserRiskDetail    `json:"details,omitempty"`       // user risk detail list
-	AccountDetail *RiskPortraitDetail  `json:"accountDetail,omitempty"` // 账号风险画像详情
-	PhoneDetail   *RiskPortraitDetail  `json:"phoneDetail,omitempty"`   // 手机号风险画像详情
-	IpDetail      *RiskPortraitDetail  `json:"ipDetail,omitempty"`      // IP风险画像详情
+	TaskID        *string             `json:"taskId,omitempty"`        // task ID
+	DataID        *string             `json:"dataId,omitempty"`        // data ID
+	Details       []*UserRiskDetail   `json:"details,omitempty"`       // user risk detail list
+	AccountDetail *RiskPortraitDetail `json:"accountDetail,omitempty"` // 账号风险画像详情
+	PhoneDetail   *RiskPortraitDetail `json:"phoneDetail,omitempty"`   // 手机号风险画像详情
+	IpDetail      *RiskPortraitDetail `json:"ipDetail,omitempty"`      // IP风险画像详情
 }
 
 type UserRiskDetail struct {
@@ -183,6 +183,8 @@ type AntispamSubLabel struct {
 	IsRelatedLabel      *bool                   `json:"isRelatedLabel"`
 	Details             *AntispamSubLabelDetail `json:"details"`
 	Level               *int                    `json:"level"` // 末级标签命中级别：0-正常，1-嫌疑，2-确定
+	Explain             *string                 `json:"explain"`
+	IsLlmCheck          *bool                   `json:"isLlmCheck"`
 }
 
 type AntispamSubLabelDetail struct {
@@ -250,8 +252,10 @@ type LlmCheckInfo struct {
 
 type LlmCheckInfoDetail struct {
 	ModelIdentifier *string `json:"modelIdentifier"` // 模型标识
-	Label           *string `json:"label"` // 大模型识别标签
-	Explain         *string `json:"explain"` // llm 对于标签的解释
+	Label           *string `json:"label"`           // 大模型识别标签
+	Explain         *string `json:"explain"`         // llm 对于标签的解释
+	Keyword         *string `json:"keyword"`         // 大模型命中关键词
+	Extension       *string `json:"extension"`       // 大模型自定义扩展字段（JSON 字符串）
 }
 
 type CensorExtension struct {
