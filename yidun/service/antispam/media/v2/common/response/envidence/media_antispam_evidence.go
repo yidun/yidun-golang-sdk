@@ -7,6 +7,8 @@ type MediaAntispamEvidence struct {
 	Audios      []*MediaAudioEvidence      `json:"audios,omitempty"`
 	Audiovideos []*MediaAudioVideoEvidence `json:"audiovideos,omitempty"`
 	Files       []*MediaFileEvidence       `json:"files,omitempty"`
+	// 产品维度大模型检测结果列表
+	Llms        []*MediaLlmEvidence        `json:"llms,omitempty"`
 }
 
 func (m *MediaAntispamEvidence) GetTexts() []*MediaTextEvidence {
@@ -47,4 +49,12 @@ func (m *MediaAntispamEvidence) GetFiles() []*MediaFileEvidence {
 
 func (m *MediaAntispamEvidence) SetFiles(files []*MediaFileEvidence) {
 	m.Files = files
+}
+
+func (m *MediaAntispamEvidence) GetLlms() []*MediaLlmEvidence {
+	return m.Llms
+}
+
+func (m *MediaAntispamEvidence) SetLlms(llms []*MediaLlmEvidence) {
+	m.Llms = llms
 }
