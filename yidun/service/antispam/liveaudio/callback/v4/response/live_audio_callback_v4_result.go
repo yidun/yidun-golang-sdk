@@ -11,6 +11,8 @@ type LiveAudioCallbackV4Result struct {
 	Voice *LiveAudioVoiceCallbackRespV4 `json:"voice,omitempty"`
 	// 音频质量识别结果
 	Quality *LiveAudioQualityCallbackRespV4 `json:"quality,omitempty"`
+	// LLM检测结果
+	LlmCheckInfo *LiveAudioLlmCheckCallbackRespV4 `json:"llmCheckInfo,omitempty"`
 }
 
 type LiveAudioAntispamCallbackRespV4 struct {

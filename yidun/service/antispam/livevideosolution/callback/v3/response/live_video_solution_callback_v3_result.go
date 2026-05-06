@@ -5,15 +5,16 @@ import (
 )
 
 type LiveVideoSolutionCallbackV3Result struct {
-	Antispam *LiveVideoSolutionCallbackAntispamV3Result `json:"antispam,omitempty"`
-	Ocr      *LiveDataCallbackOcrUnitV4                 `json:"ocr,omitempty"`
-	Discern  *LiveDataCallbackDiscernUnitV4             `json:"discern,omitempty"`
-	Logo     *LiveDataCallbackLogoUnitV4                `json:"logo,omitempty"`
-	Voice    *LiveAudioVoiceCallbackRespV4              `json:"voice,omitempty"` // 人声属性识别结果
-	Quality  *LiveCallbackQualityUnitV4                 `json:"quality,omitempty"`
-	Face     *LiveDataCallbackFaceUnitV4                `json:"face,omitempty"`
-	Language *LiveAudioLanguageCallbackRespV3           `json:"language,omitempty"` // 语种识别结果
-	ASR      *LiveAudioAsrContentCallbackRespV3         `json:"asr,omitempty"`      // asr
+	Antispam     *LiveVideoSolutionCallbackAntispamV3Result `json:"antispam,omitempty"`
+	Ocr          *LiveDataCallbackOcrUnitV4                 `json:"ocr,omitempty"`
+	Discern      *LiveDataCallbackDiscernUnitV4             `json:"discern,omitempty"`
+	Logo         *LiveDataCallbackLogoUnitV4                `json:"logo,omitempty"`
+	Voice        *LiveAudioVoiceCallbackRespV4              `json:"voice,omitempty"`     // 人声属性识别结果
+	Quality      *LiveCallbackQualityUnitV4                 `json:"quality,omitempty"`
+	Face         *LiveDataCallbackFaceUnitV4                `json:"face,omitempty"`
+	Language     *LiveAudioLanguageCallbackRespV3           `json:"language,omitempty"`  // 语种识别结果
+	ASR          *LiveAudioAsrContentCallbackRespV3         `json:"asr,omitempty"`       // asr
+	LlmCheckInfo *LiveVideoSolutionLlmCheckCallbackRespV4  `json:"llmCheckInfo,omitempty"` // LLM检测结果
 }
 
 type LiveCallbackQualityUnitV4 struct {

@@ -16,9 +16,11 @@ type LlmCheckPicture struct {
 
 // LlmCheckDetail 详情列表
 type LlmCheckDetail struct {
-	Explain        *string  `json:"explain,omitempty"`
-	Label          *string  `json:"label,omitempty"`
-	Rate           *float64 `json:"rate,omitempty"`
-	ModelIdentifier *string  `json:"modelIdentifier,omitempty"`
+	Label          *string `json:"label,omitempty"`          // 一级标签（状态值或标签code）
+	SubLabel       *string `json:"subLabel,omitempty"`       // 二级或三级标签code
+	Keyword        *string `json:"keyword,omitempty"`        // 命中关键词
+	Extension      *string `json:"extension,omitempty"`      // 扩展信息（JSON格式）
+	Explain        *string `json:"explain,omitempty"`        // 解释说明
+	ModelIdentifier *string `json:"modelIdentifier,omitempty"` // 模型标识
 }
 
