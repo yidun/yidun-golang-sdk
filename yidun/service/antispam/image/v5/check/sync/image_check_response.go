@@ -543,6 +543,4 @@ type LlmCheckInfo struct {
     Keyword *string `json:"keyword,omitempty"`
     // 扩展信息(JSON格式)
     Extension *string `json:"extension,omitempty"`
-    // 解释说明
-    Explain *string `json:"explain,omitempty"`
 }
