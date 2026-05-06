@@ -33,6 +33,10 @@ type ImageSubLabel struct {
 	SecondLabel         *string              `json:"secondLabel,omitempty"`
 	ThirdLabel          *string              `json:"thirdLabel,omitempty"`
 	SuggestionRiskLevel *int                 `json:"suggestionRiskLevel,omitempty"`
+	// LLM 解释说明
+	Explain             *string              `json:"explain,omitempty"`
+	// 是否为LLM检测命中，true=大小模型融合检测; false=小模型标签证据补充
+	IsLlmCheck          *bool                `json:"isLlmCheck,omitempty"`
 }
 
 // Getter and Setter for MediaImageEvidence

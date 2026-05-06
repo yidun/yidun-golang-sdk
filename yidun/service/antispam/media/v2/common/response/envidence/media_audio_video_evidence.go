@@ -59,6 +59,10 @@ type AudioSubLabel struct {
 	SuggestionRiskLevel *int           `json:"suggestionRiskLevel,omitempty"`
 	Rate          *float64             `json:"rate,omitempty"`
 	Details       *ImageSubLabelDetail `json:"details,omitempty"`
+	// LLM 解释说明
+	Explain       *string              `json:"explain,omitempty"`
+	// 是否为LLM检测命中，true=大小模型融合检测; false=小模型标签证据补充
+	IsLlmCheck    *bool                `json:"isLlmCheck,omitempty"`
 }
 
 // 相邻截图信息

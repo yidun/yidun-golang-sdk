@@ -29,6 +29,10 @@ type TextSubLabel struct {
 	SecondLabel   *string             `json:"secondLabel,omitempty"`
 	ThirdLabel    *string             `json:"thirdLabel,omitempty"`
 	SuggestionRiskLevel *int          `json:"suggestionRiskLevel,omitempty"`
+	// LLM 对标签的解释说明
+	Explain       *string             `json:"explain,omitempty"`
+	// true=大小模型融合检测; false=小模型标签证据补充; null=非LLM相关
+	IsLlmCheck    *bool               `json:"isLlmCheck,omitempty"`
 }
 
 type StrategyVersion struct {

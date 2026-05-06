@@ -6,6 +6,13 @@ type ImageSubLabelDetail struct {
 	HitInfos  []*ImageSubLabelDetailInfo `json:"hitInfos,omitempty"` // 反垃圾其他命中信息
 	Rules     []*ImageSubLabelDetailInfo `json:"rules,omitempty"`
 	Anticheat *AnticheatInfo             `json:"anticheat,omitempty"` // Anticheat 反作弊结果
+	// 大模型 keyword
+	Llm       *LlmKeyWord                `json:"llm,omitempty"`
+}
+
+// LlmKeyWord 大模型命中的关键词
+type LlmKeyWord struct {
+	Keyword *string `json:"keyword,omitempty"`
 }
 
 func (d *ImageSubLabelDetail) GetKeywords() []*ImageSubLabelDetailInfo {

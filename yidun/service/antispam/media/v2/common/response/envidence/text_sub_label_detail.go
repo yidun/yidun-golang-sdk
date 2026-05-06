@@ -6,6 +6,8 @@ type TextSubLabelDetail struct {
 	LibInfos []*LibInfo  `json:"libInfos,omitempty"`
 	HitInfos []*HintInfo `json:"hitInfos,omitempty"`
 	Rules    []*RuleInfo `json:"rules,omitempty"`
+	// 大模型 keyword
+	Llm      *LlmKeyWord `json:"llm,omitempty"`
 }
 
 func (d *TextSubLabelDetail) GetKeywords() []*Keyword {

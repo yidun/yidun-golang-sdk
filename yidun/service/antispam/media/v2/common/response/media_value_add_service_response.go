@@ -372,14 +372,10 @@ type LlmCheckDetail struct {
 	Label           *string  `json:"label,omitempty"`
 	Rate            *float64 `json:"rate,omitempty"`
 	ModelIdentifier *string  `json:"modelIdentifier,omitempty"`
-	// 子标签编码（映射到机审标签体系）
-	SubLabel        *string  `json:"subLabel,omitempty"`
 	// 命中关键词，英文逗号分隔
 	Keyword         *string  `json:"keyword,omitempty"`
 	// 大模型自定义扩展字段，JSON字符串格式
 	Extension       *string  `json:"extension,omitempty"`
-	// 模型名称
-	ModelName       *string  `json:"modelName,omitempty"`
 }
 
 // MediaLlmCheckDetail 产品维度大模型检测结果单元
