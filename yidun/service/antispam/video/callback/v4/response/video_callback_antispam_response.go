@@ -66,7 +66,9 @@ type ImageV5SubLabelResp struct {
 	// 判断结果，0-正常，1-不确定，2-确定
 	Rate *float32 `json:"rate,omitempty"`
 	// 二级分类命中详情
-	Details SubLabelDetails `json:"details,omitempty"`
+	Details    SubLabelDetails `json:"details,omitempty"`
+	Explain    *string         `json:"explain"`
+	IsLlmCheck *bool           `json:"isLlmCheck"`
 }
 
 // SubLabelDetails holds details about sublabels

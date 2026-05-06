@@ -120,6 +120,8 @@ type ImageSubLabelResp struct {
 	HitStrategy   *int             `json:"hitStrategy,omitempty"`   // 命中标识
 	Rate          *float32         `json:"rate,omitempty"`          // 判断结果，0-正常，1-不确定，2-确定
 	Details       *SubLabelDetails `json:"details,omitempty"`       // 得分，范围为0到1
+	Explain       *string          `json:"explain"`
+	IsLlmCheck    *bool            `json:"isLlmCheck"`
 }
 
 type SubLabelDetails struct {

@@ -334,6 +334,8 @@ type AudioThirdLabel struct {
 	Details       *HintInfoV4 `json:"details,omitempty"`
 	SubLabel      *string     `json:"subLabel,omitempty"`
 	Rate          *float64    `json:"rate,omitempty"`
+	Explain       *string     `json:"explain"`
+	IsLlmCheck    *bool       `json:"isLlmCheck"`
 }
 
 // HintInfoV4 represents hint information.
@@ -374,6 +376,8 @@ type ImageV5SubLabelResp struct {
 	HitStrategy   *int                      `json:"hitStrategy,omitempty"`   // 命中标识
 	Rate          *float32                  `json:"rate,omitempty"`          // 判断结果，0-正常，1-不确定，2-确定
 	Details       *videoOCR.SubLabelDetails `json:"details,omitempty"`       // 二级分类命中详情
+	Explain       *string                   `json:"explain"`
+	IsLlmCheck    *bool                     `json:"isLlmCheck"`
 }
 
 type AntispamInfo struct {

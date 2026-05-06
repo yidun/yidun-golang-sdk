@@ -43,6 +43,8 @@ type AudioThirdLabel struct {
 	RiskDescription     *string     `json:"riskDescription,omitempty"`
 	SubLabelDepth       *int        `json:"subLabelDepth,omitempty"`
 	Rate                *float64    `json:"rate,omitempty"`
+	Explain             *string     `json:"explain"`
+	IsLlmCheck          *bool       `json:"isLlmCheck"`
 }
 
 type HintInfoV4 struct {
