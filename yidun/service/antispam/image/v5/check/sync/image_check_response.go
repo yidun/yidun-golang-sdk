@@ -177,6 +177,8 @@ type ImageV5LabelDetail struct {
 	Rate *float32 `json:"rate,omitempty"`
 	// 各个类别检测结果
 	SubLabels *[]ImageV5SubLabelDetail `json:"subLabels,omitempty"`
+    Explain    *string         `json:"explain"`
+    IsLlmCheck *bool           `json:"isLlmCheck"`
 }
 
 type ImageV5SubLabelDetail struct {
@@ -535,4 +537,12 @@ type LlmCheckInfo struct {
 	Rate *float64 `json:"rate,omitempty"`
 	// 大模型标识
 	ModelIdentifier *string `json:"modelIdentifier,omitempty"`
+    // 二级或三级标签code
+    SubLabel *string `json:"subLabel,omitempty"`
+    // 命中关键词
+    Keyword *string `json:"keyword,omitempty"`
+    // 扩展信息(JSON格式)
+    Extension *string `json:"extension,omitempty"`
+    // 解释说明
+    Explain *string `json:"explain,omitempty"`
 }
