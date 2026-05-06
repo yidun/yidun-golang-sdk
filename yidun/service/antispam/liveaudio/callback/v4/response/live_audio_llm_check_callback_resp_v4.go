@@ -12,6 +12,10 @@ type LiveAudioLlmCheckCallbackRespV4 struct {
 	SpeakerID *string `json:"speakerId,omitempty"`
 	// 片段开始时间(毫秒时间戳)
 	StartTime *int64 `json:"startTime,omitempty"`
+	// 片段结束时间(毫秒时间戳)
+	EndTime *int64 `json:"endTime,omitempty"`
+	// 回调
+	Callback *string `json:"callback,omitempty"`
 	// LLM检测详情列表
 	Details []*LiveAudioLlmCheckDetail `json:"details,omitempty"`
 }

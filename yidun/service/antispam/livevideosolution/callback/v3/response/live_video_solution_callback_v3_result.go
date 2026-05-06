@@ -344,6 +344,13 @@ type HintInfoV4 struct {
 	HitLeaders *[]LeaderV4     `json:"hitLeaders,omitempty"`
 	Keywords   *[]Keywords     `json:"keywords,omitempty"`
 	Intent     *IntentUnit     `json:"intent,omitempty"`
+	// LLM命中关键词信息
+	Llm *Llm `json:"llm,omitempty"`
+}
+
+// Llm represents LLM hit keyword information.
+type Llm struct {
+	Keyword *string `json:"keyword,omitempty"`
 }
 
 // IntentUnit represents intent unit.

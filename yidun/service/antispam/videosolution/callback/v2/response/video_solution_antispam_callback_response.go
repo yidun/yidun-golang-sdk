@@ -129,6 +129,12 @@ type SubLabelDetails struct {
 	LibInfos  []AntispamInfo `json:"libInfos,omitempty"`  // 反垃圾自定义图片名单结果
 	HitInfos  []AntispamInfo `json:"hitInfos,omitempty"`  // 反垃圾其他命中信息
 	Anticheat *AnticheatInfo `json:"anticheat,omitempty"` // 反作弊结果
+	Llm       *LlmKeyWord   `json:"llm,omitempty"`       // 大模型命中的关键词
+}
+
+// LlmKeyWord 大模型命中的关键词
+type LlmKeyWord struct {
+	Keyword *string `json:"keyword,omitempty"` // 大模型命中的Keyword
 }
 
 type AnticheatInfo struct {

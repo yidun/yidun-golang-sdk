@@ -2,8 +2,8 @@ package response
 
 // LiveVideoSolutionLlmCheckCallbackRespV4 直播音视频解决方案LLM检测回调响应V4
 type LiveVideoSolutionLlmCheckCallbackRespV4 struct {
-	// 音频片段列表
-	Audio []*LlmCheckAudioSegment `json:"audio,omitempty"`
+	// 音频LLM检测结果
+	Audio *LlmCheckAudioSegment `json:"audio,omitempty"`
 }
 
 // LlmCheckAudioSegment 音频片段LLM检测结果
@@ -14,6 +14,10 @@ type LlmCheckAudioSegment struct {
 	SpeakerID *string `json:"speakerId,omitempty"`
 	// 片段开始时间
 	StartTime *int64 `json:"startTime,omitempty"`
+	// 片段结束时间(毫秒时间戳)
+	EndTime *int64 `json:"endTime,omitempty"`
+	// 回调
+	Callback *string `json:"callback,omitempty"`
 	// 详情列表
 	Details []*LlmCheckDetail `json:"details,omitempty"`
 }

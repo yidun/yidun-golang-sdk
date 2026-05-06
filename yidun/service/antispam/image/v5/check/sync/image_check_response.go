@@ -200,6 +200,10 @@ type ImageV5SubLabelDetail struct {
 	Rate *float32 `json:"rate,omitempty"`
 	// 二级分类命中详情
 	Details *SubLabelDetails `json:"details,omitempty"`
+	// LLM解释说明
+	Explain *string `json:"explain,omitempty"`
+	// 是否为LLM检测命中
+	IsLlmCheck *bool `json:"isLlmCheck,omitempty"`
 }
 
 type SubLabelDetails struct {
@@ -211,6 +215,14 @@ type SubLabelDetails struct {
 	HitInfos *[]AntispamInfo `json:"hitInfos,omitempty"`
 	// 反作弊结果
 	Anticheat *AnticheatInfo `json:"anticheat,omitempty"`
+	// 大模型命中的关键词
+	Llm *LlmKeyWord `json:"llm,omitempty"`
+}
+
+// LlmKeyWord 大模型命中的关键词
+type LlmKeyWord struct {
+	// 大模型命中的Keyword
+	Keyword *string `json:"keyword,omitempty"`
 }
 
 type AnticheatInfo struct {
