@@ -1,0 +1,31 @@
+yidun/service/antispam/livevideosolution/callback/v3/response/live_video_solution_callback_v3_result.go
+  2ad651432dedad48 8-17
+yidun/service/antispam/video/callback/v4/response/video_callback_llm_check_response.go
+  2ad651432dedad48 19-24
+yidun/service/antispam/liveaudio/callback/v4/response/live_audio_callback_v4_result.go
+  2ad651432dedad48 14-15
+yidun/service/antispam/liveaudio/callback/v4/response/live_audio_llm_check_callback_resp_v4.go
+  2ad651432dedad48 1-33
+yidun/service/antispam/livevideosolution/callback/v3/response/live_video_solution_llm_check_callback_resp_v4.go
+  2ad651432dedad48 1-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "2aee7d53d69f6d6b2e2ac9b4f2cd3e6b865197ba",
+  "prompts": {
+    "2ad651432dedad48": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "96d93f27-eb9c-4c4c-a5ae-ad3112a5873b",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "piaohongren",
+      "messages": [],
+      "total_additions": 111,
+      "total_deletions": 38,
+      "accepted_lines": 86,
+      "overriden_lines": 0
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.claude/settings.local.json
+  fb06dbfd86b82637 6-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "2693df44588646d543439f3cdeeb0afd4bbba82a",
+  "prompts": {
+    "fb06dbfd86b82637": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d2dc939a-c5fc-4372-bf99-1e668f3d4a64",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "冯云龙",
+      "messages": [],
+      "total_additions": 19,
+      "total_deletions": 7,
+      "accepted_lines": 13,
+      "overriden_lines": 0
+    }
+  }
+}

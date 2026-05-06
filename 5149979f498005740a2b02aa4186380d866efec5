@@ -1,0 +1,23 @@
+yidun/service/antispam/video/check/v4/request/video_check_request.go
+  d77e33d6d24b4004 94-95,106-107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "5149979f498005740a2b02aa4186380d866efec5",
+  "prompts": {
+    "d77e33d6d24b4004": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "457e053a-9e17-4bbf-81e6-df0caae1e116",
+        "model": "kimi-k2.5"
+      },
+      "human_author": "luosanjun01 <luosanjun01@corp.netease.com>",
+      "messages": [],
+      "total_additions": 87,
+      "total_deletions": 0,
+      "accepted_lines": 4,
+      "overriden_lines": 0
+    }
+  }
+}
