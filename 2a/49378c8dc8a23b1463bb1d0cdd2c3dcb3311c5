@@ -1,0 +1,23 @@
+yidun/service/antispam/image/v5/check/sync/image_check_response.go
+  65f2d2d9442bb3e4 462,543-550
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.14-yx",
+  "base_commit_sha": "2a49378c8dc8a23b1463bb1d0cdd2c3dcb3311c5",
+  "prompts": {
+    "65f2d2d9442bb3e4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f558860f-3eec-4d77-8d63-3c5f7fdf0366",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "谢铁藜 <xietieli@corp.netease.com>",
+      "messages": [],
+      "total_additions": 188,
+      "total_deletions": 25,
+      "accepted_lines": 163,
+      "overriden_lines": 0
+    }
+  }
+}
