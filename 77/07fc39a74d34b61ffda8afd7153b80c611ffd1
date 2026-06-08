@@ -1,0 +1,23 @@
+yidun/service/antispam/video/callback/v4/response/video_callback_discern_response.go
+  0b7819f9669cb7ec 26-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15-yd",
+  "base_commit_sha": "7707fc39a74d34b61ffda8afd7153b80c611ffd1",
+  "prompts": {
+    "0b7819f9669cb7ec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ec666230-804e-444f-a294-9e766e4fe32c",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "luosanjun01 <luosanjun01@corp.netease.com>",
+      "messages": [],
+      "total_additions": 10,
+      "total_deletions": 0,
+      "accepted_lines": 10,
+      "overriden_lines": 0
+    }
+  }
+}
