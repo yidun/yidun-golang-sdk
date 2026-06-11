@@ -1,0 +1,23 @@
+yidun/service/antispam/media/v2/common/response/media_value_add_service_response.go
+  ea5bfbdb75cb1d3f 340-341,360-365
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.16-yd",
+  "base_commit_sha": "adbc0f925e5110f467dee58036b7c909e2d65c75",
+  "prompts": {
+    "ea5bfbdb75cb1d3f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e151b3a4-f2a7-4adb-94d7-96a258ccb654",
+        "model": "gpt-5.5"
+      },
+      "human_author": "白小帅 <baixiaoshuai@corp.netease.com>",
+      "messages": [],
+      "total_additions": 13,
+      "total_deletions": 5,
+      "accepted_lines": 8,
+      "overriden_lines": 0
+    }
+  }
+}
