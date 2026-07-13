@@ -1,0 +1,23 @@
+yidun/service/antispam/text/v5/check/sync/single/text_check_result.go
+  b5e44ec48d317a3b 144-145,266-267
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.16-yd",
+  "base_commit_sha": "303afae81f6a902ba184312aca95c15ba9847c91",
+  "prompts": {
+    "b5e44ec48d317a3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "79df9fe5-3ade-4bd0-a226-9e2740963656",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "曾峥 <zengzheng03@corp.netease.com>",
+      "messages": [],
+      "total_additions": 4,
+      "total_deletions": 0,
+      "accepted_lines": 4,
+      "overriden_lines": 0
+    }
+  }
+}
