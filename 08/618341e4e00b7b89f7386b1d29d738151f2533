@@ -1,0 +1,25 @@
+yidun/service/antispam/audio/callback/v4/response/audio_callback_llm_check_response.go
+  ffc265f4d0ffb119 10,22-23
+yidun/service/antispam/video/callback/v4/response/video_callback_llm_check_response.go
+  ffc265f4d0ffb119 20,32-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.16-yd",
+  "base_commit_sha": "08618341e4e00b7b89f7386b1d29d738151f2533",
+  "prompts": {
+    "ffc265f4d0ffb119": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f68d6-0a6e-7ab3-b082-fc08fb9916be",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "piaohongren <piaohongren@corp.netease.com>",
+      "messages": [],
+      "total_additions": 6,
+      "total_deletions": 9,
+      "accepted_lines": 6,
+      "overriden_lines": 0
+    }
+  }
+}
