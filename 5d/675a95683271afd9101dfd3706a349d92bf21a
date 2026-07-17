@@ -1,0 +1,27 @@
+yidun/service/antispam/media/v2/common/response/envidence/media_llm_evidence.go
+  2cdf9f9f55c4482a 1-10
+yidun/service/antispam/media/v2/common/response/media_value_add_service_response.go
+  2cdf9f9f55c4482a 337-341,375-388
+yidun/service/antispam/media/v2/common/response/envidence/media_antispam_evidence.go
+  2cdf9f9f55c4482a 10-11,53-60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.0",
+  "base_commit_sha": "5d675a95683271afd9101dfd3706a349d92bf21a",
+  "prompts": {
+    "2cdf9f9f55c4482a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7be77dc8-cadd-490b-a7ce-db292c29982d",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "zhaojipu",
+      "messages": [],
+      "total_additions": 39,
+      "total_deletions": 3,
+      "accepted_lines": 39,
+      "overriden_lines": 0
+    }
+  }
+}

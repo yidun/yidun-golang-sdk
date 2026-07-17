@@ -1,0 +1,51 @@
+yidun/service/antispam/text/v5/check/sync/single/text_check_result.go
+  9a1c361c14956f73 234
+  a45e09d9b5da74aa 196
+  30015967086af57d 233
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.13-yd",
+  "base_commit_sha": "a405e976fd36ef9a4c26ddca43467333797ccaa2",
+  "prompts": {
+    "30015967086af57d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_247d0ff2bffeA4ibA0Uuk23Zp5-5280149f-be89-47d5-9ac2-3e9a970659a2",
+        "model": "unknown"
+      },
+      "human_author": "yiyongfu",
+      "messages": [],
+      "total_additions": 11,
+      "total_deletions": 0,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    },
+    "9a1c361c14956f73": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_247d0ff2bffeA4ibA0Uuk23Zp5-551b5aed-e244-4367-b4e9-59f42be5d03c",
+        "model": "unknown"
+      },
+      "human_author": "yiyongfu",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 13,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    },
+    "a45e09d9b5da74aa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_247d0ff2bffeA4ibA0Uuk23Zp5-c85640d0-36b7-4329-a9f1-edab9f69234d",
+        "model": "unknown"
+      },
+      "human_author": "yiyongfu",
+      "messages": [],
+      "total_additions": 14,
+      "total_deletions": 13,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}

@@ -1,0 +1,23 @@
+yidun/service/antispam/media/v2/common/response/envidence/text_sub_label_detail.go
+  3904cb70eb4e2c4e 9-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.13-yd",
+  "base_commit_sha": "c285edbf5e602ae36f4259aac8ae74aec1b1039a",
+  "prompts": {
+    "3904cb70eb4e2c4e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "60371ba2-f6a1-40cd-91bc-8ecf1105c13b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "zhaojipu <zhaojipu@corp.netease.com>",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 0,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    }
+  }
+}

@@ -1,0 +1,27 @@
+higress/aigc-content-security/README.md
+  186090571762588f 35,43-48,56
+higress/aigc-content-security/main_test.go
+  186090571762588f 6,9,33-45,49-59
+higress/aigc-content-security/main.go
+  186090571762588f 29-30,49-50,62-63,98-103,109,129,148-159,172-176,200-218,323
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.16-yd",
+  "base_commit_sha": "5443db14c65f6df7e625fce6371d3bd18c68175a",
+  "prompts": {
+    "186090571762588f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5f44-3d1e-7412-94ab-621d8800c21e",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "陈应友 <hzchenyingyou@corp.netease.com>",
+      "messages": [],
+      "total_additions": 110,
+      "total_deletions": 20,
+      "accepted_lines": 93,
+      "overriden_lines": 0
+    }
+  }
+}

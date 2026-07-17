@@ -1,0 +1,23 @@
+yidun/service/antispam/file/v2/callback/file_callback_response.go
+  b330e53be47169e8 129-136,200-208,399,402-405,407
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.2",
+  "base_commit_sha": "03e019ad9599b6963201eefe1ed259ad4905dced",
+  "prompts": {
+    "b330e53be47169e8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "333de38e-e21e-405b-ba1f-5ff3e35846e3",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "谢铁藜",
+      "messages": [],
+      "total_additions": 23,
+      "total_deletions": 14,
+      "accepted_lines": 23,
+      "overriden_lines": 0
+    }
+  }
+}
