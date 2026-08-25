@@ -1,0 +1,36 @@
+yidun/service/antispam/media/v2/common/response/media_value_add_service_response.go
+  d2676441f25664f7 403
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.16-yd",
+  "base_commit_sha": "4f418273654ba81a54a23ee59381d946e9855811",
+  "prompts": {
+    "04d809bfcb474541": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0922a380-e332-441c-851d-06f78203a9d7",
+        "model": "unknown"
+      },
+      "human_author": "白小帅 <baixiaoshuai@corp.netease.com>",
+      "messages": [],
+      "total_additions": 9,
+      "total_deletions": 0,
+      "accepted_lines": 6,
+      "overriden_lines": 0
+    },
+    "d2676441f25664f7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "60a5479e-9389-419e-a884-8e4e4ca051da",
+        "model": "gpt-5.5"
+      },
+      "human_author": "白小帅 <baixiaoshuai@corp.netease.com>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 0,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}

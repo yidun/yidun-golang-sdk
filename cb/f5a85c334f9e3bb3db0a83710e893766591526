@@ -1,0 +1,23 @@
+higress/aigc-content-security/main.go
+  d792ae1fa36f3e8f 186,198
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.16-yd",
+  "base_commit_sha": "cbf5a85c334f9e3bb3db0a83710e893766591526",
+  "prompts": {
+    "d792ae1fa36f3e8f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ee91244d-ed16-4925-881c-eccdbd3361e9",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "hzchenyingyou <hzchenyingyou@corp.netease.com>",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 1,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    }
+  }
+}

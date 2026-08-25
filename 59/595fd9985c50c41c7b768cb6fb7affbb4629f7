@@ -1,0 +1,29 @@
+yidun/service/antispam/video/callback/v4/response/video_callback_llm_check_response.go
+  db446ad8b0a990e8 8,18-20
+yidun/service/antispam/audio/callback/v4/response/audio_callback_llm_check_response.go
+  db446ad8b0a990e8 1-22
+yidun/service/antispam/audio/callback/v4/response/audio_callback_v4_response.go
+  db446ad8b0a990e8 20
+yidun/service/antispam/videosolution/callback/v2/response/video_solution_callback_response.go
+  db446ad8b0a990e8 43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15-yd",
+  "base_commit_sha": "59595fd9985c50c41c7b768cb6fb7affbb4629f7",
+  "prompts": {
+    "db446ad8b0a990e8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "13063dd0-07b0-4448-8d6e-1b825cc2eedd",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "piaohongren <piaohongren@corp.netease.com>",
+      "messages": [],
+      "total_additions": 45,
+      "total_deletions": 15,
+      "accepted_lines": 30,
+      "overriden_lines": 0
+    }
+  }
+}

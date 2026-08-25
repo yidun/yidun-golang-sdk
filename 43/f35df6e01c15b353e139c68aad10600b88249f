@@ -1,0 +1,39 @@
+yidun/service/antispam/video/callback/v4/response/video_callback_response.go
+  efa5be68b236ea8c 21
+yidun/service/antispam/audio/callback/v4/response/audio_callback_llm_check_response.go
+  efa5be68b236ea8c 11-12
+yidun/service/antispam/video/callback/v4/response/video_callback_antispam_response.go
+  efa5be68b236ea8c 38-39
+yidun/service/antispam/video/callback/v4/response/video_callback_llm_check_response.go
+  efa5be68b236ea8c 16-17,23-24
+yidun/service/antispam/audio/callback/v4/response/audio_callback_antispam_response.go
+  efa5be68b236ea8c 27-28
+yidun/service/antispam/liveaudio/callback/v4/response/live_audio_llm_check_callback_resp_v4.go
+  efa5be68b236ea8c 21-24
+yidun/service/antispam/livevideosolution/callback/v3/response/live_video_solution_llm_check_callback_resp_v4.go
+  efa5be68b236ea8c 25-28,45-48
+yidun/service/antispam/livevideosolution/callback/v3/response/live_video_solution_callback_v3_result.go
+  efa5be68b236ea8c 93-94,315-316
+yidun/service/antispam/liveaudio/callback/v4/response/live_audio_callback_unit_resp_v4.go
+  efa5be68b236ea8c 23-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15-yd",
+  "base_commit_sha": "43f35df6e01c15b353e139c68aad10600b88249f",
+  "prompts": {
+    "efa5be68b236ea8c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d6079b45-4662-43d4-9860-6570a0c4dec6",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "piaohongren <piaohongren@corp.netease.com>",
+      "messages": [],
+      "total_additions": 60,
+      "total_deletions": 31,
+      "accepted_lines": 30,
+      "overriden_lines": 0
+    }
+  }
+}

@@ -1,0 +1,23 @@
+yidun/service/antispam/text/v5/check/sync/single/text_check_result.go
+  4a7446ccb0778ca0 237
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.16-yd",
+  "base_commit_sha": "ba9fd0114ac48a5a9d25ca6be81fc050d72625c1",
+  "prompts": {
+    "4a7446ccb0778ca0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6267e3d1-6e78-4872-a7af-475a5d526c96",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "曾峥 <zengzheng03@corp.netease.com>",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
