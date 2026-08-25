@@ -1,0 +1,25 @@
+yidun/service/antispam/liveaudio/feedback/v1/request/live_audio_feedback.go
+  7bc80859f32e1ab2 26-28,88-92
+yidun/service/antispam/livevideosolution/feedback/v1/request/live_wall_solution_feedback.go
+  7bc80859f32e1ab2 22-24,70-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "605d56a0a1f3148ba221938f9fc744024722ab2b",
+  "prompts": {
+    "7bc80859f32e1ab2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b5b8b5c4-cedb-4a75-b26a-94e68b689a40",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "piaohongren <piaohongren@corp.netease.com>",
+      "messages": [],
+      "total_additions": 16,
+      "total_deletions": 0,
+      "accepted_lines": 16,
+      "overriden_lines": 0
+    }
+  }
+}

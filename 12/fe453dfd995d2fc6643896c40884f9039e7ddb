@@ -1,0 +1,23 @@
+higress/aigc-content-security/README.md
+  17f2f5ba0741cbd2 3,7-27,30,39,68,72,81,87,121,123,125-127,138
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.16-yd",
+  "base_commit_sha": "12fe453dfd995d2fc6643896c40884f9039e7ddb",
+  "prompts": {
+    "17f2f5ba0741cbd2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4ff19f24-9b5b-4d54-8f08-d2c4bec265a2",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "陈应友 <hzchenyingyou@corp.netease.com>",
+      "messages": [],
+      "total_additions": 34,
+      "total_deletions": 26,
+      "accepted_lines": 34,
+      "overriden_lines": 0
+    }
+  }
+}

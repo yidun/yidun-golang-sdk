@@ -1,0 +1,23 @@
+yidun/service/antispam/livevideosolution/callback/v3/response/live_video_solution_llm_check_callback_resp_v4.go
+  62ccf0f22c98ead7 5-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.13-yd",
+  "base_commit_sha": "842fb48c563e907efc2cff0ca52247540a22c9e7",
+  "prompts": {
+    "62ccf0f22c98ead7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8241fa60-ff97-4d90-9b2e-59f53f1c54e6",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "piaohongren <piaohongren@corp.netease.com>",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 2,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    }
+  }
+}

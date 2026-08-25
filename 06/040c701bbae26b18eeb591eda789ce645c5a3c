@@ -1,0 +1,23 @@
+yidun/service/antispam/livevideosolution/submit/v3/request/live_wall_solution_submit_v3_req.go
+  51cc4e33ed357056 52-53,183-185,374-378
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.13-yd",
+  "base_commit_sha": "06040c701bbae26b18eeb591eda789ce645c5a3c",
+  "prompts": {
+    "51cc4e33ed357056": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "38b4d4b3-d16c-46ba-b9ae-9cab98253c9b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "piaohongren <piaohongren@corp.netease.com>",
+      "messages": [],
+      "total_additions": 10,
+      "total_deletions": 0,
+      "accepted_lines": 10,
+      "overriden_lines": 0
+    }
+  }
+}

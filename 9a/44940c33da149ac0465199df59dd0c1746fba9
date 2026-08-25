@@ -1,0 +1,23 @@
+yidun/service/captcha/api.go
+  592170a7e0447945 125,127
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.16-yd",
+  "base_commit_sha": "9a44940c33da149ac0465199df59dd0c1746fba9",
+  "prompts": {
+    "592170a7e0447945": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d215a3f-f3e3-4b73-9e7d-a1a03bec339e",
+        "model": "glm-5.2"
+      },
+      "human_author": "fangxilin <fangxilin@corp.netease.com>",
+      "messages": [],
+      "total_additions": 14,
+      "total_deletions": 13,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    }
+  }
+}

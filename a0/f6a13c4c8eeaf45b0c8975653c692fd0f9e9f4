@@ -1,0 +1,25 @@
+yidun/service/antispam/media/v2/common/response/media_value_add_service_response.go
+  07a8b0baa842f412 342-343,388-395
+yidun/service/antispam/file/v2/callback/file_callback_response.go
+  07a8b0baa842f412 392,399-426
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.13-yd",
+  "base_commit_sha": "a0f6a13c4c8eeaf45b0c8975653c692fd0f9e9f4",
+  "prompts": {
+    "07a8b0baa842f412": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "22665641-4a2f-4683-a67d-bdcab3172d12",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "谢铁藜 <xietieli@corp.netease.com>",
+      "messages": [],
+      "total_additions": 40,
+      "total_deletions": 4,
+      "accepted_lines": 39,
+      "overriden_lines": 0
+    }
+  }
+}

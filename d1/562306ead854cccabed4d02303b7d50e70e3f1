@@ -1,0 +1,44 @@
+yidun/demo/antispam/text/v1/textfeature/text_feature_delete_demo.go
+  b04ec7ff4982ed2c 9
+yidun/demo/antispam/text/v1/textfeature/text_feature_add_demo.go
+  b04ec7ff4982ed2c 9
+yidun/demo/antispam/text/v1/textfeature/text_feature_query_demo.go
+  b04ec7ff4982ed2c 8
+go.work
+  186090571762588f 1,3,5-6
+yidun/demo/antispam/text/v1/textfeature/text_feature_edit_status_demo.go
+  b04ec7ff4982ed2c 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.16-yd",
+  "base_commit_sha": "d1562306ead854cccabed4d02303b7d50e70e3f1",
+  "prompts": {
+    "186090571762588f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5f44-3d1e-7412-94ab-621d8800c21e",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "陈应友 <hzchenyingyou@corp.netease.com>",
+      "messages": [],
+      "total_additions": 5,
+      "total_deletions": 3,
+      "accepted_lines": 4,
+      "overriden_lines": 0
+    },
+    "b04ec7ff4982ed2c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f5f2d-7f58-7c10-a9be-30006d7660d0",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "陈应友 <hzchenyingyou@corp.netease.com>",
+      "messages": [],
+      "total_additions": 5,
+      "total_deletions": 5,
+      "accepted_lines": 5,
+      "overriden_lines": 0
+    }
+  }
+}

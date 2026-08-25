@@ -1,0 +1,23 @@
+yidun/service/antispam/audio/callback/v4/response/audio_callback_antispam_response.go
+  d010533a1740cf5a 56-57,72-76
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15-yd",
+  "base_commit_sha": "ec1e81d90b917e93a6f167763aaf3b5dc20b129a",
+  "prompts": {
+    "d010533a1740cf5a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "311ce55e-079f-4c8f-a544-72860dc271b2",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "piaohongren <piaohongren@corp.netease.com>",
+      "messages": [],
+      "total_additions": 7,
+      "total_deletions": 0,
+      "accepted_lines": 7,
+      "overriden_lines": 0
+    }
+  }
+}

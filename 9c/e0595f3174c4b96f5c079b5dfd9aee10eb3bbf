@@ -1,0 +1,23 @@
+yidun/service/antispam/file/v2/callback/file_callback_response.go
+  60eb3871db5ac766 40-41,76,164-165,254
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15-yd",
+  "base_commit_sha": "9ce0595f3174c4b96f5c079b5dfd9aee10eb3bbf",
+  "prompts": {
+    "60eb3871db5ac766": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d69d9eae-a17d-409e-b92b-26f2f5a3ccfe",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "zhaojipu <zhaojipu@corp.netease.com>",
+      "messages": [],
+      "total_additions": 26,
+      "total_deletions": 20,
+      "accepted_lines": 6,
+      "overriden_lines": 0
+    }
+  }
+}

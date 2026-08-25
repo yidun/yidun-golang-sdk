@@ -1,0 +1,23 @@
+yidun/service/antispam/liveaudio/callback/v4/response/live_audio_llm_check_callback_resp_v4.go
+  2f19ad9653633411 15-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "f49f68401b7b752599d0afc537bd022268aee201",
+  "prompts": {
+    "2f19ad9653633411": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bc8da96b-0d9e-4615-9a3d-599a94c92ea8",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "piaohongren",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 0,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    }
+  }
+}
