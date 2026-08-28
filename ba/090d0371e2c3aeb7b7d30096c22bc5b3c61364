@@ -1,0 +1,29 @@
+higress/aigc-content-security/main_test.go
+  4b3933d934a62ca9 10-11,60-137
+higress/aigc-content-security/README.md
+  4b3933d934a62ca9 78-80,133
+higress/aigc-content-security/main.go
+  4b3933d934a62ca9 22,47,181,261-262,268-269,323-325,327,366-378,936-944
+higress/aigc-content-security/spec.yaml
+  4b3933d934a62ca9 42-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.16-yd",
+  "base_commit_sha": "ba090d0371e2c3aeb7b7d30096c22bc5b3c61364",
+  "prompts": {
+    "4b3933d934a62ca9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a013fc-3278-7951-98ec-264648b98a8c",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "陈应友 <hzchenyingyou@corp.netease.com>",
+      "messages": [],
+      "total_additions": 298,
+      "total_deletions": 177,
+      "accepted_lines": 124,
+      "overriden_lines": 0
+    }
+  }
+}
