@@ -1,0 +1,23 @@
+yidun/demo/antispam/image/v5/check/sync/image_sync_check_demo.go
+  e3103a4468cffa2a 4,34,43-45,47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.16-yd",
+  "base_commit_sha": "1d087532bd171f9012ac8218f5ae65ad9a513f3b",
+  "prompts": {
+    "e3103a4468cffa2a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06634-8058-7cf2-94e8-c450214757ef",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "白小帅 <baixiaoshuai@corp.netease.com>",
+      "messages": [],
+      "total_additions": 23,
+      "total_deletions": 15,
+      "accepted_lines": 6,
+      "overriden_lines": 0
+    }
+  }
+}
