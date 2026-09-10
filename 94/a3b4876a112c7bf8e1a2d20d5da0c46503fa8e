@@ -1,0 +1,27 @@
+higress/aigc-content-security/main.go
+  ce030599d049281c 582,590,603,615,621-626,633,635,674,684,693,699-703,710,712,732,736,1125-1141,1810
+higress/aigc-content-security/spec.yaml
+  ce030599d049281c 270-273
+higress/aigc-content-security/README.md
+  ce030599d049281c 134-135,159
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.16-yd",
+  "base_commit_sha": "94a3b4876a112c7bf8e1a2d20d5da0c46503fa8e",
+  "prompts": {
+    "ce030599d049281c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08a3d-1c38-75d0-a715-9cb02418a1ff",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "陈应友 <hzchenyingyou@corp.netease.com>",
+      "messages": [],
+      "total_additions": 53,
+      "total_deletions": 24,
+      "accepted_lines": 49,
+      "overriden_lines": 0
+    }
+  }
+}
