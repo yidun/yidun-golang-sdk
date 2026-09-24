@@ -1,0 +1,23 @@
+yidun/service/antispam/videosolution/callback/v2/response/video_solution_antispam_callback_response.go
+  181519b05282a70f 56-57,62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15-yd",
+  "base_commit_sha": "49dd58d0b372496ee6f823951db1d9fb2a2234e0",
+  "prompts": {
+    "181519b05282a70f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5827c970-b9b8-4ade-aa5a-990561e7781a",
+        "model": "deepseek-flash"
+      },
+      "human_author": "祝力炀 <zhuliyang02@corp.netease.com>",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 0,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    }
+  }
+}
