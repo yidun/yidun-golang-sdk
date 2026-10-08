@@ -141,6 +141,8 @@ type Antispam struct {
 	Status              *int               `json:"status"`
 	CustomLabels        []*CustomLabel     `json:"customLabels"`
 	CensorExtension     *CensorExtension   `json:"censorExtension"`
+	LlmStatus           *int               `json:"llmStatus"`        // 大模型调用状态：1-成功，2-失败
+	LlmFailureReason    *int               `json:"llmFailureReason"` // 大模型失败原因（errorCode原始值），成功时为nil
 }
 
 type CensorLabel struct {
@@ -261,6 +263,8 @@ type LlmCheckInfoDetail struct {
 	Explain         *string `json:"explain"`         // llm 对于标签的解释
 	Keyword         *string `json:"keyword"`         // 大模型命中关键词
 	Extension       *string `json:"extension"`       // 大模型自定义扩展字段（JSON 字符串）
+	LlmStatus        *int    `json:"llmStatus"`        // 大模型调用状态：1-成功，2-失败
+	LlmFailureReason *int    `json:"llmFailureReason"` // 大模型失败原因（errorCode原始值），成功时为nil
 }
 
 type CensorExtension struct {
