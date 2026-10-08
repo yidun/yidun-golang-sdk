@@ -23,4 +23,14 @@ type VideoDiscernItemBo struct {
 	Rate *float32 `json:"rate,omitempty"`
 	// 识别标识
 	DiscernKey *string `json:"discernKey,omitempty"`
+	// 位置信息（仅在旗帜识别type=15时返回）
+	LocationInformation *LocationInformation `json:"locationInformation,omitempty"`
+}
+
+// LocationInformation 旗帜识别坐标信息
+type LocationInformation struct {
+	X1 *float32 `json:"x1,omitempty"`
+	Y1 *float32 `json:"y1,omitempty"`
+	X2 *float32 `json:"x2,omitempty"`
+	Y2 *float32 `json:"y2,omitempty"`
 }
