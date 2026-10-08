@@ -113,7 +113,6 @@ type TextEvidence struct {
 	RiskDescription     *string              `json:"riskDescription,omitempty"`
 	Labels              []*TextEvidenceLabel `json:"labels,omitempty"`
 	Page                *int                 `json:"page,omitempty"`
-	LlmCheckInfo        []*LlmCheckDetail    `json:"llmCheckInfo,omitempty"`
 }
 
 // 文本反垃圾机审结果证据标签
@@ -184,7 +183,6 @@ type ImageEvidence struct {
 	RiskDescription     *string               `json:"riskDescription,omitempty"`
 	Labels              []*ImageEvidenceLabel `json:"labels,omitempty"`
 	Page                *int                  `json:"page,omitempty"`
-	LlmCheckInfo        []*LlmCheckDetail     `json:"llmCheckInfo,omitempty"`
 }
 
 // ImageEvidenceLabel 图片证据标签
@@ -244,7 +242,6 @@ type AudioEvidence struct {
 type VideoSolutionCheckResult struct {
 	Segments     *[]AudioEvidenceSegment  `json:"segments,omitempty"`
 	Pictures     *[]VideoEvidencePictures `json:"pictures,omitempty"`
-	LlmCheckInfo []*LlmCheckPicture       `json:"llmCheckInfo,omitempty"`
 }
 
 // AudioEvidenceSegment 音频证据分段
@@ -391,11 +388,40 @@ type VideoSubLabelRuleInfo struct {
 }
 
 type ValueAddServiceResult struct {
-	Ocr *Ocr `json:"ocr,omitempty"`
+	Ocr         *Ocr            `json:"ocr,omitempty"`
+	LlmCheckInfo *LlmCheckResult `json:"llmCheckInfo,omitempty"`
 }
 
 type Ocr struct {
 	Images *[]sync.ImageV5OcrResp `json:"images,omitempty"`
+}
+
+// LlmCheckResult 大模型检测信息
+type LlmCheckResult struct {
+	Texts  *[]TextLlmCheckDetail  `json:"texts,omitempty"`
+	Images *[]ImageLlmCheckDetail `json:"images,omitempty"`
+	Videos *[]VideoLlmCheckDetail `json:"videos,omitempty"`
+}
+
+// TextLlmCheckDetail 文本大模型检测结果单元
+type TextLlmCheckDetail struct {
+	DataId  *string           `json:"dataId,omitempty"`
+	TaskId  *string           `json:"taskId,omitempty"`
+	Details *[]LlmCheckDetail `json:"details,omitempty"`
+}
+
+// ImageLlmCheckDetail 图片大模型检测结果单元
+type ImageLlmCheckDetail struct {
+	DataId  *string           `json:"dataId,omitempty"`
+	TaskId  *string           `json:"taskId,omitempty"`
+	Details *[]LlmCheckDetail `json:"details,omitempty"`
+}
+
+// VideoLlmCheckDetail 视频大模型检测结果单元
+type VideoLlmCheckDetail struct {
+	DataId   *string            `json:"dataId,omitempty"`
+	TaskId   *string            `json:"taskId,omitempty"`
+	Pictures *[]LlmCheckPicture `json:"pictures,omitempty"`
 }
 
 // LlmCheckDetail LLM 检测详情（文本、图片、视频通用）

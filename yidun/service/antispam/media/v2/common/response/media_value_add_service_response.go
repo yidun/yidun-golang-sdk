@@ -339,6 +339,8 @@ type LlmCheckInfo struct {
 	Videos []*LlmCheckVideoDetail  `json:"videos,omitempty"`
 	// 产品维度大模型检测结果列表
 	Llms   []*MediaLlmCheckDetail  `json:"llms,omitempty"`
+	// 文件维度大模型检测结果列表
+	Files  []*FileLlmCheckDetail   `json:"files,omitempty"`
 }
 
 // LlmCheckImageDetail 图片大模型检测详情
@@ -382,4 +384,12 @@ type LlmCheckDetail struct {
 type MediaLlmCheckDetail struct {
 	ValueServiceBaseResponse
 	Details []*LlmCheckDetail `json:"details,omitempty"`
+}
+
+// FileLlmCheckDetail 文件维度大模型检测结果单元
+type FileLlmCheckDetail struct {
+	ValueServiceBaseResponse
+	Texts  []*LlmCheckTextDetail  `json:"texts,omitempty"`
+	Images []*LlmCheckImageDetail `json:"images,omitempty"`
+	Videos []*LlmCheckVideoDetail `json:"videos,omitempty"`
 }
