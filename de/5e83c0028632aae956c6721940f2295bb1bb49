@@ -1,0 +1,23 @@
+README.md
+  bca2607988f97e43 25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15-yd",
+  "base_commit_sha": "de5e83c0028632aae956c6721940f2295bb1bb49",
+  "prompts": {
+    "bca2607988f97e43": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1194c-2d90-76e0-b9a8-fd4c2e745f9e",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "冯云龙 <fengyunlong@corp.netease.com>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
