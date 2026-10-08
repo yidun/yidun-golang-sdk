@@ -215,6 +215,7 @@ type RuleInfo struct {
 type LlmKeyWord struct {
 	Keyword   *string    `json:"keyword,omitempty"`
 	Locations []*LlmInfo `json:"locations,omitempty"`
+	Extension *string    `json:"extension,omitempty"` // 大模型扩展信息
 }
 
 // LlmInfo 大模型命中的敏感词及 OCR 坐标信息
