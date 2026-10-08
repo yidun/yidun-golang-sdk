@@ -12,6 +12,7 @@ type MediaAudioVideoEvidence struct {
 	CheckTime     *int64                         `json:"checkTime,omitempty"`
 	Duration      *int64                         `json:"duration,omitempty"`
 	DurationMs    *int64                         `json:"durationMs,omitempty"`
+	PicCount      *int64                         `json:"picCount,omitempty"`
 	Evidences     *MediaAudioVideoDetailEvidence `json:"evidences,omitempty"`
 	SuggestionRiskLevel *int                     `json:"suggestionRiskLevel,omitempty"`
 	RiskDescription    *string                   `json:"riskDescription,omitempty"`
