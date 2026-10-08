@@ -1,0 +1,23 @@
+yidun/service/captcha/api.go
+  bca2607988f97e43 125,127
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15-yd",
+  "base_commit_sha": "52abe1a110bb805d8b6f769359149821298eff44",
+  "prompts": {
+    "bca2607988f97e43": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1194c-2d90-76e0-b9a8-fd4c2e745f9e",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "fangxilin <fangxilin@corp.netease.com>",
+      "messages": [],
+      "total_additions": 11,
+      "total_deletions": 10,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    }
+  }
+}
