@@ -116,14 +116,15 @@ func (r *CaptchaVerifyRequest) GetBusinessCustomSignParams() map[string]string {
 
 // response
 type CaptchaVerifyResponse struct {
-	Error       *int    `json:"error"`
-	Msg         *string `json:"msg"`
-	Result      *bool   `json:"result"`
-	ExtraData   *string `json:"extraData"`
-	Phone       *string `json:"phone"`
-	Token       *string `json:"token"`
-	CaptchaType *int    `json:"captchaType"`
-	SdkReduce   *string `json:"sdkReduce"`
-	ClientIp    *string `json:"clientIp"`
-	ClientUa    *string `json:"clientUa"`
+	Error          *int    `json:"error"`
+	Msg            *string `json:"msg"`
+	Result         *bool   `json:"result"`
+	ExtraData      *string `json:"extraData"`
+	Phone          *string `json:"phone"`
+	Token          *string `json:"token"`
+	TokenTimeStamp *int64  `json:"tokenTimeStamp"`
+	CaptchaType    *int    `json:"captchaType"`
+	SdkReduce      *bool   `json:"sdkReduce"`
+	ClientIp       *string `json:"clientIp"`
+	ClientUa       *string `json:"clientUa"`
 }
