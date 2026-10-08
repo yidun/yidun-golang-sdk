@@ -1,0 +1,52 @@
+yidun/service/antispam/file/v2/callback/file_callback_response.go
+  73557ace052204e5 330-331,340,480,504-510
+yidun/service/antispam/media/v2/common/response/media_value_add_service_response.go
+  d2676441f25664f7 403
+  ea5bfbdb75cb1d3f 340-341,360-365
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.16-yd",
+  "base_commit_sha": "1b335a3bb3d1c85fb31ebb0346f40845fb6a854f",
+  "prompts": {
+    "73557ace052204e5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9adb5dfb-cf35-4ec3-a780-75b49d59ee99",
+        "model": "gpt-5.5"
+      },
+      "human_author": "白小帅 <baixiaoshuai@corp.netease.com>",
+      "messages": [],
+      "total_additions": 11,
+      "total_deletions": 0,
+      "accepted_lines": 11,
+      "overriden_lines": 0
+    },
+    "d2676441f25664f7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "60a5479e-9389-419e-a884-8e4e4ca051da",
+        "model": "gpt-5.5"
+      },
+      "human_author": "白小帅 <baixiaoshuai@corp.netease.com>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 0,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    },
+    "ea5bfbdb75cb1d3f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e151b3a4-f2a7-4adb-94d7-96a258ccb654",
+        "model": "gpt-5.5"
+      },
+      "human_author": "白小帅 <baixiaoshuai@corp.netease.com>",
+      "messages": [],
+      "total_additions": 13,
+      "total_deletions": 5,
+      "accepted_lines": 8,
+      "overriden_lines": 0
+    }
+  }
+}
