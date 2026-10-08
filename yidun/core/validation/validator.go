@@ -4,6 +4,7 @@ import "regexp"
 
 const (
 	NAME_PATTERN = `^[\p{Han}・]{2,32}$`
+	CIPHER_TEXT_PATTERN = `^[0-9a-fA-F]+$`
 )
 
 // 可以为空，但是不能超过最大值
@@ -74,4 +75,18 @@ func CheckIdCard(idCard *string) bool {
 	}
 	reg := regexp.MustCompile(regex18)
 	return reg.MatchString(*idCard)
+}
+
+// IsCipherTextEncryptType returns whether the request's sensitive fields are encrypted.
+func IsCipherTextEncryptType(encryptType *string) bool {
+	return encryptType != nil && (*encryptType == "3" || *encryptType == "4")
+}
+
+// CheckCipherText validates a hexadecimal ciphertext whose length is a multiple of 32.
+func CheckCipherText(cipherText *string) bool {
+	if cipherText == nil || len(*cipherText) < 32 || len(*cipherText)%32 != 0 {
+		return false
+	}
+	reg := regexp.MustCompile(CIPHER_TEXT_PATTERN)
+	return reg.MatchString(*cipherText)
 }

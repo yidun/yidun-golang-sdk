@@ -30,30 +30,46 @@ func (c *AuthClient) BankCardCheck(request *BankCardCheckRequest) (response *Ban
 // 银行卡校验接口，调用/v1/bankcard/check
 type BankCardCheckRequest struct {
 	types.BizPostFormRequest
-	BankCardNo *string
-	Name       *string
-	IdCardNo   *string
-	Phone      *string
-	DataId     *string
+	BankCardNo  *string
+	Name        *string
+	IdCardNo    *string
+	Phone       *string
+	DataId      *string
+	EncryptType *string
 }
 
 // 校验参数
 func (r *BankCardCheckRequest) ValidateParam() error {
 	invalidParams := validation.ErrInvalidParams{Context: "BankCardCheckRequest"}
-	if r.BankCardNo == nil {
-		invalidParams.Add(validation.NewErrParamRequired("BankCardNo"))
-	}
-	//name校验
-	if validation.CheckName(r.Name) == false {
-		invalidParams.Add(validation.NewErrParamInvalid("Name"))
-	}
-	//idCardNo校验
-	if validation.CheckIdCard(r.IdCardNo) == false {
-		invalidParams.Add(validation.NewErrParamInvalid("IdCardNo"))
+	if validation.IsCipherTextEncryptType(r.EncryptType) {
+        if r.BankCardNo == nil {
+            invalidParams.Add(validation.NewErrParamRequired("BankCardNo"))
+        }
+		if !validation.CheckCipherText(r.Name) {
+			invalidParams.Add(validation.NewErrParamInvalid("Name"))
+		}
+		if !validation.CheckCipherText(r.IdCardNo) {
+			invalidParams.Add(validation.NewErrParamInvalid("IdCardNo"))
+		}
+	} else {
+		if r.BankCardNo == nil {
+			invalidParams.Add(validation.NewErrParamRequired("BankCardNo"))
+		}
+		//name校验
+		if validation.CheckName(r.Name) == false {
+			invalidParams.Add(validation.NewErrParamInvalid("Name"))
+		}
+		//idCardNo校验
+		if validation.CheckIdCard(r.IdCardNo) == false {
+			invalidParams.Add(validation.NewErrParamInvalid("IdCardNo"))
+		}
 	}
 	//dataId可以为空，但是不能超过64个字符
 	if validation.EmptyMaxLen(r.DataId, 64) == false {
 		invalidParams.Add(validation.NewErrParamMaxLen("DataId", 64, "DataId长度不合法"))
+	}
+	if validation.EmptyMaxLen(r.EncryptType, 1) == false {
+		invalidParams.Add(validation.NewErrParamMaxLen("EncryptType", 1, "encryptType长度不合法"))
 	}
 	if invalidParams.Len() > 0 {
 		return invalidParams
@@ -91,6 +107,12 @@ func (r *BankCardCheckRequest) SetDataId(dataId string) *BankCardCheckRequest {
 	return r
 }
 
+// 提供EncryptType参数的SET方法
+func (r *BankCardCheckRequest) SetEncryptType(encryptType string) *BankCardCheckRequest {
+	r.EncryptType = &encryptType
+	return r
+}
+
 // 提供new方法
 func NewBankCardCheckRequest(businessId string) *BankCardCheckRequest {
 	request := &BankCardCheckRequest{
@@ -124,6 +146,9 @@ func (r *BankCardCheckRequest) GetBusinessCustomSignParams() map[string]string {
 	}
 	if r.DataId != nil {
 		params["dataId"] = *r.DataId
+	}
+	if r.EncryptType != nil {
+		params["encryptType"] = *r.EncryptType
 	}
 	return params
 }
@@ -166,26 +191,40 @@ type EntryExitPermitCheckRequest struct {
 	Nation *string
 	//dataId
 	DataId *string
+	//encryptType
+	EncryptType *string
 }
 
 // 校验参数
 func (r *EntryExitPermitCheckRequest) ValidateParam() error {
 	invalidParams := validation.ErrInvalidParams{Context: "EntryExitPermitCheckRequest"}
-	//name校验
-	if validation.CheckName(r.Name) == false {
-		invalidParams.Add(validation.NewErrParamInvalid("Name"))
-	}
-	//cardNo校验
-	if validation.NotEmptyMaxLen(r.CardNo, 18) == false {
-		invalidParams.Add(validation.NewErrParamMaxLen("CardNo", 18, "CardNo长度不合法"))
+	if validation.IsCipherTextEncryptType(r.EncryptType) {
+		if !validation.CheckCipherText(r.Name) {
+			invalidParams.Add(validation.NewErrParamInvalid("Name"))
+		}
+		if !validation.CheckCipherText(r.CardNo) {
+			invalidParams.Add(validation.NewErrParamInvalid("CardNo"))
+		}
+	} else {
+		// 明文 name 仅校验非空，具体格式由服务端校验。
+		if r.Name == nil || len(*r.Name) == 0 {
+			invalidParams.Add(validation.NewErrParamInvalid("Name"))
+		}
+		//cardNo校验
+		if validation.NotEmptyMaxLen(r.CardNo, 18) == false {
+			invalidParams.Add(validation.NewErrParamMaxLen("CardNo", 18, "CardNo长度不合法"))
+		}
 	}
 	//verifyType校验
-	if validation.NotEmptyMaxLen(r.VerifyType, 11) == false {
+	if validation.NotEmptyMaxLen(r.VerifyType, 1) == false {
 		invalidParams.Add(validation.NewErrParamMaxLen("VerifyType", 11, "VerifyType长度不合法"))
 	}
 	//dataId可以为空，但是不能超过64个字符
 	if validation.EmptyMaxLen(r.DataId, 64) == false {
 		invalidParams.Add(validation.NewErrParamMaxLen("DataId", 64, "DataId长度不合法"))
+	}
+	if validation.EmptyMaxLen(r.EncryptType, 1) == false {
+		invalidParams.Add(validation.NewErrParamMaxLen("EncryptType", 1, "encryptType长度不合法"))
 	}
 	if invalidParams.Len() > 0 {
 		return invalidParams
@@ -223,6 +262,12 @@ func (r *EntryExitPermitCheckRequest) SetDataId(dataId string) *EntryExitPermitC
 	return r
 }
 
+// 提供EncryptType参数的SET方法
+func (r *EntryExitPermitCheckRequest) SetEncryptType(encryptType string) *EntryExitPermitCheckRequest {
+	r.EncryptType = &encryptType
+	return r
+}
+
 // 提供new方法
 func NewEntryExitPermitCheckRequest(businessId string) *EntryExitPermitCheckRequest {
 	request := &EntryExitPermitCheckRequest{
@@ -256,6 +301,9 @@ func (r *EntryExitPermitCheckRequest) GetBusinessCustomSignParams() map[string]s
 	}
 	if r.DataId != nil {
 		params["dataId"] = *r.DataId
+	}
+	if r.EncryptType != nil {
+		params["encryptType"] = *r.EncryptType
 	}
 	return params
 }
@@ -294,22 +342,36 @@ type IdCardCheckRequest struct {
 	CardNo *string
 	//dataId
 	DataId *string
+	//encryptType
+	EncryptType *string
 }
 
 // 校验参数
 func (r *IdCardCheckRequest) ValidateParam() error {
 	invalidParams := validation.ErrInvalidParams{Context: "IdCardCheckRequest"}
-	//name校验
-	if validation.CheckName(r.Name) == false {
-		invalidParams.Add(validation.NewErrParamInvalid("Name"))
-	}
-	//cardNo校验
-	if validation.CheckIdCard(r.CardNo) == false {
-		invalidParams.Add(validation.NewErrParamInvalid("CardNo"))
+	if validation.IsCipherTextEncryptType(r.EncryptType) {
+		if !validation.CheckCipherText(r.Name) {
+			invalidParams.Add(validation.NewErrParamInvalid("Name"))
+		}
+		if !validation.CheckCipherText(r.CardNo) {
+			invalidParams.Add(validation.NewErrParamInvalid("CardNo"))
+		}
+	} else {
+		//name校验
+		if validation.CheckName(r.Name) == false {
+			invalidParams.Add(validation.NewErrParamInvalid("Name"))
+		}
+		//cardNo校验
+		if validation.CheckIdCard(r.CardNo) == false {
+			invalidParams.Add(validation.NewErrParamInvalid("CardNo"))
+		}
 	}
 	//dataId可以为空，但是不能超过64个字符
 	if validation.EmptyMaxLen(r.DataId, 64) == false {
 		invalidParams.Add(validation.NewErrParamMaxLen("DataId", 64, "DataId长度不合法"))
+	}
+	if validation.EmptyMaxLen(r.EncryptType, 1) == false {
+		invalidParams.Add(validation.NewErrParamMaxLen("EncryptType", 1, "encryptType长度不合法"))
 	}
 	if invalidParams.Len() > 0 {
 		return invalidParams
@@ -332,6 +394,12 @@ func (r *IdCardCheckRequest) SetCardNo(cardNo string) *IdCardCheckRequest {
 // 提供DataId参数的SET方法
 func (r *IdCardCheckRequest) SetDataId(dataId string) *IdCardCheckRequest {
 	r.DataId = &dataId
+	return r
+}
+
+// 提供EncryptType参数的SET方法
+func (r *IdCardCheckRequest) SetEncryptType(encryptType string) *IdCardCheckRequest {
+	r.EncryptType = &encryptType
 	return r
 }
 
@@ -362,6 +430,9 @@ func (r *IdCardCheckRequest) GetBusinessCustomSignParams() map[string]string {
 	}
 	if r.DataId != nil {
 		params["dataId"] = *r.DataId
+	}
+	if r.EncryptType != nil {
+		params["encryptType"] = *r.EncryptType
 	}
 	return params
 }
@@ -1093,22 +1164,39 @@ type MobileNumberOwnerIdNameCheckRequest struct {
 	CardNo *string
 	//name
 	Name *string
+	//encryptType
+	EncryptType *string
 }
 
 // param check
 func (r *MobileNumberOwnerIdNameCheckRequest) ValidateParam() error {
 	invalidParams := validation.ErrInvalidParams{Context: "MobileNumberOwnerIdNameCheckRequest"}
-	//name校验
-	if validation.CheckName(r.Name) == false {
-		invalidParams.Add(validation.NewErrParamInvalid("Name"))
+	if validation.IsCipherTextEncryptType(r.EncryptType) {
+		if !validation.CheckCipherText(r.Name) {
+			invalidParams.Add(validation.NewErrParamInvalid("Name"))
+		}
+		if !validation.CheckCipherText(r.CardNo) {
+			invalidParams.Add(validation.NewErrParamInvalid("CardNo"))
+		}
+		if !validation.CheckCipherText(r.Phone) {
+			invalidParams.Add(validation.NewErrParamInvalid("Phone"))
+		}
+	} else {
+		//name校验
+		if validation.CheckName(r.Name) == false {
+			invalidParams.Add(validation.NewErrParamInvalid("Name"))
+		}
+		//idCardNo校验
+		if validation.CheckIdCard(r.CardNo) == false {
+			invalidParams.Add(validation.NewErrParamInvalid("CardNo"))
+		}
+		//phone校验
+		if validation.NotEmptyMinMaxLen(r.Phone, 1, 32) == false {
+			invalidParams.Add(validation.NewErrParamMaxLen("Phone", 32, "Phone长度不合法"))
+		}
 	}
-	//idCardNo校验
-	if validation.CheckIdCard(r.CardNo) == false {
-		invalidParams.Add(validation.NewErrParamInvalid("CardNo"))
-	}
-	//phone校验
-	if validation.NotEmptyMinMaxLen(r.Phone, 1, 32) == false {
-		invalidParams.Add(validation.NewErrParamMaxLen("Phone", 32, "Phone长度不合法"))
+	if validation.EmptyMaxLen(r.EncryptType, 1) == false {
+		invalidParams.Add(validation.NewErrParamMaxLen("EncryptType", 1, "encryptType长度不合法"))
 	}
 	if invalidParams.Len() > 0 {
 		return invalidParams
@@ -1131,6 +1219,12 @@ func (r *MobileNumberOwnerIdNameCheckRequest) SetCardNo(cardNo string) *MobileNu
 // 提供Name参数的SET方法
 func (r *MobileNumberOwnerIdNameCheckRequest) SetName(name string) *MobileNumberOwnerIdNameCheckRequest {
 	r.Name = &name
+	return r
+}
+
+// 提供EncryptType参数的SET方法
+func (r *MobileNumberOwnerIdNameCheckRequest) SetEncryptType(encryptType string) *MobileNumberOwnerIdNameCheckRequest {
+	r.EncryptType = &encryptType
 	return r
 }
 
@@ -1161,6 +1255,9 @@ func (r *MobileNumberOwnerIdNameCheckRequest) GetBusinessCustomSignParams() map[
 	}
 	if r.Name != nil {
 		params["name"] = *r.Name
+	}
+	if r.EncryptType != nil {
+		params["encryptType"] = *r.EncryptType
 	}
 	return params
 }
@@ -1197,18 +1294,32 @@ type MobileNumberOwnerNameCheckRequest struct {
 	Phone *string
 	//name
 	Name *string
+	//encryptType
+	EncryptType *string
 }
 
 // param check
 func (r *MobileNumberOwnerNameCheckRequest) ValidateParam() error {
 	invalidParams := validation.ErrInvalidParams{Context: "MobileNumberOwnerNameCheckRequest"}
-	//name校验
-	if validation.CheckName(r.Name) == false {
-		invalidParams.Add(validation.NewErrParamInvalid("Name"))
+	if validation.IsCipherTextEncryptType(r.EncryptType) {
+		if !validation.CheckCipherText(r.Name) {
+			invalidParams.Add(validation.NewErrParamInvalid("Name"))
+		}
+		if !validation.CheckCipherText(r.Phone) {
+			invalidParams.Add(validation.NewErrParamInvalid("Phone"))
+		}
+	} else {
+		//name校验
+		if validation.CheckName(r.Name) == false {
+			invalidParams.Add(validation.NewErrParamInvalid("Name"))
+		}
+		//phone校验
+		if validation.NotEmptyMinMaxLen(r.Phone, 1, 32) == false {
+			invalidParams.Add(validation.NewErrParamMaxLen("Phone", 32, "Phone长度不合法"))
+		}
 	}
-	//phone校验
-	if validation.NotEmptyMinMaxLen(r.Phone, 1, 32) == false {
-		invalidParams.Add(validation.NewErrParamMaxLen("Phone", 32, "Phone长度不合法"))
+	if validation.EmptyMaxLen(r.EncryptType, 1) == false {
+		invalidParams.Add(validation.NewErrParamMaxLen("EncryptType", 1, "encryptType长度不合法"))
 	}
 	if invalidParams.Len() > 0 {
 		return invalidParams
@@ -1225,6 +1336,12 @@ func (r *MobileNumberOwnerNameCheckRequest) SetPhone(phone string) *MobileNumber
 // 提供Name参数的SET方法
 func (r *MobileNumberOwnerNameCheckRequest) SetName(name string) *MobileNumberOwnerNameCheckRequest {
 	r.Name = &name
+	return r
+}
+
+// 提供EncryptType参数的SET方法
+func (r *MobileNumberOwnerNameCheckRequest) SetEncryptType(encryptType string) *MobileNumberOwnerNameCheckRequest {
+	r.EncryptType = &encryptType
 	return r
 }
 
@@ -1252,6 +1369,9 @@ func (r *MobileNumberOwnerNameCheckRequest) GetBusinessCustomSignParams() map[st
 	}
 	if r.Name != nil {
 		params["name"] = *r.Name
+	}
+	if r.EncryptType != nil {
+		params["encryptType"] = *r.EncryptType
 	}
 	return params
 }
@@ -1427,6 +1547,8 @@ type RpCheckRequest struct {
 	Avatar *string
 	//dataId
 	DataId *string
+	//encryptType
+	EncryptType *string
 }
 
 // param check
@@ -1436,13 +1558,22 @@ func (r *RpCheckRequest) ValidateParam() error {
 	if r.PicType == nil {
 		invalidParams.Add(validation.NewErrParamRequired("PicType"))
 	}
-	//name
-	if validation.CheckName(r.Name) == false {
-		invalidParams.Add(validation.NewErrParamInvalid("Name"))
-	}
-	//idCardNo
-	if validation.CheckIdCard(r.CardNo) == false {
-		invalidParams.Add(validation.NewErrParamInvalid("CardNo"))
+	if validation.IsCipherTextEncryptType(r.EncryptType) {
+		if !validation.CheckCipherText(r.Name) {
+			invalidParams.Add(validation.NewErrParamInvalid("Name"))
+		}
+		if !validation.CheckCipherText(r.CardNo) {
+			invalidParams.Add(validation.NewErrParamInvalid("CardNo"))
+		}
+	} else {
+		//name
+		if validation.CheckName(r.Name) == false {
+			invalidParams.Add(validation.NewErrParamInvalid("Name"))
+		}
+		//idCardNo
+		if validation.CheckIdCard(r.CardNo) == false {
+			invalidParams.Add(validation.NewErrParamInvalid("CardNo"))
+		}
 	}
 	//avatar
 	if r.Avatar == nil {
@@ -1451,6 +1582,9 @@ func (r *RpCheckRequest) ValidateParam() error {
 	//dataId可以为空，但是不能超过64个字符
 	if validation.EmptyMaxLen(r.DataId, 64) == false {
 		invalidParams.Add(validation.NewErrParamMaxLen("DataId", 64, "DataId长度不合法"))
+	}
+	if validation.EmptyMaxLen(r.EncryptType, 1) == false {
+		invalidParams.Add(validation.NewErrParamMaxLen("EncryptType", 1, "encryptType长度不合法"))
 	}
 	if invalidParams.Len() > 0 {
 		return invalidParams
@@ -1488,6 +1622,12 @@ func (r *RpCheckRequest) SetDataId(dataId string) *RpCheckRequest {
 	return r
 }
 
+// 提供EncryptType参数的SET方法
+func (r *RpCheckRequest) SetEncryptType(encryptType string) *RpCheckRequest {
+	r.EncryptType = &encryptType
+	return r
+}
+
 func NewRpCheckRequest(businessId string) *RpCheckRequest {
 	request := &RpCheckRequest{
 		BizPostFormRequest: *types.NewBizPostFormRequest(businessId),
@@ -1520,6 +1660,9 @@ func (r *RpCheckRequest) GetBusinessCustomSignParams() map[string]string {
 	}
 	if r.DataId != nil {
 		params["dataId"] = *r.DataId
+	}
+	if r.EncryptType != nil {
+		params["encryptType"] = *r.EncryptType
 	}
 	return params
 }
