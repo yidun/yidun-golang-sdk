@@ -31,7 +31,7 @@ type ImageV5Result struct {
 	// aigc结果
 	Aigc *ImageV5AigcResp `json:"aigc,omitempty"`
 	// 大模型检测结果
-	LlmCheckInfo *[]LlmCheckInfo `json:"llmCheckInfo,omitempty"`
+	LlmCheckInfo *LlmV53CheckInfo `json:"llmCheckInfo,omitempty"`
 }
 
 type ImageV5AigcResp struct {
@@ -152,7 +152,11 @@ type ImageV5AntispamResp struct {
 	// 客户自定义标签
 	CustomLabels []*CustomLabel `json:"customLabels,omitempty"`
 	// 人审拓展字段，回调返回
-	CensorExtension   *CensorExtensionResult `json:"censorExtension,omitempty"`
+	CensorExtension *CensorExtensionResult `json:"censorExtension,omitempty"`
+	// 大模型检测状态1：成功，2：失败
+	LlmStatus *int `json:"llmStatus,omitempty"`
+	// 对应大模型服务返回的errorCode字段
+	LlmFailureReason *int `json:"llmFailureReason,omitempty"`
 }
 
 type CustomLabel struct {
@@ -176,9 +180,9 @@ type ImageV5LabelDetail struct {
 	// 得分，范围为0到1
 	Rate *float32 `json:"rate,omitempty"`
 	// 各个类别检测结果
-	SubLabels *[]ImageV5SubLabelDetail `json:"subLabels,omitempty"`
-    Explain    *string         `json:"explain"`
-    IsLlmCheck *bool           `json:"isLlmCheck"`
+	SubLabels  *[]ImageV5SubLabelDetail `json:"subLabels,omitempty"`
+	Explain    *string                  `json:"explain"`
+	IsLlmCheck *bool                    `json:"isLlmCheck"`
 }
 
 type ImageV5SubLabelDetail struct {
@@ -524,6 +528,7 @@ type CensorExtensionResult struct {
 	InspTaskCreateTime      *float64 `json:"inspTaskCreateTime,omitempty"`
 	QualityInspectionType   *float64 `json:"qualityInspectionType,omitempty"`
 }
+
 // DetailMark 细节标注
 type DetailMark struct {
 	// 标注位置
@@ -548,7 +553,17 @@ type LocationInformation struct {
 	Y2 *float32 `json:"y2,omitempty"`
 }
 
-// LlmCheckInfo 大模型检测结果
+// LlmV53CheckInfo 大模型检测结果
+type LlmV53CheckInfo struct {
+	// 任务id
+	TaskId *string `json:"taskId,omitempty"`
+	// 数据id
+	DataId *string `json:"dataId,omitempty"`
+	// 详情
+	Details *[]LlmCheckInfo `json:"details,omitempty"`
+}
+
+// LlmCheckInfo 大模型检测结果详情
 type LlmCheckInfo struct {
 	// 模型标签
 	Label *string `json:"label,omitempty"`
@@ -558,10 +573,14 @@ type LlmCheckInfo struct {
 	Rate *float64 `json:"rate,omitempty"`
 	// 大模型标识
 	ModelIdentifier *string `json:"modelIdentifier,omitempty"`
-    // 二级或三级标签code
-    SubLabel *string `json:"subLabel,omitempty"`
-    // 命中关键词
-    Keyword *string `json:"keyword,omitempty"`
-    // 扩展信息(JSON格式)
-    Extension *string `json:"extension,omitempty"`
+	// 二级或三级标签code
+	SubLabel *string `json:"subLabel,omitempty"`
+	// 命中关键词
+	Keyword *string `json:"keyword,omitempty"`
+	// 扩展信息(JSON格式)
+	Extension *string `json:"extension,omitempty"`
+	// 大模型检测状态1：成功，2：失败
+	LlmStatus *int `json:"llmStatus,omitempty"`
+	// 对应大模型服务返回的errorCode字段
+	LlmFailureReason *int `json:"llmFailureReason,omitempty"`
 }
