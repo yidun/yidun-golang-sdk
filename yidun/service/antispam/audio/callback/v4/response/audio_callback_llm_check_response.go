@@ -7,9 +7,7 @@ type AudioLlmCheckCallbackV4Response struct {
 	TaskID   *string                    `json:"taskId,omitempty"`   // 音频uuid
 	DataID   *string                    `json:"dataId,omitempty"`   // 数据标识
 	Callback *string                    `json:"callback,omitempty"` // 回调
-	Details  []*AudioLlmCheckDetail     `json:"details,omitempty"`  // LLM检测详情列表
-	LlmStatus        *int              `json:"llmStatus,omitempty"`        // 大模型检测状态
-	LlmFailureReason *int              `json:"llmFailureReason,omitempty"` // 大模型检测失败原因
+	Details  []*AudioLlmCheckDetail `json:"details,omitempty"` // LLM检测详情列表
 }
 
 // AudioLlmCheckDetail 点播音频LLM检测详情
@@ -21,4 +19,6 @@ type AudioLlmCheckDetail struct {
 	Explain         *string  `json:"explain,omitempty"`         // 解释说明
 	ModelIdentifier *string  `json:"modelIdentifier,omitempty"` // 模型标识
 	Rate            *float64 `json:"rate,omitempty"`            // 模型分数
+	LlmStatus        *int     `json:"llmStatus,omitempty"`        // 大模型检测状态
+	LlmFailureReason *int     `json:"llmFailureReason,omitempty"` // 大模型检测失败原因
 }

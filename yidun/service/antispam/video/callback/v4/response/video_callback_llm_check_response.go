@@ -13,15 +13,11 @@ type LlmCheckPicture struct {
 	PictureID        *string           `json:"pictureId,omitempty"`
 	StartTime        *int64            `json:"startTime,omitempty"`
 	Details          []*LlmCheckDetail `json:"details,omitempty"`
-	LlmStatus        *int              `json:"llmStatus,omitempty"`        // 大模型检测状态
-	LlmFailureReason *int              `json:"llmFailureReason,omitempty"` // 大模型检测失败原因
 }
 
 // LlmCheckAudio 音频结果
 type LlmCheckAudio struct {
-	Details          []*LlmCheckDetail `json:"details,omitempty"`           // 详情列表
-	LlmStatus        *int              `json:"llmStatus,omitempty"`        // 大模型检测状态
-	LlmFailureReason *int              `json:"llmFailureReason,omitempty"` // 大模型检测失败原因
+	Details []*LlmCheckDetail `json:"details,omitempty"` // 详情列表
 }
 
 // LlmCheckDetail 详情列表
@@ -33,5 +29,6 @@ type LlmCheckDetail struct {
 	Explain        *string  `json:"explain,omitempty"`        // 解释说明
 	ModelIdentifier *string `json:"modelIdentifier,omitempty"` // 模型标识
 	Rate           *float64 `json:"rate,omitempty"`           // 模型分数
+	LlmStatus        *int     `json:"llmStatus,omitempty"`        // 大模型检测状态
+	LlmFailureReason *int     `json:"llmFailureReason,omitempty"` // 大模型检测失败原因
 }
-
