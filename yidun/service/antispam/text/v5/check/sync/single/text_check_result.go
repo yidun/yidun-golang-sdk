@@ -233,7 +233,8 @@ type AntispamSubLabelDetailHitInfo struct {
 }
 
 type AntispamSubLabelDetailLlm struct {
-	Keyword *string `json:"keyword"`
+	Keyword   *string `json:"keyword"`
+	Extension *string `json:"extension"` // 大模型自定义扩展字段（JSON 字符串）
 }
 
 type AigcPrompt struct {
