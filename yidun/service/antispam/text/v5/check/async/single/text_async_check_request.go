@@ -23,7 +23,7 @@ func NewTextAsyncCheckRequest(businessId string) *TextAsyncCheckRequest {
 	}
 	checkSceneRequest.SetProductCode("text-check")
 	checkSceneRequest.SetUriPattern("/v5/text/async-check")
-	checkSceneRequest.SetVersion("v5.2")
+	checkSceneRequest.SetVersion("v5.6")
 	return request
 }
 

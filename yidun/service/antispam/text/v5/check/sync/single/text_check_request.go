@@ -24,7 +24,7 @@ func NewTextCheckRequest(businessId string) *TextCheckRequest {
 	}
 	checkSceneRequest.SetProductCode("text-check")
 	checkSceneRequest.SetUriPattern("/v5/text/check")
-	checkSceneRequest.SetVersion("v5.2")
+	checkSceneRequest.SetVersion("v5.6")
 	return request
 }
 

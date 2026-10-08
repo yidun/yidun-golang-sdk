@@ -26,7 +26,7 @@ func NewTextAsyncBatchCheckRequest(businessId string) *TextAsyncBatchCheckReques
 	}
 	request.SetProductCode("text-check")
 	request.SetUriPattern("/v5/text/async-batch-check")
-	request.SetVersion("v5.2")
+	request.SetVersion("v5.6")
 	return request
 }
 

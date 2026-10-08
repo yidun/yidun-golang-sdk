@@ -23,6 +23,6 @@ func NewTextCallBackRequest(businessId string) *TextCallBackRequest {
 	}
 	request.SetProductCode("text-api")
 	request.SetUriPattern("/v5/text/callback/results")
-	request.SetVersion("v5.2")
+	request.SetVersion("v5.6")
 	return request
 }

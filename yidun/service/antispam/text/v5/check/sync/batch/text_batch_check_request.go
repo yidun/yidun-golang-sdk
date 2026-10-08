@@ -26,7 +26,7 @@ func NewTextBatchCheckRequest(businessId string) *TextBatchCheckRequest {
 	}
 	request.SetProductCode("text-check")
 	request.SetUriPattern("/v5/text/batch-check")
-	request.SetVersion("v5.2")
+	request.SetVersion("v5.6")
 	return request
 }
 
