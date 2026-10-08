@@ -229,6 +229,8 @@ type LlmKeyWord struct {
 	Keyword *string `json:"keyword,omitempty"`
 	// 大模型命中的敏感词及 OCR 坐标信息
 	Locations []*LlmInfo `json:"locations,omitempty"`
+	// 大模型扩展信息，按字符串原值返回
+	Extension *string `json:"extension,omitempty"`
 }
 
 // LlmInfo 大模型命中的敏感词及 OCR 坐标信息

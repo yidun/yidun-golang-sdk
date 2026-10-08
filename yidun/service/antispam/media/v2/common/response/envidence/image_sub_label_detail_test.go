@@ -33,3 +33,30 @@ func TestLlmKeyWordLocationsJSON(t *testing.T) {
 		t.Fatalf("nil locations should be omitted: %s", keywordOnly)
 	}
 }
+
+func TestMediaImageEvidenceUnmarshalLlmExtension(t *testing.T) {
+	const extension = ` {"riskCode":"A01","score":0.98} `
+	const evidenceJSON = `{"images":[{"status":2,"labels":[{"label":100,"subLabels":[{"subLabel":"100001","details":{"llm":{"extension":" {\"riskCode\":\"A01\",\"score\":0.98} "}}}]}]}]}`
+
+	var evidence MediaAntispamEvidence
+	if err := json.Unmarshal([]byte(evidenceJSON), &evidence); err != nil {
+		t.Fatalf("unmarshal media image evidence: %v", err)
+	}
+	if len(evidence.Images) != 1 || len(evidence.Images[0].Labels) != 1 {
+		t.Fatalf("unexpected image evidence: %#v", evidence.Images)
+	}
+	subLabels := evidence.Images[0].Labels[0].SubLabels
+	if len(subLabels) != 1 || subLabels[0].Details == nil || subLabels[0].Details.Llm == nil {
+		t.Fatalf("unexpected image subLabels: %#v", subLabels)
+	}
+	llm := subLabels[0].Details.Llm
+	if llm.Extension == nil {
+		t.Fatal("llm extension should not be nil")
+	}
+	if got := *llm.Extension; got != extension {
+		t.Fatalf("extension mismatch: got %q, want %q", got, extension)
+	}
+	if llm.Keyword != nil {
+		t.Fatalf("extension-only response should keep keyword nil, got %q", *llm.Keyword)
+	}
+}
