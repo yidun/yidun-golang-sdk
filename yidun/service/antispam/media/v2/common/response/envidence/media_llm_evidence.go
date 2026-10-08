@@ -5,6 +5,8 @@ type MediaLlmEvidence struct {
 	SubLabel *string `json:"subLabel,omitempty"`
 	Explain  *string `json:"explain,omitempty"`
 	Keyword  *string `json:"keyword,omitempty"`
+	// 大模型扩展信息
+	Extension *string `json:"extension,omitempty"`
 	// true: 大小模型融合检测; false: 小模型标签证据补充
 	IsLlmCheck *bool `json:"isLlmCheck,omitempty"`
 	// 大模型调用状态：1-成功，2-失败
