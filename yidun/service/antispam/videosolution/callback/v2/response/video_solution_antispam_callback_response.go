@@ -25,12 +25,20 @@ type VideoSolutionAntispamCallbackV2Response struct {
 	SecondLabel     *string                                        `json:"secondLabel,omitempty"`  // 二级垃圾类型
 	ThirdLabel      *string                                        `json:"thirdLabel,omitempty"`   // 三级垃圾类型
 	RiskDescription *string                                        `json:"riskDescription"`
+	CustomLabels    []*CustomLabel                                 `json:"customLabels,omitempty"` // 客户自定义标签映射结果
 	PicCount        *int64                                         `json:"picCount,omitempty"`        // 截图数量
 	Evidences       *VideoSolutionCallbackEvidenceV2Response       `json:"evidences,omitempty"`       // 机器检测证据信息，接入机器检测时参考证据信息
 	SolutionExtra   *VideoSolutionCallbackExtraV2Response          `json:"solutionExtra,omitempty"`   // 音视频解决方案额外信息
 	ReviewEvidences *VideoSolutionCallbackReviewEvidenceV2Response `json:"reviewEvidences,omitempty"` // 人审证据信息，接入人工审核后，参考人审证据信息，人审证据信息与机器检测证据信息不共存
 	CensorLabels    *[]CensorLabelInfoV2Response                   `json:"censorLabels,omitempty"`
 	CensorExtension *CensorExtensionResult                         `json:"censorExtension,omitempty"` // 质检扩展结果
+}
+
+// CustomLabel 客户自定义标签。
+type CustomLabel struct {
+	Name  *string `json:"name,omitempty"`
+	Code  *string `json:"code,omitempty"`
+	Depth *int    `json:"depth,omitempty"`
 }
 
 type VideoSolutionCallbackExtraV2Response struct {
@@ -98,12 +106,13 @@ type CensorLabelInfoV2Response struct {
 }
 
 type ImageCallbackUnitV2 struct {
-	Name       *string               `json:"name,omitempty"`
-	DataID     *string               `json:"dataId,omitempty"`
-	Suggestion *int                  `json:"suggestion,omitempty"`
-	ResultType *int                  `json:"resultType,omitempty"`
-	Labels     *[]CallbackImageLabel `json:"labels,omitempty"`
-	Status     *int                  `json:"status,omitempty"`
+	Name         *string               `json:"name,omitempty"`
+	DataID       *string               `json:"dataId,omitempty"`
+	Suggestion   *int                  `json:"suggestion,omitempty"`
+	ResultType   *int                  `json:"resultType,omitempty"`
+	Labels       *[]CallbackImageLabel `json:"labels,omitempty"`
+	CustomLabels []*CustomLabel        `json:"customLabels,omitempty"`
+	Status       *int                  `json:"status,omitempty"`
 }
 
 type CallbackImageLabel struct {
@@ -155,13 +164,14 @@ type AntispamInfo struct {
     StrategyGroupId *int64 `json:"strategyGroupId,omitempty"`
 }
 type TextCallbackUnitV2 struct {
-	TaskID       *string      `json:"taskId,omitempty"`
-	DataID       *string      `json:"dataId,omitempty"`
-	Suggestion   *int         `json:"suggestion,omitempty"`
-	ResultType   *int         `json:"resultType,omitempty"`
-	CensorType   *int         `json:"censorType,omitempty"`
-	IsRelatedHit *bool        `json:"isRelatedHit,omitempty"`
-	Labels       *[]LabelInfo `json:"labels,omitempty"`
+	TaskID       *string        `json:"taskId,omitempty"`
+	DataID       *string        `json:"dataId,omitempty"`
+	Suggestion   *int           `json:"suggestion,omitempty"`
+	ResultType   *int           `json:"resultType,omitempty"`
+	CensorType   *int           `json:"censorType,omitempty"`
+	IsRelatedHit *bool          `json:"isRelatedHit,omitempty"`
+	Labels       *[]LabelInfo   `json:"labels,omitempty"`
+	CustomLabels []*CustomLabel `json:"customLabels,omitempty"`
 }
 
 type LabelInfo struct {
@@ -216,4 +226,3 @@ type CensorExtensionResult struct {
 	QualityInspectionType   *int `json:"qualityInspectionType,omitempty"` // 质检任务ID
 	InspTaskCreateTime       *int64  `json:"inspTaskCreateTime,omitempty"`      // 质检任务创建时间，毫秒时间戳
 }
-

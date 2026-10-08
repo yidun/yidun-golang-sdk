@@ -12,6 +12,7 @@ type VideoCallbackAntispamV4Response struct {
 	SecondLabel     *string                  `json:"secondLabel,omitempty"` // 二级垃圾类型
 	ThirdLabel      *string                  `json:"thirdLabel,omitempty"`  // 三级垃圾类型
 	RiskDescription *string                  `json:"riskDescription"`       // 三级垃圾类型
+	CustomLabels    []*CustomLabel           `json:"customLabels,omitempty"` // 客户自定义标签映射结果
 	FailureReason   *int                     `json:"failureReason,omitempty"`
 	Suggestion      *int                     `json:"suggestion,omitempty"`
 	SuggestionLevel *int                     `json:"suggestionLevel,omitempty"`
@@ -22,6 +23,13 @@ type VideoCallbackAntispamV4Response struct {
 	CustomAction    *int                     `json:"customAction,omitempty"`
 	PicCount        *int                     `json:"picCount,omitempty"`
 	Pictures        []*VideoEvidenceResponse `json:"pictures,omitempty"`
+}
+
+// CustomLabel 客户自定义标签。
+type CustomLabel struct {
+	Name  *string `json:"name,omitempty"`
+	Code  *string `json:"code,omitempty"`
+	Depth *int    `json:"depth,omitempty"`
 }
 
 // VideoEvidenceResponse holds evidence for the video response
