@@ -49,6 +49,8 @@ type LiveWallSolutionSubmitV3Req struct {
 	ScreenShotStrategy *int                                 `json:"screenShotStrategy,omitempty"`
 	SubProduct         *string                              `json:"subProduct,omitempty"`
 	AccountInfo        *string                              `json:"accountInfo,omitempty"`
+	// 声网uid类型, 0-int类型 1-string类型
+	AgoraUidType *int `json:"agoraUidType,omitempty"`
 }
 
 // LiveWallSolutionSubmitV3Req 创建一个 LiveAudioCallbackV4Req 实例
@@ -177,6 +179,9 @@ func (l *LiveWallSolutionSubmitV3Req) GetBusinessCustomSignParams() map[string]s
 	}
 	if l.AccountInfo != nil {
 		m["accountInfo"] = *l.AccountInfo
+	}
+	if l.AgoraUidType != nil {
+		m["agoraUidType"] = strconv.Itoa(*l.AgoraUidType)
 	}
 	return m
 }
@@ -365,4 +370,9 @@ func (l *LiveWallSolutionSubmitV3Req) SetSubProduct(subProduct string) {
 // SetAccountInfo sets the AccountInfo.
 func (l *LiveWallSolutionSubmitV3Req) SetAccountInfo(accountInfo string) {
 	l.AccountInfo = &accountInfo
+}
+
+// SetAgoraUidType sets the AgoraUidType (0-int type, 1-string type).
+func (l *LiveWallSolutionSubmitV3Req) SetAgoraUidType(agoraUidType int) {
+	l.AgoraUidType = &agoraUidType
 }
