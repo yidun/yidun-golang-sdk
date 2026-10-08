@@ -37,6 +37,8 @@ type AntispamCheckResult struct {
 	CensorTime      *int64                `json:"censorTime,omitempty"` //审核完成时间，结果类型是机器结果，代表机器审核完成时间；审核结果是人审结果，代表人审完成时间
 	Status          *int                  `json:"status,omitempty"`     //检测状态 3：失败 2：成功
 	Md5             *string               `json:"md5,omitempty"`
+	CensorSource    *int                  `json:"censorSource,omitempty"`    //审核来源
+	StrategySource  *int                  `json:"strategySource,omitempty"`  //命中策略来源透出 0 易盾策略来源 1 客户策略来源
 }
 
 // 压缩文件反垃圾结果，每个detail对应一个压缩包内的子文件
@@ -70,15 +72,18 @@ type CensorLabel struct {
 
 // 文档反垃圾人审结果
 type ReviewEvidenceResult struct {
-	Reason *string          `json:"reason,omitempty"`
-	Remark *string          `json:"remark,omitempty"`
-	Detail *ReviewEvidences `json:"detail,omitempty"`
+	Reason   *string          `json:"reason,omitempty"`
+	SpamType *int             `json:"spamType,omitempty"` //人审垃圾类别
+	Remark   *string          `json:"remark,omitempty"`
+	Detail   *ReviewEvidences `json:"detail,omitempty"`
 }
 
 // 文档反垃圾人审证据
 type ReviewEvidences struct {
-	Text  []*TextDetail  `json:"text,omitempty"`
-	Image []*ImageDetail `json:"image,omitempty"`
+	Text   []*TextDetail      `json:"text,omitempty"`
+	Image  []*ImageDetail     `json:"image,omitempty"`
+	Audios []*FileAudioDetail `json:"audios,omitempty"`
+	Videos []*FileVideoDetail `json:"videos,omitempty"`
 }
 
 // 文本反垃圾机器结果详情
@@ -91,6 +96,32 @@ type TextDetail struct {
 type ImageDetail struct {
 	Url    *string `json:"url,omitempty"`
 	Reason *string `json:"reason,omitempty"`
+}
+
+// 音频人审证据详情
+type FileAudioDetail struct {
+	Url       *string `json:"url,omitempty"`
+	OriginUrl *string `json:"originUrl,omitempty"`
+	StartTime *int64  `json:"startTime,omitempty"`
+	EndTime   *int64  `json:"endTime,omitempty"`
+	Reason    *string `json:"reason,omitempty"`
+	HitId     *string `json:"hitId,omitempty"`
+}
+
+// 视频人审证据详情
+type FileVideoDetail struct {
+	Url    *string     `json:"url,omitempty"`
+	HitId  *string     `json:"hitId,omitempty"`
+	Audios []*AvDetail `json:"audios,omitempty"`
+	Videos []*AvDetail `json:"videos,omitempty"`
+}
+
+// 音视频片段人审证据详情
+type AvDetail struct {
+	Url       *string `json:"url,omitempty"`
+	StartTime *int64  `json:"startTime,omitempty"`
+	EndTime   *int64  `json:"endTime,omitempty"`
+	Reason    *string `json:"reason,omitempty"`
 }
 
 // 文档反垃圾机器审核结果证据
@@ -125,14 +156,16 @@ type TextEvidenceLabel struct {
 
 // 文本反垃圾机审结果二级分类
 type TextSubLabel struct {
-	SubLabel        *string             `json:"subLabel,omitempty"`
-	SubLabelDepth   *int                `json:"subLabelDepth,omitempty"`
-	SecondLabel     *string             `json:"secondLabel,omitempty"`
-	ThirdLabel      *string             `json:"thirdLabel,omitempty"`
-	RiskDescription *string             `json:"riskDescription,omitempty"` // 风险描述
-	Details         *TextSubLabelDetail `json:"details,omitempty"`
-	Explain         *string             `json:"explain,omitempty"`    // 详细命中原因，针对命中分类的详细说明解释
-	IsLlmCheck      *bool               `json:"isLlmCheck,omitempty"` // 是否为大模型检测
+	SubLabel            *string             `json:"subLabel,omitempty"`
+	SubLabelDepth       *int                `json:"subLabelDepth,omitempty"`
+	SecondLabel         *string             `json:"secondLabel,omitempty"`
+	ThirdLabel          *string             `json:"thirdLabel,omitempty"`
+	RiskDescription     *string             `json:"riskDescription,omitempty"`     // 风险描述
+	SuggestionRiskLevel *int                `json:"suggestionRiskLevel,omitempty"` // 建议风险等级
+	Rate                *float64            `json:"rate,omitempty"`
+	Details             *TextSubLabelDetail `json:"details,omitempty"`
+	Explain             *string             `json:"explain,omitempty"`    // 详细命中原因，针对命中分类的详细说明解释
+	IsLlmCheck          *bool               `json:"isLlmCheck,omitempty"` // 是否为大模型检测
 }
 
 // TextSubLabelDetail 文本标签详细信息
@@ -141,17 +174,23 @@ type TextSubLabelDetail struct {
 	LibInfos *[]LibInfo  `json:"libInfos,omitempty"`
 	HitInfos *[]HintInfo `json:"hitInfos,omitempty"`
 	Rules    *[]RuleInfo `json:"rules,omitempty"`
+	Llm      *LlmKeyWord `json:"llm,omitempty"`
 }
 
 // Keyword
 type Keyword struct {
-	Word *string `json:"word,omitempty"`
+	Word              *string `json:"word,omitempty"`
+	StrategyGroupName *string `json:"strategyGroupName,omitempty"`
+	StrategyGroupId   *int64  `json:"strategyGroupId,omitempty"`
 }
 
 // LibInfo
 type LibInfo struct {
-	Type   *int    `json:"type,omitempty"`
-	Entity *string `json:"entity,omitempty"`
+	Type              *int    `json:"type,omitempty"`
+	Entity            *string `json:"entity,omitempty"`
+	ReleaseTime       *int64  `json:"releaseTime,omitempty"`
+	StrategyGroupName *string `json:"strategyGroupName,omitempty"`
+	StrategyGroupId   *int64  `json:"strategyGroupId,omitempty"`
 }
 
 // HintInfo
@@ -172,6 +211,16 @@ type RuleInfo struct {
 	Name *string `json:"name,omitempty"`
 }
 
+// LlmKeyWord 大模型命中的关键词
+type LlmKeyWord struct {
+	Keyword *string `json:"keyword,omitempty"`
+}
+
+// AnticheatInfo 反作弊信息
+type AnticheatInfo struct {
+	HitType *int32 `json:"hitType,omitempty"`
+}
+
 // ImageEvidence 图片证据
 type ImageEvidence struct {
 	TaskId              *string               `json:"taskId,omitempty"`
@@ -181,6 +230,7 @@ type ImageEvidence struct {
 	SuggestionRiskLevel *int                  `json:"suggestionRiskLevel,omitempty"`
 	PublicOpinionInfo   *string               `json:"publicOpinionInfo,omitempty"`
 	RiskDescription     *string               `json:"riskDescription,omitempty"`
+	Status              *int                  `json:"status,omitempty"`
 	Labels              []*ImageEvidenceLabel `json:"labels,omitempty"`
 	Page                *int                  `json:"page,omitempty"`
 }
@@ -195,38 +245,44 @@ type ImageEvidenceLabel struct {
 
 // ImageSubLabel 图片证据子标签
 type ImageSubLabel struct {
-	SubLabel        *string              `json:"subLabel,omitempty"`
-	Rate            *float64             `json:"rate,omitempty"`
-	SubLabelDepth   *int                 `json:"subLabelDepth,omitempty"`
-	SecondLabel     *string              `json:"secondLabel,omitempty"`
-	ThirdLabel      *string              `json:"thirdLabel,omitempty"`
-	RiskDescription *string              `json:"riskDescription,omitempty"` // 风险描述
-	Details         *ImageSubLabelDetail `json:"details,omitempty"`
-	Explain         *string              `json:"explain,omitempty"`    // 详细命中原因，针对命中分类的详细说明解释
-	IsLlmCheck      *bool                `json:"isLlmCheck,omitempty"` // 是否为大模型检测
+	SubLabel            *string              `json:"subLabel,omitempty"`
+	Rate                *float64             `json:"rate,omitempty"`
+	SubLabelDepth       *int                 `json:"subLabelDepth,omitempty"`
+	SecondLabel         *string              `json:"secondLabel,omitempty"`
+	ThirdLabel          *string              `json:"thirdLabel,omitempty"`
+	RiskDescription     *string              `json:"riskDescription,omitempty"`     // 风险描述
+	SuggestionRiskLevel *int                 `json:"suggestionRiskLevel,omitempty"` // 建议风险等级
+	Details             *ImageSubLabelDetail `json:"details,omitempty"`
+	Explain             *string              `json:"explain,omitempty"`    // 详细命中原因，针对命中分类的详细说明解释
+	IsLlmCheck          *bool                `json:"isLlmCheck,omitempty"` // 是否为大模型检测
 }
 
 // ImageSubLabelDetail 图片标签详细信息
 type ImageSubLabelDetail struct {
-	Keywords *[]ImageSubLabelDetailInfo `json:"keywords,omitempty"` // 反垃圾自定义敏感词结果
-	LibInfos *[]ImageSubLabelDetailInfo `json:"libInfos,omitempty"` // 反垃圾自定义图片名单结果
-	HitInfos *[]ImageSubLabelDetailInfo `json:"hitInfos,omitempty"` // 反垃圾其他命中信息
-	Rules    *[]ImageSubLabelDetailInfo `json:"rules,omitempty"`
+	Keywords  *[]ImageSubLabelDetailInfo `json:"keywords,omitempty"` // 反垃圾自定义敏感词结果
+	LibInfos  *[]ImageSubLabelDetailInfo `json:"libInfos,omitempty"` // 反垃圾自定义图片名单结果
+	HitInfos  *[]ImageSubLabelDetailInfo `json:"hitInfos,omitempty"` // 反垃圾其他命中信息
+	Rules     *[]ImageSubLabelDetailInfo `json:"rules,omitempty"`
+	Anticheat *AnticheatInfo             `json:"anticheat,omitempty"` // 反作弊结果
+	Llm       *LlmKeyWord                `json:"llm,omitempty"`       // 大模型关键词
 }
 
 // ImageSubLabelDetailInfo
 type ImageSubLabelDetailInfo struct {
-	Word     *string  `json:"word,omitempty"`     // 自定义敏感词
-	Entity   *string  `json:"entity,omitempty"`   // 自定义图片名单url
-	HitCount *int     `json:"hitCount,omitempty"` // 自定义图片名单命中次数
-	Value    *string  `json:"value,omitempty"`
-	Group    *string  `json:"group,omitempty"`
-	X1       *float64 `json:"x1,omitempty"` // 坐标左上
-	Y1       *float64 `json:"y1,omitempty"` // 坐标左上
-	X2       *float64 `json:"x2,omitempty"` // 坐标右下
-	Y2       *float64 `json:"y2,omitempty"` // 坐标右下
-	Name     *string  `json:"name,omitempty"`
-	Type     *int     `json:"type,omitempty"` // type
+	Word              *string  `json:"word,omitempty"`     // 自定义敏感词
+	Entity            *string  `json:"entity,omitempty"`   // 自定义图片名单url
+	HitCount          *int     `json:"hitCount,omitempty"` // 自定义图片名单命中次数
+	Value             *string  `json:"value,omitempty"`
+	Group             *string  `json:"group,omitempty"`
+	X1                *float64 `json:"x1,omitempty"` // 坐标左上
+	Y1                *float64 `json:"y1,omitempty"` // 坐标左上
+	X2                *float64 `json:"x2,omitempty"` // 坐标右下
+	Y2                *float64 `json:"y2,omitempty"` // 坐标右下
+	Name              *string  `json:"name,omitempty"`
+	Type              *int     `json:"type,omitempty"` // type
+	ReleaseTime       *int64   `json:"releaseTime,omitempty"`
+	StrategyGroupName *string  `json:"strategyGroupName,omitempty"`
+	StrategyGroupId   *int64   `json:"strategyGroupId,omitempty"`
 }
 
 // AudioEvidence 音频证据
@@ -258,16 +314,19 @@ type AudioEvidenceSegment struct {
 type AudioEvidenceLabel struct {
 	Label     *int                     `json:"label,omitempty"`
 	Level     *int                     `json:"level,omitempty"`
+	Rate      *float64                 `json:"rate,omitempty"`
 	SubLabels *[]AudioEvidenceSubLabel `json:"subLabels,omitempty"`
 }
 
 // AudioEvidenceSubLabel 音频证据子标签
 type AudioEvidenceSubLabel struct {
-	SubLabel      *int64               `json:"subLabel,omitempty"`
-	SubLabelDepth *int                 `json:"subLabelDepth,omitempty"`
-	SecondLabel   *string              `json:"secondLabel,omitempty"`
-	ThirdLabel    *string              `json:"thirdLabel,omitempty"`
-	Details       *AudioSubLabelDetail `json:"details,omitempty"`
+	SubLabel        *int64               `json:"subLabel,omitempty"`
+	SubLabelDepth   *int                 `json:"subLabelDepth,omitempty"`
+	SecondLabel     *string              `json:"secondLabel,omitempty"`
+	ThirdLabel      *string              `json:"thirdLabel,omitempty"`
+	RiskDescription *string              `json:"riskDescription,omitempty"`
+	Rate            *float64             `json:"rate,omitempty"`
+	Details         *AudioSubLabelDetail `json:"details,omitempty"`
 }
 
 // AudioSubLabelDetail 音频标签详细信息
@@ -280,7 +339,9 @@ type AudioSubLabelDetail struct {
 
 // AudioSubLabelKeyword 自定义添加敏感词
 type AudioSubLabelKeyword struct {
-	Word *string `json:"word,omitempty"`
+	Word              *string `json:"word,omitempty"`
+	StrategyGroupName *string `json:"strategyGroupName,omitempty"`
+	StrategyGroupId   *string `json:"strategyGroupId,omitempty"`
 }
 
 // AudioSubLabelLibInfo
@@ -342,6 +403,8 @@ type VideoEvidenceSubLabel struct {
 	SubLabelDepth   *int                 `json:"subLabelDepth,omitempty"`
 	SecondLabel     *string              `json:"secondLabel,omitempty"`
 	ThirdLabel      *string              `json:"thirdLabel,omitempty"`
+	RiskDescription *string              `json:"riskDescription,omitempty"`
+	Rate            *float64             `json:"rate,omitempty"`
 	Details         *VideoSubLabelDetail `json:"details,omitempty"`
 	Explain         *string              `json:"explain,omitempty"`    // 详细命中原因，针对命中分类的详细说明解释
 	IsLlmCheck      *bool                `json:"isLlmCheck,omitempty"` // 是否为大模型检测
@@ -349,27 +412,37 @@ type VideoEvidenceSubLabel struct {
 
 // VideoSubLabelDetail 音频标签详细信息
 type VideoSubLabelDetail struct {
-	Keywords *[]VideoSubLabelKeyword  `json:"keywords,omitempty"` // 反垃圾自定义敏感词结果
-	LibInfos *[]VideoSubLabelLibInfo  `json:"libInfos,omitempty"` // 反垃圾自定义图片名单结果
-	HitInfos *[]VideoSubLabelHitInfo  `json:"hitInfos,omitempty"` // 反垃圾其他命中信息
-	Rules    *[]VideoSubLabelRuleInfo `json:"rules,omitempty"`    // 自定义规则
+	Keywords  *[]VideoSubLabelKeyword  `json:"keywords,omitempty"` // 反垃圾自定义敏感词结果
+	LibInfos  *[]VideoSubLabelLibInfo  `json:"libInfos,omitempty"` // 反垃圾自定义图片名单结果
+	HitInfos  *[]VideoSubLabelHitInfo  `json:"hitInfos,omitempty"` // 反垃圾其他命中信息
+	Rules     *[]VideoSubLabelRuleInfo `json:"rules,omitempty"`    // 自定义规则
+	Anticheat *AnticheatInfo           `json:"anticheat,omitempty"` // 反作弊结果
+	Llm       *LlmKeyWord              `json:"llm,omitempty"`       // 大模型关键词
 }
 
 // VideoSubLabelKeyword 自定义添加敏感词
 type VideoSubLabelKeyword struct {
-	Word *string  `json:"word,omitempty"`
-	X1   *float64 `json:"x1,omitempty"` // 坐标左上
-	Y1   *float64 `json:"y1,omitempty"` // 坐标左上
-	X2   *float64 `json:"x2,omitempty"` // 坐标右下
-	Y2   *float64 `json:"y2,omitempty"` // 坐标右下
+	Word              *string  `json:"word,omitempty"`
+	X1                *float64 `json:"x1,omitempty"` // 坐标左上
+	Y1                *float64 `json:"y1,omitempty"` // 坐标左上
+	X2                *float64 `json:"x2,omitempty"` // 坐标右下
+	Y2                *float64 `json:"y2,omitempty"` // 坐标右下
+	Type              *int     `json:"type,omitempty"`
+	ReleaseTime       *int64   `json:"releaseTime,omitempty"`
+	StrategyGroupName *string  `json:"strategyGroupName,omitempty"`
+	StrategyGroupId   *string  `json:"strategyGroupId,omitempty"`
 }
 
 // VideoSubLabelLibInfo
 type VideoSubLabelLibInfo struct {
-	Entity   *string `json:"entity,omitempty"`   // 该图片命中自定义图片名单对应原始添加的根源图片url
-	HitCount *int    `json:"hitCount,omitempty"` // 历史针对该数据源图片命中所有次数
-	Value    *string `json:"value,omitempty"`
-	Group    *string `json:"group,omitempty"`
+	Entity            *string `json:"entity,omitempty"`   // 该图片命中自定义图片名单对应原始添加的根源图片url
+	HitCount          *int    `json:"hitCount,omitempty"` // 历史针对该数据源图片命中所有次数
+	Value             *string `json:"value,omitempty"`
+	Group             *string `json:"group,omitempty"`
+	Type              *int    `json:"type,omitempty"`
+	ReleaseTime       *int64  `json:"releaseTime,omitempty"`
+	StrategyGroupName *string `json:"strategyGroupName,omitempty"`
+	StrategyGroupId   *string `json:"strategyGroupId,omitempty"`
 }
 
 // VideoSubLabelHitInfo

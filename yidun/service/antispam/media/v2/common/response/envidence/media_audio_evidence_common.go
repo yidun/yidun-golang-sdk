@@ -2,15 +2,16 @@ package envidence
 
 type MediaAudioEvidenceCommon struct {
 	// 融媒体机审-音频证据公共信息
-	Suggestion        *int            `json:"suggestion,omitempty"`
-	PublicOpinionInfo *string         `json:"publicOpinionInfo,omitempty"`
-	Status            *int            `json:"status,omitempty"`
-	FailureReason     *int            `json:"failureReason,omitempty"` // 失败原因
-	ResultType        *int            `json:"resultType,omitempty"`
-	CheckTime         *int64          `json:"checkTime,omitempty"`
-	Duration          *int64          `json:"duration,omitempty"`
-	DurationMs        *int64          `json:"durationMs,omitempty"`
-	Segments          []*SegmentsInfo `json:"segments,omitempty"`
+	Suggestion         *int            `json:"suggestion,omitempty"`
+	PublicOpinionInfo  *string         `json:"publicOpinionInfo,omitempty"`
+	Status             *int            `json:"status,omitempty"`
+	FailureReason      *int            `json:"failureReason,omitempty"` // 失败原因
+	ResultType         *int            `json:"resultType,omitempty"`
+	CheckTime          *int64          `json:"checkTime,omitempty"`
+	Duration           *int64          `json:"duration,omitempty"`
+	DurationMs         *int64          `json:"durationMs,omitempty"`
+	Segments           []*SegmentsInfo `json:"segments,omitempty"`
+	SuggestionRiskLevel *int           `json:"suggestionRiskLevel,omitempty"`
 }
 
 type SegmentsInfo struct {

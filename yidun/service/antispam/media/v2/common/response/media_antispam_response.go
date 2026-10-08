@@ -18,5 +18,6 @@ type MediaAntispamResponse struct {
 	CheckStatus            *int                              `json:"checkStatus,omitempty"`            // 检测状态, 1:检测中 2:检测成功 3:检测失败
 	Evidences              *envidence.MediaAntispamEvidence  `json:"evidences,omitempty"`              // 底层业务返回结果
 	SolutionEnrichEvidence *envidence.SolutionEnrichEvidence `json:"solutionEnrichEvidence,omitempty"` // 解决方案维度-失败集合
+	CensorExtension        *CensorExtensionResult            `json:"censorExtension,omitempty"`        // 机审扩展字段
 }
 

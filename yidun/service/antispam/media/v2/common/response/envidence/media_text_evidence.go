@@ -2,16 +2,17 @@ package envidence
 
 type MediaTextEvidence struct {
 	// 融媒体机审-文本证据信息
-	DataId           *string            `json:"dataId,omitempty"`
-	Field            *string            `json:"field,omitempty"`
-	Suggestion       *int               `json:"suggestion,omitempty"` // 检测结果，0：通过，1：嫌疑，2：不通过
-	PublicOpinionInfo *string           `json:"publicOpinionInfo,omitempty"`
-	ResultType       *int               `json:"resultType,omitempty"`
-	CensorType       *int               `json:"censorType,omitempty"`
-	StrategyVersions []*StrategyVersion `json:"strategyVersions,omitempty"`
-	Labels           []*TextLabelInfo   `json:"labels,omitempty"`
-	IsRelatedHit     *bool              `json:"isRelatedHit,omitempty"`
-	FilteredContent  *string            `json:"filteredContent,omitempty"`
+	DataId             *string            `json:"dataId,omitempty"`
+	Field              *string            `json:"field,omitempty"`
+	Suggestion         *int               `json:"suggestion,omitempty"` // 检测结果，0：通过，1：嫌疑，2：不通过
+	PublicOpinionInfo  *string            `json:"publicOpinionInfo,omitempty"`
+	ResultType         *int               `json:"resultType,omitempty"`
+	CensorType         *int               `json:"censorType,omitempty"`
+	StrategyVersions   []*StrategyVersion `json:"strategyVersions,omitempty"`
+	Labels             []*TextLabelInfo   `json:"labels,omitempty"`
+	IsRelatedHit       *bool              `json:"isRelatedHit,omitempty"`
+	FilteredContent    *string            `json:"filteredContent,omitempty"`
+	SuggestionRiskLevel *int              `json:"suggestionRiskLevel,omitempty"`
 }
 
 // 文本标签信息
@@ -19,6 +20,7 @@ type TextLabelInfo struct {
 	Label     *int            `json:"label,omitempty"`
 	SubLabels []*TextSubLabel `json:"subLabels,omitempty"`
 	Level     *int            `json:"level,omitempty"`
+	Rate      *float64        `json:"rate,omitempty"`
 }
 
 // 文本子标签信息

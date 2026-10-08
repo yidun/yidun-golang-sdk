@@ -13,6 +13,7 @@ type MediaAudioVideoEvidence struct {
 	Duration      *int64                         `json:"duration,omitempty"`
 	DurationMs    *int64                         `json:"durationMs,omitempty"`
 	Evidences     *MediaAudioVideoDetailEvidence `json:"evidences,omitempty"`
+	SuggestionRiskLevel *int                     `json:"suggestionRiskLevel,omitempty"`
 }
 
 type MediaAudioVideoDetailEvidence struct {

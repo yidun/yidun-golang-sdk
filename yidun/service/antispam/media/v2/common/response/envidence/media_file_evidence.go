@@ -17,6 +17,7 @@ type MediaFileEvidence struct {
 	SecondLabel         *string             `json:"secondLabel,omitempty"`         // SecondLabel 命中二级标签细分类
 	ThirdLabel          *string             `json:"thirdLabel,omitempty"`          // ThirdLabel 命中三级标签细分类
 	StrategySource      *int                `json:"strategySource,omitempty"`      // StrategySource 命中策略来源
+	FileUrl             *string             `json:"fileUrl,omitempty"`             // FileUrl 文件地址
 }
 
 type Detail struct {
@@ -39,12 +40,15 @@ type FileEvidenceResult struct {
 
 // 文本证据信息
 type TextEvidence struct {
-	Sequence   *int                 `json:"sequence,omitempty"`
-	StartText  *string              `json:"startText,omitempty"`
-	EndText    *string              `json:"endText,omitempty"`
-	Suggestion *int                 `json:"suggestion,omitempty"`
-	Labels     []*TextEvidenceLabel `json:"labels,omitempty"`
-	Page       *int                 `json:"page,omitempty"`
+	Sequence           *int                         `json:"sequence,omitempty"`
+	StartText          *string                      `json:"startText,omitempty"`
+	EndText            *string                      `json:"endText,omitempty"`
+	Suggestion         *int                         `json:"suggestion,omitempty"`
+	Labels             []*TextEvidenceLabel         `json:"labels,omitempty"`
+	Page               *int                         `json:"page,omitempty"`
+	PublicOpinionInfo  *string                      `json:"publicOpinionInfo,omitempty"`
+	SuggestionRiskLevel *int                        `json:"suggestionRiskLevel,omitempty"`
+	RiskDescription    *string                      `json:"riskDescription,omitempty"`
 }
 
 // 文本标签信息
@@ -67,11 +71,14 @@ type TextEvidenceSubLabel struct {
 
 // 图片证据信息
 type ImageEvidence struct {
-	Sequence   *int                  `json:"sequence,omitempty"`
-	ImageUrl   *string               `json:"imageUrl,omitempty"`
-	Suggestion *int                  `json:"suggestion,omitempty"`
-	Labels     []*ImageEvidenceLabel `json:"labels,omitempty"`
-	Page       *int                  `json:"page,omitempty"`
+	Sequence           *int                         `json:"sequence,omitempty"`
+	ImageUrl           *string                      `json:"imageUrl,omitempty"`
+	Suggestion         *int                         `json:"suggestion,omitempty"`
+	Labels             []*ImageEvidenceLabel        `json:"labels,omitempty"`
+	Page               *int                         `json:"page,omitempty"`
+	PublicOpinionInfo  *string                      `json:"publicOpinionInfo,omitempty"`
+	SuggestionRiskLevel *int                        `json:"suggestionRiskLevel,omitempty"`
+	RiskDescription    *string                      `json:"riskDescription,omitempty"`
 }
 
 // 图片标签信息
