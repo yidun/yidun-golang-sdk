@@ -29,6 +29,7 @@ type Detail struct {
 	Message       *string             `json:"message,omitempty"`
 	Status        *int                `json:"status,omitempty"`
 	FailureReason *int                `json:"failureReason,omitempty"`
+	Label         *int                `json:"label,omitempty"` // 命中标签
 }
 
 type FileEvidenceResult struct {

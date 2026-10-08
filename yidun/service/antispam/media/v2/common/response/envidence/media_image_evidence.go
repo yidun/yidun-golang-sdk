@@ -15,6 +15,15 @@ type MediaImageEvidence struct {
 	ImgMd5             *string           `json:"imgMd5,omitempty"` // 图片 MD5 值（32位小写格式）
 	Labels             []*ImageLabelInfo `json:"labels,omitempty"`
 	SuggestionRiskLevel *int             `json:"suggestionRiskLevel,omitempty"`
+	HitSource          *int             `json:"hitSource,omitempty"`          // 命中策略来源
+	SuggestionLevel    *int             `json:"suggestionLevel,omitempty"`    // 嫌疑级别
+	Label              *int             `json:"label,omitempty"`              // 命中一级标签
+	SecondLabel        *string          `json:"secondLabel,omitempty"`        // 命中二级标签细分类
+	ThirdLabel         *string          `json:"thirdLabel,omitempty"`         // 命中三级标签细分类
+	HitType            *int             `json:"hitType,omitempty"`            // 命中策略类型
+	StrategyType       *int             `json:"strategyType,omitempty"`       // 策略类型 1 公有策略 2 私有策略
+	HitResult          *string          `json:"hitResult,omitempty"`          // 命中结果
+	RiskDescription    *string          `json:"riskDescription,omitempty"`    // 风险描述
 }
 
 // 图片标签信息
@@ -38,6 +47,7 @@ type ImageSubLabel struct {
 	Explain             *string              `json:"explain,omitempty"`
 	// 是否为LLM检测命中，true=大小模型融合检测; false=小模型标签证据补充
 	IsLlmCheck          *bool                `json:"isLlmCheck,omitempty"`
+	RiskDescription     *string              `json:"riskDescription,omitempty"`
 }
 
 // Getter and Setter for MediaImageEvidence

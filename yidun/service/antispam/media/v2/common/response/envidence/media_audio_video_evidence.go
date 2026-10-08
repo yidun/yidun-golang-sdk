@@ -14,6 +14,12 @@ type MediaAudioVideoEvidence struct {
 	DurationMs    *int64                         `json:"durationMs,omitempty"`
 	Evidences     *MediaAudioVideoDetailEvidence `json:"evidences,omitempty"`
 	SuggestionRiskLevel *int                     `json:"suggestionRiskLevel,omitempty"`
+	RiskDescription    *string                   `json:"riskDescription,omitempty"`
+	SuggestionLevel    *int                      `json:"suggestionLevel,omitempty"` // 嫌疑级别
+	Label              *int                      `json:"label,omitempty"`           // 命中一级标签
+	SecondLabel        *string                   `json:"secondLabel,omitempty"`     // 命中二级标签细分类
+	ThirdLabel         *string                   `json:"thirdLabel,omitempty"`      // 命中三级标签细分类
+	StrategySource     *int                      `json:"strategySource,omitempty"`  // 命中策略来源
 }
 
 type MediaAudioVideoDetailEvidence struct {
@@ -23,24 +29,28 @@ type MediaAudioVideoDetailEvidence struct {
 
 // 视频证据信息
 type MediaVideoEvidence struct {
-	Suggestion *int           `json:"suggestion,omitempty"`
-	Status     *int           `json:"status,omitempty"`
-	ResultType *int           `json:"resultType,omitempty"`
-	CheckTime  *int64         `json:"checkTime,omitempty"`
-	Duration   *int64         `json:"duration,omitempty"`
-	Pictures   []*PictureInfo `json:"pictures,omitempty"`
+	Suggestion      *int           `json:"suggestion,omitempty"`
+	SuggestionLevel *int           `json:"suggestionLevel,omitempty"` // 嫌疑级别
+	Status          *int           `json:"status,omitempty"`
+	FailureReason   *int           `json:"failureReason,omitempty"` // 失败原因
+	ResultType      *int           `json:"resultType,omitempty"`
+	CheckTime       *int64         `json:"checkTime,omitempty"`
+	Duration        *int64         `json:"duration,omitempty"`
+	Pictures        []*PictureInfo `json:"pictures,omitempty"`
 }
 
 // 图片信息
 type PictureInfo struct {
-	StartTime *int64                    `json:"startTime,omitempty"`
-	EndTime   *int64                    `json:"endTime,omitempty"`
-	Content   *string                   `json:"content,omitempty"`
-	Type      *int                      `json:"type,omitempty"`
-	Url       *string                   `json:"url,omitempty"`
-	Labels    []*VideoLabelInfo         `json:"labels,omitempty"`
-	FrontPics []*RelatedPicInfoResponse `json:"frontPics,omitempty"`
-	BackPics  []*RelatedPicInfoResponse `json:"backPics,omitempty"`
+	StartTime           *int64                    `json:"startTime,omitempty"`
+	EndTime             *int64                    `json:"endTime,omitempty"`
+	PublicOpinionInfo   *string                   `json:"publicOpinionInfo,omitempty"` // 专项信息
+	Content             *string                   `json:"content,omitempty"`
+	Type                *int                      `json:"type,omitempty"`
+	Url                 *string                   `json:"url,omitempty"`
+	Labels              []*VideoLabelInfo         `json:"labels,omitempty"`
+	SuggestionRiskLevel *int                      `json:"suggestionRiskLevel,omitempty"` // 建议风险等级
+	FrontPics           []*RelatedPicInfoResponse `json:"frontPics,omitempty"`
+	BackPics            []*RelatedPicInfoResponse `json:"backPics,omitempty"`
 }
 
 // 视频标签信息
@@ -53,17 +63,18 @@ type VideoLabelInfo struct {
 
 // 音频标签信息
 type AudioSubLabel struct {
-	SubLabel      *string              `json:"subLabel,omitempty"`
-	SubLabelDepth *int                 `json:"subLabelDepth,omitempty"`
-	SecondLabel   *string              `json:"secondLabel,omitempty"`
-	ThirdLabel    *string              `json:"thirdLabel,omitempty"`
-	SuggestionRiskLevel *int           `json:"suggestionRiskLevel,omitempty"`
-	Rate          *float64             `json:"rate,omitempty"`
-	Details       *ImageSubLabelDetail `json:"details,omitempty"`
+	SubLabel            *string              `json:"subLabel,omitempty"`
+	SubLabelDepth       *int                 `json:"subLabelDepth,omitempty"`
+	SecondLabel         *string              `json:"secondLabel,omitempty"`
+	ThirdLabel          *string              `json:"thirdLabel,omitempty"`
+	SuggestionRiskLevel *int                 `json:"suggestionRiskLevel,omitempty"`
+	Rate                *float64             `json:"rate,omitempty"`
+	RiskDescription     *string              `json:"riskDescription,omitempty"`
+	Details             *ImageSubLabelDetail `json:"details,omitempty"`
 	// LLM 解释说明
-	Explain       *string              `json:"explain,omitempty"`
+	Explain             *string              `json:"explain,omitempty"`
 	// 是否为LLM检测命中，true=大小模型融合检测; false=小模型标签证据补充
-	IsLlmCheck    *bool                `json:"isLlmCheck,omitempty"`
+	IsLlmCheck          *bool                `json:"isLlmCheck,omitempty"`
 }
 
 // 相邻截图信息

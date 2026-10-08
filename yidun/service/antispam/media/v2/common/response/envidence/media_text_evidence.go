@@ -13,6 +13,15 @@ type MediaTextEvidence struct {
 	IsRelatedHit       *bool              `json:"isRelatedHit,omitempty"`
 	FilteredContent    *string            `json:"filteredContent,omitempty"`
 	SuggestionRiskLevel *int              `json:"suggestionRiskLevel,omitempty"`
+	RiskDescription    *string            `json:"riskDescription,omitempty"`
+	HitSource          *int               `json:"hitSource,omitempty"`          // 命中策略来源
+	SuggestionLevel    *int               `json:"suggestionLevel,omitempty"`    // 嫌疑级别 1:低嫌疑 2:高嫌疑
+	Label              *int               `json:"label,omitempty"`              // 命中一级标签
+	SecondLabel        *string            `json:"secondLabel,omitempty"`        // 命中二级标签细分类
+	ThirdLabel         *string            `json:"thirdLabel,omitempty"`         // 命中三级标签细分类
+	HitType            *int               `json:"hitType,omitempty"`            // 命中策略类型
+	StrategyType       *int               `json:"strategyType,omitempty"`       // 策略类型 1 公有策略 2 私有策略
+	HitResult          *string            `json:"hitResult,omitempty"`          // 命中结果
 }
 
 // 文本标签信息
@@ -25,16 +34,18 @@ type TextLabelInfo struct {
 
 // 文本子标签信息
 type TextSubLabel struct {
-	SubLabel      *string             `json:"subLabel,omitempty"`
-	Details       *TextSubLabelDetail `json:"details,omitempty"`
-	SubLabelDepth *int                `json:"subLabelDepth,omitempty"`
-	SecondLabel   *string             `json:"secondLabel,omitempty"`
-	ThirdLabel    *string             `json:"thirdLabel,omitempty"`
-	SuggestionRiskLevel *int          `json:"suggestionRiskLevel,omitempty"`
+	SubLabel            *string             `json:"subLabel,omitempty"`
+	Details             *TextSubLabelDetail `json:"details,omitempty"`
+	SubLabelDepth       *int                `json:"subLabelDepth,omitempty"`
+	SecondLabel         *string             `json:"secondLabel,omitempty"`
+	ThirdLabel          *string             `json:"thirdLabel,omitempty"`
+	SuggestionRiskLevel *int                `json:"suggestionRiskLevel,omitempty"`
+	Rate                *float64            `json:"rate,omitempty"`
+	RiskDescription     *string             `json:"riskDescription,omitempty"`
 	// LLM 对标签的解释说明
-	Explain       *string             `json:"explain,omitempty"`
+	Explain             *string             `json:"explain,omitempty"`
 	// true=大小模型融合检测; false=小模型标签证据补充; null=非LLM相关
-	IsLlmCheck    *bool               `json:"isLlmCheck,omitempty"`
+	IsLlmCheck          *bool               `json:"isLlmCheck,omitempty"`
 }
 
 type StrategyVersion struct {

@@ -12,6 +12,11 @@ type MediaAudioEvidenceCommon struct {
 	DurationMs         *int64          `json:"durationMs,omitempty"`
 	Segments           []*SegmentsInfo `json:"segments,omitempty"`
 	SuggestionRiskLevel *int           `json:"suggestionRiskLevel,omitempty"`
+	RiskDescription    *string         `json:"riskDescription,omitempty"`
+	SuggestionLevel    *int            `json:"suggestionLevel,omitempty"` // 嫌疑级别
+	Label              *int            `json:"label,omitempty"`           // 命中一级标签
+	SecondLabel        *string         `json:"secondLabel,omitempty"`     // 命中二级标签细分类
+	ThirdLabel         *string         `json:"thirdLabel,omitempty"`      // 命中三级标签细分类
 }
 
 type SegmentsInfo struct {
@@ -26,6 +31,7 @@ type AudioLabelInfo struct {
 	Label     *int             `json:"label,omitempty"`
 	SubLabels []*AudioSubLabel `json:"subLabels,omitempty"`
 	Level     *int             `json:"level,omitempty"`
+	Rate      *float64         `json:"rate,omitempty"`
 }
 
 type AudioSubLabelDetail struct {
