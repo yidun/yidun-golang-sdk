@@ -126,11 +126,14 @@ type TextEvidenceLabel struct {
 
 // 文本反垃圾机审结果二级分类
 type TextSubLabel struct {
-	SubLabel      *string             `json:"subLabel,omitempty"`
-	SubLabelDepth *int                `json:"subLabelDepth,omitempty"`
-	SecondLabel   *string             `json:"secondLabel,omitempty"`
-	ThirdLabel    *string             `json:"thirdLabel,omitempty"`
-	Details       *TextSubLabelDetail `json:"details,omitempty"`
+	SubLabel        *string             `json:"subLabel,omitempty"`
+	SubLabelDepth   *int                `json:"subLabelDepth,omitempty"`
+	SecondLabel     *string             `json:"secondLabel,omitempty"`
+	ThirdLabel      *string             `json:"thirdLabel,omitempty"`
+	RiskDescription *string             `json:"riskDescription,omitempty"` // 风险描述
+	Details         *TextSubLabelDetail `json:"details,omitempty"`
+	Explain         *string             `json:"explain,omitempty"`    // 详细命中原因，针对命中分类的详细说明解释
+	IsLlmCheck      *bool               `json:"isLlmCheck,omitempty"` // 是否为大模型检测
 }
 
 // TextSubLabelDetail 文本标签详细信息
@@ -194,12 +197,15 @@ type ImageEvidenceLabel struct {
 
 // ImageSubLabel 图片证据子标签
 type ImageSubLabel struct {
-	SubLabel      *string              `json:"subLabel,omitempty"`
-	Rate          *float64             `json:"rate,omitempty"`
-	SubLabelDepth *int                 `json:"subLabelDepth,omitempty"`
-	SecondLabel   *string              `json:"secondLabel,omitempty"`
-	ThirdLabel    *string              `json:"thirdLabel,omitempty"`
-	Details       *ImageSubLabelDetail `json:"details,omitempty"`
+	SubLabel        *string              `json:"subLabel,omitempty"`
+	Rate            *float64             `json:"rate,omitempty"`
+	SubLabelDepth   *int                 `json:"subLabelDepth,omitempty"`
+	SecondLabel     *string              `json:"secondLabel,omitempty"`
+	ThirdLabel      *string              `json:"thirdLabel,omitempty"`
+	RiskDescription *string              `json:"riskDescription,omitempty"` // 风险描述
+	Details         *ImageSubLabelDetail `json:"details,omitempty"`
+	Explain         *string              `json:"explain,omitempty"`    // 详细命中原因，针对命中分类的详细说明解释
+	IsLlmCheck      *bool                `json:"isLlmCheck,omitempty"` // 是否为大模型检测
 }
 
 // ImageSubLabelDetail 图片标签详细信息
@@ -335,11 +341,13 @@ type VideoEvidenceLabel struct {
 
 // VideoEvidenceSubLabel 视频证据二级分类
 type VideoEvidenceSubLabel struct {
-	SubLabel      *int64               `json:"subLabel,omitempty"`
-	SubLabelDepth *int                 `json:"subLabelDepth,omitempty"`
-	SecondLabel   *string              `json:"secondLabel,omitempty"`
-	ThirdLabel    *string              `json:"thirdLabel,omitempty"`
-	Details       *VideoSubLabelDetail `json:"details,omitempty"`
+	SubLabel        *int64               `json:"subLabel,omitempty"`
+	SubLabelDepth   *int                 `json:"subLabelDepth,omitempty"`
+	SecondLabel     *string              `json:"secondLabel,omitempty"`
+	ThirdLabel      *string              `json:"thirdLabel,omitempty"`
+	Details         *VideoSubLabelDetail `json:"details,omitempty"`
+	Explain         *string              `json:"explain,omitempty"`    // 详细命中原因，针对命中分类的详细说明解释
+	IsLlmCheck      *bool                `json:"isLlmCheck,omitempty"` // 是否为大模型检测
 }
 
 // VideoSubLabelDetail 音频标签详细信息
@@ -390,12 +398,15 @@ type Ocr struct {
 	Images *[]sync.ImageV5OcrResp `json:"images,omitempty"`
 }
 
-// LlmCheckDetail LLM 检测详情（文本和图片通用）
+// LlmCheckDetail LLM 检测详情（文本、图片、视频通用）
 type LlmCheckDetail struct {
-	Explain         *string  `json:"explain,omitempty"`
 	Label           *string  `json:"label,omitempty"`
-	Rate            *float64 `json:"rate,omitempty"`
+	SubLabel        *string  `json:"subLabel,omitempty"`  // 二级或三级标签code
+	Keyword         *string  `json:"keyword,omitempty"`   // 命中关键词
+	Extension       *string  `json:"extension,omitempty"` // 扩展信息（JSON格式）
+	Explain         *string  `json:"explain,omitempty"`
 	ModelIdentifier *string  `json:"modelIdentifier,omitempty"`
+	Rate            *float64 `json:"rate,omitempty"`
 }
 
 // LlmCheckPicture 视频 LLM 检测图片列表
