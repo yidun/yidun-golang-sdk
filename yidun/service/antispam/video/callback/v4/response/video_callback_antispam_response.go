@@ -98,7 +98,8 @@ type SubLabelDetails struct {
 // LlmKeyWord 大模型命中的关键词
 type LlmKeyWord struct {
 	// 大模型命中的Keyword
-	Keyword *string `json:"keyword,omitempty"`
+	Keyword   *string `json:"keyword,omitempty"`
+	Extension *string `json:"extension,omitempty"`
 }
 
 // AnticheatInfo holds anti-cheat info

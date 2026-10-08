@@ -57,7 +57,8 @@ type HintInfoV4 struct {
 }
 
 type Llm struct {
-	Keyword *string `json:"keyword,omitempty"`
+	Keyword   *string `json:"keyword,omitempty"`
+	Extension *string `json:"extension,omitempty"`
 }
 
 type IntentUnit struct {

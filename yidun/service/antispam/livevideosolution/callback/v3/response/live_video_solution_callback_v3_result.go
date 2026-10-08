@@ -350,7 +350,8 @@ type HintInfoV4 struct {
 
 // Llm represents LLM hit keyword information.
 type Llm struct {
-	Keyword *string `json:"keyword,omitempty"`
+	Keyword   *string `json:"keyword,omitempty"`
+	Extension *string `json:"extension,omitempty"`
 }
 
 // IntentUnit represents intent unit.

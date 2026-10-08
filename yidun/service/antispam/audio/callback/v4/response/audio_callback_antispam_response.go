@@ -83,7 +83,8 @@ type HintInfo struct {
 }
 
 type Llm struct {
-	Keyword *string `json:"keyword,omitempty"` // 大模型命中关键词
+	Keyword   *string `json:"keyword,omitempty"`   // 大模型命中关键词
+	Extension *string `json:"extension,omitempty"` // 大模型扩展信息
 }
 type HintDetail struct {
 	Value *string `json:"value,omitempty"` // 命中的敏感词或者声纹检测的分值
