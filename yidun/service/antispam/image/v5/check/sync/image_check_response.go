@@ -453,12 +453,13 @@ type ImageV5AdResp struct {
 }
 
 type ImageV5DiscernDetail struct {
-	Type        *int     `json:"type,omitempty"`        // 识别物体类型 1 场景
-	DiscernName *string  `json:"discernName,omitempty"` // 识别名称
-	DiscernKey  *string  `json:"discernKey,omitempty"`  // 识别标识
-	Rate        *float32 `json:"rate,omitempty"`        // 分数
-	Label       *string  `json:"label,omitempty"`       // 大模型识别标签
-	Explain     *string  `json:"explain,omitempty"`     // 大模型识别解释
+	Type                *int                 `json:"type,omitempty"`                // 识别物体类型 1 场景
+	DiscernName         *string              `json:"discernName,omitempty"`         // 识别名称
+	DiscernKey          *string              `json:"discernKey,omitempty"`          // 识别标识
+	Rate                *float32             `json:"rate,omitempty"`                // 分数
+	Label               *string              `json:"label,omitempty"`               // 大模型识别标签
+	Explain             *string              `json:"explain,omitempty"`             // 大模型识别解释
+	LocationInformation *LocationInformation `json:"locationInformation,omitempty"` // 旗帜识别坐标信息
 }
 
 type ImageV5AdDetail struct {
@@ -537,6 +538,14 @@ type DetailMark struct {
 type MarkPoint struct {
 	X *float32 `json:"x,omitempty"`
 	Y *float32 `json:"y,omitempty"`
+}
+
+// LocationInformation 旗帜识别坐标信息
+type LocationInformation struct {
+	X1 *float32 `json:"x1,omitempty"`
+	Y1 *float32 `json:"y1,omitempty"`
+	X2 *float32 `json:"x2,omitempty"`
+	Y2 *float32 `json:"y2,omitempty"`
 }
 
 // LlmCheckInfo 大模型检测结果
