@@ -26,8 +26,8 @@ type AntispamCheckResult struct {
 	Suggestion      *int                  `json:"suggestion,omitempty"`
 	Message         *string               `json:"message,omitempty"`
 	ResultType      *int                  `json:"resultType,omitempty"`
-	CensorRound     *int                  `json:"censorRound,omitempty"`    //审核轮数
-	Censor          *string               `json:"censor,omitempty"`         //审核人
+	CensorRound     *int                  `json:"censorRound,omitempty"` //审核轮数
+	Censor          *string               `json:"censor,omitempty"`      //审核人
 	Evidences       *EvidenceResult       `json:"evidences,omitempty"`
 	ReviewEvidences *ReviewEvidenceResult `json:"reviewEvidences,omitempty"`
 	FailureReason   *int                  `json:"failureReason,omitempty"`
@@ -37,8 +37,8 @@ type AntispamCheckResult struct {
 	CensorTime      *int64                `json:"censorTime,omitempty"` //审核完成时间，结果类型是机器结果，代表机器审核完成时间；审核结果是人审结果，代表人审完成时间
 	Status          *int                  `json:"status,omitempty"`     //检测状态 3：失败 2：成功
 	Md5             *string               `json:"md5,omitempty"`
-	CensorSource    *int                  `json:"censorSource,omitempty"`    //审核来源
-	StrategySource  *int                  `json:"strategySource,omitempty"`  //命中策略来源透出 0 易盾策略来源 1 客户策略来源
+	CensorSource    *int                  `json:"censorSource,omitempty"`   //审核来源
+	StrategySource  *int                  `json:"strategySource,omitempty"` //命中策略来源透出 0 易盾策略来源 1 客户策略来源
 }
 
 // 压缩文件反垃圾结果，每个detail对应一个压缩包内的子文件
@@ -296,8 +296,8 @@ type AudioEvidence struct {
 }
 
 type VideoSolutionCheckResult struct {
-	Segments     *[]AudioEvidenceSegment  `json:"segments,omitempty"`
-	Pictures     *[]VideoEvidencePictures `json:"pictures,omitempty"`
+	Segments *[]AudioEvidenceSegment  `json:"segments,omitempty"`
+	Pictures *[]VideoEvidencePictures `json:"pictures,omitempty"`
 }
 
 // AudioEvidenceSegment 音频证据分段
@@ -327,6 +327,8 @@ type AudioEvidenceSubLabel struct {
 	RiskDescription *string              `json:"riskDescription,omitempty"`
 	Rate            *float64             `json:"rate,omitempty"`
 	Details         *AudioSubLabelDetail `json:"details,omitempty"`
+	Explain         *string              `json:"explain,omitempty"`    // 详细命中原因，针对命中分类的详细说明解释
+	IsLlmCheck      *bool                `json:"isLlmCheck,omitempty"` // 是否为大模型检测
 }
 
 // AudioSubLabelDetail 音频标签详细信息
@@ -335,6 +337,7 @@ type AudioSubLabelDetail struct {
 	LibInfos *[]AudioSubLabelLibInfo  `json:"libInfos,omitempty"` // 反垃圾自定义图片名单结果
 	HitInfos *[]AudioSubLabelHitInfo  `json:"hitInfos,omitempty"` // 反垃圾其他命中信息
 	Rules    *[]AudioSubLabelRuleInfo `json:"rules,omitempty"`
+	Llm      *LlmKeyWord              `json:"llm,omitempty"` // 大模型关键词
 }
 
 // AudioSubLabelKeyword 自定义添加敏感词
@@ -412,10 +415,10 @@ type VideoEvidenceSubLabel struct {
 
 // VideoSubLabelDetail 音频标签详细信息
 type VideoSubLabelDetail struct {
-	Keywords  *[]VideoSubLabelKeyword  `json:"keywords,omitempty"` // 反垃圾自定义敏感词结果
-	LibInfos  *[]VideoSubLabelLibInfo  `json:"libInfos,omitempty"` // 反垃圾自定义图片名单结果
-	HitInfos  *[]VideoSubLabelHitInfo  `json:"hitInfos,omitempty"` // 反垃圾其他命中信息
-	Rules     *[]VideoSubLabelRuleInfo `json:"rules,omitempty"`    // 自定义规则
+	Keywords  *[]VideoSubLabelKeyword  `json:"keywords,omitempty"`  // 反垃圾自定义敏感词结果
+	LibInfos  *[]VideoSubLabelLibInfo  `json:"libInfos,omitempty"`  // 反垃圾自定义图片名单结果
+	HitInfos  *[]VideoSubLabelHitInfo  `json:"hitInfos,omitempty"`  // 反垃圾其他命中信息
+	Rules     *[]VideoSubLabelRuleInfo `json:"rules,omitempty"`     // 自定义规则
 	Anticheat *AnticheatInfo           `json:"anticheat,omitempty"` // 反作弊结果
 	Llm       *LlmKeyWord              `json:"llm,omitempty"`       // 大模型关键词
 }
@@ -461,7 +464,7 @@ type VideoSubLabelRuleInfo struct {
 }
 
 type ValueAddServiceResult struct {
-	Ocr         *Ocr            `json:"ocr,omitempty"`
+	Ocr          *Ocr            `json:"ocr,omitempty"`
 	LlmCheckInfo *LlmCheckResult `json:"llmCheckInfo,omitempty"`
 }
 
@@ -474,6 +477,7 @@ type LlmCheckResult struct {
 	Texts  *[]TextLlmCheckDetail  `json:"texts,omitempty"`
 	Images *[]ImageLlmCheckDetail `json:"images,omitempty"`
 	Videos *[]VideoLlmCheckDetail `json:"videos,omitempty"`
+	Audios *[]AudioLlmCheckDetail `json:"audios,omitempty"`
 }
 
 // TextLlmCheckDetail 文本大模型检测结果单元
@@ -495,6 +499,13 @@ type VideoLlmCheckDetail struct {
 	DataId   *string            `json:"dataId,omitempty"`
 	TaskId   *string            `json:"taskId,omitempty"`
 	Pictures *[]LlmCheckPicture `json:"pictures,omitempty"`
+}
+
+// AudioLlmCheckDetail 音频大模型检测结果单元
+type AudioLlmCheckDetail struct {
+	DataId  *string           `json:"dataId,omitempty"`
+	TaskId  *string           `json:"taskId,omitempty"`
+	Details *[]LlmCheckDetail `json:"details,omitempty"`
 }
 
 // LlmCheckDetail LLM 检测详情（文本、图片、视频通用）

@@ -334,13 +334,15 @@ type MediaCovertSignagePlatform struct {
 
 // LlmCheckInfo 大模型检测结果
 type LlmCheckInfo struct {
-	Images []*LlmCheckImageDetail  `json:"images,omitempty"`
-	Texts  []*LlmCheckTextDetail   `json:"texts,omitempty"`
-	Videos []*LlmCheckVideoDetail  `json:"videos,omitempty"`
+	Images []*LlmCheckImageDetail `json:"images,omitempty"`
+	Texts  []*LlmCheckTextDetail  `json:"texts,omitempty"`
+	Videos []*LlmCheckVideoDetail `json:"videos,omitempty"`
+	// 音频大模型检测结果列表
+	Audios []*LlmCheckAudioDetail `json:"audios,omitempty"`
 	// 产品维度大模型检测结果列表
-	Llms   []*MediaLlmCheckDetail  `json:"llms,omitempty"`
+	Llms []*MediaLlmCheckDetail `json:"llms,omitempty"`
 	// 文件维度大模型检测结果列表
-	Files  []*FileLlmCheckDetail   `json:"files,omitempty"`
+	Files []*FileLlmCheckDetail `json:"files,omitempty"`
 }
 
 // LlmCheckImageDetail 图片大模型检测详情
@@ -351,6 +353,12 @@ type LlmCheckImageDetail struct {
 
 // LlmCheckTextDetail 文本大模型检测详情
 type LlmCheckTextDetail struct {
+	ValueServiceBaseResponse
+	Details []*LlmCheckDetail `json:"details,omitempty"`
+}
+
+// LlmCheckAudioDetail 音频大模型检测详情
+type LlmCheckAudioDetail struct {
 	ValueServiceBaseResponse
 	Details []*LlmCheckDetail `json:"details,omitempty"`
 }
@@ -375,9 +383,9 @@ type LlmCheckDetail struct {
 	Rate            *float64 `json:"rate,omitempty"`
 	ModelIdentifier *string  `json:"modelIdentifier,omitempty"`
 	// 命中关键词，英文逗号分隔
-	Keyword         *string  `json:"keyword,omitempty"`
+	Keyword *string `json:"keyword,omitempty"`
 	// 大模型自定义扩展字段，JSON字符串格式
-	Extension       *string  `json:"extension,omitempty"`
+	Extension *string `json:"extension,omitempty"`
 }
 
 // MediaLlmCheckDetail 产品维度大模型检测结果单元
@@ -392,4 +400,5 @@ type FileLlmCheckDetail struct {
 	Texts  []*LlmCheckTextDetail  `json:"texts,omitempty"`
 	Images []*LlmCheckImageDetail `json:"images,omitempty"`
 	Videos []*LlmCheckVideoDetail `json:"videos,omitempty"`
+	Audios []*LlmCheckAudioDetail `json:"audios,omitempty"`
 }
