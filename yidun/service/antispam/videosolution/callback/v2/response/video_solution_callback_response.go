@@ -37,7 +37,8 @@ type VideoSolutionAdCallbackV4Response struct {
 }
 
 type VideoSolutionLlmCheckCallbackV4Response struct {
-	TaskID   *string                           `json:"taskId,omitempty"`
-	DataID   *string                           `json:"dataId,omitempty"`
-	Pictures []*response2.LlmCheckPicture      `json:"pictures,omitempty"`
+	TaskID   *string                      `json:"taskId,omitempty"`
+	DataID   *string                      `json:"dataId,omitempty"`
+	Pictures []*response2.LlmCheckPicture `json:"pictures,omitempty"`
+	Audio    *response2.LlmCheckAudio     `json:"audio,omitempty"`
 }

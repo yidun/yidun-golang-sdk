@@ -53,6 +53,8 @@ type AudioSubLabel struct {
 	Rate                *float64  `json:"rate,omitempty"`
 	RiskDescription     *string   `json:"riskDescription,omitempty"`
 	Details             *HintInfo `json:"details,omitempty"` // 其他信息
+	IsLlmCheck          *bool     `json:"isLlmCheck,omitempty"` // LLM大模型检测标识，true=大模型融合检测命中
+	Explain             *string   `json:"explain,omitempty"`    // LLM大模型解释说明
 }
 
 type CensorLabelInfo struct {
@@ -67,6 +69,11 @@ type HintInfo struct {
 	HitInfos *[]HintDetail `json:"hitInfos,omitempty"` // 命中内容
 	Keywords *[]Keywords   `json:"keywords,omitempty"` // 自定义敏感词线索分类信息
 	LibInfos *[]LibResult  `json:"libInfos,omitempty"` // 自定义名单线索分类信息
+	Llm      *Llm          `json:"llm,omitempty"`      // 大模型命中线索
+}
+
+type Llm struct {
+	Keyword *string `json:"keyword,omitempty"` // 大模型命中关键词
 }
 type HintDetail struct {
 	Value *string `json:"value,omitempty"` // 命中的敏感词或者声纹检测的分值

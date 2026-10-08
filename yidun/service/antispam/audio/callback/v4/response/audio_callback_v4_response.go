@@ -11,10 +11,11 @@ type AudioCallBackV4Response struct {
 }
 
 type AudioCallbackV4Result struct {
-	Antispam *AudioAntispamCallbackV4Response `json:"antispam,omitempty"` // 音频内容安全检测结果
-	Asr      *AudioAsrCallbackV4Response      `json:"asr,omitempty"`      // 音频语音识别结果
-	Language *AudioLanguageCallbackV4Response `json:"language,omitempty"` // 音频语种检测结果
-	Quality  *AudioQualityCallbackV4Response  `json:"quality,omitempty"`  // 音频质量检测结果
-	Voice    *AudioVoiceCallbackV4Response    `json:"voice,omitempty"`    // 音频语音检测结果
-	Ad       *AudioAdCallbackV4Response       `json:"ad,omitempty"`       // 音频广告检测结果
+	Antispam     *AudioAntispamCallbackV4Response `json:"antispam,omitempty"`     // 音频内容安全检测结果
+	Asr          *AudioAsrCallbackV4Response      `json:"asr,omitempty"`          // 音频语音识别结果
+	Language     *AudioLanguageCallbackV4Response `json:"language,omitempty"`     // 音频语种检测结果
+	Quality      *AudioQualityCallbackV4Response  `json:"quality,omitempty"`      // 音频质量检测结果
+	Voice        *AudioVoiceCallbackV4Response    `json:"voice,omitempty"`        // 音频语音检测结果
+	Ad           *AudioAdCallbackV4Response       `json:"ad,omitempty"`           // 音频广告检测结果
+	LlmCheckInfo *AudioLlmCheckCallbackV4Response `json:"llmCheckInfo,omitempty"` // 音频大模型检测结果
 }
