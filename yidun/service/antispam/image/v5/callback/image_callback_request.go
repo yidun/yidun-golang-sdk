@@ -21,7 +21,7 @@ func NewImageCallbackRequest(businessId string) *ImageV5CallbackRequest {
 	}
 	request.SetProductCode("imageCommon")
 	request.SetUriPattern("/v5/image/callback/results")
-	request.SetVersion("v5.2")
+	request.SetVersion("v5.3")
 	return request
 }
 

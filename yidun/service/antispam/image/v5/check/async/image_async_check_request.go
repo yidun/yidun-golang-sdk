@@ -17,7 +17,7 @@ func NewImageV5AsyncCheckRequest(businessId string) *ImageV5AsyncCheckRequest {
 	}
 	checkSceneRequest.SetProductCode("imageCheck")
 	checkSceneRequest.SetUriPattern("/v5/image/asyncCheck")
-	checkSceneRequest.SetVersion("v5.2")
+	checkSceneRequest.SetVersion("v5.3")
 	var asyncCheckRequest = &ImageV5AsyncCheckRequest{
 		ImageV5CheckRequest: request,
 	}

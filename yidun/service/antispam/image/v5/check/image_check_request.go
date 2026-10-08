@@ -41,7 +41,7 @@ func NewImageV5CheckRequest(businessId string) *ImageV5CheckRequest {
 	}
 	checkSceneRequest.SetProductCode("imageCheck")
 	checkSceneRequest.SetUriPattern("/v5/image/check")
-	checkSceneRequest.SetVersion("v5.2")
+	checkSceneRequest.SetVersion("v5.3")
 	return request
 }
 
