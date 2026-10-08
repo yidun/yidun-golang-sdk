@@ -24,6 +24,8 @@ type AudioAntispamCallbackV4Response struct {
 	Duration            *int64             `json:"duration,omitempty"`            // 音频时长字段，单位s
 	DurationMs          *int64             `json:"durationMs,omitempty"`          // 音频时长字段，单位毫秒
 	CustomAction        *int               `json:"customAction,omitempty"`        // 自定义建议结果 0-通过 2-删除
+	LlmStatus           *int               `json:"llmStatus,omitempty"`           // 大模型检测状态
+	LlmFailureReason    *int               `json:"llmFailureReason,omitempty"`    // 大模型检测失败原因
 }
 
 type AudioDataInfo struct {

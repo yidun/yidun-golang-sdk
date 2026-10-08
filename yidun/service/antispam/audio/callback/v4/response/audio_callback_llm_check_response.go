@@ -8,6 +8,8 @@ type AudioLlmCheckCallbackV4Response struct {
 	DataID   *string                    `json:"dataId,omitempty"`   // 数据标识
 	Callback *string                    `json:"callback,omitempty"` // 回调
 	Details  []*AudioLlmCheckDetail     `json:"details,omitempty"`  // LLM检测详情列表
+	LlmStatus        *int              `json:"llmStatus,omitempty"`        // 大模型检测状态
+	LlmFailureReason *int              `json:"llmFailureReason,omitempty"` // 大模型检测失败原因
 }
 
 // AudioLlmCheckDetail 点播音频LLM检测详情

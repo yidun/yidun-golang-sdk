@@ -26,15 +26,17 @@ type VideoCallbackAntispamV4Response struct {
 
 // VideoEvidenceResponse holds evidence for the video response
 type VideoEvidenceResponse struct {
-	Type         *int                          `json:"type,omitempty"`
-	URL          *string                       `json:"url,omitempty"`
-	StartTime    *int64                        `json:"startTime,omitempty"`
-	EndTime      *int64                        `json:"endTime,omitempty"`
-	Labels       []*CallbackImageLabelResponse `json:"labels,omitempty"`
-	CensorSource *int                          `json:"censorSource,omitempty"`
-	FrontPics    []*RelatedPicInfoResponse     `json:"frontPics,omitempty"`
-	BackPics     []*RelatedPicInfoResponse     `json:"backPics,omitempty"`
-	PictureID    *string                       `json:"pictureId,omitempty"`
+	Type             *int                          `json:"type,omitempty"`
+	URL              *string                       `json:"url,omitempty"`
+	StartTime        *int64                        `json:"startTime,omitempty"`
+	EndTime          *int64                        `json:"endTime,omitempty"`
+	Labels           []*CallbackImageLabelResponse `json:"labels,omitempty"`
+	CensorSource     *int                          `json:"censorSource,omitempty"`
+	FrontPics        []*RelatedPicInfoResponse     `json:"frontPics,omitempty"`
+	BackPics         []*RelatedPicInfoResponse     `json:"backPics,omitempty"`
+	PictureID        *string                       `json:"pictureId,omitempty"`
+	LlmStatus        *int                          `json:"llmStatus,omitempty"`        // 大模型检测状态
+	LlmFailureReason *int                          `json:"llmFailureReason,omitempty"` // 大模型检测失败原因
 }
 
 // CallbackImageLabelResponse holds image label data
