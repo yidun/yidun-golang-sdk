@@ -227,6 +227,17 @@ type SubLabelDetails struct {
 type LlmKeyWord struct {
 	// 大模型命中的Keyword
 	Keyword *string `json:"keyword,omitempty"`
+	// 大模型命中的敏感词及 OCR 坐标信息
+	Locations []*LlmInfo `json:"locations,omitempty"`
+}
+
+// LlmInfo 大模型命中的敏感词及 OCR 坐标信息
+type LlmInfo struct {
+	Keyword *string  `json:"keyword,omitempty"`
+	X1      *float32 `json:"x1,omitempty"`
+	Y1      *float32 `json:"y1,omitempty"`
+	X2      *float32 `json:"x2,omitempty"`
+	Y2      *float32 `json:"y2,omitempty"`
 }
 
 type AnticheatInfo struct {

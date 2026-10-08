@@ -213,7 +213,17 @@ type RuleInfo struct {
 
 // LlmKeyWord 大模型命中的关键词
 type LlmKeyWord struct {
-	Keyword *string `json:"keyword,omitempty"`
+	Keyword   *string    `json:"keyword,omitempty"`
+	Locations []*LlmInfo `json:"locations,omitempty"`
+}
+
+// LlmInfo 大模型命中的敏感词及 OCR 坐标信息
+type LlmInfo struct {
+	Keyword *string  `json:"keyword,omitempty"`
+	X1      *float64 `json:"x1,omitempty"`
+	Y1      *float64 `json:"y1,omitempty"`
+	X2      *float64 `json:"x2,omitempty"`
+	Y2      *float64 `json:"y2,omitempty"`
 }
 
 // AnticheatInfo 反作弊信息
