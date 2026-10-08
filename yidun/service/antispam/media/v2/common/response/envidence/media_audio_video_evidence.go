@@ -51,6 +51,10 @@ type PictureInfo struct {
 	SuggestionRiskLevel *int                      `json:"suggestionRiskLevel,omitempty"` // 建议风险等级
 	FrontPics           []*RelatedPicInfoResponse `json:"frontPics,omitempty"`
 	BackPics            []*RelatedPicInfoResponse `json:"backPics,omitempty"`
+	// 大模型检测状态：1-成功，2-失败
+	LlmStatus *int `json:"llmStatus,omitempty"`
+	// 大模型检测失败原因（errorCode原始值），成功时为null
+	LlmFailureReason *int `json:"llmFailureReason,omitempty"`
 }
 
 // 视频标签信息

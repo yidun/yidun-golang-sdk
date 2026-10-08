@@ -386,6 +386,10 @@ type LlmCheckDetail struct {
 	Keyword *string `json:"keyword,omitempty"`
 	// 大模型自定义扩展字段，JSON字符串格式
 	Extension *string `json:"extension,omitempty"`
+	// 大模型调用状态：1-成功，2-失败
+	LlmStatus *int `json:"llmStatus,omitempty"`
+	// 大模型失败原因（errorCode原始值），成功时为null
+	LlmFailureReason *int `json:"llmFailureReason,omitempty"`
 }
 
 // MediaLlmCheckDetail 产品维度大模型检测结果单元

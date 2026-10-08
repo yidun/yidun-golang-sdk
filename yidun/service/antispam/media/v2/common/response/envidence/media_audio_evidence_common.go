@@ -17,6 +17,10 @@ type MediaAudioEvidenceCommon struct {
 	Label              *int            `json:"label,omitempty"`           // 命中一级标签
 	SecondLabel        *string         `json:"secondLabel,omitempty"`     // 命中二级标签细分类
 	ThirdLabel         *string         `json:"thirdLabel,omitempty"`      // 命中三级标签细分类
+	// 大模型检测状态：1-成功，2-失败
+	LlmStatus *int `json:"llmStatus,omitempty"`
+	// 大模型检测失败原因（errorCode原始值），成功时为null
+	LlmFailureReason *int `json:"llmFailureReason,omitempty"`
 }
 
 type SegmentsInfo struct {

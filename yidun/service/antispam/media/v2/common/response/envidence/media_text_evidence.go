@@ -22,6 +22,10 @@ type MediaTextEvidence struct {
 	HitType            *int               `json:"hitType,omitempty"`            // 命中策略类型
 	StrategyType       *int               `json:"strategyType,omitempty"`       // 策略类型 1 公有策略 2 私有策略
 	HitResult          *string            `json:"hitResult,omitempty"`          // 命中结果
+	// 大模型检测状态：1-成功，2-失败
+	LlmStatus *int `json:"llmStatus,omitempty"`
+	// 大模型检测失败原因（errorCode原始值），成功时为null
+	LlmFailureReason *int `json:"llmFailureReason,omitempty"`
 }
 
 // 文本标签信息
