@@ -41,6 +41,7 @@ type ImageLabelInfo struct {
 // 图片子标签信息
 type ImageSubLabel struct {
 	SubLabel            *string              `json:"subLabel,omitempty"`
+	Level               *int                 `json:"level,omitempty"` // 子标签级别，0：通过，1：嫌疑，2：不通过
 	Rate                *float64             `json:"rate,omitempty"`
 	Details             *ImageSubLabelDetail `json:"details,omitempty"`
 	SubLabelDepth       *int                 `json:"subLabelDepth,omitempty"`

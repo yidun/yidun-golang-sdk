@@ -39,6 +39,7 @@ type TextLabelInfo struct {
 // 文本子标签信息
 type TextSubLabel struct {
 	SubLabel            *string             `json:"subLabel,omitempty"`
+	Level               *int                `json:"level,omitempty"` // 子标签级别，0：通过，1：嫌疑，2：不通过
 	Details             *TextSubLabelDetail `json:"details,omitempty"`
 	SubLabelDepth       *int                `json:"subLabelDepth,omitempty"`
 	SecondLabel         *string             `json:"secondLabel,omitempty"`
