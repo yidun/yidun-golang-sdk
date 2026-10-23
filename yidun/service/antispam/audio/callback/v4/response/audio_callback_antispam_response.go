@@ -56,6 +56,7 @@ type LabelInfo struct {
 
 type AudioSubLabel struct {
 	SubLabel            *string   `json:"subLabel,omitempty"` // 细分类
+	Level               *int      `json:"level,omitempty"`    // 末级标签命中级别：0-正常，1-嫌疑，2-不通过
 	SubLabelDepth       *int      `json:"subLabelDepth,omitempty"`
 	SecondLabel         *string   `json:"secondLabel,omitempty"`
 	ThirdLabel          *string   `json:"thirdLabel,omitempty"`

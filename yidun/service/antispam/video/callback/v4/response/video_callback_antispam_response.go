@@ -65,6 +65,8 @@ type RelatedPicInfoResponse struct {
 type ImageV5SubLabelResp struct {
 	// 对外的图片label
 	SubLabel *json.Number `json:"subLabel,omitempty"`
+	// 末级标签命中级别：0-正常，1-嫌疑，2-不通过
+	Level *int `json:"level,omitempty"`
 	// 命中的最终细分类的层级
 	SubLabelDepth *int `json:"subLabelDepth,omitempty"`
 	// 二级分类，必返回
