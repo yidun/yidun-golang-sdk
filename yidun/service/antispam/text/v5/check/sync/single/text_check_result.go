@@ -205,7 +205,8 @@ type AntispamSubLabelDetailKeyword struct {
 }
 
 type AntispamSubLabelDetailRule struct {
-	Name *string `json:"name"`
+	Name   *string `json:"name"`
+	RuleId *int64  `json:"ruleId"`
 }
 
 type AntispamSubLabelDetailLibInfo struct {
