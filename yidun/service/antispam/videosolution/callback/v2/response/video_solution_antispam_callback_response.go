@@ -53,10 +53,13 @@ type VideoSolutionFailUnitResponse struct {
 
 type VideoSolutionTargetFailUnitResponse struct {
 	FailureReason *int `json:"failureReason,omitempty"`
+	// Message 失败原因英文说明，与 FailureReason 一一对应
+	Message *string `json:"message,omitempty"`
 }
 
 type VideoSolutionImageFailUnitResponse struct {
 	FailureReason *int    `json:"failureReason,omitempty"`
+	Message       *string `json:"message,omitempty"`
 	Name          *string `json:"name,omitempty"`
 }
 

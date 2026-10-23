@@ -14,6 +14,7 @@ type VideoCallbackAntispamV4Response struct {
 	RiskDescription *string                  `json:"riskDescription"`       // 三级垃圾类型
 	CustomLabels    []*CustomLabel           `json:"customLabels,omitempty"` // 客户自定义标签映射结果
 	FailureReason   *int                     `json:"failureReason,omitempty"`
+	Message         *string                  `json:"message,omitempty"`
 	Suggestion      *int                     `json:"suggestion,omitempty"`
 	SuggestionLevel *int                     `json:"suggestionLevel,omitempty"`
 	ResultType      *int                     `json:"resultType,omitempty"`
